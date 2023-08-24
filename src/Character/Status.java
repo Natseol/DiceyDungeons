@@ -1,9 +1,9 @@
 package Character;
 
 public class Status {
-	int hp;
-	int maxHp;
-	int def;
-	int inventory;
-	int diceQuantity;
+	protected int hp;
+	protected int maxHp;
+	protected int def;
+	protected int inventory;
+	protected int diceQuantity;
 }
