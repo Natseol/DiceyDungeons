@@ -1,8 +1,8 @@
 package Item;
 
-public class spare extends Item{
+public class Spare extends Item{
 
-	public spare()	{
+	public Spare()	{
 		this.name = "예비";
 		this.description = "눈금 4 주사위를 획득한다";
 		this.times=1;

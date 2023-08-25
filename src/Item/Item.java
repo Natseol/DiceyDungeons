@@ -1,18 +1,16 @@
 package Item;
 
-import Character.Player;
+import Character.Status;
 
-import Dice.Roll;
-
-public class Item extends Player {
+public class Item extends Status {
 	
 	String name;
 	String description;
 	int enemyHp;
-	int dice;
 	int times;
 	int count;
-	int effect[];
+	int dice;
+	int condition[];
 	
 	public void action() {}
 	
@@ -46,39 +44,39 @@ public class Item extends Player {
 	
 	public void gainDefence(int dice) {
 		System.out.println(dice+" 만큼 방어력을 얻었습니다!!");
-	}
-	
-	public void printCount(int count) {
-		System.out.println("10 피해를 줍니다 (카운트 15) 현재 : "+count);
-	}
-	
-	public void printWand(int count) {
-		System.out.println("6 화염 피해를 줍니다 (카운트 8) 현재 : "+count);
-	}
-	
-	public void printShard() {
-		System.out.println("ㅁ 만큼 얼음 피해를 줍니다 (홀수만 가능)");
-	}
-	
-	public void printGlove() {
-		System.out.println("ㅁ 만큼 마비 피해를 줍니다 (2~5 만 가능)");
-	}
-	
+	}	
+
 	public void recovery(int num) {
 		System.out.println(num+" 만큼 체력을 회복합니다");
 	}
 	
+	public void printCount(int count) {
+		this.description="10 피해를 줍니다 (카운트 15) 현재 : "+count;
+	}
+	
+	public void printWand(int count) {
+		this.description="6 화염 피해를 줍니다 (카운트 8) 현재 : "+count;
+	}
+	
+	public void printShard() {
+		this.description="ㅁ 만큼 얼음 피해를 줍니다 (홀수만 가능)";
+	}
+	
+	public void printGlove() {
+		this.description="ㅁ 만큼 마비 피해를 줍니다 (2~5 만 가능)";
+	}	
+	
 	public void recoveryM(int num, int count) {
-		System.out.println(num+" 만큼 체력을 회복합니다 (카운트 16) 현재 : "+count);
+		this.description=num+" 만큼 체력을 회복합니다 (카운트 16) 현재 : "+count;
 	}
 	
 	public void recoveryB() {
-		System.out.println("2 만큼 체력을 회복합니다 (재사용 가능)");
+		this.description="2 만큼 체력을 회복합니다 (재사용 가능)";
 	}
 	
 	public void recoveryH() {
-		System.out.println("ㅁ 만큼 체력을 회복합니다 (최대 3)");
-	}
+		this.description="ㅁ 만큼 체력을 회복합니다 (최대 3)";
+	}	
 
 //	상태이상
 //	발화 : 주사위를 사용하려면 체력2 소모

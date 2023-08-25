@@ -12,7 +12,7 @@ public class Unknown extends Item{
 	
 	@Override
 	public void action() {
-		int damage=Roll.roll();
+		int damage=Roll.roll6();
 		super.enemyHp-=damage;
 		damage(damage);
 		super.times=0;

@@ -14,7 +14,7 @@ public class Glove extends Item{
 			super.enemyHp-=super.dice;			
 			damage(super.dice);
 			super.times=0;
-			super.effect[2]++;//마비
+			super.condition[2]++;//마비
 			super.dice=0;
 		}
 		else {

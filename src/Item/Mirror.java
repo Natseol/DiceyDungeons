@@ -1,8 +1,8 @@
 package Item;
 
-public class mirror extends Item{
+public class Mirror extends Item{
 
-	public mirror()	{
+	public Mirror()	{
 		this.name = "거울";
 		this.description = "이 전투에서 주사위 갯수 +1 (눈금 6만 가능)";
 		this.times=1;

@@ -19,7 +19,7 @@ public class Wand extends Item{
 			damage(6);
 			super.times=0;
 			super.count=8;
-			super.effect[0]++;//발화
+			super.condition[0]++;//발화
 		}
 		super.dice=0;
 	}	

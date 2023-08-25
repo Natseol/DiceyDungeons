@@ -1,10 +1,10 @@
 package Item;
 
-public class lockPick extends Item{
+public class LockPick extends Item{
 	
 	int otherDice = 0;
 	
-	public lockPick()	{
+	public LockPick()	{
 		this.name = "락픽";
 		this.description = "주사위를 둘로 나눈다 (재사용 1회 가능)";
 		this.times=2;

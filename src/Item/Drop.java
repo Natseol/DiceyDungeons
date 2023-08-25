@@ -1,8 +1,8 @@
 package Item;
 
-public class drop extends Item{
+public class Drop extends Item{
 
-	public drop()	{
+	public Drop()	{
 		this.name = "하락";
 		this.description = "주사위 눈금을 1올린다 (최소 2의 눈금)";
 		this.times=1;
