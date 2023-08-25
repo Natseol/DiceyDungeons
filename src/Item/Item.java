@@ -1,18 +1,22 @@
 package Item;
 
-import Character.Status;
+import Character.Enemy;
+import Character.Player;
 
-public class Item extends Status {
+public class Item{
 	
 	String name;
-	String description;
-	int enemyHp;
+	String description;	
 	int times;
-	int count;
-	int dice;
-	int condition[];
+	int count;	
+	int[] ohter;
+	boolean check;
 	
-	public void action() {}
+	public void action(Player player, Enemy enemy, int dice) {}
+	
+	public boolean checkDice(int dice) {
+		return check=false;
+	}
 	
 	public String getName() {
 		return name;
@@ -22,7 +26,15 @@ public class Item extends Status {
 		return description;
 	}
 	
-	public void checkDice() {
+	public int getTimes() {
+		return times;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
+	public void checkPrint() {
 		System.out.println("주사위 눈을 확인하세요");
 	}
 	
@@ -47,7 +59,7 @@ public class Item extends Status {
 	}	
 
 	public void recovery(int num) {
-		System.out.println(num+" 만큼 체력을 회복합니다");
+		System.out.println(num+" 만큼 체력을 회복했습니다");
 	}
 	
 	public void printCount(int count) {
@@ -76,12 +88,5 @@ public class Item extends Status {
 	
 	public void recoveryH() {
 		this.description="ㅁ 만큼 체력을 회복합니다 (최대 3)";
-	}	
-
-//	상태이상
-//	발화 : 주사위를 사용하려면 체력2 소모
-//	마비 : 해당 장비를 사용하려면 주사위1개를 소모해야함
-//	빙결 : 가장 큰 주사위 눈금이 1로 바뀐다
-
-
+	}
 }

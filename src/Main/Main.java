@@ -6,6 +6,7 @@ import Battle.*;
 import Character.*;
 import Dice.*;
 import Item.*;
+import Store.Store;
 
 public class Main {
 		
@@ -27,12 +28,22 @@ public class Main {
 						
 		Player player = new Player();
 		
-		player.setInventory(0, 1);
-		player.setInventory(1, 2);
-		player.setInventory(2, 41);
-		player.setInventory(3, 0);
-		player.setInventory(4, 0);
-		player.setInventory(5, 81);
+		Store store = new Store();
+		
+//		player.setInventory(0, 1);
+//		player.setInventory(1, 2);
+//		player.setInventory(2, 41);
+//		player.setInventory(3, 0);
+//		player.setInventory(4, 0);
+//		player.setInventory(5, 81);
+		
+		store.changeItem(player, 0, 1);
+		store.changeItem(player, 1, 2);
+		store.changeItem(player, 2, 0);
+		store.changeItem(player, 3, 3);
+		store.changeItem(player, 4, 4);
+		store.changeItem(player, 5, 7);
+		
 		
 		for (int i = 0; i < 6; i++) {
 			System.out.print(i+1+") "+player.getInventoryName(i));
@@ -40,19 +51,19 @@ public class Main {
 			System.out.println(player.getInventoryDescription(i));			
 		}		
 		
-		int[] dice = rollADice(player.getDiceQuantity());
-		
-		for (int i = 0; i < dice.length; i++) {
-			System.out.print(dice[i]+"\t");
-		}
-		System.out.println("주사위를 선택하세요");
-		int num = input.nextInt();
-		player.setSelectDice(num);
-		
-		System.out.println("장비를 선택하세요");
-		num = input.nextInt();
-		Item selectItem = player.getIventory(num);
-		selectItem.action();
+//		int[] dice = rollADice(player.getDiceQuantity());
+//		
+//		for (int i = 0; i < dice.length; i++) {
+//			System.out.print(dice[i]+"\t");
+//		}
+//		System.out.println("주사위를 선택하세요");
+//		int num = input.nextInt();
+//		player.setSelectDice(num);
+//		
+//		System.out.println("장비를 선택하세요");
+//		num = input.nextInt();
+//		Item selectItem = player.getIventory(num);
+//		selectItem.action();
 		
 		
 		

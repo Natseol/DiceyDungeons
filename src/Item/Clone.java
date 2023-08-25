@@ -1,19 +1,21 @@
 package Item;
 
-public class Clone extends Item{
+import Character.Enemy;
+import Character.Player;
 
-int otherDice = 0;
+public class Clone extends Item{
+	
+	int[] ohter= new int[2];
 	
 	public Clone()	{
-		this.name = "위조";
-		this.description = "주사위를 복제한다";
-		this.times=1;
+		name = "위조";
+		description = "주사위를 복제한다";
+		times=1;
 	}
 	
 	@Override
-	public void action() {
-		this.times--;		
-		otherDice = super.dice;
+	public void action(Player player, Enemy enemy, int dice) {
+		times=0;		
 	}
 }
 //위조 : 주사위를 복제한다(도적)
