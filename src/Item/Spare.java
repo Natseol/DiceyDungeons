@@ -1,17 +1,22 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
 public class Spare extends Item{
 
 	public Spare()	{
-		this.name = "예비";
-		this.description = "눈금 4 주사위를 획득한다";
-		this.times=1;
+		name = "예비";
+		description = "눈금 4 주사위를 획득한다";
+		times=1;
 	}	
 	
 	@Override
-	public void action() {
-		super.times=0;
-		super.dice=4;
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		changeDice=4;
+		times=0;		
 	}
 }
+
 //예비 : 눈금4 주사위를 획득한다

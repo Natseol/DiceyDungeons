@@ -1,10 +1,19 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
 public class Nothing extends Item{
 
 	public Nothing()	{
-		this.name = "빈슬롯";
-		this.description = "장비가 없습니다";
-		this.times=1;
+		name = "빈슬롯";
+		description = "장비가 없습니다";
+		times=0;
+	}
+	
+	@Override
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		changeDice = dice;
 	}
 }

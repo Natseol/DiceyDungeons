@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.MyTurn;
 import Character.*;
 
 public class Cannon extends Item{
@@ -12,7 +13,7 @@ public class Cannon extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
 			count-=dice;					
 		}

@@ -6,20 +6,90 @@ import Item.*;
 
 public class MyTurn {
 	
-	int dice[];
+	int diceQ;
+	int[] dice;	
+	int[] other;
+	Item[] turnItem = new Item[6]; 
+	
+	public MyTurn(Player player) {
 		
-	public void resetDice(Player player) {
-		this.dice=new int[player.getDiceQuantity()];
+		diceQ = player.getDiceQuantity();
+		
+		for (int i = 0; i < turnItem.length; i++) {
+			turnItem[i]=player.getInventory(i);
+		}
+		
+		
+		dice=new int[diceQ];
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();			
 		}
 	}
-	
-	public int selectDice(int idx) {
-		return dice[idx-1];	 
+	public int[] getDice() {
+		return dice;
 	}
 	
-	public void rebuildDice(int[] other) {
+	public void setDice(int diceIdx,int changeNum) {
+		dice[diceIdx]=changeNum;		
+	}
+	
+	public void setTimes(int idx, int num) {
+		turnItem[idx].setTimes(num);
+	}
+	
+	public int getTimes(int idx) {
+		return turnItem[idx].getTimes();
+	}
+	
+	public Item getItem(int idx) {
+		return turnItem[idx];
+	}
+	
+	public int[] getOther() {
+		return other;
+	}
+	
+	public void setOther(int idx, int num) {
+		other[idx] = num;
+	}
+	
+	public void setTurnItem(int idx, Item item) {
+		turnItem[idx] = item;
+	}
+	
+	public void printDice() {
+		for (int i = 0; i < dice.length; i++) {
+			System.out.print("("+(i+1)+")"+dice[i]+"  ");
+		}
+		System.out.println();
+		System.out.println("주사위를 선택하세요");
+	}
+	
+	public void printInfo(Player player, Enemy enemy) {
+		System.out.println("Lv:"+player.getLevel()+"  주사위:"+player.getDiceQuantity()+"\t\t"+enemy.getName()+"  주사위:"+enemy.getDiceQuantity());
+		System.out.println(player.getHp()+" / "+player.getMaxHp()+"\t\t\t"+enemy.getHp()+" / "+enemy.getMaxHp());
+		System.out.println();	
+	}
+	
+	public void printItem(MyTurn my) {
+		for (int i = 0; i < 6; i++) {
+			System.out.print(i+1+") "+my.getItem(i).getName());
+			System.out.print(" : ");
+			if (my.getTimes(i) > 0) {
+				System.out.println(my.getItem(i).getDescription()+"  남은횟수:"+my.getTimes(i));
+			}
+			else {
+				System.out.println(my.getItem(i).getDescription());
+			}
+		}
+		System.out.println("장비를 선택하세요");
+	}
+	
+	public int selectDice(int idx) {
+		return dice[idx];	 
+	}
+	
+	public void rebuildDice() {
 		int count=0;
 		for (int i = 0; i < dice.length; i++) {
 			if (dice[i]==0) {
@@ -29,13 +99,11 @@ public class MyTurn {
 		
 		if (other!=null) {
 			int[] newDice = new int[dice.length+other.length-count];
-			int check=0;
-			
+			int check=0;			
 			for (int i = dice.length-count; i < dice.length+other.length-count; i++) {
 				newDice[i]=other[check];
 				check++;
 			}
-
 			check=0;		
 			for (int i = 0; i < dice.length; i++) {
 				if (dice[i] !=0) {

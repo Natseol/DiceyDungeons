@@ -1,44 +1,50 @@
 package Item;
 
-public class Saw extends Item{
-	int otherDice = 0;
-	int anotherDice = 0;
-	
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
+public class Saw extends Item{	
 	public Saw() {
-		this.name = "쇠톱";
-		this.description = "주사위를 셋으로 나눈다";
-		this.times=1;
+		name = "쇠톱";
+		description = "주사위를 셋으로 나눈다";
+		times=1;
 	}
 	
 	@Override
-	public void action() {
-		this.times--;		
-		switch (super.dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		times--;		
+		switch (dice) {
 		case 6:
-			super.dice = 2;
-			otherDice = 2;
-			anotherDice = 2;
+			dice = 2;
+			my.setOther(0,2);
+			my.setOther(1,2);
 			break;
 		case 5:
-			super.dice = 2;
-			otherDice = 2;
-			anotherDice = 1;
+			dice = 2;
+			my.setOther(0,2);
+			my.setOther(1,1);
 			break;
 		case 4:
-			super.dice = 2;
-			otherDice = 1;
-			anotherDice = 1;
+			dice = 2;
+			my.setOther(0,1);
+			my.setOther(1,1);
 			break;
 		case 3:
-			super.dice = 1;
-			otherDice = 1;
-			anotherDice = 1;
-			break;
-		default :
-			checkDice();
-			this.times++;
-			break;			
+			dice = 1;
+			my.setOther(0,1);
+			my.setOther(1,1);
+			break;	
 		}
-	}	
+	}
+	
+	@Override
+	public boolean checkDice(int dice) {
+		if (dice<3) {
+			checkPrint();
+			check=true;
+		}
+		return check;
+	}
 }
 //쇠톱 : 주사위를 셋으로 나눈다

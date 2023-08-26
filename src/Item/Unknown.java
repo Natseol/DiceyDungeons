@@ -1,22 +1,24 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
 import Dice.Roll;
 
 public class Unknown extends Item{
 	
 	public Unknown()	{
-		this.name = "알수없음";
-		this.description = "1~6만큼 피해를 줍니다";
-		this.times=1;
+		name = "알수없음";
+		description = "1~6만큼 피해를 줍니다";
+		times=1;
 	}	
 	
 	@Override
-	public void action() {
-		int damage=Roll.roll6();
-		super.enemyHp-=damage;
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		int damage = Roll.roll6();
+		enemy.setHp(enemy.getHp()-damage);
 		damage(damage);
-		super.times=0;
-		super.dice=0;
-	}	
+		times=0;
+	}
 }
 //알수없음 : 1~6까지의 랜덤한 피해를 준다

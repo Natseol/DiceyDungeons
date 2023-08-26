@@ -1,11 +1,10 @@
 package Item;
 
+import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
 
 public class Clone extends Item{
-	
-	int[] ohter= new int[2];
 	
 	public Clone()	{
 		name = "위조";
@@ -14,7 +13,9 @@ public class Clone extends Item{
 	}
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		changeDice=dice;
+		my.setOther(0,dice);
 		times=0;		
 	}
 }

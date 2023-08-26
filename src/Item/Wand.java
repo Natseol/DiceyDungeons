@@ -1,27 +1,30 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
 public class Wand extends Item{
 
 	public Wand()	{
-		this.name = "지팡이";
-		this.count=8;
-		printWand(this.count);
-		this.times=1;
+		name = "지팡이";
+		count=8;
+		printWand(count);
+		times=1;
 	}	
 	
 	@Override
-	public void action() {
-		if (count>0) {
-			count-=super.dice;					
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		if (count-dice>0) {
+			count-=dice;					
 		}
 		else {
-			super.enemyHp-=6;			
+			enemy.setHp(enemy.getHp()-6);			
 			damage(6);
-			super.times=0;
-			super.count=8;
-			super.condition[0]++;//발화
+//			condition[0]++;//차후구현
+			times=0;
+			count=8;
 		}
-		super.dice=0;
 	}	
 }
 //지팡이 : 6의 피해를 주고 발화효과부여(카운트8)

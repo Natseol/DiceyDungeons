@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.MyTurn;
 import Character.*;
 
 public class Axe extends Item{
@@ -11,7 +12,7 @@ public class Axe extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		enemy.setHp(enemy.getHp()-2*dice);
 		damage(dice);
 		damage(dice,1);

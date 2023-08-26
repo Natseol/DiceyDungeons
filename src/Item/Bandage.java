@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.MyTurn;
 import Character.*;
 
 public class Bandage extends Item {
@@ -7,11 +8,11 @@ public class Bandage extends Item {
 	public Bandage()	{
 		name = "붕대";
 		recoveryB();
-		times=1;		
+		times=-1;		
 	}	
-	
+
 	@Override
-	public void action(Player player, Enemy enemy, int dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		player.setHp(player.getHp()+2);
 		if (player.getHp()>player.getMaxHp()) {				
 			player.setHp(player.getMaxHp());

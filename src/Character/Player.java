@@ -5,7 +5,17 @@ import Item.*;
 public class Player extends Status {
 	int exp;
 	int level;
-	Item[] inventory = new Item[6];
+	protected Item[] inventory = new Item[6];
+	
+	public Player() {}
+	
+	public Player (int hp, int maxHp, int diceQuantity, int level) {
+		super(hp,maxHp,diceQuantity);
+		this.hp = hp;
+		this.maxHp=maxHp;
+		this.diceQuantity = diceQuantity;
+		this.level = level;
+	}
 
 	public int getExp() {
 		return exp;
@@ -23,7 +33,7 @@ public class Player extends Status {
 		this.level = level;
 	}
 	
-	public Item getIventory(int idx) {
+	public Item getInventory(int idx) {
 		return inventory[idx];
 	}
 	

@@ -6,7 +6,7 @@ import Item.*;
 public class Store{
 	
 	Item[] storeList = new Item[3];
-	final Item[] ITEMLIST = {
+	public static final Item[] ITEMLIST = {
 			new Nothing(),//0
 			
 			new Sword(),//1
@@ -15,30 +15,30 @@ public class Store{
 			new GreatSword(),//4
 			new Boomerang(),//5
 			new SpikeShield(),//6           
-			new Spear(),//6                     
-			new Fist(),//7                       
-			new Staff(),//8                      
-			new Cannon(),//9                     
-			new Unknown(),//10                   
-			new Wand(),//11                      
-			new IceShards(),//12                 
-			new Glove(),//13                     
+			new Spear(),//7                     
+			new Fist(),//8                       
+			new Staff(),//9                      
+			new Cannon(),//10                     
+			new Unknown(),//11                   
+			new Wand(),//12                      
+			new IceShards(),//13                 
+			new Glove(),//14                     
 
-			new Rising(),//14                    
-			new Drop(),//15                      
-			new LockPick(),//16                  
-			new Saw(),//17                       
-			new Talisman(),//18                  
-			new Mirror(),//19                    
-			new Spare(),//20                     
+			new Rising(),//15                    
+			new Drop(),//16                      
+			new LockPick(),//17                  
+			new Saw(),//18                       
+			new Talisman(),//19                  
+			new Mirror(),//20                    
+			new Spare(),//21                    
 
-			new MedicKit(),//21                  
-			new Bandage(),//22                   
-			new Heal(),//23                      
-			new Shield(),//24                    
+			new MedicKit(),//22                  
+			new Bandage(),//23                   
+			new Heal(),//24                      
+			new Shield(),//25                    
 
-			new Reroll(),//25                    
-			new Clone()//26
+			new Reroll(),//26                    
+			new Clone()//27
 	};
 	
 	public void changeItem(Player player, int inven, int idx) {	

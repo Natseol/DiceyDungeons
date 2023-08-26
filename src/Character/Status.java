@@ -1,10 +1,18 @@
 package Character;
 
 public class Status {
-	int hp;
-	int maxHp;
-	int def;
-	int diceQuantity;
+	protected int hp;
+	protected int maxHp;
+	protected int def;
+	protected int diceQuantity;
+	
+	public Status() {}
+	
+	public Status(int hp, int maxHp, int diceQuantity) {
+		this.hp = hp;
+		this.maxHp=maxHp;
+		this.diceQuantity = diceQuantity;		
+	}
 	
 	public int getHp() {
 		return hp;

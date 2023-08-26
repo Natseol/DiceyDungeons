@@ -1,26 +1,38 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
 public class SpikeShield extends Item{
 	
 	public SpikeShield()	{
-		this.name = "가시방패";
-		this.description = "(홀수) 피해를 줍니다  (짝수) 방어력을 얻습니다";
-		this.times=1;
-	}	
+		name = "가시방패";
+		description = "(홀수) 피해를 줍니다  (짝수) 방어력을 얻습니다";
+		times=1;
+	}
 	
 	@Override
-	public void action() {
-		if (super.dice%2!=0) {
-			super.enemyHp-=super.dice;			
-			damage(super.dice);
-			super.times=0;
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		if (dice%2!=0) {
+			enemy.setHp(enemy.getHp()-dice);
+			damage(dice);
+			times=0;
 		}
 		else {
-			super.def+=super.def;
-			gainDefence(super.dice);
-			super.times=0;
+			player.setDef(player.getDef()+dice);
+			gainDefence(dice);
+			times=0;
+		}		
+	}
+	
+	@Override
+	public boolean checkDice(int dice) {
+		if (dice>5) {
+			checkPrint();
+			check=true;
 		}
-		super.dice=0;
+		return check;
 	}
 }
 //가시방패:  홀수일 때  눈금만큼 방어력을 얻는다. 짝수일 때 눈금만큼 피해를 준다(최대5의 눈금만 사용가능)

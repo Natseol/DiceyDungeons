@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
 
@@ -8,11 +9,11 @@ public class Item{
 	String name;
 	String description;	
 	int times;
-	int count;	
-	int[] ohter;
-	boolean check;
+	int count;
+	int changeDice=0;
+	boolean check=false;
 	
-	public void action(Player player, Enemy enemy, int dice) {}
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {}
 	
 	public boolean checkDice(int dice) {
 		return check=false;
@@ -26,6 +27,14 @@ public class Item{
 		return description;
 	}
 	
+	public void setTimes(int num) {
+		times = num;
+	}
+	
+	public void setCount(int num) {
+		count = num;
+	}
+	
 	public int getTimes() {
 		return times;
 	}
@@ -34,8 +43,24 @@ public class Item{
 		return count;
 	}
 	
+	public boolean getCheck() {
+		return check;
+	}
+	
+	public void setCheck(boolean b) {
+		check = b;
+	}
+	
+	public int getChangeDice() {
+		return changeDice;
+	}
+	
+	public void setChangeDice(int dice) {
+		changeDice = dice;
+	}
+	
 	public void checkPrint() {
-		System.out.println("주사위 눈을 확인하세요");
+		System.out.println("********** 주사위 눈을 확인하세요 **********");
 	}
 	
 	public void damage(int dice) {

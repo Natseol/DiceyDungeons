@@ -1,49 +1,46 @@
 package Item;
 
+import Battle.MyTurn;
+import Character.Enemy;
+import Character.Player;
+
 public class LockPick extends Item{
-	
-	int otherDice = 0;
-	
+		
 	public LockPick()	{
-		this.name = "락픽";
-		this.description = "주사위를 둘로 나눈다 (재사용 1회 가능)";
-		this.times=2;
+		name = "락픽";
+		description = "주사위를 둘로 나눈다 (재사용 1회 가능)";
+		times=2;
 	}
 	
 	@Override
-	public void action() {
-		this.times--;		
-		switch (super.dice) {
+	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		times--;		
+		switch (dice) {
 		case 6:
-			super.dice = 3;
-			otherDice = 3;
+			dice = 3;
+			my.setOther(0,3);
 			break;
 		case 5:
-			super.dice = 3;
-			otherDice = 2;
+			dice = 3;
+			my.setOther(0,2);
 			break;
 		case 4:
-			super.dice = 2;
-			otherDice = 2;
+			dice = 2;
+			my.setOther(0,2);
 			break;
 		case 3:
-			super.dice = 2;
-			otherDice = 1;
+			dice = 2;
+			my.setOther(0,1);
 			break;
 		case 2:
-			super.dice = 1;
-			otherDice = 1;
+			dice = 1;
+			my.setOther(0,1);
 			break;
 		case 1:
-			checkDice();
-			this.times++;
+			checkPrint();
+			check=true;
+			times++;
 			break;			
-		}
-		if (times==1) {
-			this.description = "주사위를 둘로 나눈다";
-		}
-		else {
-			this.description = "주사위를 둘로 나눈다 (재사용 1회 가능)";
 		}
 	}
 }
