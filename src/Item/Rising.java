@@ -14,7 +14,7 @@ public class Rising extends Item{
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		changeDice=dice++;
+		changeDice=dice+1;
 		times=0;		
 	}
 	

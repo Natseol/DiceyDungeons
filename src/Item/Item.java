@@ -88,11 +88,11 @@ public class Item{
 	}
 	
 	public void printCount(int count) {
-		this.description="10 피해를 줍니다 (카운트 15) 현재 : "+count;
+		this.description="10 피해를 줍니다 (카운트 15)";
 	}
 	
 	public void printWand(int count) {
-		this.description="6 화염 피해를 줍니다 (카운트 8) 현재 : "+count;
+		this.description="6 화염 피해를 줍니다 (카운트 8)";
 	}
 	
 	public void printShard() {
@@ -104,7 +104,7 @@ public class Item{
 	}	
 	
 	public void recoveryM(int num, int count) {
-		this.description=num+" 만큼 체력을 회복합니다 (카운트 16) 현재 : "+count;
+		this.description=num+" 만큼 체력을 회복합니다 (카운트 16)";
 	}
 	
 	public void recoveryB() {

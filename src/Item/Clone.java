@@ -14,6 +14,7 @@ public class Clone extends Item{
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+		my.setOther(1);
 		changeDice=dice;
 		my.setOther(0,dice);
 		times=0;		

@@ -3,12 +3,12 @@ package Item;
 import Battle.MyTurn;
 import Character.*;
 
-public class Cannon extends Item{
+public class Bow extends Item{
 	
-	public Cannon()	{
-		name = "캐논";
-		count=15;
-		printCount(count);
+	public Bow()	{
+		name = "보우";
+		count=10;
+		description="6 피해를 줍니다 (카운트 10)";
 		times=1;		
 	}	
 	
@@ -18,11 +18,11 @@ public class Cannon extends Item{
 			count=count-dice;					
 		}
 		else {
-			enemy.setHp(enemy.getHp()-10);
+			enemy.setHp(enemy.getHp()-6);
 			damage(10);
 			times=0;
-			count=15;
+			count=10;
 		}
 	}
 }
-//캐논 : 적에게 10만큼의 피해를 준다 (카운트다운15)
+//보우 : 적에게 6만큼의 피해를 준다 (카운트다운10)

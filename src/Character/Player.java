@@ -3,18 +3,48 @@ package Character;
 import Item.*;
 
 public class Player extends Status {
-	int exp;
-	int level;
+	protected int exp=0;
+	protected int level=1;
 	protected Item[] inventory = new Item[6];
+    protected String job;
 	
 	public Player() {}
 	
-	public Player (int hp, int maxHp, int diceQuantity, int level) {
+	public Player(int num) {
+		this();
+		switch (num) {
+		case 1 :
+			hp=30;
+			maxHp=30;
+			job = "전사";
+			diceQuantity = 2;
+			this.setInventory(0, new Sword());
+			this.setInventory(1, new Axe());
+			this.setInventory(2, new Rising());
+			this.setInventory(3, new Nothing());
+			this.setInventory(4, new Nothing());
+			this.setInventory(5, new Reroll());
+		break;
+		case 2 :
+			hp=24;
+			maxHp=24;
+			job = "도적";
+			diceQuantity = 3;
+			this.setInventory(0, new Dagger());
+			this.setInventory(1, new Bow());
+			this.setInventory(2, new LockPick());
+			this.setInventory(3, new Nothing());
+			this.setInventory(4, new Nothing());
+			this.setInventory(5, new Clone());
+		}
+		
+	}
+	
+	public Player (int hp, int maxHp, int diceQuantity) {
 		super(hp,maxHp,diceQuantity);
 		this.hp = hp;
 		this.maxHp=maxHp;
 		this.diceQuantity = diceQuantity;
-		this.level = level;
 	}
 
 	public int getExp() {
@@ -43,6 +73,13 @@ public class Player extends Status {
 	
 	public String getInventoryDescription(int idx) {					
 		return inventory[idx].getDescription();
+	}
+	
+	public void getInventoryAll() {
+		System.out.println();
+		for (int i=0;i<inventory.length;i++) {
+			System.out.println((i+1)+") "+inventory[i].getName()+" : "+inventory[i].getDescription());			
+		}
 	}	
 	
 //	public void setInventory(int idx, IndexItem item, int itemIndex) {

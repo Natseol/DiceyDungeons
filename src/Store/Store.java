@@ -6,6 +6,23 @@ import Item.*;
 public class Store{
 	
 	Item[] storeList = new Item[3];
+	
+	public Item getStoreList(int num) {
+		return storeList[num];
+	}		
+		
+	public Store() {		
+		for (int i = 0; i < storeList.length; i++) {
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-2))+3];
+		}
+	}
+	
+	public void showList() {
+		for (int i =0; i<storeList.length;i++) {
+			System.out.println((i+1)+") "+storeList[i].getName()+" : "+storeList[i].getDescription());
+		}
+	}
+	
 	public static final Item[] ITEMLIST = {
 			new Nothing(),//0
 			
@@ -41,11 +58,7 @@ public class Store{
 			new Clone()//27
 	};
 	
-	public void changeItem(Player player, int inven, int idx) {	
-		player.setInventory(inven, ITEMLIST[idx]);
-	}
-	
-	
-			
-
+	public void changeItem(Player player, int inven, Item item) {	
+		player.setInventory(inven, item);
+	}	
 }

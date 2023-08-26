@@ -7,33 +7,40 @@ import Character.Player;
 public class Saw extends Item{	
 	public Saw() {
 		name = "쇠톱";
-		description = "주사위를 셋으로 나눈다";
+		description = "주사위를 셋으로 나눈다(3 이상 가능)";
 		times=1;
 	}
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		times--;		
 		switch (dice) {
 		case 6:
-			dice = 2;
+			my.setOther(2);
+			changeDice = 2;
 			my.setOther(0,2);
 			my.setOther(1,2);
+			times--;	
 			break;
 		case 5:
-			dice = 2;
+			my.setOther(2);
+			changeDice = 2;
 			my.setOther(0,2);
 			my.setOther(1,1);
+			times--;	
 			break;
 		case 4:
-			dice = 2;
+			my.setOther(2);
+			changeDice = 2;
 			my.setOther(0,1);
 			my.setOther(1,1);
+			times--;	
 			break;
 		case 3:
-			dice = 1;
+			my.setOther(2);
+			changeDice = 1;
 			my.setOther(0,1);
 			my.setOther(1,1);
+			times--;	
 			break;	
 		}
 	}
