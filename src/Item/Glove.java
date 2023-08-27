@@ -16,7 +16,7 @@ public class Glove extends Item{
 		enemy.subtractHp(dice);
 		damage(dice);
 		times=0;
-//		condition[2]++;//차후구현
+		enemy.setCondition(2,enemy.getCondition(2)+1);//차후구현
 	}
 	
 	@Override

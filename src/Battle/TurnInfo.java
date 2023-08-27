@@ -1,7 +1,8 @@
 package Battle;
 
-import Field.Store;
-import Item.Item;
+import Character.*;
+import Field.*;
+import Item.*;
 import Main.Color;
 
 public class TurnInfo {
@@ -22,7 +23,7 @@ public class TurnInfo {
 		dice[diceIdx]=changeNum;		
 	}
 	
-	public void printDice() {
+	public void printDice(Status status) {
 		for (int i = 0; i < dice.length; i++) {
 			System.out.print("("+(i+1)+")"+dice[i]+"  ");
 		}

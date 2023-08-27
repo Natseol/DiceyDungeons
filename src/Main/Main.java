@@ -20,13 +20,12 @@ public class Main extends Color {
 		System.out.println("---------------------------------");
 
 		Player player = new Player(input.nextInt());
-
 		System.out.println();		
 
 		int floor=1;		
 		Field field = new Field();
-		int enemyNum=0;
-		
+		int enemyNum=1;
+
 		while (true) {//스테이지 진입
 
 			Enemy[] enemy = new Enemy[]{
@@ -36,7 +35,7 @@ public class Main extends Color {
 					new Onepun(),
 					new Bear(),
 					new Vampire()
-					};			
+			};			
 
 			System.out.println("---------------------------------");
 			System.out.println("\t  전투를 시작합니다");
@@ -50,8 +49,7 @@ public class Main extends Color {
 					System.out.println("---------------------------------");
 					my.printInfo(player, enemy[enemyNum]);
 					System.out.println();
-					my.printDice();					
-
+					my.printDice(player);
 					int idxDice=input.nextInt();
 					if (idxDice==0) {
 						System.out.println();
@@ -63,6 +61,32 @@ public class Main extends Color {
 						enemyTurn.enemyInfo(enemy[enemyNum]);
 						continue;
 					}
+					 
+					if (player.getCondition(0)>0) {
+						player.setCondition(0,player.getCondition(0)-1);
+						player.subtractHp(2);
+						System.out.println();
+						System.out.println(RED+"발화효과로 [2] 의 피해를 입습니다"+RESET);
+						System.out.println();
+						continue;
+					}//상태이상	발화	
+					
+					if (player.getCondition(1)>0) {
+						player.setCondition(1,player.getCondition(1)-1);
+						int max = my.getDice(0);
+				        int maxIndex = 0;				 
+				        for (int i = 0; i < my.getDice().length; i++) {
+				            if (my.getDice(i) > max) {
+				                max = my.getDice(i);
+				                maxIndex = i;
+				            }
+				        }						
+						my.setDice(maxIndex,1);
+						System.out.println();
+						System.out.println(CYAN+"빙결효과로 눈금이 1로 변합니다"+RESET);
+						System.out.println();
+						continue;
+					}//상태이상 빙결
 
 					int numDice=my.getDice(idxDice-1);
 					System.out.println();
@@ -71,12 +95,22 @@ public class Main extends Color {
 					my.printItem();
 
 					int invenIdx = input.nextInt()-1;
+					
 					if (invenIdx==-1) {
 						System.out.println();
 						System.out.println("---------------------------------");
 						continue;
 					}
 					System.out.println();
+					
+					if (player.getCondition(2)>0) {
+						player.setCondition(2,player.getCondition(2)-1);
+						my.setDice(idxDice-1, 0);
+						System.out.println();
+						System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
+						System.out.println();
+						continue;
+					}//상태이상 마비
 
 					my.getItem(invenIdx).setCheck(false);//조건 초기화
 					my.getItem(invenIdx).setChangeDice(0);//조건 초기화
@@ -87,7 +121,7 @@ public class Main extends Color {
 					}//장비 조건 확인
 
 					my.getItem(invenIdx).action(player, enemy[enemyNum], numDice, my);//장비 발동
-					
+
 					if (my.getItem(invenIdx).getName()==new GreatSword().getName()&&my.getItem(invenIdx).getCount()==0) {
 						my.setItem(invenIdx, new UsedGreat());
 						player.setInventory(invenIdx, new UsedGreat());
@@ -129,7 +163,7 @@ public class Main extends Color {
 				System.out.println(enemy[enemyNum].getName()+"이(가) 주사위를 굴립니다");
 				System.out.println("---------------------------------");
 				System.out.println();				
-				enemyTurn.printDice();
+				enemyTurn.printDice(enemy[enemyNum]);
 				System.out.println();
 				enemyTurn.printItem();
 				System.out.println("---------------------------------");
@@ -141,9 +175,9 @@ public class Main extends Color {
 					System.out.print("["+(i+1)+"번 눈금:"+enemyTurn.getDice(i)+"]로 [");
 					System.out.println((enemyItemNum+1)+"번째 "+enemy[enemyNum].getInventoryName(enemyItemNum)+"]을 사용합니다");
 					System.out.println();
-					enemy[enemyNum].getInventory(enemyItemNum).action(enemy[enemyNum], player,enemyTurn.getDice(i), enemyTurn);
+					enemy[enemyNum].getInventory(enemyItemNum).action(enemy[enemyNum], player, enemyTurn.getDice(i), enemyTurn);
 
-					System.out.println("남은 횟수:"+enemy[enemyNum].getInventory(enemyItemNum).getTimes());
+					System.out.println();
 
 					System.out.println("---------------------------------");
 					my.printInfo(player,enemy[enemyNum]);					
@@ -156,11 +190,11 @@ public class Main extends Color {
 						break;
 					}
 				}
-				
+
 				for (int i=0; i<enemy[enemyNum].getInventory().length;i++) {
 					enemy[enemyNum].getInventory(i).setTimes(1);
 				}
-				
+
 				if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 					break;
 				}

@@ -8,7 +8,7 @@ public class Status {
 	protected int def;
 	protected int diceQuantity;
 	protected Item[] inventory;
-	
+		
 	public Status() {}
 	
 	public Status(int hp, int maxHp, int diceQuantity) {
@@ -102,16 +102,32 @@ public class Status {
 	
 	public void setInventory(int idx, Item item) {
 		inventory[idx] = item;
-	}
+	}	
 	
 //  차후구현
 	
-	int condition[];
-
+	int condition[]=new int[3];
+	
 //	상태이상
-//	발화 : 주사위를 사용하려면 체력2 소모
-//	마비 : 해당 장비를 사용하려면 주사위 1개를 소모해야함
-//	빙결 : 가장 큰 주사위 눈금이 1로 바뀐다
+//	0. 발화 : 주사위를 사용하려면 체력 2 소모
+//	1. 빙결 : 가장 큰 주사위 눈금이 1로 바뀐다
+//	2. 마비 : 해당 장비를 사용하려면 주사위 1개를 소모해야함
+	
+	public int[] getCondition() {
+		return condition;
+	}
+	
+	public int getCondition(int idx) {
+		return condition[idx];
+	}
+	
+	public void setCondition(int idx,int changeNum) {
+		condition[idx]=changeNum;		
+	}
 
+	public void checkCondition() {
+		
+	}
 
+	
 }

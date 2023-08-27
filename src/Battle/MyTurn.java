@@ -36,7 +36,8 @@ public class MyTurn extends TurnInfo{
 		other = new int[num];
 	}
 	
-	public void printDice() {
+	@Override
+	public void printDice(Status status) {
 		for (int i = 0; i < dice.length; i++) {
 			System.out.print("("+(i+1)+")"+dice[i]+"  ");
 		}
@@ -57,6 +58,17 @@ public class MyTurn extends TurnInfo{
 			System.out.print("("+enemy.getDef()+")");
 		}
 		System.out.println(" / "+enemy.getMaxHp());
+		if (player.getCondition(0)>0) {
+			System.out.print(Color.RED+"발화:"+player.getCondition(0)+"  "+Color.RESET);
+		}
+		if (player.getCondition(1)>0) {
+			System.out.print(Color.CYAN+"빙결:"+player.getCondition(1)+"  "+Color.RESET);
+		}
+		if (player.getCondition(2)>0) {
+			System.out.print(Color.PURPLE+"마비:"+player.getCondition(2)+"  "+Color.RESET);
+		}
+		System.out.println();
+		
 	}
 	
 	public void printItem() {

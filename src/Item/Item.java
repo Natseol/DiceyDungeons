@@ -13,7 +13,7 @@ public class Item{
 	int changeDice;
 	boolean check;
 	
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {}
+	public void action(Player player, Enemy enemy, int dice, MyTurn myTurn) {}
 	
 	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {}
 	
@@ -79,6 +79,10 @@ public class Item{
 	
 	public void takeDamage(int dice) {
 		System.out.println(" == "+dice+" 의 피해를 받았습니다!! ==");
+	}
+	
+	public void takeFire(int dice) {
+		System.out.println(Color.RED+" == "+dice+" 의 화염 피해를 받았습니다!! =="+Color.RESET);
 	}
 	
 	public void gainDefence(int dice) {

@@ -22,7 +22,7 @@ public class Wand extends Item{
 		else {
 			enemy.subtractHp(6);		
 			damage(6);
-//			condition[0]++;//차후구현
+			enemy.setCondition(0,enemy.getCondition(0)+1);//차후구현
 			times=0;
 			count=8;
 		}

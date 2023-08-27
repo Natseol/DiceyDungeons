@@ -13,7 +13,7 @@ public class SwordMan extends Enemy{
 		hp = 20;
 		maxHp = 20;	
 		diceQuantity = 2;
-		inventory = new Item[] {new Sword(), new Sword()};		
+		inventory = new Item[] {new FireSword(), new FireSword()};		
 	}
 	
 	public void action (Player player, EnemyTurn turn, int num) {		

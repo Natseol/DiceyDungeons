@@ -22,7 +22,7 @@ public class Player extends Status {
 			diceQuantity = 2;
 			this.setInventory(0, new Sword());
 			this.setInventory(1, new Axe());
-			this.setInventory(2, new Overwhelming());
+			this.setInventory(2, new Nothing());
 			this.setInventory(3, new Nothing());
 			this.setInventory(4, new Rising());
 			this.setInventory(5, new Reroll());
@@ -126,113 +126,4 @@ public class Player extends Status {
 			System.out.print("Hp: "+getHp());
 			System.out.println("/"+getMaxHp());
 	}
-	
-//	public void setInventory(int idx, Axe item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Bandage item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Boomerang item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Cannon item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Clone item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Dagger item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Drop item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Fist item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Glove item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, GreatSword item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Heal item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, IceShards item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, LockPick item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, MedicKit item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Mirror item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Reroll item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Rising item) {
-//		inventory[idx] = item;		
-//	}
-//	
-//	public void setInventory(int idx, Saw item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Shield item) {
-//		inventory[idx] = item;
-//	}	
-//	
-//	public void setInventory(int idx, Spare item) {
-//		inventory[idx] = item;
-//	}	
-//	
-//	public void setInventory(int idx, Spear item) {
-//		inventory[idx] = item;
-//	}	
-//	
-//	public void setInventory(int idx, SpikeShield item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Staff item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Sword item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Talisman item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Unknown item) {
-//		inventory[idx] = item;
-//	}
-//	
-//	public void setInventory(int idx, Wand item) {
-//		inventory[idx] = item;
-//	}
-	
 }
