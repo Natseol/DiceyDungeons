@@ -1,8 +1,7 @@
 package Item;
 
-import Battle.MyTurn;
-import Character.Enemy;
-import Character.Player;
+import Battle.*;
+import Character.*;
 
 public class GreatSword extends Item{
 

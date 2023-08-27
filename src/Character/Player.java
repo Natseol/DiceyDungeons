@@ -22,7 +22,7 @@ public class Player extends Status {
 			diceQuantity = 2;
 			this.setInventory(0, new Sword());
 			this.setInventory(1, new Axe());
-			this.setInventory(2, new Nothing());
+			this.setInventory(2, new Overwhelming());
 			this.setInventory(3, new Nothing());
 			this.setInventory(4, new Rising());
 			this.setInventory(5, new Reroll());
@@ -77,8 +77,14 @@ public class Player extends Status {
 		}
 	}
 	
-	public void getDiceQuantity(Player player) {
-		if (job=="전사") {
+	public void resetPlayer() {
+		for (int i =0;i<inventory.length;i++) {
+			if (inventory[i].getName()==new UsedGreat().getName()) {
+				setInventory(i, new GreatSword());
+			}
+		}
+		
+		if (job=="전사") {//주사위 초기화
 			switch (level) {
 			case 1 :
 				diceQuantity = 2;

@@ -41,7 +41,7 @@ public class MyTurn extends TurnInfo{
 			System.out.print("("+(i+1)+")"+dice[i]+"  ");
 		}
 		System.out.println();
-		System.out.println(Color.YELLOW+"주사위를 선택하세요 (0:턴종료, 9:적의 패)"+Color.RESET);
+		System.out.println(Color.YELLOW+"주사위를 선택하세요 (0:턴종료, 9:적의 패 보기)"+Color.RESET);
 	}
 	
 	public void printInfo(Player player, Enemy enemy) {

@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.EnemyTurn;
 import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
@@ -17,6 +18,15 @@ public class Spear extends Item{
 		enemy.subtractHp(10);
 		damage(dice,1,2);
 		times=0;
+	}
+	
+	@Override
+	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+		if (dice == 6) {
+		player.subtractHp(10);
+		takeDamage(10);
+		times=0;
+		}
 	}
 	
 	@Override

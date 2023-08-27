@@ -23,13 +23,20 @@ public class Main extends Color {
 
 		System.out.println();		
 
-		int floor=1;
+		int floor=1;		
 		Field field = new Field();
+		int enemyNum=0;
 		
 		while (true) {//스테이지 진입
 
-			Enemy[] enemy = new Enemy[]{new Frog(), new Gatekeeper()};
-			int enemyNum=1;
+			Enemy[] enemy = new Enemy[]{
+					new Marine(),
+					new SwordMan(),
+					new Gatekeeper(),
+					new Onepun(),
+					new Bear(),
+					new Vampire()
+					};			
 
 			System.out.println("---------------------------------");
 			System.out.println("\t  전투를 시작합니다");
@@ -80,15 +87,20 @@ public class Main extends Color {
 					}//장비 조건 확인
 
 					my.getItem(invenIdx).action(player, enemy[enemyNum], numDice, my);//장비 발동
+					
+					if (my.getItem(invenIdx).getName()==new GreatSword().getName()&&my.getItem(invenIdx).getCount()==0) {
+						my.setItem(invenIdx, new UsedGreat());
+						player.setInventory(invenIdx, new UsedGreat());
+					}
 
 					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 						System.out.println("---------------------------------");
 						my.printInfo(player, enemy[enemyNum]);
 						System.out.println("---------------------------------");
 						break;
-					}
+					}//죽었는지 확인
 
-					my.setDice(idxDice-1, my.getItem(invenIdx).getChangeDice());//주사위 눈금 변경
+					my.setDice(idxDice-1, my.getItem(invenIdx).getChangeDice());//사용한 주사위 눈금 변경
 
 					if (my.getItem(invenIdx).getTimes()==0) {
 						my.setItem(invenIdx, new Nothing());
@@ -103,16 +115,16 @@ public class Main extends Color {
 					break;
 				}
 
-//				//*****************
-//				// 전투 탈출
-//				//*****************
-//
-//				System.out.println();
-//				System.out.println("---------------------------------");
-//				System.out.println("종료 = 1");
-//				if (input.nextInt()==1) {
-//					break;
-//				}
+				//*****************
+				// 전투 탈출
+				//*****************
+
+				System.out.println();
+				System.out.println("---------------------------------");
+				System.out.println("종료 = 1");
+				if (input.nextInt()==1) {
+					break;
+				}
 
 				System.out.println(enemy[enemyNum].getName()+"이(가) 주사위를 굴립니다");
 				System.out.println("---------------------------------");
@@ -122,20 +134,33 @@ public class Main extends Color {
 				enemyTurn.printItem();
 				System.out.println("---------------------------------");
 
+				int enemyItemNum=0;
 				for (int i =0; i<enemyTurn.getDice().length;i++) {
 					input.next();
 					System.out.println();
 					System.out.print("["+(i+1)+"번 눈금:"+enemyTurn.getDice(i)+"]로 [");
-					System.out.println((i+1)+"번째 "+enemy[enemyNum].getInventoryName(i)+"]을 사용합니다");
+					System.out.println((enemyItemNum+1)+"번째 "+enemy[enemyNum].getInventoryName(enemyItemNum)+"]을 사용합니다");
 					System.out.println();
-					enemy[enemyNum].getInventory(i).action(enemy[enemyNum], player,enemyTurn.getDice(i), enemyTurn);
+					enemy[enemyNum].getInventory(enemyItemNum).action(enemy[enemyNum], player,enemyTurn.getDice(i), enemyTurn);
+
+					System.out.println("남은 횟수:"+enemy[enemyNum].getInventory(enemyItemNum).getTimes());
+
 					System.out.println("---------------------------------");
 					my.printInfo(player,enemy[enemyNum]);					
 					System.out.println();
+					if (enemy[enemyNum].getInventory(enemyItemNum).getTimes()>0) {
+						enemyItemNum--;
+					}
+					enemyItemNum++;
 					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 						break;
 					}
 				}
+				
+				for (int i=0; i<enemy[enemyNum].getInventory().length;i++) {
+					enemy[enemyNum].getInventory(i).setTimes(1);
+				}
+				
 				if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 					break;
 				}
@@ -144,19 +169,25 @@ public class Main extends Color {
 			if (player.getHp()<1) {
 				System.out.println();
 				System.out.println(RED+" YOU DIED"+RESET);
-				break;//END 스테이지종료
-			}
+				break;
+			}//졌을 때
 			if (enemy[enemyNum].getHp()<1) {
 				System.out.println();
 				System.out.println(B_CYAN+enemy[enemyNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
+				enemyNum++;
 				player.levelUp();
-			}
+			}//이겼을 떄
 
-			player.getDiceQuantity(player);//주사위 갯수 초기화
+			player.resetPlayer();//플레이어 정보 초기화
 
 			while (true) {//필드진입
 				int chooseInField = field.move(floor);
 				if (chooseInField == 1) {
+					if(enemyNum == enemy.length ) {
+						System.out.println();
+						System.out.println("이 층에는 더이상 적이 없습니다");
+						continue;
+					}
 					System.out.println();
 					break;
 				}
@@ -204,7 +235,7 @@ public class Main extends Color {
 						System.out.println("회복의 샘에 왔습니다");
 						System.out.println("---------------------------------");
 						System.out.println("체력을 10 회복합니다  남은 횟수 : "+field.getHealCount());
-						System.out.println(YELLOW+"(예:1 아니오:2)"+RESET);				
+						System.out.println(YELLOW+"(예:1 아니오:0)"+RESET);				
 						if (input.nextInt()==1) {
 							player.setHp(player.getHp()+10);
 							if (player.getHp()>player.getMaxHp()) {
@@ -220,7 +251,9 @@ public class Main extends Color {
 					}
 				}
 				else if (chooseInField == 4) {
+					enemyNum=0;
 					floor++;
+					field = new Field();					
 					break;
 				}
 				else {
