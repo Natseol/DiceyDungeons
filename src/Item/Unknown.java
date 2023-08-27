@@ -8,7 +8,7 @@ import Dice.Roll;
 public class Unknown extends Item{
 	
 	public Unknown()	{
-		name = "판도라의 상자";
+		name = "상자";
 		description = "(알 수 없음) 피해를 줍니다";
 		times=1;
 	}	

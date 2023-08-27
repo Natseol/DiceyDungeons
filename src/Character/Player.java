@@ -16,21 +16,21 @@ public class Player extends Status {
 		inventory = new Item[6];
 		switch (num) {
 		case 1 :
-			hp=1;
-			maxHp=30;
+			maxHp=26;
+			hp=maxHp;
 			job = "전사";
 			diceQuantity = 2;
 			this.setInventory(0, new Sword());
 			this.setInventory(1, new Axe());
-			this.setInventory(2, new Boomerang());
+			this.setInventory(2, new Nothing());
 			this.setInventory(3, new Nothing());
 			this.setInventory(4, new Rising());
 			this.setInventory(5, new Reroll());
 			
 		break;
 		case 2 :
-			hp=24;
-			maxHp=24;
+			maxHp=22;
+			hp=maxHp;
 			job = "도적";
 			diceQuantity = 3;
 			this.setInventory(0, new Dagger());

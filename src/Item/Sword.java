@@ -1,8 +1,7 @@
 package Item;
 
-import Battle.MyTurn;
-import Character.Enemy;
-import Character.Player;
+import Battle.*;
+import Character.*;
 
 public class Sword extends Item{
 
@@ -16,6 +15,13 @@ public class Sword extends Item{
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		enemy.subtractHp(dice);
 		damage(dice);
+		times=0;
+	}
+
+	@Override
+	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+		player.subtractHp(dice);
+		takeDamage(dice);
 		times=0;
 	}
 }

@@ -24,23 +24,7 @@ public class MyTurn extends TurnInfo{
 			dice[i]=Roll.roll6();			
 		}
 	}
-	
-	public void setTimes(int idx, int num) {
-		turnItem[idx].setTimes(num);
-	}
-	
-	public int getTimes(int idx) {
-		return turnItem[idx].getTimes();
-	}
-	
-	public Item getItem(int idx) {
-		return turnItem[idx];
-	}
-	
-	public void setItem(int idx, Item item) {
-		turnItem[idx] = item;
-	}
-	
+		
 	public int[] getOther() {
 		return other;
 	}
@@ -57,7 +41,7 @@ public class MyTurn extends TurnInfo{
 			System.out.print("("+(i+1)+")"+dice[i]+"  ");
 		}
 		System.out.println();
-		System.out.println(Color.YELLOW+"주사위를 선택하세요 (0 : 턴종료)"+Color.RESET);
+		System.out.println(Color.YELLOW+"주사위를 선택하세요 (0:턴종료, 9:적의 패)"+Color.RESET);
 	}
 	
 	public void printInfo(Player player, Enemy enemy) {
@@ -75,17 +59,17 @@ public class MyTurn extends TurnInfo{
 		System.out.println(" / "+enemy.getMaxHp());
 	}
 	
-	public void printItem(MyTurn my) {
+	public void printItem() {
 		for (int i = 0; i < 6; i++) {
-			if (my.getItem(i).getName().equals(Store.ITEMLIST[0].getName())) {
+			if (this.getItem(i).getName().equals(Store.ITEMLIST[0].getName())) {
 				System.out.print(Color.BLACK);
 			}
-			System.out.print(i+1+") "+my.getItem(i).getName()+" : "+my.getItem(i).getDescription());
-			if (my.getTimes(i) > 1) {
-				System.out.print(" 남은횟수:"+my.getTimes(i));
+			System.out.print(i+1+") "+this.getItem(i).getName()+" : "+this.getItem(i).getDescription());
+			if (this.getTimes(i) > 1) {
+				System.out.print(" 남은횟수:"+this.getTimes(i));
 			}
-			else if(my.getItem(i).getCount()>0) {
-				System.out.print(" 카운트:"+my.getItem(i).getCount());
+			else if(this.getItem(i).getCount()>0) {
+				System.out.print(" 카운트:"+this.getItem(i).getCount());
 			}
 			if (i==5)
 			{

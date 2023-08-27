@@ -1,5 +1,6 @@
 package Item;
 
+import Battle.EnemyTurn;
 import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
@@ -23,7 +24,21 @@ public class SpikeShield extends Item{
 			player.setDef(player.getDef()+dice);
 			gainDefence(dice);
 			times=0;
-		}		
+		}
+	}
+	
+	@Override
+	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+		if (dice%2!=0) {
+			player.subtractHp(dice);
+			damage(dice);
+			times=0;
+		}
+		else {
+			enemy.setDef(enemy.getDef()+dice);
+			gainDefence(dice);
+			times=0;
+		}
 	}
 	
 	@Override

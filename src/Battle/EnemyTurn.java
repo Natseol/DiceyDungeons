@@ -21,5 +21,14 @@ public class EnemyTurn extends TurnInfo{
 		}
 	}
 	
+	public void enemyInfo(Enemy enemy) {
+		System.out.println();
+		System.out.println(" - "+enemy.getName()+"("+enemy.getGrade()+") -");
+		System.out.println("설명: "+enemy.getDescription());
+		System.out.println("---------------------------------");
+		printItem();
+		System.out.println("---------------------------------");
+		System.out.println();
+	}	
 
 }

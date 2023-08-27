@@ -1,11 +1,12 @@
 package Character;
 
+import Battle.EnemyTurn;
 import Item.*;
 
 public class Enemy extends Status{
-	String name="적";
-	String description;
-	String grade;
+	protected String name="적";
+	protected String description;
+	protected String grade;
 	
 	public Enemy() {}
 	
@@ -23,5 +24,12 @@ public class Enemy extends Status{
 	
 	public String getDescription() {
 		return description;
-	}		
+	}
+	
+	public String getGrade() {
+		return grade;
+	}
+	
+	public void action(EnemyTurn EnemyTurn) {}
+	
 }

@@ -1,6 +1,6 @@
 package Item;
 
-import Battle.MyTurn;
+import Battle.*;
 import Character.*;
 import Main.Color;
 
@@ -14,6 +14,8 @@ public class Item{
 	boolean check;
 	
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {}
+	
+	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {}
 	
 	public boolean checkDice(int dice) {
 		return check=false;
