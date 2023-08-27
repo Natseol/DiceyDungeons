@@ -11,7 +11,7 @@ public class Talisman extends Item{
 	public Talisman()	{
 		name = "부적";
 		count=10;
-		description = "6 주사위를 2개 얻는다 (카운트 10)";
+		description = "6 주사위를 2개 얻습니다 (카운트 10)";
 		times=1;		
 	}	
 
@@ -21,6 +21,7 @@ public class Talisman extends Item{
 			count-=dice;					
 		}
 		else {
+			my.setOther(1);
 			changeDice=6;
 			my.setOther(0,6);
 			times=0;

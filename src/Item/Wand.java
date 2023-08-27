@@ -16,10 +16,11 @@ public class Wand extends Item{
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
-			count-=dice;					
+			count-=dice;
+			times=1;
 		}
 		else {
-			enemy.setHp(enemy.getHp()-6);			
+			enemy.subtractHp(6);		
 			damage(6);
 //			condition[0]++;//차후구현
 			times=0;

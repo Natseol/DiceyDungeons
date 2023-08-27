@@ -15,10 +15,11 @@ public class Cannon extends Item{
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
-			count=count-dice;					
+			count=count-dice;
+			times=1;
 		}
 		else {
-			enemy.setHp(enemy.getHp()-10);
+			enemy.subtractHp(10);
 			damage(10);
 			times=0;
 			count=15;

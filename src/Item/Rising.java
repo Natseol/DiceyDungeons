@@ -8,7 +8,7 @@ public class Rising extends Item{
 
 	public Rising()	{
 		name = "상승";
-		description = "주사위 눈금을 1올린다 (최대 5의 눈금)";
+		description = "주사위 눈금을 1 올립니다 (최대 5 이하)";
 		times=1;
 	}
 	

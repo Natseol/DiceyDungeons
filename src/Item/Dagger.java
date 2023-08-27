@@ -8,13 +8,13 @@ public class Dagger extends Item{
 
 	public Dagger()	{
 		name = "단검";
-		description = "ㅁ 만큼 피해를 줍니다 (최대 3) (재사용 가능)";
+		description = "ㅁ 의 피해를 줍니다 (최대 3 이하) (재사용 가능)";
 		times=-1;
 	}
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-dice);
+		enemy.subtractHp(dice);
 		damage(dice);
 	}
 	

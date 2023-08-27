@@ -1,8 +1,8 @@
 package Item;
 
 import Battle.MyTurn;
-import Character.Enemy;
-import Character.Player;
+import Character.*;
+import Main.Color;
 
 public class Item{
 	
@@ -10,8 +10,8 @@ public class Item{
 	String description;	
 	int times;
 	int count;
-	int changeDice=0;
-	boolean check=false;
+	int changeDice;
+	boolean check;
 	
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {}
 	
@@ -64,54 +64,54 @@ public class Item{
 	}
 	
 	public void damage(int dice) {
-		System.out.println(dice+" 만큼 피해를 줬습니다!!");
+		System.out.println(Color.B_RED+dice+" 의 피해를 줬습니다!!"+Color.RESET);
 	}
 	
 	public void damage(int dice, int num) {
-		System.out.println(dice+" 만큼 피해를 줬습니다!!!!");
+		System.out.println(Color.B_RED+dice+" 의 피해를 줬습니다!!!!"+Color.RESET);
 	}
 	
 	public void damage(int dice, int num1, int num2) {
-		System.out.println(dice+" 만큼 피해를 줬습니다!!!!!!");
+		System.out.println(Color.B_RED+dice+" 의 피해를 줬습니다!!!!!!"+Color.RESET);
 	}
 	
 	public void takeDamage(int dice) {
-		System.out.println(dice+" 만큼 피해를 받았습니다!!");
+		System.out.println(" == "+dice+" 의 피해를 받았습니다!! ==");
 	}
 	
 	public void gainDefence(int dice) {
-		System.out.println(dice+" 만큼 방어력을 얻었습니다!!");
+		System.out.println(Color.B_YELLOW+dice+" 의 방어력을 얻었습니다!!"+Color.RESET);
 	}	
 
 	public void recovery(int num) {
-		System.out.println(num+" 만큼 체력을 회복했습니다");
+		System.out.println(Color.B_GREEN+num+" 의 체력을 회복했습니다"+Color.RESET);
 	}
 	
 	public void printCount(int count) {
-		this.description="10 피해를 줍니다 (카운트 15)";
+		this.description="[10] 의 피해를 줍니다 (카운트 15)";
 	}
 	
 	public void printWand(int count) {
-		this.description="6 화염 피해를 줍니다 (카운트 8)";
+		this.description="[6] 의 화염 피해를 줍니다 (카운트 8)";
 	}
 	
 	public void printShard() {
-		this.description="ㅁ 만큼 얼음 피해를 줍니다 (홀수만 가능)";
+		this.description="ㅁ 의 얼음 피해를 줍니다 (홀수만 가능)";
 	}
 	
 	public void printGlove() {
-		this.description="ㅁ 만큼 마비 피해를 줍니다 (2~5 만 가능)";
+		this.description="ㅁ 의 마비 피해를 줍니다 (2~5 만 가능)";
 	}	
 	
-	public void recoveryM(int num, int count) {
-		this.description=num+" 만큼 체력을 회복합니다 (카운트 16)";
+	public void recoveryM(int num) {
+		this.description=num+" 의 체력을 회복합니다 (카운트 16)";
 	}
 	
 	public void recoveryB() {
-		this.description="2 만큼 체력을 회복합니다 (재사용 가능)";
+		this.description="[2] 의 체력을 회복합니다 (재사용 가능)";
 	}
 	
 	public void recoveryH() {
-		this.description="ㅁ 만큼 체력을 회복합니다 (최대 3)";
+		this.description="ㅁ 의 체력을 회복합니다 (최대 3 이하)";
 	}
 }

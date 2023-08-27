@@ -9,22 +9,21 @@ public class MedicKit extends Item{
 	public MedicKit()	{
 		name = "구급상자";
 		count=16;
-		recoveryM(8,count);
+		recoveryM(8);
 		times=1;		
 	}	
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
-			count-=dice;					
+			count-=dice;
+			times=1;
 		}
 		else {
-			player.setHp(player.getHp()+8);
-			if (player.getHp()>player.getMaxHp()) {				
-				player.setHp(player.getMaxHp());
-			}
+			player.addHp(8);
 			recovery(8);
 			count=16;
+			times=0;
 		}
 	}
 }

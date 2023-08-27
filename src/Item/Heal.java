@@ -14,10 +14,7 @@ public class Heal extends Item{
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		player.setHp(player.getHp()+dice);
-		if (player.getHp()>player.getMaxHp()) {				
-			player.setHp(player.getMaxHp());
-		}
+		player.addHp(dice);
 		recovery(dice);
 	}
 	@Override

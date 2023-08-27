@@ -1,4 +1,4 @@
-package Store;
+package Field;
 
 import Character.*;
 import Item.*;
@@ -13,14 +13,23 @@ public class Store{
 		
 	public Store() {		
 		for (int i = 0; i < storeList.length; i++) {
-			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-2))+3];
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-3))+1];
 		}
 	}
 	
 	public void showList() {
-		for (int i =0; i<storeList.length;i++) {
+		for (int i =0; i<storeList.length;i++) {			
 			System.out.println((i+1)+") "+storeList[i].getName()+" : "+storeList[i].getDescription());
 		}
+	}
+	
+	public void printStore() {
+		System.out.println("---------------------------------");
+		System.out.println("상점에 방문했습니다");
+		System.out.println("상품이 중복으로 보이는건 기분 탓입니다");
+		System.out.println("(한번만 교환가능합니다)");
+		System.out.println("---------------------------------");
+		System.out.println();
 	}
 	
 	public static final Item[] ITEMLIST = {

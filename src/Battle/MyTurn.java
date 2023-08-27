@@ -3,35 +3,26 @@ package Battle;
 import Character.*;
 import Dice.Roll;
 import Item.*;
+import Main.Color;
+import Field.*;
 
-public class MyTurn {
+public class MyTurn extends TurnInfo{
 	
-	int diceQ;
-	int[] dice;	
 	int[] other;
-	Item[] turnItem = new Item[6]; 
 	
 	public MyTurn(Player player) {
 		
 		diceQ = player.getDiceQuantity();
 		
+		turnItem=new Item[player.getInventory().length];		
 		for (int i = 0; i < turnItem.length; i++) {
 			turnItem[i]=player.getInventory(i);
-		}
-		
+		}		
 		
 		dice=new int[diceQ];
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();			
 		}
-	}
-
-	public int getDice(int diceIdx) {
-		return dice[diceIdx];
-	}
-	
-	public void setDice(int diceIdx,int changeNum) {
-		dice[diceIdx]=changeNum;		
 	}
 	
 	public void setTimes(int idx, int num) {
@@ -46,6 +37,10 @@ public class MyTurn {
 		return turnItem[idx];
 	}
 	
+	public void setItem(int idx, Item item) {
+		turnItem[idx] = item;
+	}
+	
 	public int[] getOther() {
 		return other;
 	}
@@ -57,47 +52,49 @@ public class MyTurn {
 		other = new int[num];
 	}
 	
-	public void setTurnItem(int idx, Item item) {
-		turnItem[idx] = item;
-	}
-	
 	public void printDice() {
 		for (int i = 0; i < dice.length; i++) {
 			System.out.print("("+(i+1)+")"+dice[i]+"  ");
 		}
 		System.out.println();
-		System.out.println("주사위를 선택하세요 (0 : 턴종료)");
+		System.out.println(Color.YELLOW+"주사위를 선택하세요 (0 : 턴종료)"+Color.RESET);
 	}
 	
 	public void printInfo(Player player, Enemy enemy) {
-		System.out.println("Lv:"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t"+enemy.getName()+" 주사위:"+enemy.getDiceQuantity());
+		System.out.print("Lv:"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t");
+		System.out.println(enemy.getName()+" 주사위:"+enemy.getDiceQuantity());
 		System.out.print(player.getHp());
 		if (player.getDef()>0) {
-			System.out.print(" ("+player.getDef()+")");
+			System.out.print("("+player.getDef()+")");
 		}
-		System.out.println(" / "+player.getMaxHp()+"\t\t\t"+enemy.getHp()+" / "+enemy.getMaxHp());
-		System.out.println();	
+		System.out.print(" / "+player.getMaxHp()+"\t\t\t");
+		System.out.print(enemy.getHp());
+		if (enemy.getDef()>0) {
+			System.out.print("("+enemy.getDef()+")");
+		}
+		System.out.println(" / "+enemy.getMaxHp());
 	}
 	
 	public void printItem(MyTurn my) {
 		for (int i = 0; i < 6; i++) {
-			System.out.print(i+1+") "+my.getItem(i).getName());
-			System.out.print(" : ");
+			if (my.getItem(i).getName().equals(Store.ITEMLIST[0].getName())) {
+				System.out.print(Color.BLACK);
+			}
+			System.out.print(i+1+") "+my.getItem(i).getName()+" : "+my.getItem(i).getDescription());
 			if (my.getTimes(i) > 1) {
-				System.out.println(my.getItem(i).getDescription()+"  남은횟수:"+my.getTimes(i));
+				System.out.print(" 남은횟수:"+my.getTimes(i));
 			}
 			else if(my.getItem(i).getCount()>0) {
-				System.out.println(my.getItem(i).getDescription()+"  카운트:"+my.getItem(i).getCount());
+				System.out.print(" 카운트:"+my.getItem(i).getCount());
 			}
-			else {
-				System.out.println(my.getItem(i).getDescription());
+			if (i==5)
+			{
+				System.out.print(" -고유-");
 			}
+			System.out.println(Color.RESET);
 		}
-		System.out.println("장비를 선택하세요 (0 : 주사위 다시선택)");
-	}
-	
-	public int selectDice(int idx) {
-		return dice[idx];	 
+		
+		System.out.println(Color.YELLOW+"장비를 선택하세요 (0 : 주사위 다시선택)"+Color.RESET);
 	}
 	
 	public void rebuildDice() {
@@ -135,7 +132,6 @@ public class MyTurn {
 				}				
 			}
 			dice=newDice;
-		}
-		
+		}		
 	}//end of method rebulidDice	
 }

@@ -14,7 +14,7 @@ public class IceShards extends Item{
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-dice);
+		enemy.subtractHp(dice);
 		damage(dice);
 		times=0;
 //		condition[1]++;//차후구현

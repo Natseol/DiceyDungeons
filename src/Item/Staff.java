@@ -8,13 +8,13 @@ public class Staff extends Item{
 
 	public Staff()	{
 		name = "스태프";
-		description = "ㅁ 만큼 피해를 줍니다 (짝수) (눈금이 4일경우 주사위를 돌려받습니다)";
+		description = "ㅁ 만큼 피해를 줍니다 (짝수) (4 일경우 주사위를 돌려받습니다)";
 		times=1;
 	}	
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-dice);
+		enemy.subtractHp(dice);
 		damage(dice);
 		times=0;
 		if (dice==4) {

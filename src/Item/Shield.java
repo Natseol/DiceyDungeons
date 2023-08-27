@@ -8,7 +8,7 @@ public class Shield extends Item{
 
 	public Shield()	{
 		name = "방패";
-		description = "3의 방어력을 얻는다 (홀수만 가능)";
+		description = "[3] 의 방어력을 얻습니다 (홀수만 가능)";
 		times=1;
 	}	
 	

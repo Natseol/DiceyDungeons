@@ -8,13 +8,13 @@ public class Spear extends Item{
 
 	public Spear()	{
 		name = "창";
-		description = "10만큼 피해를 줍니다 (6 눈금만 사용 가능)";
+		description = "[10] 의 피해를 줍니다 (6 만 사용 가능)";
 		times=1;
 	}	
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-10);
+		enemy.subtractHp(10);
 		damage(dice,1,2);
 		times=0;
 	}

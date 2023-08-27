@@ -8,18 +8,19 @@ public class Bow extends Item{
 	public Bow()	{
 		name = "보우";
 		count=10;
-		description="6 피해를 줍니다 (카운트 10)";
+		description="[6] 의 피해를 줍니다 (카운트 10)";
 		times=1;		
 	}	
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
-			count=count-dice;					
+			count=count-dice;
+			times=1;
 		}
 		else {
-			enemy.setHp(enemy.getHp()-6);
-			damage(10);
+			enemy.subtractHp(6);
+			damage(6);
 			times=0;
 			count=10;
 		}

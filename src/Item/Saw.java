@@ -7,7 +7,7 @@ import Character.Player;
 public class Saw extends Item{	
 	public Saw() {
 		name = "쇠톱";
-		description = "주사위를 셋으로 나눈다(3 이상 가능)";
+		description = "주사위를 셋으로 나눕니다 (최소 3 이상)";
 		times=1;
 	}
 	

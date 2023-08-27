@@ -7,13 +7,13 @@ public class Axe extends Item{
 
 	public Axe()	{
 		name = "도끼";
-		description = "ㅁx2 만큼 피해를 줍니다 (최대 4)";
+		description = "ㅁx2 의 피해를 줍니다 (최대 4)";
 		times=1;
 	}	
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-2*dice);
+		enemy.subtractHp(2*dice);
 		damage(dice);
 		damage(dice,1);
 		times=0;

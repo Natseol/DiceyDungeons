@@ -14,7 +14,7 @@ public class GreatSword extends Item{
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		enemy.setHp(enemy.getHp()-3*dice);
+		enemy.subtractHp(3*dice);
 		damage(dice);
 		damage(dice,1);
 		damage(dice,1,2);

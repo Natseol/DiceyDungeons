@@ -8,14 +8,14 @@ public class SpikeShield extends Item{
 	
 	public SpikeShield()	{
 		name = "가시방패";
-		description = "(홀수) 피해를 줍니다  (짝수) 방어력을 얻습니다";
+		description = "피해를 줍니다 (홀수)  방어력을 얻습니다 (짝수) (최대 5)";
 		times=1;
 	}
 	
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (dice%2!=0) {
-			enemy.setHp(enemy.getHp()-dice);
+			enemy.subtractHp(dice);
 			damage(dice);
 			times=0;
 		}

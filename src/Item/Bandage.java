@@ -13,10 +13,7 @@ public class Bandage extends Item {
 
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
-		player.setHp(player.getHp()+2);
-		if (player.getHp()>player.getMaxHp()) {				
-			player.setHp(player.getMaxHp());
-		}
+		player.addHp(2);
 		recovery(2);
 	}
 }
