@@ -83,8 +83,7 @@ public class MyTurn extends TurnInfo{
 			else if(this.getItem(i).getCount()>0) {
 				System.out.print(" 카운트:"+this.getItem(i).getCount());
 			}
-			if (i==5)
-			{
+			if (i==5) {
 				System.out.print(" -고유-");
 			}
 			System.out.println(Color.RESET);

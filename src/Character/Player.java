@@ -35,7 +35,7 @@ public class Player extends Status {
 			diceQuantity = 3;
 			this.setInventory(0, new Dagger());
 			this.setInventory(1, new Bow());
-			this.setInventory(2, new Nothing());
+			this.setInventory(2, new GreatSword());
 			this.setInventory(3, new Nothing());
 			this.setInventory(4, new LockPick());
 			this.setInventory(5, new Clone());
@@ -79,7 +79,7 @@ public class Player extends Status {
 	
 	public void resetPlayer() {
 		for (int i =0;i<inventory.length;i++) {
-			if (inventory[i].getName()==new UsedGreat().getName()) {
+			if (inventory[i].getDescription()==new UsedGreat().getDescription()) {
 				setInventory(i, new GreatSword());
 			}
 		}
