@@ -3,52 +3,26 @@ package Character;
 import Item.*;
 import Main.Color;
 
-public class Player extends Status {
+public class Player extends Job {
 	protected int exp;
 	protected int[] expTable= {4,6,8,10};
 	protected int level=1;	
-    protected String job;    
 	
-	public Player() {}
-	
-	public Player(int num) {
-		this();
+    public Player() {}
+	public Player(int num) {//1.전사 2.도적
 		inventory = new Item[6];
 		switch (num) {
-		case 1 :
-			maxHp=26;
-			hp=maxHp;
-			job = "전사";
-			diceQuantity = 2;
-			this.setInventory(0, new Sword());
-			this.setInventory(1, new Axe());
-			this.setInventory(2, new Nothing());
-			this.setInventory(3, new Nothing());
-			this.setInventory(4, new Rising());
-			this.setInventory(5, new Reroll());
-			
-		break;
-		case 2 :
-			maxHp=22;
-			hp=maxHp;
-			job = "도적";
-			diceQuantity = 3;
-			this.setInventory(0, new Dagger());
-			this.setInventory(1, new Bow());
-			this.setInventory(2, new GreatSword());
-			this.setInventory(3, new Nothing());
-			this.setInventory(4, new LockPick());
-			this.setInventory(5, new Clone());
-		}
-		
+		case 1 : setJobWarrior(); break;
+		case 2 : setJobThief(); break;
+		}		
 	}
 	
-	public Player (int hp, int maxHp, int diceQuantity) {
-		super(hp,maxHp,diceQuantity);
-		this.hp = hp;
-		this.maxHp=maxHp;
-		this.diceQuantity = diceQuantity;
-	}
+//	public Player (int hp, int maxHp, int diceQuantity) {
+//		super(hp,maxHp,diceQuantity);
+//		this.hp = hp;
+//		this.maxHp=maxHp;
+//		this.diceQuantity = diceQuantity;
+//	}
 
 	public int getExp() {
 		return exp;
@@ -64,6 +38,10 @@ public class Player extends Status {
 		this.level = level;
 	}
 	
+    public int getExpTable(int idx) {
+    	return expTable[idx];
+    }
+	
 	public void levelUp() {
 		exp += 2;
 		if (exp == expTable[level-1]) {
@@ -78,7 +56,7 @@ public class Player extends Status {
 	}
 	
 	public void resetPlayer() {
-		for (int i =0;i<inventory.length;i++) {
+		for (int i =0;i<inventory.length;i++) {//대검 돌려주기
 			if (inventory[i].getDescription()==new UsedGreat().getDescription()) {
 				setInventory(i, new GreatSword());
 			}
@@ -86,44 +64,19 @@ public class Player extends Status {
 		
 		if (job=="전사") {//주사위 초기화
 			switch (level) {
-			case 1 :
-				diceQuantity = 2;
-				break;
-			case 2 :
-				diceQuantity = 3;
-				break;
-			case 3 :
-				diceQuantity = 3;
-				break;
-			case 4 :
-				diceQuantity = 4;
-				break;
+			case 1 : diceQuantity = 2; break;
+			case 2 : diceQuantity = 3; break;
+			case 3 : diceQuantity = 3; break;
+			case 4 : diceQuantity = 4; break;
 			}
 		}
 		else if (job=="도적") {
 			switch (level) {
-			case 1 :
-				diceQuantity = 3;
-				break;
-			case 2 :
-				diceQuantity = 4;
-				break;
-			case 3 :
-				diceQuantity = 4;
-				break;
-			case 4 :
-				diceQuantity = 5;
-				break;
+			case 1 : diceQuantity = 3; break;
+			case 2 : diceQuantity = 4; break;
+			case 3 : diceQuantity = 4; break;
+			case 4 : diceQuantity = 5; break;
 			}
 		}		
-	}
-	
-	public void printInfo() {
-		System.out.println();
-		System.out.println("-------------- 스탯 ---------------");
-			System.out.println("Lv: "+getLevel()+"  [EXP: "+getExp()+"/"+expTable[level-1]+"]");
-			System.out.println("주사위:"+getDiceQuantity());
-			System.out.print("Hp: "+getHp());
-			System.out.println("/"+getMaxHp());
 	}
 }

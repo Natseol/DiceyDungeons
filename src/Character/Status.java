@@ -9,8 +9,7 @@ public class Status {
 	protected int diceQuantity;
 	protected Item[] inventory;
 		
-	public Status() {}
-	
+	public Status() {}	
 	public Status(int hp, int maxHp, int diceQuantity) {
 		this.hp = hp;
 		this.maxHp=maxHp;
@@ -20,7 +19,6 @@ public class Status {
 	public int getHp() {
 		return hp;
 	}
-	
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
@@ -30,8 +28,7 @@ public class Status {
 		if (hp > maxHp) {
 			hp=maxHp;
 		}
-	}
-	
+	}	
 	public void subtractHp(int num) {
 		if (def>=num) {
 			def-=num;
@@ -48,7 +45,6 @@ public class Status {
 	public int getMaxHp() {
 		return maxHp;
 	}
-	
 	public void setMaxHp(int maxHp) {
 		this.maxHp = hp;
 	}
@@ -56,7 +52,6 @@ public class Status {
 	public int getDef() {
 		return def;
 	}
-	
 	public void setDef(int def) {
 		this.def = def;
 	}		
@@ -64,7 +59,6 @@ public class Status {
 	public int getDiceQuantity() {
 		return diceQuantity;
 	}
-	
 	public void setDiceQuantity(int diceQuantity) {
 		this.diceQuantity = diceQuantity;
 	}
@@ -72,19 +66,15 @@ public class Status {
 	public Item[] getInventory() {
 		return inventory;
 	}
-	
 	public Item getInventory(int idx) {
 		return inventory[idx];
 	}
-	
-	public String getInventoryName(int idx) {					
+	public String getInventoryName(int idx) {
 		return inventory[idx].getName();
 	}
-	
-	public String getInventoryDescription(int idx) {					
+	public String getInventoryDescription(int idx) {
 		return inventory[idx].getDescription();
 	}
-	
 	public void getInventoryAll() {
 		System.out.println("-------------- 장비 ---------------");
 		for (int i=0;i<inventory.length;i++) {
@@ -99,13 +89,10 @@ public class Status {
 		}
 		System.out.println("---------------------------------");
 	}	
-	
 	public void setInventory(int idx, Item item) {
 		inventory[idx] = item;
 	}	
-	
-//  차후구현
-	
+		
 	int condition[]=new int[3];
 	
 //	상태이상
@@ -116,18 +103,14 @@ public class Status {
 	public int[] getCondition() {
 		return condition;
 	}
-	
 	public int getCondition(int idx) {
 		return condition[idx];
 	}
-	
 	public void setCondition(int idx,int changeNum) {
 		condition[idx]=changeNum;		
 	}
 
-	public void checkCondition() {
-		
-	}
+	public void checkCondition() {}
 
 	
 }

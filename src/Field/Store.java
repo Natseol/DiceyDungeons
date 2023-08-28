@@ -7,16 +7,16 @@ public class Store{
 	
 	Item[] storeList = new Item[3];
 	
-	public Item getStoreList(int num) {
-		return storeList[num];
-	}		
-		
-	public Store() {		
+	public Store() {//랜덤 아이템3개 생성
 		for (int i = 0; i < storeList.length; i++) {
 			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-3))+1];
 		}
 	}
 	
+	public Item getStoreList(int num) {
+		return storeList[num];
+	}		
+			
 	public void showList() {
 		for (int i =0; i<storeList.length;i++) {			
 			System.out.println((i+1)+") "+storeList[i].getName()+" : "+storeList[i].getDescription());

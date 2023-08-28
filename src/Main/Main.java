@@ -9,22 +9,21 @@ import Field.*;
 import Item.*;
 import Monster.*;
 
-public class Main extends Color {
+public class Main extends Script {
 
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-
-		System.out.println("---------------------------------");
-		System.out.println("     클래스를 선택하세요(1.전사 2.도적)  ");
-		System.out.println("---------------------------------");
-
+		Script script = new Script();		
+		
+		script.chooseJob();
 		Player player = new Player(input.nextInt());
 		System.out.println();		
 
 		int floor=1;		
+		int enemyNum=0;
+		
 		Field field = new Field();
-		int enemyNum=1;
 
 		while (true) {//스테이지 진입
 
@@ -37,28 +36,23 @@ public class Main extends Color {
 					new Vampire()
 			};			
 
-			System.out.println("---------------------------------");
-			System.out.println("\t  전투를 시작합니다");
-			System.out.println("---------------------------------");
+			script.startBattle();			
 			while (true) {//전투시작
-				MyTurn my = new MyTurn(player);//주사위 초기화
+				
+				MyTurn myturn = new MyTurn(player);//주사위 초기화
 				EnemyTurn enemyTurn = new EnemyTurn(enemy[enemyNum]);
 
 				while (true) { //내턴시작
-					System.out.println(" - 나의 턴 -");
-					System.out.println("---------------------------------");
-					my.printInfo(player, enemy[enemyNum]);
-					System.out.println();
-					my.printDice(player);
+					script.startMyTurn();
+					script.battleInfo(player, enemy[enemyNum]);
+					script.selectDice(myturn);					
 					int idxDice=input.nextInt();
 					if (idxDice==0) {
-						System.out.println();
-						System.out.println(" - 턴 종료 -");						
-						System.out.println("---------------------------------");
+						script.selectTurnEnd();
 						break; //턴종료
 					}
 					else if (idxDice==9) {
-						enemyTurn.enemyInfo(enemy[enemyNum]);
+						script.enemyInfo(enemyTurn, enemy[enemyNum]);
 						continue;
 					}
 					 
@@ -73,26 +67,26 @@ public class Main extends Color {
 					
 					if (player.getCondition(1)>0) {
 						player.setCondition(1,player.getCondition(1)-1);
-						int max = my.getDice(0);
+						int max = myturn.getDice(0);
 				        int maxIndex = 0;				 
-				        for (int i = 0; i < my.getDice().length; i++) {
-				            if (my.getDice(i) > max) {
-				                max = my.getDice(i);
+				        for (int i = 0; i < myturn.getDice().length; i++) {
+				            if (myturn.getDice(i) > max) {
+				                max = myturn.getDice(i);
 				                maxIndex = i;
 				            }
 				        }						
-						my.setDice(maxIndex,1);
+						myturn.setDice(maxIndex,1);
 						System.out.println();
 						System.out.println(CYAN+"빙결효과로 눈금이 1로 변합니다"+RESET);
 						System.out.println();
 						continue;
 					}//상태이상 빙결
 
-					int numDice=my.getDice(idxDice-1);
+					int numDice=myturn.getDice(idxDice-1);
 					System.out.println();
 
 					System.out.println("눈금 : "+numDice);
-					my.printItem();
+					script.printItem(myturn);
 
 					int invenIdx = input.nextInt()-1;
 					
@@ -105,42 +99,42 @@ public class Main extends Color {
 					
 					if (player.getCondition(2)>0) {
 						player.setCondition(2,player.getCondition(2)-1);
-						my.setDice(idxDice-1, 0);
+						myturn.setDice(idxDice-1, 0);
 						System.out.println();
 						System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
 						System.out.println();
 						continue;
 					}//상태이상 마비
 
-					my.getItem(invenIdx).setCheck(false);//조건 초기화
-					my.getItem(invenIdx).setChangeDice(0);//조건 초기화
-					if (my.getItem(invenIdx).checkDice(numDice)==true) {
+					myturn.getItem(invenIdx).setCheck(false);//조건 초기화
+					myturn.getItem(invenIdx).setChangeDice(0);//조건 초기화
+					if (myturn.getItem(invenIdx).checkDice(numDice)==true) {
 						System.out.println();
 						System.out.println("---------------------------------");
 						continue;
 					}//장비 조건 확인
 
-					my.getItem(invenIdx).action(player, enemy[enemyNum], numDice, my);//장비 발동
+					myturn.getItem(invenIdx).action(player, enemy[enemyNum], numDice, myturn);//장비 발동
 
-					if (my.getItem(invenIdx).getName()==new GreatSword().getName()&&my.getItem(invenIdx).getCount()==0) {
-						my.setItem(invenIdx, new UsedGreat());
+					if (myturn.getItem(invenIdx).getName()==new GreatSword().getName()&&myturn.getItem(invenIdx).getCount()==0) {
+						myturn.setItem(invenIdx, new UsedGreat());
 						player.setInventory(invenIdx, new UsedGreat());
 					}
 
 					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 						System.out.println("---------------------------------");
-						my.printInfo(player, enemy[enemyNum]);
+						script.battleInfo(player, enemy[enemyNum]);
 						System.out.println("---------------------------------");
 						break;
 					}//죽었는지 확인
 
-					my.setDice(idxDice-1, my.getItem(invenIdx).getChangeDice());//사용한 주사위 눈금 변경
+					myturn.setDice(idxDice-1, myturn.getItem(invenIdx).getChangeDice());//사용한 주사위 눈금 변경
 
-					if (my.getItem(invenIdx).getTimes()==0) {
-						my.setItem(invenIdx, new Nothing());
+					if (myturn.getItem(invenIdx).getTimes()==0) {
+						myturn.setItem(invenIdx, new Nothing());
 					}//횟수0 아이템은 빈슬롯으로 변경					
 
-					my.rebuildDice();//주사위 정리
+					myturn.rebuildDice();//주사위 정리
 
 					System.out.println("---------------------------------");
 				}//end of while : 내 턴
@@ -162,10 +156,13 @@ public class Main extends Color {
 
 				System.out.println(enemy[enemyNum].getName()+"이(가) 주사위를 굴립니다");
 				System.out.println("---------------------------------");
+				System.out.println();			
+				
+				script.selectDice(enemyTurn);
+//				enemyTurn.printDice(enemy[enemyNum]);
+				
 				System.out.println();				
-				enemyTurn.printDice(enemy[enemyNum]);
-				System.out.println();
-				enemyTurn.printItem();
+				script.printItem(enemyTurn);
 				System.out.println("---------------------------------");
 
 				int enemyItemNum=0;
@@ -180,7 +177,7 @@ public class Main extends Color {
 					System.out.println();
 
 					System.out.println("---------------------------------");
-					my.printInfo(player,enemy[enemyNum]);					
+					script.battleInfo(player,enemy[enemyNum]);					
 					System.out.println();
 					if (enemy[enemyNum].getInventory(enemyItemNum).getTimes()>0) {
 						enemyItemNum--;
@@ -291,7 +288,7 @@ public class Main extends Color {
 					break;
 				}
 				else {
-					player.printInfo();
+					script.printPlayerInfo(player);
 					player.getInventoryAll();
 					continue;
 				}
