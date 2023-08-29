@@ -2,7 +2,8 @@ package Monster;
 
 import Battle.EnemyTurn;
 import Character.*;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class Onepun extends Enemy{
 	

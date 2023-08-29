@@ -2,9 +2,10 @@ package Battle;
 
 import Character.*;
 import Dice.Roll;
-import Item.*;
 import Main.Color;
 import Field.*;
+import Item.Item;
+import ItemList.*;
 
 public class MyTurn extends TurnInfo{
 	

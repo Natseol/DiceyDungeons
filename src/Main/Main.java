@@ -6,22 +6,25 @@ import Battle.*;
 import Character.*;
 import Dice.*;
 import Field.*;
-import Item.*;
+import ItemList.*;
 import Monster.*;
 
 public class Main extends Script {
 
 	public static void main(String[] args) {
 
-		Scanner input = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		Script script = new Script();		
 		
 		script.chooseJob();
-		Player player = new Player(input.nextInt());
-		System.out.println();		
+		Player player = new Player(scanner.nextInt());
+		
+//		player.setCondition(0,3);
+//		player.setCondition(1,2);
+//		player.setCondition(2,1);		
 
 		int floor=1;		
-		int enemyNum=0;
+		int enemyNum=1;
 		
 		Field field = new Field();
 
@@ -34,8 +37,8 @@ public class Main extends Script {
 					new Onepun(),
 					new Bear(),
 					new Vampire()
-			};			
-
+			};
+			
 			script.startBattle();			
 			while (true) {//전투시작
 				
@@ -43,100 +46,92 @@ public class Main extends Script {
 				EnemyTurn enemyTurn = new EnemyTurn(enemy[enemyNum]);
 
 				while (true) { //내턴시작
-					script.startMyTurn();
-					script.battleInfo(player, enemy[enemyNum]);
+					
+					script.printBattleInfo(player, enemy[enemyNum]);					
+					script.printItem(myturn);	
+					
+					while (player.getCondition(1)>0) {
+					if (player.getCondition(1)>0) {
+						script.selectDice(myturn);	
+						player.damagedIce(myturn);
+						script.printDamagedIce();
+//						continue;
+					}//상태이상 빙결
+					}
+					
 					script.selectDice(myturn);					
-					int idxDice=input.nextInt();
+					
+					int idxDice=scanner.nextInt();
 					if (idxDice==0) {
 						script.selectTurnEnd();
 						break; //턴종료
 					}
 					else if (idxDice==9) {
-						script.enemyInfo(enemyTurn, enemy[enemyNum]);
+						script.printEnemyInfo(enemyTurn, enemy[enemyNum]);
+						scanner.nextLine();
+						scanner.nextLine();
 						continue;
 					}
-					 
-					if (player.getCondition(0)>0) {
-						player.setCondition(0,player.getCondition(0)-1);
-						player.subtractHp(2);
-						System.out.println();
-						System.out.println(RED+"발화효과로 [2] 의 피해를 입습니다"+RESET);
-						System.out.println();
-						continue;
-					}//상태이상	발화	
 					
-					if (player.getCondition(1)>0) {
-						player.setCondition(1,player.getCondition(1)-1);
-						int max = myturn.getDice(0);
-				        int maxIndex = 0;				 
-				        for (int i = 0; i < myturn.getDice().length; i++) {
-				            if (myturn.getDice(i) > max) {
-				                max = myturn.getDice(i);
-				                maxIndex = i;
-				            }
-				        }						
-						myturn.setDice(maxIndex,1);
-						System.out.println();
-						System.out.println(CYAN+"빙결효과로 눈금이 1로 변합니다"+RESET);
-						System.out.println();
-						continue;
-					}//상태이상 빙결
+					if (player.getCondition(0)>0) {
+						player.damagedFire();	
+					}//상태이상	발화
+					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
+						break;
+					}//죽었는지 확인
 
 					int numDice=myturn.getDice(idxDice-1);
-					System.out.println();
-
-					System.out.println("눈금 : "+numDice);
-					script.printItem(myturn);
-
-					int invenIdx = input.nextInt()-1;
+					script.printSelectedDice(numDice);
+					script.printSelectItem(myturn);
 					
+					int invenIdx = scanner.nextInt()-1;					
 					if (invenIdx==-1) {
-						System.out.println();
-						System.out.println("---------------------------------");
+						script.startMyTurn();
 						continue;
 					}
 					System.out.println();
 					
+					if (player.getCondition(0)>0) {
+						player.damagedFire();	
+					}//상태이상	발화
+					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
+						break;
+					}//죽었는지 확인
+					
 					if (player.getCondition(2)>0) {
-						player.setCondition(2,player.getCondition(2)-1);
-						myturn.setDice(idxDice-1, 0);
-						System.out.println();
-						System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
-						System.out.println();
+						player.damagedParalysis(myturn, idxDice);
+						script.printDamagedParalysis();
+						myturn.rebuildDice();
 						continue;
 					}//상태이상 마비
 
 					myturn.getItem(invenIdx).setCheck(false);//조건 초기화
 					myturn.getItem(invenIdx).setChangeDice(0);//조건 초기화
 					if (myturn.getItem(invenIdx).checkDice(numDice)==true) {
-						System.out.println();
-						System.out.println("---------------------------------");
+						script.printCheckTrue();
 						continue;
 					}//장비 조건 확인
 
-					myturn.getItem(invenIdx).action(player, enemy[enemyNum], numDice, myturn);//장비 발동
-
+					myturn.getItem(invenIdx).action(player, enemy[enemyNum], numDice, myturn);
+					//장비 발동
+					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {						
+						break;
+					}//죽었는지 확인
+					
+					myturn.setDice(idxDice-1, myturn.getItem(invenIdx).getChangeDice());
+					//사용한 주사위 눈금 변경
+					
 					if (myturn.getItem(invenIdx).getName()==new GreatSword().getName()&&myturn.getItem(invenIdx).getCount()==0) {
 						myturn.setItem(invenIdx, new UsedGreat());
 						player.setInventory(invenIdx, new UsedGreat());
 					}
-
-					if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
-						System.out.println("---------------------------------");
-						script.battleInfo(player, enemy[enemyNum]);
-						System.out.println("---------------------------------");
-						break;
-					}//죽었는지 확인
-
-					myturn.setDice(idxDice-1, myturn.getItem(invenIdx).getChangeDice());//사용한 주사위 눈금 변경
-
-					if (myturn.getItem(invenIdx).getTimes()==0) {
+					else if (myturn.getItem(invenIdx).getTimes()==0) {
 						myturn.setItem(invenIdx, new Nothing());
-					}//횟수0 아이템은 빈슬롯으로 변경					
+					}//횟수0 아이템은 빈슬롯으로 변경
 
 					myturn.rebuildDice();//주사위 정리
 
-					System.out.println("---------------------------------");
+//					System.out.println("---------------------------------");
 				}//end of while : 내 턴
 
 				if (player.getHp()<1||enemy[enemyNum].getHp()<1) {					
@@ -147,38 +142,33 @@ public class Main extends Script {
 				// 전투 탈출
 				//*****************
 
+//				System.out.println();
+//				System.out.println("---------------------------------");
+//				System.out.println("종료 = 1");
+//				if (scanner.nextInt()==1) {
+//					break;
+//				}
+				
 				System.out.println();
-				System.out.println("---------------------------------");
-				System.out.println("종료 = 1");
-				if (input.nextInt()==1) {
-					break;
-				}
-
-				System.out.println(enemy[enemyNum].getName()+"이(가) 주사위를 굴립니다");
-				System.out.println("---------------------------------");
-				System.out.println();			
-				
-				script.selectDice(enemyTurn);
-//				enemyTurn.printDice(enemy[enemyNum]);
-				
-				System.out.println();				
+				script.printBattleInfo(player, enemy[enemyNum]);
 				script.printItem(enemyTurn);
-				System.out.println("---------------------------------");
+				script.selectDice(enemyTurn);
 
+				scanner.nextLine();
 				int enemyItemNum=0;
 				for (int i =0; i<enemyTurn.getDice().length;i++) {
-					input.next();
-					System.out.println();
-					System.out.print("["+(i+1)+"번 눈금:"+enemyTurn.getDice(i)+"]로 [");
-					System.out.println((enemyItemNum+1)+"번째 "+enemy[enemyNum].getInventoryName(enemyItemNum)+"]을 사용합니다");
-					System.out.println();
+					scanner.nextLine();
+					script.printSelectedDice(enemyTurn.getDice(i));
+					script.printSelectedDiceUse(enemyItemNum, enemy[enemyNum]);
+					
 					enemy[enemyNum].getInventory(enemyItemNum).action(enemy[enemyNum], player, enemyTurn.getDice(i), enemyTurn);
+					
+					if (enemyTurn.getItem(enemyItemNum).getTimes()==0) {
+						enemyTurn.setItem(enemyItemNum, new Nothing());
+					}//횟수0 아이템은 빈슬롯으로 변경
 
-					System.out.println();
-
-					System.out.println("---------------------------------");
-					script.battleInfo(player,enemy[enemyNum]);					
-					System.out.println();
+					script.printBattleInfo(player,enemy[enemyNum]);
+					script.printItem(enemyTurn);
 					if (enemy[enemyNum].getInventory(enemyItemNum).getTimes()>0) {
 						enemyItemNum--;
 					}
@@ -187,6 +177,7 @@ public class Main extends Script {
 						break;
 					}
 				}
+				scanner.nextLine();
 
 				for (int i=0; i<enemy[enemyNum].getInventory().length;i++) {
 					enemy[enemyNum].getInventory(i).setTimes(1);
@@ -195,9 +186,11 @@ public class Main extends Script {
 				if (player.getHp()<1||enemy[enemyNum].getHp()<1) {
 					break;
 				}
+				script.startMyTurn();
 			}//end of while Battle
 
 			if (player.getHp()<1) {
+				script.printBattleInfo(player, enemy[enemyNum]);
 				System.out.println();
 				System.out.println(RED+" YOU DIED"+RESET);
 				break;
@@ -207,7 +200,7 @@ public class Main extends Script {
 				System.out.println(B_CYAN+enemy[enemyNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
 				enemyNum++;
 				player.levelUp();
-			}//이겼을 떄
+			}//이겼을 때
 
 			player.resetPlayer();//플레이어 정보 초기화
 
@@ -230,14 +223,14 @@ public class Main extends Script {
 							field.getStore().showList();
 
 							System.out.println(YELLOW+"상점의 장비를 선택하세요 (나가기 : 0)"+RESET);
-							int storeIdx = input.nextInt()-1;
+							int storeIdx = scanner.nextInt()-1;
 							if (storeIdx+1 == 0) {
 								break;
 							}
 							System.out.println();
 							player.getInventoryAll();
 							System.out.println(YELLOW+"당신의 장비를 선택하세요 (다시선택 : 0)"+RESET);
-							int invenIdx = input.nextInt()-1;
+							int invenIdx = scanner.nextInt()-1;
 							if (invenIdx+1 == 0) {
 								continue;
 							}
@@ -267,7 +260,7 @@ public class Main extends Script {
 						System.out.println("---------------------------------");
 						System.out.println("체력을 10 회복합니다  남은 횟수 : "+field.getHealCount());
 						System.out.println(YELLOW+"(예:1 아니오:0)"+RESET);				
-						if (input.nextInt()==1) {
+						if (scanner.nextInt()==1) {
 							player.setHp(player.getHp()+10);
 							if (player.getHp()>player.getMaxHp()) {
 								player.setHp(player.getMaxHp());
@@ -294,6 +287,7 @@ public class Main extends Script {
 				}
 			}//end of while Field
 		}//end of while stage
+		scanner.close();
 	}//end of main
 }
 

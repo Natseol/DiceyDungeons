@@ -3,7 +3,8 @@ package Battle;
 import Character.*;
 import Dice.Roll;
 import Field.*;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 import Main.Color;
 
 public class TurnInfo {

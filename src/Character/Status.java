@@ -1,6 +1,8 @@
 package Character;
 
-import Item.Item;
+import Battle.*;
+import Item.*;
+import Main.*;
 
 public class Status {
 	protected int hp;
@@ -98,7 +100,7 @@ public class Status {
 //	상태이상
 //	0. 발화 : 주사위를 사용하려면 체력 2 소모
 //	1. 빙결 : 가장 큰 주사위 눈금이 1로 바뀐다
-//	2. 마비 : 해당 장비를 사용하려면 주사위 1개를 소모해야함
+//	2. 석화 : 해당 장비를 사용하려면 주사위 1개를 소모해야함
 	
 	public int[] getCondition() {
 		return condition;
@@ -110,7 +112,31 @@ public class Status {
 		condition[idx]=changeNum;		
 	}
 
-	public void checkCondition() {}
+	public void damagedFire() {
+		if (Math.random()>0.5) {
+			subtractHp(2);
+		setCondition(0,getCondition(0)-1);
+		System.out.println(Color.RED+"발화효과로 [2]의 피해를 입습니다"+Color.RESET);		
+		}
+	}
+	
+	
+	public void damagedIce(TurnInfo turninfo) {
+		setCondition(1,getCondition(1)-1);
+		int max = turninfo.getDice(0);
+        int maxIndex = 0;				 
+        for (int i = 0; i < turninfo.getDice().length; i++) {
+            if (turninfo.getDice(i) > max) {
+                max = turninfo.getDice(i);
+                maxIndex = i;
+            }
+        }						
+        turninfo.setDice(maxIndex,1);		
+	}
 
+	public void damagedParalysis(TurnInfo turninfo, int idxDice) {
+		setCondition(2,getCondition(2)-1);
+		turninfo.setDice(idxDice-1, 0);			
+	}
 	
 }

@@ -1,6 +1,7 @@
 package Character;
 
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class Job extends Status {
 

@@ -2,7 +2,8 @@ package Battle;
 
 import Character.*;
 import Dice.Roll;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class EnemyTurn extends TurnInfo{
 	

@@ -1,7 +1,8 @@
 package Character;
 
 import Battle.EnemyTurn;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class Enemy extends Status{
 	protected String name="적";
@@ -16,6 +17,10 @@ public class Enemy extends Status{
 		this.maxHp=maxHp;
 		this.diceQuantity = diceQuantity;
 		inventory = new Item[2];
+	}
+	
+	public void setEnemy(int num) {
+		
 	}
 	
 	public String getName() {

@@ -1,6 +1,7 @@
 package Character;
 
-import Item.*;
+import Item.Item;
+import ItemList.*;
 import Main.Color;
 
 public class Player extends Job {

@@ -2,7 +2,8 @@ package Monster;
 
 import Battle.EnemyTurn;
 import Character.*;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class Marine extends Enemy{
 	
@@ -13,7 +14,7 @@ public class Marine extends Enemy{
 		hp = 26;
 		maxHp = 26;	
 		diceQuantity = 2;
-		inventory = new Item[] {new Cannon(), new Cannon()};		
+		inventory = new Item[] {new Cannon()};		
 	}
 	
 	public void action (Player player, EnemyTurn turn, int num) {		

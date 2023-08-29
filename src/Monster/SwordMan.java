@@ -2,7 +2,8 @@ package Monster;
 
 import Battle.*;
 import Character.*;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class SwordMan extends Enemy{
 

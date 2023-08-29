@@ -1,7 +1,8 @@
 package Field;
 
 import Character.*;
-import Item.*;
+import Item.Item;
+import ItemList.*;
 
 public class Store{
 	
@@ -32,7 +33,7 @@ public class Store{
 		System.out.println();
 	}
 	
-	public static final Item[] ITEMLIST = {
+	private static final Item[] ITEMLIST = {
 			new Nothing(),//0
 			
 			new Sword(),//1
