@@ -7,7 +7,7 @@ import Item.Item;
 import ItemList.*;
 import Main.Color;
 
-public class TurnInfo {
+public class TurnInfo extends BattleSetting{
 	
 	int diceQ;
 	int[] dice;	
@@ -16,8 +16,8 @@ public class TurnInfo {
 	public TurnInfo() {}
  	public TurnInfo(Status status) {
 		diceQ = status.getDiceQuantity();		
-		turnItem=new Item[status.getInventory().length];		
-		for (int i = 0; i < turnItem.length; i++) {
+		turnItem=new Item[6];
+		for (int i = 0 ; i<status.getInventory().length;i++) {
 			turnItem[i]=status.getInventory(i);
 		}		
 		dice=new int[diceQ];
@@ -52,4 +52,14 @@ public class TurnInfo {
 	public void setItem(int idx, Item item) {
 		turnItem[idx] = item;
 	}
+	
+	public void setBattle(Status status) {
+		for (int i=0;i<6;i++) {
+			if (status.getInventory(i).getDescription()==new UsedGreat().getDescription()) {
+				setItem(i, new UsedGreat());
+			}
+			getItem(i).setCount(status.getInventory(i).getCount());			
+		}
+	}
 }
+

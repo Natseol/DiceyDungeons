@@ -33,7 +33,7 @@ public class Store{
 		System.out.println();
 	}
 	
-	private static final Item[] ITEMLIST = {
+	public static final Item[] ITEMLIST = {
 			new Nothing(),//0
 			
 			new Sword(),//1
@@ -62,7 +62,9 @@ public class Store{
 			new MedicKit(),//22                  
 			new Bandage(),//23                   
 			new Heal(),//24                      
-			new Shield(),//25                    
+			new Shield(),//25
+			
+			new Bow(),
 
 			new Reroll(),//26                    
 			new Clone()//27

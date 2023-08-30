@@ -1,5 +1,6 @@
 package Character;
 
+import Field.Store;
 import Item.Item;
 import ItemList.*;
 
@@ -16,10 +17,14 @@ public class Job extends Status {
 		hp=maxHp;
 		job = "전사";
 		diceQuantity = 2;
+		setItemWarrior();
+	}
+	
+	public void setItemWarrior() {
 		inventory = new Item[6];
 		setInventory(0, new Sword());
 		setInventory(1, new Axe());
-		setInventory(2, new Nothing());
+		setInventory(2, new GreatSword());
 		setInventory(3, new Nothing());
 		setInventory(4, new Rising());
 		setInventory(5, new Reroll());
@@ -30,12 +35,16 @@ public class Job extends Status {
 		hp=maxHp;
 		job = "도적";
 		diceQuantity = 3;
+		setItemThief();
+	}
+	
+	public void setItemThief() {
 		inventory = new Item[6];
-		setInventory(0, new Dagger());
-		setInventory(1, new Bow());
-		setInventory(2, new Nothing());
-		setInventory(3, new Nothing());
-		setInventory(4, new LockPick());
-		setInventory(5, new Clone());
+		setInventory(0, new Dagger());  
+		setInventory(1, new Bow());  
+		setInventory(2, new Nothing());  
+		setInventory(3, new Nothing());  
+		setInventory(4, new LockPick()); 
+		setInventory(5, new Reroll()); 
 	}
 }

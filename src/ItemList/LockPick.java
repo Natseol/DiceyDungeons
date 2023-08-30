@@ -20,36 +20,36 @@ public class LockPick extends Item{
 			my.setOther(1);
 			changeDice = 3;
 			my.setOther(0,3);
-			times--;
-			if (times==0) times=2;
+			times=times-1;
+//			if (times==0) times=2;
 			break;
 		case 5:
 			my.setOther(1);
 			changeDice = 3;
 			my.setOther(0,2);
-			times--;
-			if (times==0) times=2;
+			times=times-1;
+//			if (times==0) times=2;
 			break;
 		case 4:
 			my.setOther(1);
 			changeDice = 2;
 			my.setOther(0,2);
-			times--;
-			if (times==0) times=2;
+			times=times-1;
+//			if (times==0) times=2;
 			break;
 		case 3:
 			my.setOther(1);
 			changeDice = 2;
 			my.setOther(0,1);
-			times--;
-			if (times==0) times=2;
+			times=times-1;
+//			if (times==0) times=2;
 			break;
 		case 2:
 			my.setOther(1);
 			changeDice = 1;
 			my.setOther(0,1);
-			times--;
-			if (times==0) times=2;
+			times=times-1;
+//			if (times==0) times=2;
 			break;		
 		}
 	}

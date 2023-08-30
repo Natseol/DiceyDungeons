@@ -125,26 +125,26 @@ public class Script implements Color {
 			System.out.println("/"+player.getMaxHp());
 	}
 	
-	public void printDamagedFire() {
+//	public void printDamagedFire() {
 //		System.out.println();
-		System.out.println(RED+"발화효과로 [2]의 피해를 입습니다"+RESET);
+//		System.out.println(RED+"발화효과로 [2]의 피해를 입습니다"+RESET);
 //		System.out.println();
 //		System.out.println("---------------------------------");
-	}
+//	}
 	
 	public void printDamagedIce() {
 //		System.out.println();
-		System.out.println(CYAN+"빙결효과로 눈금이 1로 변합니다"+RESET);
+		System.out.println(CYAN+" * 빙결효과로 눈금이 1로 변합니다 *"+RESET);
 		System.out.println();
 //		System.out.println("---------------------------------");
 	}
 	
-	public void printDamagedParalysis() {
+//	public void printDamagedParalysis() {
 //		System.out.println();
-		System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
-		System.out.println();
-		System.out.println("---------------------------------");
-	}
+//		System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
+//		System.out.println();
+//		System.out.println("---------------------------------");
+//	}
 	
 	public void printCheckTrue() {
 		System.out.println();

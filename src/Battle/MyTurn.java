@@ -1,5 +1,7 @@
 package Battle;
 
+import java.util.Arrays;
+
 import Character.*;
 import Dice.Roll;
 import Main.Color;
@@ -11,15 +13,18 @@ public class MyTurn extends TurnInfo{
 	
 	int[] other;
 	
- 	public MyTurn(Status player) {
- 		super(player);
+ 	public MyTurn(Player player) {
+ 		super(player);		
+		diceQ = player.getDiceQuantity();
 		
-		diceQ = player.getDiceQuantity();		
-		turnItem=new Item[player.getInventory().length];		
-		for (int i = 0; i < turnItem.length; i++) {
-			turnItem[i]=player.getInventory(i);
-		}		
-		dice=new int[diceQ];
+//		turnItem=new Item[6];
+//		for (int i = 0 ; i<player.getInventory().length;i++) {
+//			setItem(i,player.getInventory(i));
+//		}		
+//		turnItem= player.getInventory().clone();
+		
+		setTurnItem(player);
+		dice=new int[diceQ];		
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();			
 		}
@@ -70,6 +75,30 @@ public class MyTurn extends TurnInfo{
 				}				
 			}
 			dice=newDice;
-		}		
-	}//end of method rebulidDice	
+		}
+	}//end of method rebulidDice
+	
+	private void setTurnItem(Player player) {
+		turnItem = new Item[player.getInventory().length];
+		switch (player.getJob()) {
+		case "전사":
+			turnItem = new Item[6];			
+			setItem(0, new Sword());     
+			setItem(1, new Axe());       
+			setItem(2, new GreatSword());
+			setItem(3, new Nothing());   
+			setItem(4, new Rising());    
+			setItem(5, new Reroll());    
+			break;
+		case "도적":
+			turnItem = new Item[6];
+			setItem(0, new Dagger());   
+			setItem(1, new Bow());      
+			setItem(2, new Nothing());  
+			setItem(3, new Nothing());  
+			setItem(4, new LockPick()); 
+			setItem(5, new Reroll());   
+			break;                      
+		}
+	}
 }

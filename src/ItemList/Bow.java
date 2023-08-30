@@ -16,7 +16,7 @@ public class Bow extends Item{
 	@Override
 	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
-			count=count-dice;
+			count=count-dice;			
 			times=1;
 		}
 		else {

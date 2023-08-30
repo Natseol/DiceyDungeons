@@ -2,6 +2,7 @@ package Character;
 
 import Battle.*;
 import Item.*;
+import ItemList.*;
 import Main.*;
 
 public class Status {
@@ -92,8 +93,12 @@ public class Status {
 		System.out.println("---------------------------------");
 	}	
 	public void setInventory(int idx, Item item) {
-		inventory[idx] = item;
-	}	
+		inventory[idx] = new Item();
+	}
+	
+	public void setInventory(int idx, Sword sword) {
+		inventory[idx] = new Sword();
+	} 
 		
 	int condition[]=new int[3];
 	
@@ -116,7 +121,7 @@ public class Status {
 		if (Math.random()>0.5) {
 			subtractHp(2);
 		setCondition(0,getCondition(0)-1);
-		System.out.println(Color.RED+"발화효과로 [2]의 피해를 입습니다"+Color.RESET);		
+		System.out.println(Color.RED+" * 발화효과로 [2]의 피해를 입습니다 * "+Color.RESET);		
 		}
 	}
 	
@@ -135,8 +140,11 @@ public class Status {
 	}
 
 	public void damagedParalysis(TurnInfo turninfo, int idxDice) {
+		if (Math.random()>0.5) {
 		setCondition(2,getCondition(2)-1);
-		turninfo.setDice(idxDice-1, 0);			
+		turninfo.setDice(idxDice-1, 0);
+		System.out.println(Color.PURPLE+" * 마비효과로 주사위를 잃습니다 * "+Color.RESET);
+		}
 	}
 	
 }
