@@ -50,6 +50,7 @@ public class Store{
 			new Wand(),//12                      
 			new IceShards(),//13                 
 			new Glove(),//14                     
+			new Bow(),
 
 			new Rising(),//15                    
 			new Drop(),//16                      
@@ -64,7 +65,6 @@ public class Store{
 			new Heal(),//24                      
 			new Shield(),//25
 			
-			new Bow(),
 
 			new Reroll(),//26                    
 			new Clone()//27

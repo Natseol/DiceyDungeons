@@ -22,12 +22,12 @@ public class Job extends Status {
 	
 	public void setItemWarrior() {
 		inventory = new Item[6];
-		setInventory(0, new Sword());
-		setInventory(1, new Axe());
-		setInventory(2, new GreatSword());
-		setInventory(3, new Nothing());
-		setInventory(4, new Rising());
-		setInventory(5, new Reroll());
+		inventory[0]= new Sword();
+		inventory[1]= new Axe();
+		inventory[2]= new GreatSword();
+		inventory[3]= new Nothing();
+		inventory[4]= new Rising();
+		inventory[5]= new Reroll();
 	}
 	
 	public void setJobThief() {

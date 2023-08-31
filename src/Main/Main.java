@@ -10,7 +10,7 @@ import ItemList.*;
 import Monster.*;
 
 public class Main extends Script {
-
+	
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
@@ -71,7 +71,6 @@ public class Main extends Script {
 					}
 
 					script.selectDice(myturn);					
-
 					int idxDice=scanner.nextInt();
 					if (idxDice==0) {
 						script.selectTurnEnd();
@@ -176,12 +175,12 @@ public class Main extends Script {
 				// 전투 탈출
 				//*****************
 
-				//				System.out.println();
-				//				System.out.println("---------------------------------");
-				//				System.out.println("종료 = 1");
-				//				if (scanner.nextInt()==1) {
-				//					break;
-				//				}
+				System.out.println();
+				System.out.println("---------------------------------");
+				System.out.println("종료 = 1");
+				if (scanner.nextInt()==1) {
+					break;
+				}
 
 				System.out.println();
 				script.printBattleInfo(player, enemy[eNum]);
@@ -262,7 +261,7 @@ public class Main extends Script {
 								break;
 							}
 							System.out.println();
-							player.getInventoryAll();
+							player.printInventoryAll();
 							System.out.println(YELLOW+"당신의 장비를 선택하세요 (다시선택 : 0)"+RESET);
 							int invenIdx = scanner.nextInt()-1;
 							if (invenIdx+1 == 0) {
@@ -274,8 +273,8 @@ public class Main extends Script {
 								continue;
 							}
 							else {
-								field.getStore().changeItem(player, invenIdx, field.getStore().getStoreList(storeIdx));
-								player.getInventoryAll();
+								player.setInventory(invenIdx,field.getStore().getStoreList(storeIdx));
+								player.printInventoryAll();
 								field.setStoreCount(0);
 								break;
 							}
@@ -316,7 +315,7 @@ public class Main extends Script {
 				}
 				else {
 					script.printPlayerInfo(player);
-					player.getInventoryAll();
+					player.printInventoryAll();
 					continue;
 				}
 			}//end of while Field

@@ -78,7 +78,7 @@ public class Status {
 	public String getInventoryDescription(int idx) {
 		return inventory[idx].getDescription();
 	}
-	public void getInventoryAll() {
+	public void printInventoryAll() {
 		System.out.println("-------------- 장비 ---------------");
 		for (int i=0;i<inventory.length;i++) {
 			System.out.print((i+1)+") "+inventory[i].getName()+" : "+inventory[i].getDescription());
@@ -93,12 +93,12 @@ public class Status {
 		System.out.println("---------------------------------");
 	}	
 	public void setInventory(int idx, Item item) {
-		inventory[idx] = new Item();
+		inventory[idx] = item;
 	}
 	
-	public void setInventory(int idx, Sword sword) {
-		inventory[idx] = new Sword();
-	} 
+//	public void setInventory(int idx, Sword sword) {
+//		inventory[idx] = new Sword();
+//	} 
 		
 	int condition[]=new int[3];
 	
