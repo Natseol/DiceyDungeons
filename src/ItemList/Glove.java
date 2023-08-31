@@ -3,6 +3,7 @@ package ItemList;
 import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
+import Character.Status;
 import Item.Item;
 
 public class Glove extends Item{
@@ -13,11 +14,11 @@ public class Glove extends Item{
 		times=1;
 	}	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		enemy.subtractHp(dice);
 		printDamage(dice);
 		times=0;
-		enemy.setCondition(2,enemy.getCondition(2)+1);//차후구현
+		enemy.setCondition(2,enemy.getCondition(2)+1);
 	}
 	
 	@Override

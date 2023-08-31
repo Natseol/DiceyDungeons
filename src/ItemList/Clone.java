@@ -1,8 +1,10 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
+import Character.Status;
 import Item.Item;
 
 public class Clone extends Item{
@@ -14,7 +16,7 @@ public class Clone extends Item{
 	}
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		my.setOther(1);
 		changeDice=dice;
 		my.setOther(0,dice);

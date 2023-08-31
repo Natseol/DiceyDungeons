@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.*;
 import Item.Item;
 
@@ -13,7 +14,7 @@ public class Axe extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		enemy.subtractHp(2*dice);
 		printDamage2(dice);
 		times=0;

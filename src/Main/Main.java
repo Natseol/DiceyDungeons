@@ -24,7 +24,7 @@ public class Main extends Script {
 //		player.setCondition(2,2);		
 
 		int floor=1;		
-		int eNum=0;
+		int eNum=1;
 
 		Field field = new Field();
 
@@ -45,18 +45,7 @@ public class Main extends Script {
 				MyTurn myturn = new MyTurn(player);//주사위 초기화
 				EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
 				
-//				for (int i=0;i<6;i++) {
-//					System.out.print(player.getInventory(i).getCount()+"  ");
-//				}
-//				System.out.println();
-				
-				myturn.setBattle(player);
-				
-//				for (int i=0;i<6;i++) {
-//					System.out.print(player.getInventory(i).getCount()+"  ");
-//				}
-//				System.out.println();
-				
+				myturn.setBattle(player);				
 				while (true) { //내턴시작
 
 					script.printBattleInfo(player, enemy[eNum]);					
@@ -85,10 +74,9 @@ public class Main extends Script {
 
 					if (player.getCondition(0)>0) {
 						player.damagedFire();	
-					}//상태이상	발화
-					if (player.getHp()<1||enemy[eNum].getHp()<1) {
-						break;
-					}//죽었는지 확인
+					}//상태이상	발화					
+					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
+					//죽었는지 확인
 
 					int numDice=myturn.getDice(idxDice-1);
 					script.printSelectedDice(numDice);
@@ -104,9 +92,8 @@ public class Main extends Script {
 					if (player.getCondition(0)>0) {
 						player.damagedFire();	
 					}//상태이상	발화
-					if (player.getHp()<1||enemy[eNum].getHp()<1) {
-						break;
-					}//죽었는지 확인
+					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
+					//죽었는지 확인
 
 					if (player.getCondition(2)>0) {
 						player.damagedParalysis(myturn, idxDice);
@@ -123,22 +110,11 @@ public class Main extends Script {
 
 					myturn.getItem(invenIdx).action(player, enemy[eNum], numDice, myturn);
 					//장비 발동
-					if (player.getHp()<1||enemy[eNum].getHp()<1) {						
-						break;
-					}//죽었는지 확인
-					
-//					for (int i=0;i<6;i++) {
-//						System.out.print(player.getInventory(i).getCount()+"  ");
-//					}
-//					System.out.println();
+					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
+					//죽었는지 확인
 					
 					player.getInventory(invenIdx).setCount(myturn.getItem(invenIdx).getCount());
 					//카운트 동기화
-					
-//					for (int i=0;i<6;i++) {
-//						System.out.print(player.getInventory(i).getCount()+"  ");
-//					}
-//					System.out.println();
 
 					myturn.setDice(idxDice-1, myturn.getItem(invenIdx).getChangeDice());
 					//사용한 주사위 눈금 변경
@@ -151,25 +127,12 @@ public class Main extends Script {
 					else if (myturn.getItem(invenIdx).getTimes()==0) {
 						myturn.setItem(invenIdx, new Nothing());
 					}//횟수0 아이템은 빈슬롯으로 변경
-
-//					System.out.println("횟수 : "+player.getInventory(invenIdx).getTimes());
-//					System.out.println("횟수 : "+myturn.getItem(invenIdx).getTimes());
 					
 					myturn.rebuildDice();//주사위 정리
 
 				}//end of while : 내 턴
-				
-				for (int i=0; i<myturn.getItem().length;i++) {
-					System.out.print(player.getInventory(i).getTimes());
-				}				
-				System.out.println();
-				for (int i=0; i<myturn.getItem().length;i++) {
-					System.out.print(myturn.getTimes(i));
-				}
 
-				if (player.getHp()<1||enemy[eNum].getHp()<1) {					
-					break;
-				}
+				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
 
 				//*****************
 				// 전투 탈출
@@ -194,7 +157,8 @@ public class Main extends Script {
 					script.printSelectedDice(enemyTurn.getDice(i));
 					script.printSelectedDiceUse(enemyItemNum, enemy[eNum]);
 
-					enemy[eNum].getInventory(enemyItemNum).action(enemy[eNum], player, enemyTurn.getDice(i), enemyTurn);
+					enemy[eNum].getInventory(enemyItemNum).action
+					(enemy[eNum], player, enemyTurn.getDice(i), enemyTurn);
 
 					if (enemyTurn.getItem(enemyItemNum).getTimes()==0) {
 						enemyTurn.setItem(enemyItemNum, new Nothing());
@@ -239,7 +203,7 @@ public class Main extends Script {
 
 			while (true) {//필드진입
 				int chooseInField = field.move(floor);
-				if (chooseInField == 1) {
+				if (chooseInField == 1) {//1.전투
 					if(eNum == enemy.length ) {
 						System.out.println();
 						System.out.println("이 층에는 더이상 적이 없습니다");
@@ -248,72 +212,30 @@ public class Main extends Script {
 					System.out.println();
 					break;
 				}
-				else if (chooseInField == 2) {
-					if (field.getStoreCount()==1)
-						while (true) {
-							System.out.println();
-							field.getStore().printStore();
-							field.getStore().showList();
-
-							System.out.println(YELLOW+"상점의 장비를 선택하세요 (나가기 : 0)"+RESET);
-							int storeIdx = scanner.nextInt()-1;
-							if (storeIdx+1 == 0) {
-								break;
-							}
-							System.out.println();
-							player.printInventoryAll();
-							System.out.println(YELLOW+"당신의 장비를 선택하세요 (다시선택 : 0)"+RESET);
-							int invenIdx = scanner.nextInt()-1;
-							if (invenIdx+1 == 0) {
-								continue;
-							}
-							else if (invenIdx+1 == 6) {
-								System.out.println("");
-								System.out.println("고유장비는 변경할 수 없습니다");
-								continue;
-							}
-							else {
-								player.setInventory(invenIdx,field.getStore().getStoreList(storeIdx));
-								player.printInventoryAll();
-								field.setStoreCount(0);
-								break;
-							}
-						}//end of while 상점
+				else if (chooseInField == 2) {//2.상점
+					if (field.getStoreCount()==1) {
+						field.inStore(player);
+					}
 					else {
-						System.out.println();
-						System.out.println("이미 교환 완료했습니다");
-						System.out.println("---------------------------------");
+						script.changeAlready();
 					}
 
 				}
-				else if (chooseInField == 3) {
+				else if (chooseInField == 3) {//3.회복샘
 					if (field.getHealCount()>0) {
-						System.out.println();
-						System.out.println("회복의 샘에 왔습니다");
-						System.out.println("---------------------------------");
-						System.out.println("체력을 10 회복합니다  남은 횟수 : "+field.getHealCount());
-						System.out.println(YELLOW+"(예:1 아니오:0)"+RESET);				
-						if (scanner.nextInt()==1) {
-							player.setHp(player.getHp()+10);
-							if (player.getHp()>player.getMaxHp()) {
-								player.setHp(player.getMaxHp());
-							}
-							field.setHealCount(field.getHealCount()-1);
-						}
+						field.visitWell(player);
 					}
 					else {
-						System.out.println();
-						System.out.println("모든 횟수를 소진했습니다");
-						System.out.println("---------------------------------");
+						script.useAlready();
 					}
 				}
-				else if (chooseInField == 4) {
+				else if (chooseInField == 4) {//4.다음층
 					eNum=0;
 					floor++;
 					field = new Field();					
 					break;
 				}
-				else {
+				else {//9. 정보
 					script.printPlayerInfo(player);
 					player.printInventoryAll();
 					continue;

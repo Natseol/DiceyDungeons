@@ -15,7 +15,7 @@ public class Overwhelming extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		int damage=(int)(Math.random()*2)+1;
 		accDamage+=damage;
 		enemy.subtractHp(accDamage);

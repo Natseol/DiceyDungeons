@@ -13,7 +13,7 @@ public class Item extends ItemScript{
 	protected int changeDice;
 	protected boolean check;
 	
-	public void action(Player player, Enemy enemy, int dice, MyTurn myTurn) {}
+	public void action(Status player, Status enemy, int dice, MyTurn my) {}
 	
 	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {}
 	

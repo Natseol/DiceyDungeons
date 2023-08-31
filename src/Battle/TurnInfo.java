@@ -61,7 +61,7 @@ public class TurnInfo extends BattleSetting{
 			getItem(i).setCount(status.getInventory(i).getCount());			
 		}
 	}
-	
+		
 	public void setItem(int idx, Nothing nothing) {
 		turnItem[idx] = new Nothing();
 	}	
@@ -72,6 +72,10 @@ public class TurnInfo extends BattleSetting{
 	
 	public void setItem(int idx, Axe axe) {
 		turnItem[idx] = new Axe();
+	}
+	
+	public void setItem(int idx, Dagger dagger) {
+		turnItem[idx] = new Dagger();
 	}
 	
 	public void setItem(int idx, GreatSword greatsword) {

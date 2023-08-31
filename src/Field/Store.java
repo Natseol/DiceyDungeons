@@ -10,7 +10,7 @@ public class Store{
 	
 	public Store() {//랜덤 아이템3개 생성
 		for (int i = 0; i < storeList.length; i++) {
-			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-3))+1];
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-4))+1];
 		}
 	}
 	
@@ -66,6 +66,7 @@ public class Store{
 			new Shield(),//25
 			
 
+			new UsedGreat(),
 			new Reroll(),//26                    
 			new Clone()//27
 	};

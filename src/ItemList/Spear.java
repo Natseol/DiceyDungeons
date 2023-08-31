@@ -4,6 +4,7 @@ import Battle.EnemyTurn;
 import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
+import Character.Status;
 import Item.Item;
 
 public class Spear extends Item{
@@ -15,7 +16,7 @@ public class Spear extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		enemy.subtractHp(10);
 		printDamage3(dice);
 		times=0;

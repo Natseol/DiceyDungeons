@@ -152,5 +152,17 @@ public class Script implements Color {
 		System.out.println();
 		System.out.println("---------------------------------");
 	}
+	
+	public void changeAlready() {
+		System.out.println();
+		System.out.println(B_BLACK+" * 주사위 눈금을 확인하세요 * "+RESET);
+		System.out.println();
+		System.out.println("---------------------------------");
+	}
+	public void useAlready() {
+	System.out.println();
+	System.out.println("모든 횟수를 소진했습니다");
+	System.out.println("---------------------------------");
+	}
 
 }

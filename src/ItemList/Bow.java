@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.*;
 import Item.Item;
 
@@ -14,7 +15,7 @@ public class Bow extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		if (count-dice>0) {
 			count=count-dice;			
 			times=1;

@@ -17,7 +17,7 @@ public class MyTurn extends TurnInfo{
  		super(player);		
 		diceQ = player.getDiceQuantity();
 		
-//		turnItem=new Item[6];
+		turnItem=new Item[6];
 //		for (int i = 0 ; i<player.getInventory().length;i++) {
 //			setItem(i,player.getInventory(i));
 //		}		
@@ -84,11 +84,11 @@ public class MyTurn extends TurnInfo{
 		case "전사":
 			turnItem = new Item[6];			
 			setItem(0, new Sword());     
-			setItem(1, new Axe());       
-			setItem(2, new GreatSword());
-			setItem(3, new Nothing());   
-			setItem(4, new Rising());    
-			setItem(5, new Reroll());    
+			setItem(1, new Dagger());       
+			setItem(2, (Item) player.getInventory(2));
+			setItem(3, player.getInventory(3));   
+			setItem(4, player.getInventory(4));    
+			setItem(5, player.getInventory(5));    
 			break;
 		case "도적":
 			turnItem = new Item[6];

@@ -3,6 +3,7 @@ package ItemList;
 import Battle.MyTurn;
 import Character.Enemy;
 import Character.Player;
+import Character.Status;
 import Dice.Roll;
 import Item.Item;
 
@@ -15,7 +16,7 @@ public class Unknown extends Item{
 	}	
 	
 	@Override
-	public void action(Player player, Enemy enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, MyTurn my) {
 		int damage = Roll.roll6();
 		enemy.subtractHp(damage);
 		printDamage(damage);

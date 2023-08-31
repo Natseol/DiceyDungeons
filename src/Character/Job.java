@@ -40,11 +40,11 @@ public class Job extends Status {
 	
 	public void setItemThief() {
 		inventory = new Item[6];
-		setInventory(0, new Dagger());  
-		setInventory(1, new Bow());  
-		setInventory(2, new Nothing());  
-		setInventory(3, new Nothing());  
-		setInventory(4, new LockPick()); 
-		setInventory(5, new Reroll()); 
+		inventory[0]= new Dagger();  
+		inventory[1]= new Bow();     
+		inventory[2]= new Nothing(); 
+		inventory[3]= new Nothing(); 
+		inventory[4]= new LockPick();
+		inventory[5]= new Clone(); 
 	}
 }
