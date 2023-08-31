@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -16,16 +17,16 @@ public class Wand extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (count-dice>0) {
 			count-=dice;
-			times=1;
+			my.setTurnTimes(idx, 1);
 		}
 		else {
 			enemy.subtractHp(6);		
 			printDamage(6);
 			enemy.setCondition(0,enemy.getCondition(0)+1);//차후구현
-			times=0;
+			my.setTurnTimes(idx, 0);
 			count=8;
 		}
 	}

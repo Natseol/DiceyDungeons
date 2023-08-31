@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -14,9 +15,10 @@ public class Drop extends Item{
 		times=1;
 	}	
 	
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	@Override
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		changeDice=dice-1;
-		times=0;		
+		my.setTurnTimes(idx, 0);		
 	}
 	
 	@Override

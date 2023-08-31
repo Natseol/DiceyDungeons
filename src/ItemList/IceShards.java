@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -15,11 +16,11 @@ public class IceShards extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(dice);
-		printDamage(dice);
-		times=0;
-		enemy.setCondition(1,enemy.getCondition(1)+1);//차후구현
+		printTakeIce(dice);
+		my.setTurnTimes(idx, 0);
+		enemy.setCondition(1,enemy.getCondition(1)+1);
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -15,7 +16,7 @@ public class UsedGreat extends Item{
 	}
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		changeDice = dice;
 	}
 }

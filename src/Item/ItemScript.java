@@ -33,12 +33,12 @@ public class ItemScript {
 	}
 	
 	public void printTakeIce(int dice) {
-		System.out.println(Color.B_RED+" == "+dice+" 의 냉기 피해를 줬습니다!! == "+Color.RESET);
+		System.out.println(Color.B_CYAN+" == "+dice+" 의 냉기 피해를 줬습니다!! == "+Color.RESET);
 		System.out.println();
 	}
 	
 	public void printTakeParalysis(int dice) {
-		System.out.println(Color.B_RED+" == "+dice+" 의 마비 피해를 받았습니다!! == "+Color.RESET);
+		System.out.println(Color.B_PURPLE+" == "+dice+" 의 마비 피해를 줬습니다!! == "+Color.RESET);
 		System.out.println();
 	}
 	

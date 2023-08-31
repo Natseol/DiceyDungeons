@@ -1,16 +1,25 @@
 package Battle;
 
+import Character.*;
+import Item.*;
+
 public class BattleSetting {
 	
-	int[][] itemState=new int[3][6];//0:카운트 1:대검 2:추가할 것
+	int[][] itemState=new int[6][3];//0:times 1:count 2:대검
 	int addDice;
-//	int[] condition=new int[3];
 	
-	public int getCount(int idx) {
+	public int getTurnTimes(int idx) {
 		return itemState[0][idx];
 	}
-	public void setCount(int idx, int num) {
-		itemState[0][idx]=num;
+	public void setTurnTimes(int idx, int num) {
+		itemState[idx][0]=num;
+	}
+	
+	public int getTurnCount(int idx) {
+		return itemState[idx][1];
+	}
+	public void setTurnCount(int idx, int num) {
+		itemState[idx][1]=num;
 	}
 	
 	public int getAddDice() {
@@ -20,11 +29,15 @@ public class BattleSetting {
 		addDice=num;
 	}
 	
-//	public int getCondition(int num) {
-//		return condition[num];
-//	}
-//	public void setCondition(int idx, int num) {
-//		condition[idx]=num;
-//	}
-
+	public void resetTimes(Item[] item) {
+		for (int i=0;i<item.length;i++) {
+			this.itemState[i][0]=item[i].getTimes();
+		}
+	}
+	
+	public void resetCount(Status status) {
+		for (int i=0;i<status.getInventory().length;i++) {
+			this.itemState[i][1]=status.getInventory(i).getCount();
+		}
+	}
 }

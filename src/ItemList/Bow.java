@@ -15,16 +15,16 @@ public class Bow extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
-		if (count-dice>0) {
-			count=count-dice;			
-			times=1;
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (my.getTurnCount(idx)-dice>0) {
+			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
+			my.setTurnTimes(idx, 1);
 		}
 		else {
 			enemy.subtractHp(6);
 			printDamage(6);
-			times=0;
-			count=10;
+			my.setTurnTimes(idx, 0);
+			my.setTurnCount(idx, 10);
 		}
 	}
 }

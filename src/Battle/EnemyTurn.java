@@ -18,5 +18,7 @@ public class EnemyTurn extends TurnInfo{
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();			
 		}
+		itemState=new int[enemy.getInventory().length][3];
+		resetCount(enemy);
 	}
 }

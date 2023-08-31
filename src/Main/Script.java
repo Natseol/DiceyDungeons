@@ -41,14 +41,27 @@ public class Script implements Color {
 		}
 		System.out.println(" / "+enemy.getMaxHp());
 		if (player.getCondition(0)>0) {
-			System.out.print(RED+"발화:"+player.getCondition(0)+"  \n"+RESET);
+			System.out.print(RED+"발화:"+player.getCondition(0)+"  "+RESET);
 		}
 		if (player.getCondition(1)>0) {
-			System.out.print(CYAN+"빙결:"+player.getCondition(1)+"  \n"+RESET);
+			System.out.print(CYAN+"빙결:"+player.getCondition(1)+"  "+RESET);
 		}
 		if (player.getCondition(2)>0) {
-			System.out.print(PURPLE+"마비:"+player.getCondition(2)+"  \n"+RESET);
+			System.out.print(PURPLE+"마비:"+player.getCondition(2)+"  "+RESET);
 		}
+		if (enemy.getCondition(0)>0||enemy.getCondition(1)>0||enemy.getCondition(2)>0) {
+		System.out.print("\t\t\t");
+		}
+		if (enemy.getCondition(0)>0) {
+			System.out.print(RED+"발화:"+enemy.getCondition(0)+"  "+RESET);
+		}
+		if (enemy.getCondition(1)>0) {
+			System.out.print(CYAN+"빙결:"+enemy.getCondition(1)+"  "+RESET);
+		}
+		if (enemy.getCondition(2)>0) {
+			System.out.print(PURPLE+"마비:"+enemy.getCondition(2)+"  "+RESET);
+		}
+		System.out.println();
 	}
 	
 	public void selectDice(MyTurn turnInfo) {
@@ -97,11 +110,11 @@ public class Script implements Color {
 				System.out.print(BLACK);
 			}
 			System.out.print(i+1+") "+turnInfo.getItem(i).getName()+" : "+turnInfo.getItem(i).getDescription());
-			if (turnInfo.getTimes(i) > 1) {
-				System.out.print(" 남은횟수:"+turnInfo.getTimes(i));
+			if (turnInfo.getTurnTimes(i) > 1) {
+				System.out.print(" 남은횟수:"+turnInfo.getTurnTimes(i));
 			}
 			if(turnInfo.getItem(i).getCount()>0) {
-				System.out.print(" 카운트:"+turnInfo.getItem(i).getCount());
+				System.out.print(" 카운트:"+turnInfo.getTurnCount(i));
 			}
 			System.out.println(RESET);
 		}
@@ -134,7 +147,7 @@ public class Script implements Color {
 	
 	public void printDamagedIce() {
 //		System.out.println();
-		System.out.println(CYAN+" * 빙결효과로 눈금이 1로 변합니다 *"+RESET);
+		System.out.println(CYAN+" * 주사위가 얼어붙습니다. 눈금이 1로 변합니다 *"+RESET);
 		System.out.println();
 //		System.out.println("---------------------------------");
 	}
@@ -155,7 +168,7 @@ public class Script implements Color {
 	
 	public void changeAlready() {
 		System.out.println();
-		System.out.println(B_BLACK+" * 주사위 눈금을 확인하세요 * "+RESET);
+		System.out.println("이미 교환완료 했습니다");
 		System.out.println();
 		System.out.println("---------------------------------");
 	}

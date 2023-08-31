@@ -2,6 +2,7 @@ package ItemList;
 
 import Battle.EnemyTurn;
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -16,32 +17,32 @@ public class SpikeShield extends Item{
 	}
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (dice%2!=0) {
 			enemy.subtractHp(dice);
 			printDamage(dice);
-			times=0;
+			my.setTurnTimes(idx, 0);
 		}
 		else {
 			player.setDef(player.getDef()+dice);
 			printGainDefence(dice);
-			times=0;
+			my.setTurnTimes(idx, 0);
 		}
 	}
 	
-	@Override
-	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-		if (dice%2!=0) {
-			player.subtractHp(dice);
-			printDamage(dice);
-			times=0;
-		}
-		else {
-			enemy.setDef(enemy.getDef()+dice);
-			printGainDefence(dice);
-			times=0;
-		}
-	}
+//	@Override
+//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+//		if (dice%2!=0) {
+//			player.subtractHp(dice);
+//			printDamage(dice);
+//			times=0;
+//		}
+//		else {
+//			enemy.setDef(enemy.getDef()+dice);
+//			printGainDefence(dice);
+//			times=0;
+//		}
+//	}
 	
 	@Override
 	public boolean checkDice(int dice) {

@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -14,35 +15,35 @@ public class Saw extends Item{
 	}
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		switch (dice) {
 		case 6:
 			my.setOther(2);
 			changeDice = 2;
 			my.setOther(0,2);
 			my.setOther(1,2);
-			times--;	
+			my.setTurnTimes(idx, 0);	
 			break;
 		case 5:
 			my.setOther(2);
 			changeDice = 2;
 			my.setOther(0,2);
 			my.setOther(1,1);
-			times--;	
+			my.setTurnTimes(idx, 0);	
 			break;
 		case 4:
 			my.setOther(2);
 			changeDice = 2;
 			my.setOther(0,1);
 			my.setOther(1,1);
-			times--;	
+			my.setTurnTimes(idx, 0);	
 			break;
 		case 3:
 			my.setOther(2);
 			changeDice = 1;
 			my.setOther(0,1);
 			my.setOther(1,1);
-			times--;	
+			my.setTurnTimes(idx, 0);	
 			break;	
 		}
 	}

@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -15,10 +16,10 @@ public class Shield extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		player.setDef(player.getDef()+3);
 		printGainDefence(3);
-		times=0;
+		my.setTurnTimes(idx, 0);
 	}
 	
 	@Override

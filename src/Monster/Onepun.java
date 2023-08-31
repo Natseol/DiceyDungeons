@@ -17,7 +17,7 @@ public class Onepun extends Enemy{
 		inventory = new Item[] {new Spear(), new Spear(), new Spear()};		
 	}
 	
-	public void action (Player player, EnemyTurn turn, int num) {		
-		inventory[num].action(this, player, turn.getDice(num), turn );
-	}
+//	public void action (Player player, EnemyTurn turn, int num) {		
+//		inventory[num].action(this, player, turn.getDice(num), turn );
+//	}
 }

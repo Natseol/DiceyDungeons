@@ -12,6 +12,7 @@ public class TurnInfo extends BattleSetting{
 	int diceQ;
 	int[] dice;	
 	Item[] turnItem;
+	int[] other;
 	
 	public TurnInfo() {}
  	public TurnInfo(Status status) {
@@ -36,11 +37,21 @@ public class TurnInfo extends BattleSetting{
 		dice[diceIdx]=changeNum;		
 	}
 	
-	public int getTimes(int idx) {
+	public int getTurnTimes(int idx) {
 		return turnItem[idx].getTimes();
 	}
-	public void setTimes(int idx, int num) {
+	public void setTurnTimes(int idx, int num) {
 		turnItem[idx].setTimes(num);
+	}
+
+	public int[] getOther() {
+		return other;
+	}
+	public void setOther(int idx, int num) {
+		other[idx] = num;
+	}
+	public void setOther(int num) {
+		other = new int[num];
 	}
 	
 	public Item[] getItem() {
@@ -50,13 +61,19 @@ public class TurnInfo extends BattleSetting{
 		return turnItem[idx];
 	}
 	public void setItem(int idx, Item item) {
-		turnItem[idx] = new Item();
+		turnItem[idx] = item;
 	}
 	
-	public void setBattle(Status status) {
+	public void setBattle(Status status) { 
 		for (int i=0;i<6;i++) {
 			if (status.getInventory(i).getDescription()==new UsedGreat().getDescription()) {
 				setItem(i, new UsedGreat());
+			}
+			if (status.getInventory(i).getDescription()==new Reroll().getDescription()) {
+				setItem(i, new Reroll());
+			}
+			if (status.getInventory(i).getDescription()==new LockPick().getDescription()) {
+				setItem(i, new LockPick());
 			}
 			getItem(i).setCount(status.getInventory(i).getCount());			
 		}
@@ -181,7 +198,45 @@ public class TurnInfo extends BattleSetting{
 	
 	public void setItem(int idx, Clone clone) {
 		turnItem[idx] = new Clone();
-	}	
+	}
+	
+	public void rebuildDice() {
+		int count=0;
+		for (int i = 0; i < dice.length; i++) {
+			if (dice[i]==0) {
+				count++;
+			}
+		}
+		
+		if (other!=null) {
+			int[] newDice = new int[dice.length+other.length-count];
+			int check=0;			
+			for (int i = dice.length-count; i < dice.length+other.length-count; i++) {
+				newDice[i]=other[check];
+				check++;
+			}
+			other=null;
+			check=0;		
+			for (int i = 0; i < dice.length; i++) {
+				if (dice[i] !=0) {
+					newDice[check]=dice[i];
+					check++;
+				}				
+			}
+			dice=newDice;
+		}
+		else {
+			int [] newDice = new int[dice.length-count];
+			int check=0;		
+			for (int i = 0; i < dice.length; i++) {
+				if (dice[i] !=0) {
+					newDice[check]=dice[i];
+					check++;
+				}				
+			}
+			dice=newDice;
+		}
+	}//end of method rebulidDice
 	
 }
 

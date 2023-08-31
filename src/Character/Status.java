@@ -121,7 +121,7 @@ public class Status {
 		if (Math.random()>0.5) {
 			subtractHp(2);
 		setCondition(0,getCondition(0)-1);
-		System.out.println(Color.RED+" * 발화효과로 [2]의 피해를 입습니다 * "+Color.RESET);		
+		System.out.println(Color.RED+" * 주사위를 건들다 [2]의 피해를 입습니다 * "+Color.RESET);		
 		}
 	}
 	
@@ -143,7 +143,7 @@ public class Status {
 		if (Math.random()>0.5) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice-1, 0);
-		System.out.println(Color.PURPLE+" * 마비효과로 주사위를 잃습니다 * "+Color.RESET);
+		System.out.println(Color.PURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -16,9 +17,9 @@ public class Reroll extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		changeDice=Roll.roll6();
-		times--;		
+		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);		
 	}
 }
 //변경 : 주사위를 다시 굴린다(한턴당3번만 가능)(전사)

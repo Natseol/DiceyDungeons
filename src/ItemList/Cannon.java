@@ -16,31 +16,31 @@ public class Cannon extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
-		if (count-dice>0) {
-			count=count-dice;
-			times=1;
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (my.getTurnCount(idx)-dice>0) {
+			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
+			my.setTurnTimes(idx, 1);
 		}
 		else {
 			enemy.subtractHp(10);
 			printDamage(10);
-			count=15;
-			times=0;
+			my.setTurnCount(idx, 15);
+			my.setTurnTimes(idx, 1);
 		}
 	}
 	
-	@Override
-	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-		if (count-dice>0) {
-			count=count-dice;
-			times=1;
-		}
-		else {
-			player.subtractHp(10);
-			printTakeDamage(10);
-			count=15;
-			times=1;
-		}
-	}
+//	@Override
+//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+//		if (count-dice>0) {
+//			count=count-dice;
+//			times=1;
+//		}
+//		else {
+//			player.subtractHp(10);
+//			printTakeDamage(10);
+//			count=15;
+//			times=1;
+//		}
+//	}
 }
 //캐논 : 적에게 10만큼의 피해를 준다 (카운트다운15)

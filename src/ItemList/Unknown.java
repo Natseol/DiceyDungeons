@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -16,11 +17,11 @@ public class Unknown extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		int damage = Roll.roll6();
 		enemy.subtractHp(damage);
 		printDamage(damage);
-		times=0;
+		my.setTurnTimes(idx, 0);
 	}
 }
 //알수없음 : 1~6까지의 랜덤한 피해를 준다

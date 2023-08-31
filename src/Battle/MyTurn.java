@@ -11,94 +11,59 @@ import ItemList.*;
 
 public class MyTurn extends TurnInfo{
 	
-	int[] other;
-	
  	public MyTurn(Player player) {
  		super(player);		
 		diceQ = player.getDiceQuantity();
 		
 		turnItem=new Item[6];
-//		for (int i = 0 ; i<player.getInventory().length;i++) {
-//			setItem(i,player.getInventory(i));
-//		}		
-//		turnItem= player.getInventory().clone();
-		
-		setTurnItem(player);
+		for (int i = 0 ; i<6;i++) {
+			setItem(i,player.getInventory(i));
+		}		
+//		turnItem= player.getInventory().clone();		
+//		setTurnItem(player);
 		dice=new int[diceQ];		
 		for (int i = 0; i < dice.length; i++) {
-			dice[i]=Roll.roll6();			
+			dice[i]=Roll.roll6();
 		}
+		resetTimes(turnItem);
+		resetCount(player);
 	}
-		
-	public int[] getOther() {
-		return other;
-	}
-	public void setOther(int idx, int num) {
-		other[idx] = num;
-	}
-	public void setOther(int num) {
-		other = new int[num];
-	}
+ 	
+//	public void resetTimes() {
+//		for (int i=0;i<6;i++) {
+//			this.itemState[i][0]=getItem(i).getTimes();
+//		}
+//		this.itemState[0][0]=getItem(0).getTimes();
+//		this.itemState[1][0]=getItem(1).getTimes();
+//		this.itemState[2][0]=getItem(2).getTimes();
+//		this.itemState[3][0]=getItem(3).getTimes();
+//		this.itemState[4][0]=getItem(4).getTimes();
+//		this.itemState[5][0]=getItem(5).getTimes();
+//	}
+
+
 	
-	public void rebuildDice() {
-		int count=0;
-		for (int i = 0; i < dice.length; i++) {
-			if (dice[i]==0) {
-				count++;
-			}
-		}
-		
-		if (other!=null) {
-			int[] newDice = new int[dice.length+other.length-count];
-			int check=0;			
-			for (int i = dice.length-count; i < dice.length+other.length-count; i++) {
-				newDice[i]=other[check];
-				check++;
-			}
-			other=null;
-			check=0;		
-			for (int i = 0; i < dice.length; i++) {
-				if (dice[i] !=0) {
-					newDice[check]=dice[i];
-					check++;
-				}				
-			}
-			dice=newDice;
-		}
-		else {
-			int [] newDice = new int[dice.length-count];
-			int check=0;		
-			for (int i = 0; i < dice.length; i++) {
-				if (dice[i] !=0) {
-					newDice[check]=dice[i];
-					check++;
-				}				
-			}
-			dice=newDice;
-		}
-	}//end of method rebulidDice
-	
-	private void setTurnItem(Player player) {
-		turnItem = new Item[player.getInventory().length];
-		switch (player.getJob()) {
-		case "전사":
-			turnItem = new Item[6];			
-			setItem(0, new Sword());     
-			setItem(1, new Dagger());       
-			setItem(2, (Item) player.getInventory(2));
-			setItem(3, player.getInventory(3));   
-			setItem(4, player.getInventory(4));    
-			setItem(5, player.getInventory(5));    
-			break;
-		case "도적":
-			turnItem = new Item[6];
-			setItem(0, new Dagger());   
-			setItem(1, new Bow());      
-			setItem(2, new Nothing());  
-			setItem(3, new Nothing());  
-			setItem(4, new LockPick()); 
-			setItem(5, new Reroll());   
-			break;                      
-		}
-	}
+//	private void setTurnItem(Player player) {
+//		turnItem = new Item[player.getInventory().length];
+//		switch (player.getJob()) {
+//		case "전사":
+//			turnItem = new Item[6];			
+//			setItem(0, Item.copyItem(player.getInventory(0)));     
+//			setItem(1, Item.copyItem(player.getInventory(1)));       
+//			setItem(2, Item.copyItem(player.getInventory(2)));  
+//			setItem(3, Item.copyItem(player.getInventory(3)));   
+//			setItem(4, Item.copyItem(player.getInventory(4)));    
+//			setItem(5, Item.copyItem(player.getInventory(5)));    
+//			break;
+//		case "도적":
+//			turnItem = new Item[6];
+//			setItem(0, new Dagger());   
+//			setItem(1, new Bow());      
+//			setItem(2, new Nothing());  
+//			setItem(3, new Nothing());  
+//			setItem(4, new LockPick()); 
+//			setItem(5, new Reroll());   
+//			break;                      
+//		}
+//	}
 }

@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -11,11 +12,11 @@ public class Nothing extends Item{
 	public Nothing()	{
 		name = "빈슬롯";
 		description = "장비가 없습니다";
-		times=0;
+		times=1;
 	}
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		changeDice = dice;
 	}
 }

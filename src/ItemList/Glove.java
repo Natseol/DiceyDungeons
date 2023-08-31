@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -10,20 +11,20 @@ public class Glove extends Item{
 
 	public Glove()	{
 		name = "글러브";
-		description="ㅁ 의 마비 피해를 줍니다 (2~5 만 가능)";
+		description="ㅁ 의 마비 피해를 줍니다 (2~4 만 가능)";
 		times=1;
 	}	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(dice);
-		printDamage(dice);
-		times=0;
+		printTakeParalysis(dice);
+		my.setTurnTimes(idx, 0);
 		enemy.setCondition(2,enemy.getCondition(2)+1);
 	}
 	
 	@Override
 	public boolean checkDice(int dice) {
-		if (dice<2||dice>5) {
+		if (dice<2||dice>4) {
 			check=true;
 		}
 		return check;

@@ -13,10 +13,10 @@ public class GreatSword extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(3*dice);
 		printDamage3(dice);
-		times=0;
+		my.setTurnTimes(idx, 0);
 	}
 }
 //대검 : 눈금x3의 피해를 준다 (전투당 1번만 사용가능)

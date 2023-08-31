@@ -13,17 +13,17 @@ public class Sword extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(dice);
 		printDamage(dice);
-		times=0;
+		my.setTurnTimes(idx, 0);
 	}
 
-	@Override
-	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-		player.subtractHp(dice);
-		printTakeDamage(dice);
-		times=0;
-	}
+//	@Override
+//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
+//		player.subtractHp(dice);
+//		printTakeDamage(dice);
+//		times=0;
+//	}
 }
 //검 : 눈금만큼 피해를 준다

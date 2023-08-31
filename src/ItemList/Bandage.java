@@ -14,7 +14,7 @@ public class Bandage extends Item {
 	}	
 
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		player.addHp(2);
 		printRecovery(2);
 	}

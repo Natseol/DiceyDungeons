@@ -17,9 +17,9 @@ public class Vampire extends Enemy {
 		inventory = new Item[] {new Scythe(), new Scythe(), new Scythe()};		
 	}
 	
-	public void action (Player player, EnemyTurn turn, int num) {		
-		inventory[num].action(this, player, turn.getDice(num), turn);
-	}
+//	public void action (Player player, EnemyTurn turn, int num) {		
+//		inventory[num].action(this, player, turn.getDice(num), turn);
+//	}
 	
 	
 }

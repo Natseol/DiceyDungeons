@@ -1,6 +1,7 @@
 package ItemList;
 
 import Battle.MyTurn;
+import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
@@ -18,7 +19,7 @@ public class Talisman extends Item{
 	}	
 
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (count-dice>0) {
 			count-=dice;					
 		}
@@ -26,7 +27,7 @@ public class Talisman extends Item{
 			my.setOther(1);
 			changeDice=6;
 			my.setOther(0,6);
-			times=0;
+			my.setTurnTimes(idx, 0);
 			count=10;
 		}
 	}

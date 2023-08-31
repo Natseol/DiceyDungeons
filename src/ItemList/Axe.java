@@ -14,10 +14,10 @@ public class Axe extends Item{
 	}	
 	
 	@Override
-	public void action(Status player, Status enemy, int dice, MyTurn my) {
+	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(2*dice);
 		printDamage2(dice);
-		times=0;
+		my.setTurnTimes(idx, 0);
 	}
 	
 	@Override
