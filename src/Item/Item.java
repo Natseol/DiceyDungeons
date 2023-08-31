@@ -60,5 +60,4 @@ public class Item extends ItemScript{
 	public void setChangeDice(int dice) {
 		changeDice = dice;
 	}
-
 }
