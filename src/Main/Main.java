@@ -24,7 +24,7 @@ public class Main extends Script {
 //		player.setCondition(2,2);		
 
 		int floor=1;		
-		int eNum=1;
+		int eNum=0;
 
 		Field field = new Field();
 
@@ -34,7 +34,7 @@ public class Main extends Script {
 					new Marine(),
 					new Frog(),
 					new Gatekeeper(),
-					new Mimic(),
+					new Fighter(),
 					new Mimic(),
 					new GatekeeperElite(),
 					new SnowMan(),
@@ -214,11 +214,29 @@ public class Main extends Script {
 						continue;
 					}//상태이상 마비
 
+					for (int j=0;j<enemy[eNum].getInventory().length;j++) {
+						System.out.print(enemy[eNum].getInventory(j).getCount()+"  ");
+					}
+					System.out.println();
+					for (int j=0;j<enemy[eNum].getInventory().length;j++) {
+						System.out.print(enemyTurn.getItem(j).getCount()+"  ");
+					}
+					System.out.println();
+					
 					enemyTurn.getItem(enemyItemNum).action
 					(enemy[eNum], player, enemyTurn.getDice(i), enemyTurn, enemyItemNum);
 					
 					enemy[eNum].getInventory(enemyItemNum).setCount(enemyTurn.getTurnCount(enemyItemNum));
 					//카운트 동기화
+					
+					for (int j=0;j<enemy[eNum].getInventory().length;j++) {
+						System.out.print(enemy[eNum].getInventory(j).getCount()+"  ");
+					}
+					System.out.println();
+					for (int j=0;j<enemy[eNum].getInventory().length;j++) {
+						System.out.print(enemyTurn.getItem(j).getCount()+"  ");
+					}
+					System.out.println();
 
 					if (enemyTurn.getItem(enemyItemNum).getTimes()==0) {
 						enemyTurn.setItem(enemyItemNum, new Nothing());
@@ -262,7 +280,7 @@ public class Main extends Script {
 			while (true) {//필드진입
 				int chooseInField = field.move(floor);
 				if (chooseInField == 1) {//1.전투
-					if(eNum == enemy.length ) {
+					if(eNum == 2||eNum == 5||eNum == 8||eNum == 12 ) {
 						System.out.println();
 						System.out.println("이 층에는 더이상 적이 없습니다");
 						continue;
@@ -288,7 +306,7 @@ public class Main extends Script {
 					}
 				}
 				else if (chooseInField == 4) {//4.다음층
-					eNum=0;
+//					eNum=0;
 					floor++;
 					field = new Field();					
 					break;

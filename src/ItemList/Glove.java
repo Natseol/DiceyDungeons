@@ -16,7 +16,7 @@ public class Glove extends Item{
 	}	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (dice<5&&dice>1) {
+		if (dice>4||dice<2) {
 			printIncorrectDice();
 			return;
 		}

@@ -21,14 +21,14 @@ public class Talisman extends Item{
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (count-dice>0) {
-			count-=dice;					
+			my.setTurnCount(idx, my.getTurnCount(idx)-dice);					
 		}
 		else {
 			my.setOther(1);
 			changeDice=6;
 			my.setOther(0,6);
 			my.setTurnTimes(idx, 0);
-			count=10;
+			my.setTurnCount(idx, 10);
 		}
 	}
 }

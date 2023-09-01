@@ -18,7 +18,7 @@ public class Fist extends Item{
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(2);
-		printDamage(dice);
+		printDamage(2);
 	}
 
 }

@@ -6,7 +6,7 @@ import Main.Color;
 
 public class Player extends Job {
 	protected int exp;
-	protected int[] expTable= {4,6,8,10};
+	protected int[] expTable= {4,6,6,8};
 	protected int level=1;	
 	
     public Player() {}

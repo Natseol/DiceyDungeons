@@ -18,8 +18,8 @@ public class Scythe extends Item{
 		printDamage(dice);
 		if (dice>=5) {
 			player.addHp(2);
+			printRecovery(2);
 		}
-		printRecovery(2);
 		my.setTurnTimes(idx, 0);
 	}
 
