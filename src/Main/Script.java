@@ -8,27 +8,28 @@ import ItemList.*;
 
 public class Script implements Color {
 	public void chooseJob() {		
-		System.out.println("---------------------------------");
-		System.out.println("     클래스를 선택하세요(1.전사 2.도적)  ");
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
+		System.out.println("        클래스를 선택하세요");
+		System.out.println("        (1.전사 2.도적 3.궁수 4.마법사 5.기사)");
+		System.out.println("------------------------------------------------");
 		System.out.println();
 	}
 
 	public void startBattle() {
 		System.out.println();
 		System.out.println("\t  전투를 시작합니다");
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 	}
 	
 	public void startMyTurn() {
 		System.out.println();
 		System.out.println();
 		System.out.println("\t   - 나의 턴 -");
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 	}
 	
 	public void printBattleInfo(Player player, Enemy enemy) {		
-		System.out.print("Lv:"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t");
+		System.out.print(player.getJob()+" Lv"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t\t");
 		System.out.println(enemy.getName()+" 주사위:"+enemy.getDiceQuantity());
 		if (player.getHp()<player.getMaxHp()*0.3) {
 			System.out.print(BRED+player.getHp()+RESET); 
@@ -39,38 +40,65 @@ public class Script implements Color {
 		if (player.getDef()>0) {
 			System.out.print(BYELLOW+"("+player.getDef()+")"+RESET);
 		}
-		System.out.print(" / "+player.getMaxHp()+"\t\t");
+		System.out.print(" / "+player.getMaxHp()+"\t\t\t\t");
 		System.out.print(enemy.getHp());
 		if (enemy.getDef()>0) {
 			System.out.print(BYELLOW+"("+enemy.getDef()+")"+RESET);
 		}
 		System.out.println(" / "+enemy.getMaxHp());
+		printConditionInfo(player, enemy);
+	}
+	
+	public void printConditionInfo (Player player, Enemy enemy) {
+		int countCondi=0;
 		if (player.getCondition(0)>0) {
-			System.out.print(RED+"발화:"+player.getCondition(0)+"  "+RESET);
+			System.out.print(RED+"발화:"+player.getCondition(0)+" "+RESET);
+			countCondi++;
 		}
 		if (player.getCondition(1)>0) {
-			System.out.print(BBLUE+"빙결:"+player.getCondition(1)+"  "+RESET);
+			System.out.print(BBLUE+"빙결:"+player.getCondition(1)+" "+RESET);
+			countCondi++;
 		}
 		if (player.getCondition(2)>0) {
-			System.out.print(BPURPLE+"마비:"+player.getCondition(2)+"  "+RESET);
+			System.out.print(BPURPLE+"마비:"+player.getCondition(2)+" "+RESET);
+			countCondi++;
 		}
 		if (player.getCondition(3)>0) {
-			System.out.print(BCYAN+"중독:"+player.getCondition(3)+"  "+RESET);
+			System.out.print(BCYAN+"중독:"+player.getCondition(3)+" "+RESET);
+			countCondi++;
 		}
-		if (enemy.getCondition(0)>0||enemy.getCondition(1)>0||enemy.getCondition(2)>0) {
-		System.out.print("\t\t\t");
+		switch (countCondi) {
+			case 4:
+				System.out.print("\t\t\t");
+				break;
+			case 3:
+				System.out.print("\t\t\t");
+				break;
+			case 2:
+				System.out.print("\t\t\t\t");
+				break;
+			case 1:
+				System.out.print("\t\t\t\t\t");
+				break;
+			default:
+				System.out.print("\t\t\t\t");
+				break;
 		}
+//		if (enemy.getCondition(0)>0||enemy.getCondition(1)>0||enemy.getCondition(2)>0||enemy.getCondition(3)>0) {
+//			System.out.println();
+//		}
+//		System.out.print("\t\t\t");		
 		if (enemy.getCondition(0)>0) {
-			System.out.print(RED+"발화:"+enemy.getCondition(0)+"  "+RESET);
+			System.out.print(RED+"발화:"+enemy.getCondition(0)+" "+RESET);
 		}
 		if (enemy.getCondition(1)>0) {
-			System.out.print(BBLUE+"빙결:"+enemy.getCondition(1)+"  "+RESET);
+			System.out.print(BBLUE+"빙결:"+enemy.getCondition(1)+" "+RESET);
 		}
 		if (enemy.getCondition(2)>0) {
-			System.out.print(BPURPLE+"마비:"+enemy.getCondition(2)+"  "+RESET);
+			System.out.print(BPURPLE+"마비:"+enemy.getCondition(2)+" "+RESET);
 		}
-		if (enemy.getCondition(2)>0) {
-			System.out.print(BCYAN+"중독:"+enemy.getCondition(3)+"  "+RESET);
+		if (enemy.getCondition(3)>0) {
+			System.out.print(BCYAN+"중독:"+enemy.getCondition(3)+" "+RESET);
 		}
 		System.out.println();
 	}
@@ -107,7 +135,7 @@ public class Script implements Color {
 	public void selectTurnEnd() {
 			System.out.println();
 			System.out.println(" - 턴 종료 -");						
-			System.out.println("---------------------------------");
+			System.out.println("------------------------------------------------");
 	}
 	
 	public void printSelectItem(TurnInfo turnInfo) {
@@ -115,7 +143,7 @@ public class Script implements Color {
 	}
 	
 	public void printItem(TurnInfo turnInfo) {
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 		for (int i = 0; i < turnInfo.getItem().length; i++) {
 			if (turnInfo.getItem(i).getName().equals(new Nothing().getName())) {
 				System.out.print(BLACK);
@@ -129,20 +157,22 @@ public class Script implements Color {
 			}
 			System.out.println(RESET);
 		}
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 	}	
 	
 	public void printEnemyInfo(TurnInfo turnInfo, Enemy enemy) {
 		System.out.println();
+		System.out.println();
 		System.out.println(" - "+enemy.getName()+"("+enemy.getGrade()+") -");
 		System.out.println("설명: "+enemy.getDescription());
+		System.out.println("주사위: "+enemy.getDiceQuantity()+"개");
 		printItem(turnInfo);
 		System.out.println();
 	}
 	
 	public void printPlayerInfo(Player player) {
 		System.out.println();
-		System.out.println("-------------- 스탯 ---------------");
+		System.out.println("--------------------- 스탯 ----------------------");
 			System.out.println("Lv: "+player.getLevel()+"  [EXP: "+player.getExp()+"/"+player.getExpTable(player.getLevel()-1)+"]");
 			System.out.println("주사위:"+player.getDiceQuantity());
 			System.out.print("Hp: "+player.getHp());
@@ -174,19 +204,19 @@ public class Script implements Color {
 		System.out.println();
 		System.out.println(B_BLACK+" * 주사위 눈금을 확인하세요 * "+RESET);
 		System.out.println();
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 	}
 	
 	public void changeAlready() {
 		System.out.println();
 		System.out.println("이미 교환완료 했습니다");
 		System.out.println();
-		System.out.println("---------------------------------");
+		System.out.println("------------------------------------------------");
 	}
 	public void useAlready() {
 	System.out.println();
 	System.out.println("모든 횟수를 소진했습니다");
-	System.out.println("---------------------------------");
+	System.out.println("------------------------------------------------");
 	}
 
 }

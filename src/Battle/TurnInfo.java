@@ -13,6 +13,7 @@ public class TurnInfo extends BattleSetting{
 	int[] dice;	
 	Item[] turnItem;
 	int[] other;
+
 	
 	public TurnInfo() {}
  	public TurnInfo(Status status) {

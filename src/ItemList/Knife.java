@@ -26,4 +26,4 @@ public class Knife extends Item{
 			my.setTurnCount(idx, 10);
 		}
 	}
-}//미구현
+}

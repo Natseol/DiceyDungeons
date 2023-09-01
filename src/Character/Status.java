@@ -12,6 +12,8 @@ public class Status {
 	protected int diceQuantity;
 	protected Item[] inventory;
 	protected int condition[]=new int[4];
+	Boolean isEffect;
+	int countCondi;
 		
 	public Status() {}	
 	public Status(int hp, int maxHp, int diceQuantity) {
@@ -97,6 +99,13 @@ public class Status {
 		inventory[idx] = item;
 	}
 		
+	public boolean getIsEffect() {
+		return isEffect;
+	}	
+	public void setIsEffect(boolean effect) {
+		isEffect = effect;
+	}
+		
 	
 //	상태이상
 //	0. 발화 : 주사위를 사용하려면 체력 2 소모
@@ -112,9 +121,22 @@ public class Status {
 	public void setCondition(int idx,int changeNum) {
 		condition[idx]=changeNum;		
 	}
+	
+	public int getCountCondi() {
+		return countCondi;
+	}
+	public int countCondition() {
+		int countCondi=0;
+		for (int i=0;i<condition.length;i++) {
+			if (condition[i]>0) {
+				countCondi++;
+			}
+		}
+		return countCondi;
+	}
 
 	public void damagedFire() {
-		if (Math.random()>0.5) {
+		if (Math.random()<(0.25*getCondition(0))) {
 			subtractHp(2);
 		setCondition(0,getCondition(0)-1);
 		System.out.println(Color.RED+" * 주사위를 건들다 [2]의 피해를 입습니다 * "+Color.RESET);		
@@ -135,17 +157,34 @@ public class Status {
         turninfo.setDice(maxIndex,1);		
 	}
 
-	public void damagedParalysis(TurnInfo turninfo, int idxDice) {
+	public boolean damagedParalysis(TurnInfo turninfo, int idxDice) {
 		if (Math.random()>0.5) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice-1, 0);
 		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
+		setIsEffect(true);
+		return true;
 		}
+		return false;
 	}
 	
-	public void damagedPosion() {
+	public boolean damagedParalysis(EnemyTurn turninfo, int idxDice) {
+		if (Math.random()>0.5) {
+		setCondition(2,getCondition(2)-1);
+		turninfo.setDice(idxDice, 0);
+		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
+		setIsEffect(true);
+		return true;
+		}
+		return false;
+	}
+
+	
+	public void damagedPoison() {
 		subtractHp(getCondition(3));
+		System.out.println();
+		System.out.println(Color.BCYAN+" * 중독됐습니다. ["+getCondition(3)+"]의 피해를 입습니다 * "+Color.RESET);
+		System.out.println();
 		setCondition(3,getCondition(3)-1);
-		System.out.println(Color.BCYAN+" * 중독됐습니다. ["+getCondition(3)+"]의 피해를 입습니다 * "+Color.RESET);		
 	}
 }

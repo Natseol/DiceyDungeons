@@ -11,6 +11,8 @@ import ItemList.*;
 
 public class MyTurn extends TurnInfo{
 	
+	boolean isUseSkill;
+	
  	public MyTurn(Player player) {
  		super(player);		
 		diceQ = player.getDiceQuantity();
@@ -19,7 +21,16 @@ public class MyTurn extends TurnInfo{
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();
 		}
+		isUseSkill=false;
 		resetTimes(turnItem);
 		resetCount(player);
-	} 
+	}
+ 	
+ 	public boolean getIsUseSkill() {
+ 		return isUseSkill;
+ 	}
+ 	public void setIsUseSkill(boolean useSkill) {
+ 		isUseSkill = useSkill;
+ 	}
+ 	
 }
