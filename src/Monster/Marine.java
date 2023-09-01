@@ -11,13 +11,9 @@ public class Marine extends Enemy{
 		name = "우주 해병";
 		description = "Go! Go! Go!";
 		grade = "일반";
-		hp = 26;
 		maxHp = 26;	
-		diceQuantity = 3;
+		hp = maxHp;
+		diceQuantity = 2;
 		inventory = new Item[] {new Cannon()};		
 	}
-	
-//	public void action (Player player, EnemyTurn turn, int num) {		
-//		inventory[num].action(this, player, turn.getDice(num), turn);
-//	}
 }

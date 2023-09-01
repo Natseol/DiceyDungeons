@@ -17,6 +17,10 @@ public class Drop extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice<2) {
+			printIncorrectDice();
+			return;
+		}
 		changeDice=dice-1;
 		my.setTurnTimes(idx, 0);		
 	}

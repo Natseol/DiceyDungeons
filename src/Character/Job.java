@@ -24,7 +24,7 @@ public class Job extends Status {
 		inventory = new Item[6];
 		inventory[0]= new Sword();
 		inventory[1]= new Axe();
-		inventory[2]= new IceShards();
+		inventory[2]= new Nothing();
 		inventory[3]= new Nothing();
 		inventory[4]= new Rising();
 		inventory[5]= new Reroll();
@@ -34,7 +34,7 @@ public class Job extends Status {
 		maxHp=22;
 		hp=maxHp;
 		job = "도적";
-		diceQuantity = 3;
+		diceQuantity = 2;
 		setItemThief();
 	}
 	

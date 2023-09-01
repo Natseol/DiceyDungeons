@@ -15,6 +15,10 @@ public class Axe extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice>4) {
+			printIncorrectDice();
+			return;
+		}
 		enemy.subtractHp(2*dice);
 		printDamage2(dice);
 		my.setTurnTimes(idx, 0);

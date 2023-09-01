@@ -10,14 +10,10 @@ public class SwordMan extends Enemy{
 	public SwordMan() {
 		name = "검의 달인";
 		description = "전사가 아닙니다";
-		grade = "일반";
-		hp = 20;
-		maxHp = 20;	
+		grade = "어려움";
+		maxHp = 38;	
+		hp = maxHp;
 		diceQuantity = 2;
-		inventory = new Item[] {new FireSword(), new FireSword()};		
+		inventory = new Item[] {new BroadSword(), new FireSword()};		
 	}
-	
-//	public void action (Player player, EnemyTurn turn, int num) {		
-//		inventory[num].action(this, player, turn.getDice(num), turn );
-//	}
 }

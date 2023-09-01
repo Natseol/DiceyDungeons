@@ -24,7 +24,7 @@ public class Main extends Script {
 //		player.setCondition(2,2);		
 
 		int floor=1;		
-		int eNum=0;
+		int eNum=1;
 
 		Field field = new Field();
 
@@ -32,11 +32,18 @@ public class Main extends Script {
 
 			Enemy[] enemy = new Enemy[]{
 					new Marine(),
-					new SwordMan(),
+					new Frog(),
 					new Gatekeeper(),
+					new Mimic(),
+					new Mimic(),
+					new GatekeeperElite(),
+					new SnowMan(),
 					new Onepun(),
+					new Vampire(),
+					new SwordMan(),
 					new Bear(),
-					new Vampire()
+					new Witch(),
+					new VampireElite()
 			};
 			
 //			enemy[eNum].setCondition(0,3);
@@ -161,12 +168,12 @@ public class Main extends Script {
 				// 전투 탈출
 				//*****************
 
-				System.out.println();
-				System.out.println("---------------------------------");
-				System.out.println("종료 = 1");
-				if (scanner.nextInt()==1) {
-					break;
-				}
+//				System.out.println();
+//				System.out.println("---------------------------------");
+//				System.out.println("종료 = 1");
+//				if (scanner.nextInt()==1) {
+//					break;
+//				}
 
 				System.out.println();
 				script.printBattleInfo(player, enemy[eNum]);

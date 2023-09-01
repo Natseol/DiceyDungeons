@@ -62,10 +62,10 @@ public class Field {
 		System.out.println();
 		System.out.println("회복의 샘에 왔습니다");
 		System.out.println("---------------------------------");
-		System.out.println("체력을 10 회복합니다  남은 횟수 : "+getHealCount());
+		System.out.println("체력을 8 회복합니다  남은 횟수 : "+getHealCount());
 		System.out.println(Color.YELLOW+"(예:1 아니오:0)"+Color.RESET);				
 		if (scanner.nextInt()==1) {
-			player.setHp(player.getHp()+10);
+			player.setHp(player.getHp()+8);
 			if (player.getHp()>player.getMaxHp()) {
 				player.setHp(player.getMaxHp());
 			}

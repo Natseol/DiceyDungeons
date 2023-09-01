@@ -18,8 +18,12 @@ public class Spear extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice<6) {
+			printIncorrectDice();
+			return;
+		}
 		enemy.subtractHp(10);
-		printDamage3(dice);
+		printDamage(10);
 		my.setTurnTimes(idx, 0);
 	}
 	

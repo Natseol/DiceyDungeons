@@ -17,6 +17,10 @@ public class Mirror extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice!=6) {
+			printIncorrectDice();
+			return;
+		}
 		player.setDiceQuantity(player.getDiceQuantity()+1);
 		my.setTurnTimes(idx, 0);		
 	}

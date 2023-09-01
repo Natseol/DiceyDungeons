@@ -13,11 +13,7 @@ public class Gatekeeper extends Enemy {
 		grade = "일반";
 		maxHp = 26;	
 		hp = maxHp;
-		diceQuantity = 3;
-		inventory = new Item[] {new SpikeShield(), new SpikeShield(), new SpikeShield()};		
+		diceQuantity = 2;
+		inventory = new Item[] {new SpikeShield(), new Charge()};		
 	}
-	
-//	public void action (Player player, EnemyTurn turn, int num) {		
-//		inventory[num].action(this, player, turn.getDice(num), turn);
-//	}
 }

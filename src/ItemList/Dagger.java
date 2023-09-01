@@ -17,6 +17,10 @@ public class Dagger extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice>3) {
+			printIncorrectDice();
+			return;
+		}
 		enemy.subtractHp(dice);
 		printDamage(dice);
 	}

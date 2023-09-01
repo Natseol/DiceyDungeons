@@ -62,22 +62,26 @@ public class Player extends Job {
 				setInventory(i, new GreatSword());
 			}
 		}
-		
-		if (job=="전사") {//주사위 초기화
+		for (int i=0;i<condition.length;i++) {
+			condition[i]=0;
+		}
+		def = 0;	
+//		if (job=="전사") {//주사위 초기화
 			switch (level) {
 			case 1 : diceQuantity = 2; break;
 			case 2 : diceQuantity = 3; break;
 			case 3 : diceQuantity = 3; break;
 			case 4 : diceQuantity = 4; break;
+			case 5 : diceQuantity = 5; break;
 			}
-		}
-		else if (job=="도적") {
-			switch (level) {
-			case 1 : diceQuantity = 3; break;
-			case 2 : diceQuantity = 4; break;
-			case 3 : diceQuantity = 4; break;
-			case 4 : diceQuantity = 5; break;
-			}
-		}		
+//		}
+//		else if (job=="도적") {
+//			switch (level) {
+//			case 1 : diceQuantity = 3; break;
+//			case 2 : diceQuantity = 4; break;
+//			case 3 : diceQuantity = 4; break;
+//			case 4 : diceQuantity = 5; break;
+//			}
+//		}		
 	}
 }

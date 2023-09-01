@@ -17,6 +17,10 @@ public class Heal extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+		if (dice>3) {
+			printIncorrectDice();
+			return;
+		}
 		player.addHp(dice);
 		printRecovery(dice);
 		my.setTurnTimes(idx, 0);
