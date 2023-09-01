@@ -7,14 +7,18 @@ import Main.Color;
 public class Player extends Job {
 	protected int exp;
 	protected int[] expTable= {4,6,6,8};
-	protected int level=1;	
+	protected int level;	
 	
     public Player() {}
 	public Player(int num) {//1.전사 2.도적
-		inventory = new Item[6];
+		level=1;
+		inventory = new Item[5];
 		switch (num) {
 		case 1 : setJobWarrior(); break;
 		case 2 : setJobThief(); break;
+		case 3 : setJobArcher(); break;
+		case 4 : setJobMagician(); break;
+		case 5 : setJobKnight(); break;		
 		}		
 	}
 	

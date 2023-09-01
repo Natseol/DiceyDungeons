@@ -30,24 +30,32 @@ public class Script implements Color {
 	public void printBattleInfo(Player player, Enemy enemy) {		
 		System.out.print("Lv:"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t");
 		System.out.println(enemy.getName()+" 주사위:"+enemy.getDiceQuantity());
-		System.out.print(player.getHp());
-		if (player.getDef()>0) {
-			System.out.print("("+player.getDef()+")");
+		if (player.getHp()<player.getMaxHp()*0.3) {
+			System.out.print(BRED+player.getHp()+RESET); 
 		}
-		System.out.print(" / "+player.getMaxHp()+"\t\t\t");
+		else {
+		System.out.print(player.getHp());
+		}
+		if (player.getDef()>0) {
+			System.out.print(BYELLOW+"("+player.getDef()+")"+RESET);
+		}
+		System.out.print(" / "+player.getMaxHp()+"\t\t");
 		System.out.print(enemy.getHp());
 		if (enemy.getDef()>0) {
-			System.out.print("("+enemy.getDef()+")");
+			System.out.print(BYELLOW+"("+enemy.getDef()+")"+RESET);
 		}
 		System.out.println(" / "+enemy.getMaxHp());
 		if (player.getCondition(0)>0) {
 			System.out.print(RED+"발화:"+player.getCondition(0)+"  "+RESET);
 		}
 		if (player.getCondition(1)>0) {
-			System.out.print(CYAN+"빙결:"+player.getCondition(1)+"  "+RESET);
+			System.out.print(BBLUE+"빙결:"+player.getCondition(1)+"  "+RESET);
 		}
 		if (player.getCondition(2)>0) {
-			System.out.print(PURPLE+"마비:"+player.getCondition(2)+"  "+RESET);
+			System.out.print(BPURPLE+"마비:"+player.getCondition(2)+"  "+RESET);
+		}
+		if (player.getCondition(3)>0) {
+			System.out.print(BCYAN+"중독:"+player.getCondition(3)+"  "+RESET);
 		}
 		if (enemy.getCondition(0)>0||enemy.getCondition(1)>0||enemy.getCondition(2)>0) {
 		System.out.print("\t\t\t");
@@ -56,10 +64,13 @@ public class Script implements Color {
 			System.out.print(RED+"발화:"+enemy.getCondition(0)+"  "+RESET);
 		}
 		if (enemy.getCondition(1)>0) {
-			System.out.print(CYAN+"빙결:"+enemy.getCondition(1)+"  "+RESET);
+			System.out.print(BBLUE+"빙결:"+enemy.getCondition(1)+"  "+RESET);
 		}
 		if (enemy.getCondition(2)>0) {
-			System.out.print(PURPLE+"마비:"+enemy.getCondition(2)+"  "+RESET);
+			System.out.print(BPURPLE+"마비:"+enemy.getCondition(2)+"  "+RESET);
+		}
+		if (enemy.getCondition(2)>0) {
+			System.out.print(BCYAN+"중독:"+enemy.getCondition(3)+"  "+RESET);
 		}
 		System.out.println();
 	}
@@ -147,7 +158,7 @@ public class Script implements Color {
 	
 	public void printDamagedIce() {
 //		System.out.println();
-		System.out.println(CYAN+" * 주사위가 얼어붙습니다. 눈금이 1로 변합니다 *"+RESET);
+		System.out.println(B_BBLUE+" * 주사위가 얼어붙습니다. 눈금이 1로 변합니다 *"+RESET);
 		System.out.println();
 //		System.out.println("---------------------------------");
 	}

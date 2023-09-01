@@ -43,7 +43,7 @@ public class Field {
 			if (invenIdx+1 == 0) {
 				continue;
 			}
-			else if (invenIdx+1 == 6) {
+			else if (invenIdx+1 == 5) {
 				System.out.println("");
 				System.out.println("고유장비는 변경할 수 없습니다");
 				continue;

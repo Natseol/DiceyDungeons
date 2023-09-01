@@ -11,6 +11,7 @@ public class Status {
 	protected int def;
 	protected int diceQuantity;
 	protected Item[] inventory;
+	protected int condition[]=new int[4];
 		
 	public Status() {}	
 	public Status(int hp, int maxHp, int diceQuantity) {
@@ -95,12 +96,7 @@ public class Status {
 	public void setInventory(int idx, Item item) {
 		inventory[idx] = item;
 	}
-	
-//	public void setInventory(int idx, Sword sword) {
-//		inventory[idx] = new Sword();
-//	} 
 		
-	int condition[]=new int[3];
 	
 //	상태이상
 //	0. 발화 : 주사위를 사용하려면 체력 2 소모
@@ -143,8 +139,13 @@ public class Status {
 		if (Math.random()>0.5) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice-1, 0);
-		System.out.println(Color.PURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
+		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
 		}
 	}
 	
+	public void damagedPosion() {
+		subtractHp(getCondition(3));
+		setCondition(3,getCondition(3)-1);
+		System.out.println(Color.BCYAN+" * 중독됐습니다. ["+getCondition(3)+"]의 피해를 입습니다 * "+Color.RESET);		
+	}
 }

@@ -10,14 +10,14 @@ public class Enemy extends Status{
 	protected String grade;
 	
 	public Enemy() {}
-	
-	public Enemy (int hp, int maxHp, int diceQuantity) {
-		super(hp,maxHp,diceQuantity);
-		this.hp = hp;
-		this.maxHp=maxHp;
-		this.diceQuantity = diceQuantity;
-		inventory = new Item[2];
-	}
+//	
+//	public Enemy (int hp, int maxHp, int diceQuantity) {
+//		super(hp,maxHp,diceQuantity);
+//		this.hp = hp;
+//		this.maxHp=maxHp;
+//		this.diceQuantity = diceQuantity;
+//		inventory = new Item[2];
+//	}
 	
 	public void setEnemy(int num) {
 		
