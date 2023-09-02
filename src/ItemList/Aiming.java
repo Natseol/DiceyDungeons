@@ -7,14 +7,14 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Talisman extends Item{
+public class Aiming extends Item{
 
 	int otherDice = 0;
 	
-	public Talisman()	{
-		name = "부적";
-		count=7;
-		description = "3 주사위를 2개 얻습니다 (카운트 7)";
+	public Aiming()	{
+		name = "조준";
+		count=10;
+		description = "6 주사위를 2개 얻습니다 (카운트 10)";
 		times=1;		
 	}	
 
@@ -25,10 +25,11 @@ public class Talisman extends Item{
 		}
 		else {
 			my.setOther(1);
-			changeDice=3;
-			my.setOther(0,3);
+			changeDice=6;
+			my.setOther(0,6);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 7);
+			my.setTurnCount(idx, 10);
 		}
 	}
 }
+//부적 : 6주사위 2개를 얻는다(카운트 10)

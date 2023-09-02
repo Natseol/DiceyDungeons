@@ -20,6 +20,5 @@ public class Fist extends Item{
 		enemy.subtractHp(2);
 		printDamage(2);
 	}
-
 }
 //주먹 : 2의 피해를 준다 (재사용가능)

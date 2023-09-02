@@ -14,6 +14,6 @@ public class Bear extends Enemy{
 		maxHp = 40;	
 		hp = maxHp;
 		diceQuantity = 3;
-		inventory = new Item[] {new Overwhelming(), new Overwhelming(), new Overwhelming()};		
+		inventory = new Item[] {new Bash(), new Overwhelming(), new Overwhelming()};		
 	}
 }

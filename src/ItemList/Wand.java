@@ -10,7 +10,7 @@ import Item.Item;
 public class Wand extends Item{
 
 	public Wand()	{
-		name = "지팡이";
+		name = "완드";
 		count=8;
 		description="[6] 의 화염 피해를 줍니다 (카운트 8)";
 		times=1;

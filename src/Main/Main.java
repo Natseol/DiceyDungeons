@@ -30,7 +30,7 @@ public class Main extends Script {
 		}
 		player.setJobItem(player.getJob(), inputNum);
 		
-		Enemy[] enemy = new Enemy[12];
+		Enemy[] enemy = new Enemy[13];
 		Field field = new Field();
 
 //		player.setCondition(0,3);
@@ -40,7 +40,7 @@ public class Main extends Script {
 		
 //		player.setSp(12);
 
-		for (int i=0;i<12;i++) {
+		for (int i=0;i<enemy.length;i++) {
 			enemy[i]=Enemy.setEnemy(i);
 		}
 		

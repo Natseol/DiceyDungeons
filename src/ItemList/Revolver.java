@@ -1,5 +1,6 @@
 package ItemList;
 
+import Battle.EnemyTurn;
 import Battle.MyTurn;
 import Battle.TurnInfo;
 import Character.Enemy;
@@ -7,33 +8,30 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Drop extends Item{
+public class Revolver extends Item{
 
-	public Drop()	{
-		name = "하락";
-		description = "주사위 눈금을 1 내립니다 (최소 2 이상)";
-		times=1;
+	public Revolver()	{
+		name = "리볼버";
+		description = "[6] 의 피해를 줍니다 (6만 가능) (한턴당 3번)";
+		times=3;
 	}	
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (dice<2) {
+		if (dice<6) {
 			printIncorrectDice();
 			return;
 		}
-		changeDice=dice-1;
-		my.setOther(1);
-		my.setOther(0,1);
-		my.setTurnTimes(idx, 0);
-		
+		enemy.subtractHp(6);
+		printDamage(6);
+		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);	
 	}
 	
 	@Override
 	public boolean checkDice(int dice) {
-		if (dice<2) {
+		if (dice<6) {
 			check=true;
 		}
 		return check;
 	}
 }
-//하락 : 주사위눈금을 1하락시킨다(최소2의 눈금)

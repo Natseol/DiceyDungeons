@@ -14,6 +14,6 @@ public class SwordMan extends Enemy{
 		maxHp = 38;	
 		hp = maxHp;
 		diceQuantity = 2;
-		inventory = new Item[] {new BroadSword(), new FireSword()};		
+		inventory = new Item[] {new FireSword(), new BroadSword()};		
 	}
 }

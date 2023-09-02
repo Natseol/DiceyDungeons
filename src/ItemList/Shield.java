@@ -11,8 +11,8 @@ public class Shield extends Item{
 
 	public Shield()	{
 		name = "방패";
-		description = "[3] 의 방어력을 얻습니다 (홀수만 가능)";
-		times=1;
+		description = "[2] 의 방어력을 얻습니다 (홀수) (재사용 가능)";
+		times=-1;
 	}	
 	
 	@Override
@@ -23,7 +23,6 @@ public class Shield extends Item{
 		}
 		player.setDef(player.getDef()+3);
 		printGainDefence(3);
-		my.setTurnTimes(idx, 0);
 	}
 	
 	@Override

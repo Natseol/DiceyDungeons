@@ -9,8 +9,8 @@ public class Crossbow extends Item{
 	
 	public Crossbow()	{
 		name = "석궁";
-		count=15;
-		description="마지막 눈금 +5 의 피해를 줍니다 (카운트 15)";
+		count=8;
+		description="[12-마지막 눈금] 의 피해를 줍니다 (카운트 8)";
 		times=1;		
 	}	
 	
@@ -21,10 +21,10 @@ public class Crossbow extends Item{
 			my.setTurnTimes(idx, 1);
 		}
 		else {
-			enemy.subtractHp(dice+5);
-			printTakeDamage(dice+5);
+			enemy.subtractHp(12-dice);
+			printDamage(12-dice);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 15);
+			my.setTurnCount(idx, 8);
 		}
 	}
 }

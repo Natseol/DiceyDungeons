@@ -11,18 +11,22 @@ public class Staff extends Item{
 
 	public Staff()	{
 		name = "스태프";
-		description = "ㅁ 만큼 피해를 줍니다 (짝수) (4 일경우 주사위를 돌려받습니다)";
+		description = "ㅁ 만큼 피해를 줍니다 (짝수) (2:마비피해를 줍니다, 4:주사위를 돌려받습니다)";
 		times=1;
 	}	
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(dice);
-		printDamage(dice);
-		my.setTurnTimes(idx, 0);
 		if (dice==4) {
+			printDamage(dice);
 			changeDice = 4;
 		}
+		if(dice==2) {
+			printTakeParalysis(dice);
+			enemy.setCondition(2,enemy.getCondition(2)+1);
+		}
+		my.setTurnTimes(idx, 0);
 	}
 	
 	@Override

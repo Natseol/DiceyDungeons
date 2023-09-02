@@ -53,7 +53,7 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new Sword();
 				inventory[1]= new Axe();
-				inventory[2]= new Nothing();
+				inventory[2]= new BloodSucking();
 				inventory[3]= new Nothing();
 				inventory[4]= new Reroll();
 			}
@@ -71,14 +71,14 @@ public class Job extends Status {
 				inventory[1]= new Dagger();     
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing();
-				inventory[4]= new Saw(); 
+				inventory[4]= new LockPick(); 
 			}
 			if (num == 2) {
 				inventory[0]= new PoisonGas();
 				inventory[1]= new PoisonKnife();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
-				inventory[4]= new LockPick();
+				inventory[4]= new Drop();
 			}
 			break;
 		case "궁수" :
@@ -87,7 +87,7 @@ public class Job extends Status {
 				inventory[1]= new Crossbow();
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
-				inventory[4]= new Talisman();
+				inventory[4]= new Aiming();
 			}
 			if (num == 2) {
 				inventory[0]= new Bow();
@@ -107,7 +107,7 @@ public class Job extends Status {
 			}
 			if (num == 2) {
 				inventory[0]= new Wand();
-				inventory[1]= new Nothing();
+				inventory[1]= new Staff();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
 				inventory[4]= new Spare();
@@ -115,18 +115,18 @@ public class Job extends Status {
 			break;
 		case "기사" :
 			if (num == 1) {
-				inventory[0]= new SpikeShield();  
-				inventory[1]= new Charge();     
+				inventory[0]= new Charge();  
+				inventory[1]= new SpikeShield();     
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
-				inventory[4]= new Shield();
+				inventory[4]= new Guard();
 			}
 			if (num == 2) {
-				inventory[0]= new SpikeShield();  
-				inventory[1]= new Charge();     
+				inventory[0]= new Charge();  
+				inventory[1]= new HolySword();     
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
-				inventory[4]= new Shield();
+				inventory[4]= new MagicShield();
 			}
 			break;
 		default : break;

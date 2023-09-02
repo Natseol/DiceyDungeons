@@ -14,6 +14,6 @@ public class VampireElite extends Enemy {
 		maxHp = 58;	
 		hp = maxHp;
 		diceQuantity = 4;
-		inventory = new Item[] {new Scythe(), new Scythe(), new Scythe(), new Scythe()};		
+		inventory = new Item[] {new BloodSucking(), new Scythe(), new Scythe(), new Scythe()};		
 	}
 }

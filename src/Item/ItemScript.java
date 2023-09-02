@@ -22,7 +22,7 @@ public class ItemScript {
 		System.out.println();
 	}
 	
-	public void printTakeDamage(int dice) {
+	public void printTakedDamage(int dice) {
 		System.out.println(" =="+Color.B_RED+" "+dice+" "+Color.RESET+"의 피해를 받았습니다!! ==");
 		System.out.println();
 	}

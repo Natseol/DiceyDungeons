@@ -19,7 +19,7 @@ public class Boomerang extends Item{
 		printDamage2(dice);
 		System.out.println();
 		player.subtractHp(dice);		
-		printTakeDamage(dice);
+		printTakedDamage(dice);
 		my.setTurnTimes(idx, 0);
 	}	
 }

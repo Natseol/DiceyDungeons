@@ -7,37 +7,46 @@ import Field.Store;
 import ItemList.*;
 
 public class Script implements Color {
-	public void chooseJob() {		
+	public void chooseJob() {
 		System.out.println("------------------------------------------------");
-		System.out.println("        클래스를 선택하세요");
-		System.out.println("        (1.전사 2.도적 3.궁수 4.마법사 5.기사)");
+		System.out.println();
+		System.out.println("\t    주사위 던전에 온신걸 환영합니다");
+		System.out.println();
+		System.out.println("------------------------------------------------");
+		System.out.println("\t\t클래스를 선택하세요");
+		System.out.println("\t(1.전사 2.도적 3.궁수 4.마법사 5.기사)");
 		System.out.println("------------------------------------------------");
 		System.out.println();
 	}
 	
 	public void chooseItem(String job) {		
 		System.out.println();
-		System.out.println("       기본 장비를 선택하세요");
+		
 		switch (job) {
 		case "전사" :
-			System.out.println("1. 검, 도끼, 변경");
-			System.out.println("2. 검, 부메랑, 상승");
+			System.out.println("\t\t 기본 장비 : 검");
+			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
+			System.out.println("\t1. 도끼, 변경\t2. 부메랑, 상승");
 			break;
 		case "도적" :
-			System.out.println("1. 독가스, 단검, 쇠톱");
-			System.out.println("2. 독가스, 독칼, 락픽");
+			System.out.println("\t\t 기본 장비 : 맹독");
+			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
+			System.out.println("\t1. 단검, 락픽\t2. 독칼, 하락");
 			break;
 		case "궁수" :
-			System.out.println("1. 활, 석궁, 복제");
-			System.out.println("2. 활, 덫, --");
+			System.out.println("\t\t 기본 장비 : 활");
+			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
+			System.out.println("\t1. 석궁, 조준\t2. 덫, 위조");
 			break;
 		case "마법사" :
-			System.out.println("1. 지팡이, 얼음파편, 거울");
-			System.out.println("2. 지팡이, --, 예비");
+			System.out.println("\t\t 기본 장비 : 완드");
+			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
+			System.out.println("\t1. 얼음파편, 거울\t2. 스태프, 예비");
 			break;
 		case "기사" :
-			System.out.println("1. --, 격돌, 매직쉴드");
-			System.out.println("2. --, --, --");
+			System.out.println("\t\t 기본 장비 : 격돌");
+			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
+			System.out.println("\t1. 가시방패, 막기\t2. 성검, 매직쉴드");
 			break;
 		}		
 		System.out.println("------------------------------------------------");

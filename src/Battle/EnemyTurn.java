@@ -1,5 +1,6 @@
 package Battle;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Character.*;
@@ -48,14 +49,34 @@ public class EnemyTurn extends TurnInfo{
 			int enemyItemNum=0;
 			scanner.nextLine();
 
-				rebuildDice();			
+				rebuildDice();
+				int maxMin = getDice(0);
+				int indexDice = 0;				 
+		        for (int i = 0; i < getDice().length; i++) {
+		            if (getDice(i) > maxMin) {
+		                maxMin = getDice(i);
+		                indexDice = i;
+		            }
+		        }
+		        if (enemy.getName().equals("마녀")) {
+					maxMin = getDice(0);
+					indexDice = 0;	
+		        	for (int i = 0; i < getDice().length; i++) {
+			            if (getDice(i) < maxMin) {
+			                maxMin = getDice(i);
+			                indexDice = i;
+			            }
+			        }	
+		        }
+		        	
+				
 				if (enemy.getCondition(0)>0) {
 					enemy.damagedFire();	
 				}//상태이상	발화
 				if (player.getHp()<1||enemy.getHp()<1) break;
 				//죽었는지 확인
 
-				script.printSelectedDice(getDice(0));
+				script.printSelectedDice(getDice(indexDice));
 				if (enemy.getCondition(2)>0) {
 					if (enemy.damagedParalysis(this, 0)) {
 						rebuildDice();
@@ -76,12 +97,12 @@ public class EnemyTurn extends TurnInfo{
 					}
 					script.printSelectedDiceUse(enemyItemNum, enemy);
 					getItem(j).action
-					(enemy, player, getDice(0), this, enemyItemNum);
+					(enemy, player, getDice(indexDice), this, enemyItemNum);
 
 					getItem(enemyItemNum).setCount(getTurnCount(enemyItemNum));
 					//카운트 동기화			
 
-					setDice(0, getItem(enemyItemNum).getChangeDice());
+					setDice(indexDice, getItem(enemyItemNum).getChangeDice());
 					//사용한 주사위 눈금 변경
 					if (getItem(enemyItemNum).getTimes()==0) {
 						setItem(enemyItemNum, new Nothing());

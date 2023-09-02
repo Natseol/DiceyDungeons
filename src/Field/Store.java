@@ -10,7 +10,7 @@ public class Store{
 	
 	public Store() {//랜덤 아이템3개 생성
 		for (int i = 0; i < storeList.length; i++) {
-			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-4))+1];
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-2))+2];
 		}
 	}
 	
@@ -25,41 +25,58 @@ public class Store{
 	}
 	
 	public static final Item[] ITEMLIST = {
-			new Nothing(),//0
-			
-			new Sword(),//1
-			new Dagger(),//2
-			new Axe(),//3
-			new GreatSword(),//4
-			new Boomerang(),//5
-			new SpikeShield(),//6           
-			new Spear(),//7                     
-			new Fist(),//8                       
-			new Staff(),//9                      
-			new Cannon(),//10                     
-			new Unknown(),//11                   
-			new Wand(),//12                      
-			new IceShards(),//13                 
-			new Glove(),//14                     
-			new Bow(),
-
-			new Rising(),//15                    
-			new Drop(),//16                      
-			new LockPick(),//17                  
-			new Saw(),//18                       
-			new Talisman(),//19                  
-			new Mirror(),//20                    
-			new Spare(),//21                    
-
-			new MedicKit(),//22                  
-			new Bandage(),//23                   
-			new Heal(),//24                      
-			new Shield(),//25
-			
-
+			new Nothing(),
 			new UsedGreat(),
-			new Reroll(),//26                    
-			new Clone()//27
+			
+			new Sword(),
+			new Dagger(),
+			new Axe(),
+			new GreatSword(),
+			new Boomerang(),
+			new SpikeShield(),           
+			new Spear(),                     
+			new Fist(),                       
+			new Staff(),                      
+			new Cannon(),                     
+			new Unknown(),                   
+			new Wand(),                      
+			new IceShards(),                 
+			new Glove(),                     
+			new Bow(),
+			new BroadSword(),
+			new Charge(),
+			new Crossbow(),
+			new FireSword(),
+			new HolySword(),
+			new Overwhelming(),
+			new PoisonGas(),
+			new PoisonKnife(),
+			new Revolver(),
+			new Trap(),//25
+			new Bash(),//26
+
+			new MedicKit(),                  
+			new Bandage(),                   
+			new Heal(),                      
+			new Shield(),//30
+			
+			new Saw(),             
+			new Sacrifice(),
+			new Talisman(),//33			
+
+			new Reroll(),                   
+			new Rising(),               
+			new LockPick(),            
+			new Drop(), 
+			new Aiming(),          
+			new Clone(),
+			new Mirror(),          
+			new Spare(),          
+			new Guard(),
+			new MagicShield(),
+			new SpareWitch(),
+			new Scythe(),//46
+			new BloodSucking()
 	};
 	
 	public void changeItem(Player player, int inven, Item item) {	

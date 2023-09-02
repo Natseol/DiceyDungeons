@@ -28,19 +28,5 @@ public class Cannon extends Item{
 			my.setTurnTimes(idx, 0);
 		}
 	}
-	
-//	@Override
-//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-//		if (count-dice>0) {
-//			count=count-dice;
-//			times=1;
-//		}
-//		else {
-//			player.subtractHp(10);
-//			printTakeDamage(10);
-//			count=15;
-//			times=1;
-//		}
-//	}
 }
 //캐논 : 적에게 10만큼의 피해를 준다 (카운트다운15)
