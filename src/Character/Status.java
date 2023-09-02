@@ -12,8 +12,9 @@ public class Status {
 	protected int diceQuantity;
 	protected Item[] inventory;
 	protected int condition[]=new int[4];
-	Boolean isEffect;
-	int countCondi;
+	protected boolean isEffect;
+//	protected int countCondi;
+	protected int sp;
 		
 	public Status() {}	
 	public Status(int hp, int maxHp, int diceQuantity) {
@@ -40,11 +41,13 @@ public class Status {
 			def-=num;
 		}
 		else if (def>0&&def-num<0) {
-			hp=hp+(def-num);
+			hp=(hp+def)-num;
 			def=0;
+			sp = sp + num - def;
 		}
 		else {
 		hp -= num;
+		sp += num;
 		}
 	}
 	
@@ -81,20 +84,7 @@ public class Status {
 	public String getInventoryDescription(int idx) {
 		return inventory[idx].getDescription();
 	}
-	public void printInventoryAll() {
-		System.out.println("-------------- 장비 ---------------");
-		for (int i=0;i<inventory.length;i++) {
-			System.out.print((i+1)+") "+inventory[i].getName()+" : "+inventory[i].getDescription());
-			if (i==inventory.length-1) {
-				System.out.println(" -고유-");
-			}
-			else {
-				System.out.println();
-			}
-				
-		}
-		System.out.println("---------------------------------");
-	}	
+	
 	public void setInventory(int idx, Item item) {
 		inventory[idx] = item;
 	}
@@ -104,6 +94,13 @@ public class Status {
 	}	
 	public void setIsEffect(boolean effect) {
 		isEffect = effect;
+	}	
+	
+	public int getSp() {
+		return sp;
+	}	
+	public void setSp(int sp) {
+		this.sp = sp;
 	}
 		
 	
@@ -122,18 +119,18 @@ public class Status {
 		condition[idx]=changeNum;		
 	}
 	
-	public int getCountCondi() {
-		return countCondi;
-	}
-	public int countCondition() {
-		int countCondi=0;
-		for (int i=0;i<condition.length;i++) {
-			if (condition[i]>0) {
-				countCondi++;
-			}
-		}
-		return countCondi;
-	}
+//	public int getCountCondi() {
+//		return countCondi;
+//	}
+//	public int countCondition() {
+//		int countCondi=0;
+//		for (int i=0;i<condition.length;i++) {
+//			if (condition[i]>0) {
+//				countCondi++;
+//			}
+//		}
+//		return countCondi;
+//	}
 
 	public void damagedFire() {
 		if (Math.random()<(0.25*getCondition(0))) {
@@ -158,7 +155,7 @@ public class Status {
 	}
 
 	public boolean damagedParalysis(TurnInfo turninfo, int idxDice) {
-		if (Math.random()>0.5) {
+		if (Math.random()<0.15*turninfo.getDice(idxDice-1)) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice-1, 0);
 		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);

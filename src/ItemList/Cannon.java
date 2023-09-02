@@ -25,7 +25,7 @@ public class Cannon extends Item{
 			enemy.subtractHp(10);
 			printDamage(10);
 			my.setTurnCount(idx, 15);
-			my.setTurnTimes(idx, 1);
+			my.setTurnTimes(idx, 0);
 		}
 	}
 	

@@ -27,15 +27,6 @@ public class Spear extends Item{
 		my.setTurnTimes(idx, 0);
 	}
 	
-//	@Override
-//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-//		if (dice == 6) {
-//		player.subtractHp(10);
-//		printTakeDamage(10);
-//		times=0;
-//		}
-//	}
-	
 	@Override
 	public boolean checkDice(int dice) {
 		if (dice<6) {

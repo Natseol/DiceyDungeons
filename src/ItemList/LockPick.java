@@ -11,7 +11,7 @@ public class LockPick extends Item{
 		
 	public LockPick()	{
 		name = "락픽";
-		description = "주사위를 둘로 나눈다 (2이상 가능)";
+		description = "주사위를 둘로 나눕니다 (2이상 가능)";
 		times=2;
 	}
 	
@@ -23,35 +23,30 @@ public class LockPick extends Item{
 			changeDice = 3;
 			my.setOther(0,3);
 			my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//			if (times==0) times=2;
 			break;
 		case 5:
 			my.setOther(1);
 			changeDice = 3;
 			my.setOther(0,2);
 			my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//			if (times==0) times=2;
 			break;
 		case 4:
 			my.setOther(1);
 			changeDice = 2;
 			my.setOther(0,2);
 			my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//			if (times==0) times=2;
 			break;
 		case 3:
 			my.setOther(1);
 			changeDice = 2;
 			my.setOther(0,1);
 			my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//			if (times==0) times=2;
 			break;
 		case 2:
 			my.setOther(1);
 			changeDice = 1;
 			my.setOther(0,1);
 			my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//			if (times==0) times=2;
 			break;		
 		}
 	}

@@ -8,7 +8,6 @@ public class Player extends Job {
 	protected int exp;
 	protected int[] expTable= {4,6,6,8};
 	protected int level;
-	protected int sp;
 	
     public Player() {}
 	public Player(int num) {//1.전사 2.도적
@@ -19,7 +18,8 @@ public class Player extends Job {
 		case 2 : setJobThief(); break;
 		case 3 : setJobArcher(); break;
 		case 4 : setJobMagician(); break;
-		case 5 : setJobKnight(); break;		
+		case 5 : setJobKnight(); break;
+		default : break;
 		}		
 	}
 	
@@ -42,13 +42,6 @@ public class Player extends Job {
 	}	
 	public void setLevel(int level) {
 		this.level = level;
-	}
-	
-	public int getSp() {
-		return sp;
-	}	
-	public void setSp(int sp) {
-		this.sp = sp;
 	}
 	
     public int getExpTable(int idx) {

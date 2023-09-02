@@ -24,15 +24,6 @@ public class Store{
 		}
 	}
 	
-	public void printStore() {
-		System.out.println("---------------------------------");
-		System.out.println("상점에 방문했습니다");
-		System.out.println("상품이 중복으로 보이는건 기분 탓입니다");
-		System.out.println("(한번만 교환가능합니다)");
-		System.out.println("---------------------------------");
-		System.out.println();
-	}
-	
 	public static final Item[] ITEMLIST = {
 			new Nothing(),//0
 			

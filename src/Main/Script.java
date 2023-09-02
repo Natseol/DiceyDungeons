@@ -14,10 +14,40 @@ public class Script implements Color {
 		System.out.println("------------------------------------------------");
 		System.out.println();
 	}
+	
+	public void chooseItem(String job) {		
+		System.out.println();
+		System.out.println("       기본 장비를 선택하세요");
+		switch (job) {
+		case "전사" :
+			System.out.println("1. 검, 도끼, 변경");
+			System.out.println("2. 검, 부메랑, 상승");
+			break;
+		case "도적" :
+			System.out.println("1. 독가스, 단검, 쇠톱");
+			System.out.println("2. 독가스, 독칼, 락픽");
+			break;
+		case "궁수" :
+			System.out.println("1. 활, 석궁, 복제");
+			System.out.println("2. 활, 덫, --");
+			break;
+		case "마법사" :
+			System.out.println("1. 지팡이, 얼음파편, 거울");
+			System.out.println("2. 지팡이, --, 예비");
+			break;
+		case "기사" :
+			System.out.println("1. --, 격돌, 매직쉴드");
+			System.out.println("2. --, --, --");
+			break;
+		}		
+		System.out.println("------------------------------------------------");
+		System.out.println();
+	}
+	
 
 	public void startBattle() {
 		System.out.println();
-		System.out.println("\t  전투를 시작합니다");
+		System.out.println("\t\t전투를 시작합니다");
 		System.out.println("------------------------------------------------");
 	}
 	
@@ -29,7 +59,7 @@ public class Script implements Color {
 	}
 	
 	public void printBattleInfo(Player player, Enemy enemy) {		
-		System.out.print(player.getJob()+" Lv"+player.getLevel()+" 주사위:"+player.getDiceQuantity()+"\t\t\t");
+		System.out.print("Lv"+player.getLevel()+" "+player.getJob()+" 주사위:"+player.getDiceQuantity()+"\t\t\t");
 		System.out.println(enemy.getName()+" 주사위:"+enemy.getDiceQuantity());
 		if (player.getHp()<player.getMaxHp()*0.3) {
 			System.out.print(BRED+player.getHp()+RESET); 
@@ -40,7 +70,14 @@ public class Script implements Color {
 		if (player.getDef()>0) {
 			System.out.print(BYELLOW+"("+player.getDef()+")"+RESET);
 		}
-		System.out.print(" / "+player.getMaxHp()+"\t\t\t\t");
+		System.out.print(" / "+player.getMaxHp());
+		if (player.getSp()>11) {
+			System.out.print(BOLD+"  [ 사용가능 ]\t\t"+RESET);
+		}
+		
+		else {
+			System.out.print("  [SP : "+Math.round(player.getSp()*100/12)+"]\t\t");
+		}
 		System.out.print(enemy.getHp());
 		if (enemy.getDef()>0) {
 			System.out.print(BYELLOW+"("+enemy.getDef()+")"+RESET);
@@ -84,10 +121,7 @@ public class Script implements Color {
 				System.out.print("\t\t\t\t");
 				break;
 		}
-//		if (enemy.getCondition(0)>0||enemy.getCondition(1)>0||enemy.getCondition(2)>0||enemy.getCondition(3)>0) {
-//			System.out.println();
-//		}
-//		System.out.print("\t\t\t");		
+	
 		if (enemy.getCondition(0)>0) {
 			System.out.print(RED+"발화:"+enemy.getCondition(0)+" "+RESET);
 		}
@@ -111,7 +145,7 @@ public class Script implements Color {
 			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
 		}
 		System.out.println();
-		System.out.println(YELLOW+"주사위를 선택하세요 (0:턴 종료, 9:적의 다음 패 보기)"+RESET);
+		System.out.println(YELLOW+"주사위를 선택하세요 (0:턴 종료, 77:스킬발동, 99:적 정보 보기)"+RESET);
 	}
 	
 	public void selectDice(TurnInfo turnInfo) {
@@ -140,6 +174,21 @@ public class Script implements Color {
 	
 	public void printSelectItem(TurnInfo turnInfo) {
 		System.out.println(YELLOW+"장비를 선택하세요 (0:주사위 다시 선택하기)"+RESET);
+	}
+	
+	public void printInventoryAll(Player player) {
+		System.out.println("--------------------- 장비 ----------------------");
+		for (int i=0;i<player.getInventory().length;i++) {
+			System.out.print((i+1)+") "+player.getInventory(i).getName()+" : "+player.getInventory(i).getDescription());
+			if (i==player.getInventory().length-1) {
+				System.out.println(" -고유-");
+			}
+			else {
+				System.out.println();
+			}
+				
+		}
+		System.out.println("------------------------------------------------");
 	}
 	
 	public void printItem(TurnInfo turnInfo) {
@@ -172,8 +221,8 @@ public class Script implements Color {
 	
 	public void printPlayerInfo(Player player) {
 		System.out.println();
-		System.out.println("--------------------- 스탯 ----------------------");
-			System.out.println("Lv: "+player.getLevel()+"  [EXP: "+player.getExp()+"/"+player.getExpTable(player.getLevel()-1)+"]");
+		System.out.println("--------------------- 상태 ----------------------");
+			System.out.println(player.getJob()+" Lv:"+player.getLevel()+" [EXP: "+player.getExp()+"/"+player.getExpTable(player.getLevel()-1)+"]");
 			System.out.println("주사위:"+player.getDiceQuantity());
 			System.out.print("Hp: "+player.getHp());
 			System.out.println("/"+player.getMaxHp());
@@ -187,10 +236,8 @@ public class Script implements Color {
 //	}
 	
 	public void printDamagedIce() {
-//		System.out.println();
 		System.out.println(B_BBLUE+" * 주사위가 얼어붙습니다. 눈금이 1로 변합니다 *"+RESET);
 		System.out.println();
-//		System.out.println("---------------------------------");
 	}
 	
 //	public void printDamagedParalysis() {
@@ -207,6 +254,26 @@ public class Script implements Color {
 		System.out.println("------------------------------------------------");
 	}
 	
+	public void chooseInField(int floor) {
+		System.out.println("\n");
+		System.out.println("-------------------- 지하 "+floor+"층 --------------------");
+		System.out.println("1. 다음 전투로");
+		System.out.println("2. 상점 방문하기");
+		System.out.println("3. 회복의 샘으로 가기");
+		System.out.println("4. 다음 층으로 내려가기");
+		System.out.println("아무키 내 정보 확인하기");
+		System.out.println(Color.YELLOW+"어디로 이동하시겠습니까?"+Color.RESET);
+	}	
+	
+	public void printStore() {
+		System.out.println("------------------------------------------------");
+		System.out.println("상점에 방문했습니다");
+		System.out.println("상품이 중복으로 보이는건 기분 탓입니다");
+		System.out.println("(한번만 교환가능합니다)");
+		System.out.println("------------------------------------------------");
+		System.out.println();
+	}
+	
 	public void changeAlready() {
 		System.out.println();
 		System.out.println("이미 교환완료 했습니다");
@@ -218,5 +285,13 @@ public class Script implements Color {
 	System.out.println("모든 횟수를 소진했습니다");
 	System.out.println("------------------------------------------------");
 	}
-
+	
+	public void downFloor() {
+		System.out.println();
+		System.out.println();
+		System.out.println("\t*** 한 층 더 아래로 내려갑니다 ***");
+		System.out.println();
+		System.out.println();
+	}
+	
 }

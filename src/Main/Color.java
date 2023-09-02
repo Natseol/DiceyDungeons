@@ -51,9 +51,9 @@ public interface Color {
 //		System.out.println(BYELLOW+"BYELLOW");//방어력
 //		System.out.println(BLUE+"BLUE");
 //		System.out.println(BBLUE+"BBLUE");//냉기
-//		System.out.println(PURPLE+"PURPLE");//마비
-//		System.out.println(BPURPLE+"BPURPLE");
-//		System.out.println(CYAN+"CYAN");
+//		System.out.println(PURPLE+"PURPLE");
+//		System.out.println(BPURPLE+"BPURPLE");//마비
+//		System.out.println(CYAN+"CYAN");//스킬
 //		System.out.println(BCYAN+"BCYAN");//중독
 //		System.out.println(WHITE+"WHITE");
 //		System.out.println(BWHITE+"BWHITE");//기본

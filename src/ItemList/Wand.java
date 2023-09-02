@@ -24,7 +24,7 @@ public class Wand extends Item{
 		}
 		else {
 			enemy.subtractHp(6);		
-			printDamage(6);
+			printTakeFire(6);
 			enemy.setCondition(0,enemy.getCondition(0)+1);
 			my.setTurnTimes(idx, 0);
 			my.setTurnCount(idx, 8);

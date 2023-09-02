@@ -10,7 +10,7 @@ public class Crossbow extends Item{
 	public Crossbow()	{
 		name = "석궁";
 		count=15;
-		description="[9] 의 피해를 주고 적을 마비시킵니다 (카운트 15)";
+		description="마지막 눈금 +5 의 피해를 줍니다 (카운트 15)";
 		times=1;		
 	}	
 	
@@ -21,9 +21,8 @@ public class Crossbow extends Item{
 			my.setTurnTimes(idx, 1);
 		}
 		else {
-			enemy.subtractHp(9);
-			printTakeParalysis(9);
-			enemy.setCondition(2,enemy.getCondition(2)+1);
+			enemy.subtractHp(dice+5);
+			printTakeDamage(dice+5);
 			my.setTurnTimes(idx, 0);
 			my.setTurnCount(idx, 15);
 		}
