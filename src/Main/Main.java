@@ -30,12 +30,12 @@ public class Main extends Script {
 		}
 		player.setJobItem(player.getJob(), inputNum);
 
-		Enemy[] enemy = new Enemy[13];
+		Enemy[] enemy = new Enemy[19];
 		for (int i=0;i<enemy.length;i++) {
 			enemy[i]=Enemy.setEnemy(i);
 		}
 		int floor=1;		
-		int eNum=12;
+		int eNum=0;
 		Field field = new Field();
 
 //		player.setCondition(0,3);
@@ -52,20 +52,6 @@ public class Main extends Script {
 //			enemy[eNum].setCondition(1,2);
 //			enemy[eNum].setCondition(2,2);
 //			enemy[eNum].setCondition(3,2);
-		
-//					new Marine(),
-//					new Frog(),
-//					new Gatekeeper(),
-//					new Onepun(),
-//					new Fighter(),
-//					new GatekeeperElite(),
-//					new SnowMan(),
-//					new Mimic(),
-//					new Vampire(),
-//					new SwordMan(),
-//					new Bear(),
-//					new Witch(),
-//					new VampireElite()		
 
 		while (true) {//스테이지 진입
 
@@ -128,7 +114,7 @@ public class Main extends Script {
 				System.out.println(B_CYAN+enemy[eNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
 				eNum++;
 				player.levelUp();
-				if (eNum>12) {
+				if (eNum>18) {
 					script.ending();
 					System.exit(1);
 				}
@@ -141,7 +127,7 @@ public class Main extends Script {
 				script.chooseInField(floor);
 				int chooseInField=Input.checkInput(scanner.nextLine());
 				if (chooseInField == 1) {//1.전투
-					if(eNum == 2||eNum == 5||eNum == 8||eNum == 12 ) {
+					if(eNum == 3||eNum == 6||eNum == 10||eNum == 14||eNum == 18 ) {
 						System.out.println();
 						System.out.println("이 층에는 더이상 적이 없습니다");
 						continue;
@@ -155,7 +141,7 @@ public class Main extends Script {
 					}
 					else {
 						script.changeAlready();
-					}
+					} 
 				}
 				else if (chooseInField == 3) {//3.회복샘
 					if (field.getHealCount()>0) {
@@ -181,7 +167,7 @@ public class Main extends Script {
 					continue;
 				}
 			}//end of while Field
-			if (eNum==12) {
+			if (eNum==18) {
 				System.out.println(" 최후의 상점에 들어갑니다.");
 				System.out.println(" 나가면 바로 전투가 시작됩니다");
 				field=new Field();

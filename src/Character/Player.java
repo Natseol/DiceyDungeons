@@ -6,7 +6,7 @@ import Main.Color;
 
 public class Player extends Job {
 	protected int exp;
-	protected int[] expTable= {4,6,6,8,10};
+	protected int[] expTable= {6,6,8,8,8,10};
 	protected int level;
 	
     public Player() {}
@@ -47,10 +47,10 @@ public class Player extends Job {
 			level++;
 			exp=0;
 			if (job.equals("전사")||job.equals("기사")) {
-				maxHp+=6;
+				maxHp+=5;
 			}
 			else {
-				maxHp+=5;
+				maxHp+=4;
 			}				
 			hp = maxHp;
 			diceQuantity=(int)(2+level*0.5);
@@ -75,7 +75,8 @@ public class Player extends Job {
 			case 2 : diceQuantity = 3; break;
 			case 3 : diceQuantity = 3; break;
 			case 4 : diceQuantity = 4; break;
-			case 5 : diceQuantity = 5; break;
+			case 5 : diceQuantity = 4; break;
+			case 6 : diceQuantity = 5; break;
 			}
 		else {
 			switch (level) {
@@ -83,7 +84,8 @@ public class Player extends Job {
 			case 2 : diceQuantity = 4; break;
 			case 3 : diceQuantity = 4; break;
 			case 4 : diceQuantity = 5; break;
-			case 5 : diceQuantity = 6; break;
+			case 5 : diceQuantity = 5; break;
+			case 6 : diceQuantity = 6; break;
 			}
 		}
 

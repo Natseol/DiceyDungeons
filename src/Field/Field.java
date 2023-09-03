@@ -59,7 +59,7 @@ public class Field {
 		System.out.println();
 		System.out.println("회복의 샘에 왔습니다");
 		System.out.println("------------------------------------------------");
-		System.out.println("체력을 8 회복합니다  남은 횟수 : "+getHealCount());
+		System.out.println("체력을 "+(5+player.getLevel())+" 회복합니다  남은 횟수 : "+getHealCount());
 		System.out.println(Color.YELLOW+"(예:1 아니오:0)"+Color.RESET);
 		int input=30;
 		while (input!=1&&input!=0) {
@@ -67,9 +67,9 @@ public class Field {
 		}	
 		
 		if (input==1) {
-			player.addHp(8);
+			player.addHp(5+player.getLevel());
 			System.out.println();
-			System.out.println(Color.B_BGREEN+" * 체력을 8 회복했습니다 *"+Color.RESET);
+			System.out.println(Color.B_BGREEN+" * 체력을 "+(5+player.getLevel())+" 회복했습니다 *"+Color.RESET);
 			setHealCount(getHealCount()-1);
 		}
 	}

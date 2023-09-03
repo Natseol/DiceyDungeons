@@ -11,7 +11,7 @@ public class GatekeeperElite extends Enemy {
 		name = "정예 문지기";
 		description = "정예 공방일체";
 		grade = "어려움";
-		maxHp = 40;	
+		maxHp = 50;	
 		hp = maxHp;
 		diceQuantity = 4;
 		inventory = new Item[] {new SpikeShield(), new Bash(), new Charge()};		

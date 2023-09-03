@@ -52,7 +52,9 @@ public class EnemyTurn extends TurnInfo{
 		                indexDice = i;
 		            }
 		        }
-		        if (enemy.getName().equals("마녀")) {
+		        if (enemy.getName().equals("마녀")
+	        		||enemy.getName().equals("학자")
+	        		||enemy.getName().equals("늑대")) {
 					maxMin = getDice(0);
 					indexDice = 0;	
 		        	for (int i = 0; i < getDice().length; i++) {

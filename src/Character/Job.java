@@ -11,7 +11,7 @@ public class Job extends Status {
 	}
 	
 	public void setJobWarrior() {
-		maxHp=50;
+		maxHp=26;
 		hp=maxHp;
 		job = "전사";
 		diceQuantity = 2;
