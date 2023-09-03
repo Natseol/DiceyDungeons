@@ -15,25 +15,29 @@ public class Skill {
 			switch (player.getJob()) {
 			case "전사":
 				System.out.println(Color.CYAN+" [분노] 스킬을 사용합니다");
-				System.out.println("  다음 장비를 반복해서 사용합니다\n"+Color.RESET);
+				System.out.print("  다음 장비를 반복해서 사용합니다");
+				if (player.getLevel()>2) {
+					System.out.print(" (무작위 상태이상 해제)\n");
+					skillWar(player,player.getLevel()-2);
+				}
+				System.out.println(Color.RESET);
 				myturn.setIsUseSkill(true);			
 			break;
 			case "도적":
 				System.out.println(Color.CYAN+" [속임수] 스킬을 사용합니다");
 				System.out.println("  추가 주사위를 생성합니다\n"+Color.RESET);
-				myturn.setOther(4);
-				myturn.setOther(0,1);
-				myturn.setOther(1,1);
-				myturn.setOther(2,1);
-				myturn.setOther(3,1);						
+				myturn.setOther(2+player.getLevel());
+				for (int i = 0; i<2+player.getLevel();i++) {
+				myturn.setOther(i,1);
+				}
 				myturn.rebuildDice();
 				break;			
 			case "궁수":
 				System.out.println(Color.CYAN+" [빠른 손놀림] 스킬을 사용합니다");
-				System.out.println("  모든 장비의 카운트 -4\n"+Color.RESET);
+				System.out.println("  모든 장비의 카운트를 낮춥니다\n"+Color.RESET);
 				for (int i=0;i<myturn.getItem().length;i++) {
 					if (myturn.getTurnCount(i)>0) {
-						myturn.setTurnCount(i, myturn.getTurnCount(i)-4);
+						myturn.setTurnCount(i, myturn.getTurnCount(i)-(2+player.getLevel()));
 					}
 				}
 				break;				
@@ -42,7 +46,7 @@ public class Skill {
 				System.out.println(Color.CYAN+" [창조] 스킬을 사용합니다"+Color.RESET);
 				System.out.println(Color.YELLOW+"  생성하고 싶은 주사위의 눈금을 적으세요"+Color.RESET);
 				int dice = Input.checkInput(scanner.nextLine());
-				if (dice < 7&&0<dice) {
+				if (dice < 5+player.getLevel()&&0<dice) {
 					myturn.setOther(0,dice);
 					System.out.println(Color.CYAN+" 눈금 ["+dice+"] 주사위를 생성합니다"+Color.RESET);
 					System.out.println();
@@ -55,13 +59,42 @@ public class Skill {
 				break;
 			case "기사":
 				System.out.println(Color.CYAN+" [신의은총] 스킬을 사용합니다");
-				System.out.println("  방어력+5, 적 모든상태이상+1\n"+Color.RESET);
-				for (int i=0;i<enemy.getCondition().length;i++)
+				System.out.println("  방어력이 증가하고 적에게 모든 상태이상을 겁니다\n"+Color.RESET);
+				for (int i=0;i<enemy.getCondition().length;i++) {
 					enemy.setCondition(i, enemy.getCondition(i)+1);
-				player.setDef(player.getDef()+5);
+				}
+				if (player.getLevel()>3) {
+					player.setDef(player.getDef()+6);
+					player.getInventory(0).printGainDefence(6);
+					player.addHp(player.getLevel()-3);
+					player.getInventory(0).printRecovery(player.getLevel()-3);
+				}
+				else {
+					player.getInventory(0).printGainDefence(player.getDef()+3+player.getLevel());
+					player.setDef(player.getDef()+3+player.getLevel());				
+				}
 				break;
 			}
 			player.setSp(0);
+		}
+	}
+
+	private static void skillWar(Player player, int num) {
+		int count=0;
+		int check;
+		while (count<num) {
+			int idx=Roll.random(4)-1;
+			check=0;
+			if (player.getCondition(idx)>0) {
+				player.setCondition(idx, player.getCondition(idx)-1);
+				count++;
+			}
+			for (int i =0; i<player.getCondition().length;i++) {
+				if (player.getCondition(i)==0) {
+					check++;
+				}
+			}
+			if (check==player.getCondition().length) break;
 		}
 	}
 }

@@ -10,7 +10,7 @@ public class Store{
 	
 	public Store() {//랜덤 아이템3개 생성
 		for (int i = 0; i < storeList.length; i++) {
-			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-2))+2];
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-3))+3];
 		}
 	}
 	
@@ -27,55 +27,71 @@ public class Store{
 	public static final Item[] ITEMLIST = {
 			new Nothing(),
 			new UsedGreat(),
-			
+			//F:5, I:5, E:6, P:5, D:4+2, H:4+1
 			new Sword(),
 			new Dagger(),
 			new Axe(),
 			new GreatSword(),
 			new Boomerang(),
-			new SpikeShield(),           
+			new SpikeShield(),//D           
 			new Spear(),                     
 			new Fist(),                       
-			new Staff(),                      
+			new Staff(), //E                     
 			new Cannon(),                     
-			new Unknown(),                   
-			new Wand(),                      
-			new IceShards(),                 
-			new Glove(),                     
+			new Box(),                   
+			new Wand(),//F                      
+			new IceShards(),//I                 
+			new Glove(),//E                     
 			new Bow(),
 			new BroadSword(),
 			new Charge(),
-			new Crossbow(),
-			new FireSword(),
-			new HolySword(),
+			new Crossbow(),//F
+			new FireSword(),//F
+			new IceSword(),//I
+			new HolySword(),//H
 			new Overwhelming(),
-			new PoisonGas(),
-			new PoisonKnife(),
+			new PoisonGas(),//P
+			new PoisonKnife(),//P
 			new Revolver(),
-			new Trap(),//25
-			new Bash(),//26
+			new Trap(),//E, P
+			new Bash(),//D
+			new ShortSword(),
+			new MagicMissile(),
+			new Capacitor(),//E
+			new Claw(),//P
+			new Icicle(),//I
+			new Shovel(),//E
+			new TwoHandedSword(),
+			new Infection(),//P
+			new Meteor(),//F
+			new IceAge(),//I
+			new Storm(),//E
+			new IcePillar(),//I
+			new Burn(),//F
 
-			new MedicKit(),                  
-			new Bandage(),                   
-			new Heal(),                      
-			new Shield(),//30
+			new MedicKit(),//H                  
+			new Bandage(),//H                   
+			new Heal(),//H                      
+			new Shield(),//D
+			new Buckler(),//D
 			
 			new Saw(),             
 			new Sacrifice(),
-			new Talisman(),//33			
+			new Talisman(),
+			new SneakEye(),
 
 			new Reroll(),                   
 			new Rising(),               
 			new LockPick(),            
 			new Drop(), 
-			new Aiming(),          
+			new Precisoin(),          
 			new Clone(),
 			new Mirror(),          
 			new Spare(),          
-			new Guard(),
-			new MagicShield(),
+			new Guard(),//D
+			new MagicShield(),//D,H
+			new Scythe(),
 			new SpareWitch(),
-			new Scythe(),//46
 			new BloodSucking()
 	};
 	

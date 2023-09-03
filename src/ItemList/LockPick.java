@@ -11,7 +11,7 @@ public class LockPick extends Item{
 		
 	public LockPick()	{
 		name = "락픽";
-		description = "주사위를 둘로 나눕니다 (2이상 가능)";
+		description = "주사위를 둘로 나눕니다 (최소 2) (턴당 2번)";
 		times=2;
 	}
 	

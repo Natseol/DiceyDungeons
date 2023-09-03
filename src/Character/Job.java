@@ -1,7 +1,5 @@
 package Character;
 
-import Field.Store;
-import Item.Item;
 import ItemList.*;
 
 public class Job extends Status {
@@ -45,7 +43,6 @@ public class Job extends Status {
 		job = "기사";
 		diceQuantity = 2;
 	}
-
 	
 	public void setJobItem(String job, int num) {
 		switch (job) {
@@ -53,7 +50,7 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new Sword();
 				inventory[1]= new Axe();
-				inventory[2]= new BloodSucking();
+				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
 				inventory[4]= new Reroll();
 			}
@@ -69,7 +66,7 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new PoisonGas();  
 				inventory[1]= new Dagger();     
-				inventory[2]= new Nothing(); 
+				inventory[2]= new Fist(); 
 				inventory[3]= new Nothing();
 				inventory[4]= new LockPick(); 
 			}
@@ -87,7 +84,7 @@ public class Job extends Status {
 				inventory[1]= new Crossbow();
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
-				inventory[4]= new Aiming();
+				inventory[4]= new Precisoin();
 			}
 			if (num == 2) {
 				inventory[0]= new Bow();

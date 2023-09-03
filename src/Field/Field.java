@@ -13,19 +13,6 @@ public class Field {
 	int storeCount = 1;
 	int healCount = 2;
 	
-//	public int move(int floor) {
-//		Scanner input = new Scanner(System.in); 
-//		System.out.println();
-//		System.out.println("------------ 지하 "+floor+"층 -------------");
-//		System.out.println("1. 다음 전투로");
-//		System.out.println("2. 상점 방문하기");
-//		System.out.println("3. 회복의 샘으로 가기");
-//		System.out.println("4. 다음 층으로 내려가기");
-//		System.out.println("0. 내 정보 확인하기");
-//		System.out.println(Color.YELLOW+"어디로 이동하시겠습니까?"+Color.RESET);
-//		return input.nextInt();
-//	}
-	
 	public void inStore(Player player) {
 		Scanner scanner = new Scanner(System.in);
 		Script script = new Script();
@@ -82,7 +69,7 @@ public class Field {
 		if (input==1) {
 			player.addHp(8);
 			System.out.println();
-			System.out.println(" * 체력을 8 회복했습니다 *");
+			System.out.println(Color.B_BGREEN+" * 체력을 8 회복했습니다 *"+Color.RESET);
 			setHealCount(getHealCount()-1);
 		}
 	}

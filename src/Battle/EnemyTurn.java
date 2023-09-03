@@ -13,14 +13,9 @@ public class EnemyTurn extends TurnInfo{
 	
 	public EnemyTurn(Status enemy) {
 		super(enemy);
-		diceQ = enemy.getDiceQuantity();		
 		turnItem= enemy.getInventory().clone();	
-		dice=new int[diceQ];
-		for (int i = 0; i < dice.length; i++) {
-			dice[i]=Roll.roll6();			
-		}
+		resetDice(enemy);
 		itemState=new int[enemy.getInventory().length][3];
-		resetCount(enemy);
 	}
 	
 	public void doEnemyTurnLoop(Player player, Enemy enemy, MyTurn myturn) {
@@ -36,7 +31,6 @@ public class EnemyTurn extends TurnInfo{
 		script.printItem(this);
 		script.selectDice(this);
 		
-		
 		while (enemy.getCondition(1)>0) {
 			if (enemy.getCondition(1)>0) {
 				enemy.damagedIce(this);
@@ -48,7 +42,7 @@ public class EnemyTurn extends TurnInfo{
 		while (getDice().length>0) {
 			int enemyItemNum=0;
 			scanner.nextLine();
-
+			
 				rebuildDice();
 				int maxMin = getDice(0);
 				int indexDice = 0;				 
@@ -68,7 +62,6 @@ public class EnemyTurn extends TurnInfo{
 			            }
 			        }	
 		        }
-		        	
 				
 				if (enemy.getCondition(0)>0) {
 					enemy.damagedFire();	
@@ -89,19 +82,28 @@ public class EnemyTurn extends TurnInfo{
 				}//상태이상	발화
 				if (player.getHp()<1||enemy.getHp()<1) break;
 				//죽었는지 확인
-
+				
 				for(int j=0; j<getItem().length;j++) {
-					if (getItem(enemyItemNum).getName().equals(new Nothing().getName())) {
+					getItem(enemyItemNum).setCheck(false);
+					if (getItem(enemyItemNum).getName().equals(new Nothing().getName())
+							||getItem(enemyItemNum).checkDice(getDice(indexDice))) {
 						enemyItemNum++;
+						if (enemyItemNum==getItem().length) {
+							setDice(indexDice, 0);
+							System.out.println("사용할 수 없는 주사위는 버립니다");
+							rebuildDice();
+							break;
+						}
 						continue;
 					}
+										
 					script.printSelectedDiceUse(enemyItemNum, enemy);
 					getItem(j).action
 					(enemy, player, getDice(indexDice), this, enemyItemNum);
 
 					getItem(enemyItemNum).setCount(getTurnCount(enemyItemNum));
 					//카운트 동기화			
-
+					
 					setDice(indexDice, getItem(enemyItemNum).getChangeDice());
 					//사용한 주사위 눈금 변경
 					if (getItem(enemyItemNum).getTimes()==0) {
@@ -122,11 +124,10 @@ public class EnemyTurn extends TurnInfo{
 					count++;
 				}
 			}
-			if (count == getItem().length) break;
+			if (count == getItem().length) break;//전부 빈슬롯인지 확인
 		}
 		scanner.nextLine();
 	}
-	
 }
 
 

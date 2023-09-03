@@ -12,7 +12,7 @@ public class Revolver extends Item{
 
 	public Revolver()	{
 		name = "리볼버";
-		description = "[6] 의 피해를 줍니다 (6만 가능) (한턴당 3번)";
+		description = "[6] 의 피해를 줍니다 (6만 가능) (턴당 3번)";
 		times=3;
 	}	
 	

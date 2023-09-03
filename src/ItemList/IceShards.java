@@ -11,7 +11,7 @@ public class IceShards extends Item{
 
 	public IceShards()	{
 		name = "얼음파편";		
-		description="ㅁ 의 얼음 피해를 줍니다 (홀수만 가능)";
+		description="ㅁ 의 얼음 피해를 줍니다 (홀수)";
 		times=1;
 	}	
 	
@@ -22,7 +22,7 @@ public class IceShards extends Item{
 			return;
 		}
 		enemy.subtractHp(dice);
-		printTakeIce(dice);
+		printDamageIce(dice);
 		my.setTurnTimes(idx, 0);
 		enemy.setCondition(1,enemy.getCondition(1)+1);
 	}
@@ -34,6 +34,5 @@ public class IceShards extends Item{
 		}
 		return check;
 	}
-
 }
 //얼음파편:눈금만큼 피해를 주고 냉기효과부여(홀수만 가능)

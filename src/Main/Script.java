@@ -21,7 +21,6 @@ public class Script implements Color {
 	
 	public void chooseItem(String job) {		
 		System.out.println();
-		
 		switch (job) {
 		case "전사" :
 			System.out.println("\t\t 기본 장비 : 검");
@@ -36,12 +35,12 @@ public class Script implements Color {
 		case "궁수" :
 			System.out.println("\t\t 기본 장비 : 활");
 			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 석궁, 조준\t2. 덫, 위조");
+			System.out.println("\t1. 석궁, 정밀\t2. 덫, 위조");
 			break;
 		case "마법사" :
 			System.out.println("\t\t 기본 장비 : 완드");
 			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 얼음파편, 거울\t2. 스태프, 예비");
+			System.out.println("\t1. 얼음파편, 거울\t2. 스태프, 예비4");
 			break;
 		case "기사" :
 			System.out.println("\t\t 기본 장비 : 격돌");
@@ -77,7 +76,7 @@ public class Script implements Color {
 		System.out.print(player.getHp());
 		}
 		if (player.getDef()>0) {
-			System.out.print(BYELLOW+"("+player.getDef()+")"+RESET);
+			System.out.print(BCYAN+"("+player.getDef()+")"+RESET);
 		}
 		System.out.print(" / "+player.getMaxHp());
 		if (player.getSp()>11) {
@@ -89,7 +88,7 @@ public class Script implements Color {
 		}
 		System.out.print(enemy.getHp());
 		if (enemy.getDef()>0) {
-			System.out.print(BYELLOW+"("+enemy.getDef()+")"+RESET);
+			System.out.print(BCYAN+"("+enemy.getDef()+")"+RESET);
 		}
 		System.out.println(" / "+enemy.getMaxHp());
 		printConditionInfo(player, enemy);
@@ -106,11 +105,11 @@ public class Script implements Color {
 			countCondi++;
 		}
 		if (player.getCondition(2)>0) {
-			System.out.print(BPURPLE+"마비:"+player.getCondition(2)+" "+RESET);
+			System.out.print(BYELLOW+"감전:"+player.getCondition(2)+" "+RESET);
 			countCondi++;
 		}
 		if (player.getCondition(3)>0) {
-			System.out.print(BCYAN+"중독:"+player.getCondition(3)+" "+RESET);
+			System.out.print(BPURPLE+"중독:"+player.getCondition(3)+" "+RESET);
 			countCondi++;
 		}
 		switch (countCondi) {
@@ -130,7 +129,6 @@ public class Script implements Color {
 				System.out.print("\t\t\t\t");
 				break;
 		}
-	
 		if (enemy.getCondition(0)>0) {
 			System.out.print(RED+"발화:"+enemy.getCondition(0)+" "+RESET);
 		}
@@ -138,18 +136,16 @@ public class Script implements Color {
 			System.out.print(BBLUE+"빙결:"+enemy.getCondition(1)+" "+RESET);
 		}
 		if (enemy.getCondition(2)>0) {
-			System.out.print(BPURPLE+"마비:"+enemy.getCondition(2)+" "+RESET);
+			System.out.print(BYELLOW+"감전:"+enemy.getCondition(2)+" "+RESET);
 		}
 		if (enemy.getCondition(3)>0) {
-			System.out.print(BCYAN+"중독:"+enemy.getCondition(3)+" "+RESET);
+			System.out.print(BPURPLE+"중독:"+enemy.getCondition(3)+" "+RESET);
 		}
 		System.out.println();
 	}
 	
 	public void selectDice(MyTurn turnInfo) {
-//		System.out.println();
 		System.out.println(" - 당신의 주사위 - ");
-//		System.out.println();
 		for (int i = 0; i < turnInfo.getDice().length; i++) {
 			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
 		}
@@ -189,6 +185,9 @@ public class Script implements Color {
 		System.out.println("--------------------- 장비 ----------------------");
 		for (int i=0;i<player.getInventory().length;i++) {
 			System.out.print((i+1)+") "+player.getInventory(i).getName()+" : "+player.getInventory(i).getDescription());
+			if(player.getInventory(i).getCount()>0) {
+				System.out.print(" (카운트:"+player.getInventory(i).getCount()+")");
+			}
 			if (i==player.getInventory().length-1) {
 				System.out.println(" -고유-");
 			}
@@ -210,8 +209,11 @@ public class Script implements Color {
 			if (turnInfo.getTurnTimes(i) > 1) {
 				System.out.print(" 남은횟수:"+turnInfo.getTurnTimes(i));
 			}
-			if(turnInfo.getItem(i).getCount()>0) {
-				System.out.print(" 카운트:"+turnInfo.getTurnCount(i));
+			if(turnInfo.getTurnCount(i)>0) {
+				System.out.print(" (카운트:"+turnInfo.getTurnCount(i)+")");
+			}
+			if(turnInfo.getItem(i).getAccDamage()>0) {
+				System.out.print(" 누적:"+turnInfo.getItem(i).getAccDamage());
 			}
 			System.out.println(RESET);
 		}
@@ -237,25 +239,11 @@ public class Script implements Color {
 			System.out.println("/"+player.getMaxHp());
 	}
 	
-//	public void printDamagedFire() {
-//		System.out.println();
-//		System.out.println(RED+"발화효과로 [2]의 피해를 입습니다"+RESET);
-//		System.out.println();
-//		System.out.println("---------------------------------");
-//	}
-	
 	public void printDamagedIce() {
 		System.out.println(B_BBLUE+" * 주사위가 얼어붙습니다. 눈금이 1로 변합니다 *"+RESET);
 		System.out.println();
 	}
-	
-//	public void printDamagedParalysis() {
-//		System.out.println();
-//		System.out.println(PURPLE+"마비효과로 주사위를 잃습니다"+RESET);
-//		System.out.println();
-//		System.out.println("---------------------------------");
-//	}
-	
+
 	public void printCheckTrue() {
 		System.out.println();
 		System.out.println(B_BLACK+" * 주사위 눈금을 확인하세요 * "+RESET);
@@ -303,4 +291,13 @@ public class Script implements Color {
 		System.out.println();
 	}
 	
+	public void ending() {
+		System.out.println();
+		System.out.println(BWHITE+"------------------------------------------------");
+		System.out.println();
+		System.out.println("\t\t     축하합니다.");
+		System.out.println("\t   *** 모든 몬스터를 쓰러트렸습니다 ***");
+		System.out.println();
+		System.out.println("------------------------------------------------");
+	}
 }

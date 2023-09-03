@@ -9,8 +9,8 @@ public class Bow extends Item{
 	
 	public Bow()	{
 		name = "활";
-		count=10;
-		description="[9] 의 피해를 줍니다 (카운트 12)";
+		count=11;
+		description="[9] 의 피해를 줍니다";
 		times=1;		
 	}	
 	
@@ -24,7 +24,7 @@ public class Bow extends Item{
 			enemy.subtractHp(9);
 			printDamage(9);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 12);
+			my.setTurnCount(idx, 11);
 		}
 	}
 }

@@ -13,7 +13,7 @@ public class Sacrifice extends Item{
 	public Sacrifice()	{
 		name = "희생";
 		times=1;
-		description = "[3]의 피해를 입고, 주사위를 생성합니다";		
+		description = "[3] 의 피해를 입고, 주사위를 생성합니다";		
 	}	
 	
 	@Override

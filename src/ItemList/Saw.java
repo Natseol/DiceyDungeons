@@ -10,7 +10,7 @@ import Item.Item;
 public class Saw extends Item{	
 	public Saw() {
 		name = "쇠톱";
-		description = "주사위를 셋으로 나눕니다 (최소 3 이상)";
+		description = "주사위를 셋으로 나눕니다 (최소 3)";
 		times=1;
 	}
 	

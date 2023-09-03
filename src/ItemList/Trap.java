@@ -8,8 +8,8 @@ public class Trap extends Item{
 
 	public Trap()	{
 		name = "함정";
-		description = "독을 2 걸고, [1] 의 마비피해를 줍니다 (카운트 8)";
-		count=8;
+		description = "[1] 의 전기 피해를 줍니다 독+2";
+		count=6;
 		times=1;
 	}	
 	
@@ -21,12 +21,12 @@ public class Trap extends Item{
 		}
 		else {
 			enemy.subtractHp(1);
-			printTakeParalysis(1);
-			printTakePoison(2);
+			printDamageShock(1);
+			printPoisoned(2);
 			enemy.setCondition(2,enemy.getCondition(0)+2);
 			enemy.setCondition(3,enemy.getCondition(0)+2);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 8);
+			my.setTurnCount(idx, 6);
 		}
 	}
 }

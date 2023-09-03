@@ -8,8 +8,8 @@ public class MagicShield extends Item{
 
 	public MagicShield()	{
 		name = "매직쉴드";
-		description = "[4] 의 방어력을 얻고, [2] 의 체력을 회복합니다 (카운트 8)";
-		count=8;
+		description = "[4] 의 방어력을 얻고, [2] 의 체력을 회복합니다";
+		count=9;
 		times=1;
 	}	
 	
@@ -24,16 +24,8 @@ public class MagicShield extends Item{
 			printGainDefence(4);
 			player.addHp(2);
 			printRecovery(2);
-			my.setTurnCount(idx, 8);
+			my.setTurnCount(idx, 9);
 			my.setTurnTimes(idx, 0);
 		}
 	}
-	
-	@Override
-	public boolean checkDice(int dice) {
-		if (dice%2==0) {
-			check=true;
-		}
-		return check;
-	}	
 }

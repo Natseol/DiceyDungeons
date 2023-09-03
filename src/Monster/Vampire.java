@@ -11,9 +11,9 @@ public class Vampire extends Enemy {
 		name = "뱀파이어";
 		description = "당신이 알고 있는 그것 맞습니다";
 		grade = "어려움";
-		maxHp = 36;	
+		maxHp = 42;	
 		hp = maxHp;
 		diceQuantity = 3;
-		inventory = new Item[] {new Scythe(), new Scythe(), new Scythe()};		
+		inventory = new Item[] {new Scythe(), new BloodSucking(), new ShortSword()};		
 	}
 }

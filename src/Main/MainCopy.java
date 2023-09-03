@@ -1,210 +1,39 @@
-//package Main;
-//
-//import java.util.Scanner;
-//
-//import Battle.*;
-//import Character.*;
-//import Dice.*;
-//import Field.*;
-//import ItemList.*;
-//import Monster.*;
-//
-//public class MainCopy extends Script {
-//	
-//	public static void main(String[] args) {
-//
-//		Scanner scanner = new Scanner(System.in);
-//		Script script = new Script();		
-//
-//		script.chooseJob();
-//		int inputNum=0;
-//		while (inputNum>5||inputNum<1) {
-//		inputNum=Input.checkInput(scanner.nextLine());
-//		}
-//		Player player = new Player(inputNum);
-//
-////		player.setCondition(0,3);
-////		player.setCondition(1,2);
-////		player.setCondition(2,2);
-////		player.setCondition(3,2);
+//		player.setCondition(0,3);
+//		player.setCondition(1,2);
+//		player.setCondition(2,2);
+//		player.setCondition(3,2);
 //		
 //		player.setSp(14);
-//
-//		int floor=1;		
-//		int eNum=0;
-//
-//		Field field = new Field();
-//
-//		while (true) {//스테이지 진입
-//
-//			Enemy[] enemy = new Enemy[]{
-//					new Marine(),
-//					new Frog(),
-//					new Gatekeeper(),
-//					new Fighter(),
-//					new Mimic(),
-//					new GatekeeperElite(),
-//					new SnowMan(),
-//					new Onepun(),
-//					new Vampire(),
-//					new SwordMan(),
-//					new Bear(),
-//					new Witch(),
-//					new VampireElite()
-//			};
+//		
+//			enemy[eNum].setCondition(0,3);
+//			enemy[eNum].setCondition(1,2);
+//			enemy[eNum].setCondition(2,2);
+//			enemy[eNum].setCondition(3,2);
 //			
-////			enemy[eNum].setCondition(0,3);
-////			enemy[eNum].setCondition(1,2);
-////			enemy[eNum].setCondition(2,2);
-////			enemy[eNum].setCondition(3,2);
-//			
-//			MyTurn myturn = new MyTurn(player);//주사위 초기화
-//			script.startBattle();			
-//			while (true) {//전투시작
+
+//				for (int i = 0; i < 5; i++) {
+//				System.out.print(player.getInventory(i).getTimes()+" ");
+//				}
+//				System.out.println();
+//				for (int i = 0; i < 5; i++) {
+//				System.out.print(myturn.getTurnTimes(i)+" ");
+//				}
+//				System.out.println();
+				
 //
-//				myturn = new MyTurn(player);//주사위 초기화
-//				EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
-//				
-//				myturn.doMyTurnLoop(player, enemy[eNum], enemyTurn);
-//				
-////				myturn.setBattle(player);
-////				if (player.getCondition(3)>0) {
-////					player.damagedPoison();	
-////				}//상태이상	중독
-////				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
-////				//죽었는지 확인
-////				
-////				while (true) { //내턴시작
-////
-////					script.printBattleInfo(player, enemy[eNum]);					
-////					script.printItem(myturn);
-////					
-////					while (player.getCondition(1)>0) {
-////						if (player.getCondition(1)>0) {
-////							script.selectDice(myturn);	
-////							player.damagedIce(myturn);
-////							script.printDamagedIce();
-////						}//상태이상 빙결
-////					}
-////
-////					script.selectDice(myturn);
-////					int idxDice=30;
-////					while ((idxDice>myturn.getDice().length||idxDice<0)&&idxDice!=99&&idxDice!=77) {
-////						idxDice=Input.checkInput(scanner.nextLine());
-////					}
-////					
-////					if (idxDice==0) {
-////						script.selectTurnEnd();
-////						break; //턴종료
-////					}
-////					else if (idxDice==99) {
-////						script.printEnemyInfo(enemyTurn, enemy[eNum]);
-////						scanner.nextLine();
-////						continue;
-////					}
-////					else if (idxDice==77) {
-////						Skill.useSkill(player, enemy[eNum], myturn);
-////						continue;
-////					}
-////					
-////					if (player.getCondition(0)>0) {
-////						player.damagedFire();	
-////					}//상태이상	발화					
-////					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
-////					//죽었는지 확인
-////
-////					int numDice=myturn.getDice(idxDice-1);
-////					script.printSelectedDice(numDice);
-////					script.printSelectItem(myturn);
-////
-////					int idxInven=30;
-////					while ((idxInven>myturn.getItem().length-1||idxInven<-1)) {
-////						idxInven=Input.checkInput(scanner.nextLine())-1;
-////					}					
-////					
-////					if (idxInven==-1) {
-////						script.startMyTurn();
-////						continue;
-////					}
-////					System.out.println();
-////
-////					if (player.getCondition(0)>0) {
-////						player.damagedFire();	
-////					}//상태이상	발화
-////					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
-////					//죽었는지 확인
-////
-////					if (player.getCondition(2)>0) {
-////						if (player.damagedParalysis(myturn, idxDice)) {
-////						myturn.rebuildDice();
-////						continue;
-////						}
-////					}//상태이상 마비
-////
-////					myturn.getItem(idxInven).setCheck(false);//조건 초기화
-////					myturn.getItem(idxInven).setChangeDice(0);//조건 초기화
-////					if (myturn.getItem(idxInven).checkDice(numDice)==true) {
-////						script.printCheckTrue();
-////						continue;
-////					}//장비 조건 확인
-////					
-//////					System.out.println("횟수 : "+player.getInventory(invenIdx).getTimes());
-//////					System.out.println("횟수 : "+myturn.getTurnTimes(invenIdx));
-////					
-////					for (int i=0;i<5;i++) {
-////						System.out.print(player.getInventory(i).getCount()+"  ");
-////					}
-////					System.out.println();
-////					for (int i=0;i<5;i++) {
-////						System.out.print(myturn.getItem(i).getCount()+"  ");
-////					}
-////					System.out.println();
-////					
-////					if (myturn.getIsUseSkill()) {
-////					myturn.getItem(idxInven).action(player, enemy[eNum], numDice, myturn, idxInven);
-////					System.out.println(CYAN+" * 한번 더 발동합니다 *\n"+RESET);					
-////					myturn.setIsUseSkill(false);
-////					}
-////					myturn.getItem(idxInven).action(player, enemy[eNum], numDice, myturn, idxInven);
-////					//장비 발동
-////					if (player.getHp()<1||enemy[eNum].getHp()<1) break;
-////					//죽었는지 확인
-////					
-//////					System.out.println("횟수 : "+player.getInventory(invenIdx).getTimes());
-//////					System.out.println("횟수 : "+myturn.getTurnTimes(invenIdx));
-//////
-//////					for (int i=0;i<6;i++) {
-//////						System.out.print(myturn.getTurnCount(invenIdx)+"  ");
-//////					}
-//////					System.out.println();
-////					
-////					player.getInventory(idxInven).setCount(myturn.getTurnCount(idxInven));
-//////					//카운트 동기화
-////
-//////					for (int i=0;i<6;i++) {
-//////						System.out.print(player.getInventory(i).getCount()+"  ");
-//////					}
-//////					System.out.println();
-////					
-////					myturn.setDice(idxDice-1, myturn.getItem(idxInven).getChangeDice());
-////					//사용한 주사위 눈금 변경
-////
-////					if (myturn.getItem(idxInven).getName()==new GreatSword().getName()&&myturn.getTurnTimes(idxInven)==0) {
-////						myturn.setItem(idxInven, new UsedGreat());
-////						player.setInventory(idxInven, new UsedGreat());						
-////					}
-////					else if (myturn.getTurnTimes(idxInven)==0) {
-////						myturn.setItem(idxInven, new Nothing());
-////					}//횟수0 아이템은 빈슬롯으로 변경
-////					
-//////					System.out.println("횟수 : "+player.getInventory(invenIdx).getTimes());
-//////					System.out.println("횟수 : "+myturn.getTurnTimes(invenIdx));
-////					
-////					myturn.rebuildDice();//주사위 정리
-////
-////				}//end of while : 내 턴
+//					for (int i=0;i<6;i++) {
+//						System.out.print(myturn.getTurnCount(invenIdx)+"  ");
+//					}
+//					System.out.println();
 //
-//				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
+//					for (int i=0;i<6;i++) {
+//						System.out.print(player.getInventory(i).getCount()+"  ");
+//					}
+//					System.out.println();
+//					
+//					System.out.println("횟수 : "+player.getInventory(invenIdx).getTimes());
+//					System.out.println("횟수 : "+myturn.getTurnTimes(invenIdx));
+//					
 //
 //				//*****************
 //				// 전투 탈출

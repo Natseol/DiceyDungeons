@@ -11,7 +11,7 @@ public class Drop extends Item{
 
 	public Drop()	{
 		name = "하락";
-		description = "주사위 눈금을 1 내립니다 (최소 2 이상)";
+		description = "주사위 눈금을 1 내립니다 (최소 2)";
 		times=1;
 	}	
 	

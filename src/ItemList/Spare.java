@@ -1,17 +1,14 @@
 package ItemList;
 
-import Battle.MyTurn;
 import Battle.TurnInfo;
-import Character.Enemy;
-import Character.Player;
 import Character.Status;
 import Item.Item;
 
 public class Spare extends Item{
 
 	public Spare()	{
-		name = "예비";
-		description = "눈금 4 주사위를 획득한다";
+		name = "예비4";
+		description = "눈금 4 주사위를 획득합니다";
 		times=1;
 	}	
 	

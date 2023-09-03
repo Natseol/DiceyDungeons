@@ -12,7 +12,7 @@ public class MedicKit extends Item{
 	public MedicKit()	{
 		name = "구급상자";
 		count=16;
-		description="8 의 체력을 회복합니다 (카운트 16)";
+		description="8 의 체력을 회복합니다";
 		times=1;		
 	}	
 	

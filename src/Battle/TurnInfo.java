@@ -15,20 +15,24 @@ public class TurnInfo extends BattleSetting{
 	Item[] turnItem;
 	int[] other;
 	Script script = new Script();
-
 	
 	public TurnInfo() {}
+	
  	public TurnInfo(Status status) {
-		diceQ = status.getDiceQuantity();		
 		turnItem=new Item[6];
 		for (int i = 0 ; i<status.getInventory().length;i++) {
 			setItem(0, status.getInventory(i));
-		}		
-		dice=new int[diceQ];
+		}
+		resetDice(status);
+	}
+ 	
+ 	public void resetDice(Status status) {
+ 		diceQ = status.getDiceQuantity();	
+ 		dice=new int[diceQ];
 		for (int i = 0; i < dice.length; i++) {
 			dice[i]=Roll.roll6();			
 		}
-	}
+ 	}
 	
 	public int[] getDice() {
 		return dice;

@@ -8,13 +8,11 @@ import Character.Status;
 import Item.Item;
 
 public class Talisman extends Item{
-
-	int otherDice = 0;
 	
 	public Talisman()	{
 		name = "부적";
 		count=7;
-		description = "3 주사위를 2개 얻습니다 (카운트 7)";
+		description = "3 주사위를 2개 얻습니다";
 		times=1;		
 	}	
 

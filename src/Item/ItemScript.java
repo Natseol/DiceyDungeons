@@ -27,28 +27,46 @@ public class ItemScript {
 		System.out.println();
 	}
 	
-	public void printTakeFire(int dice) {
+	public void printDamageFire(int dice) {
 		System.out.println(Color.B_RED+" == "+dice+" 의 화염 피해를 줬습니다!! == "+Color.RESET);
 		System.out.println();
 	}
 	
-	public void printTakeIce(int dice) {
+	public void printFire(int num) {
+		System.out.println(Color.B_RED+" == 상대방을 불태웁니다! +"+num+" == "+Color.RESET);
+		System.out.println();
+	}
+	
+	public void printDamageIce(int dice) {
 		System.out.println(Color.B_BBLUE+" == "+dice+" 의 냉기 피해를 줬습니다!! == "+Color.RESET);
 		System.out.println();
 	}
 	
-	public void printTakePoison(int num) {
-		System.out.println(Color.GREEN+" == +"+num+" 중독 되었습니다!! == "+Color.RESET);
+	public void printIced(int num) {
+		System.out.println(Color.B_BBLUE+" == 상대방을 얼립니다! +"+num+" == "+Color.RESET);
 		System.out.println();
 	}
 	
-	public void printTakeParalysis(int dice) {
-		System.out.println(Color.B_BPURPLE+" == "+dice+" 의 마비 피해를 줬습니다!! == "+Color.RESET);
+	public void printDamageShock(int dice) {
+		System.out.println(Color.B_BYELLOW+" == "+dice+" 의 전기 피해를 줬습니다!! == "+Color.RESET);
+		System.out.println();
+	}
+	public void printShock(int num) {
+		System.out.println(Color.B_BYELLOW+" == 상대방을 감전시킵니다! +"+num+" == "+Color.RESET);
+		System.out.println();
+	}
+	
+	public void printDamagePoison(int dice) {
+		System.out.println(Color.BPURPLE+" == "+dice+" 의 독 피해를 줬습니다!! == "+Color.RESET);
+		System.out.println();
+	}
+	public void printPoisoned(int num) {
+		System.out.println(Color.BPURPLE+" == 상대방을 중독시킵니다! +"+num+" == "+Color.RESET);
 		System.out.println();
 	}
 	
 	public void printGainDefence(int dice) {
-		System.out.println(" "+Color.B_BYELLOW+" "+dice+" "+Color.RESET+" 의 방어력을 얻었습니다!!");
+		System.out.println(" "+Color.B_BCYAN+" "+dice+" "+Color.RESET+" 의 방어력을 얻었습니다!!");
 		System.out.println();
 	}	
 

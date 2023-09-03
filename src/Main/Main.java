@@ -10,7 +10,7 @@ import ItemList.*;
 import Monster.*;
 
 public class Main extends Script {
-	
+
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
@@ -19,78 +19,100 @@ public class Main extends Script {
 		script.chooseJob();
 		int inputNum=0;
 		while (inputNum>5||inputNum<1) {
-		inputNum=Input.checkInput(scanner.nextLine());
+			inputNum=Input.checkInput(scanner.nextLine());
 		}
 		Player player = new Player(inputNum);
-		
+
 		script.chooseItem(player.getJob());
 		inputNum=0;
 		while (inputNum>2||inputNum<1) {
-		inputNum=Input.checkInput(scanner.nextLine());
+			inputNum=Input.checkInput(scanner.nextLine());
 		}
 		player.setJobItem(player.getJob(), inputNum);
-		
+
 		Enemy[] enemy = new Enemy[13];
+		for (int i=0;i<enemy.length;i++) {
+			enemy[i]=Enemy.setEnemy(i);
+		}
+		int floor=1;		
+		int eNum=0;
 		Field field = new Field();
 
 //		player.setCondition(0,3);
 //		player.setCondition(1,2);
 //		player.setCondition(2,4);
 //		player.setCondition(3,2);
-		
-//		player.setSp(12);
 
-		for (int i=0;i<enemy.length;i++) {
-			enemy[i]=Enemy.setEnemy(i);
-		}
-		
+//		player.setLevel(5);
+//		player.setSp(12);
+//		player.setHp(52);
+//		enemy[eNum].setHp(2);
+
 //			enemy[eNum].setCondition(0,3);
 //			enemy[eNum].setCondition(1,2);
 //			enemy[eNum].setCondition(2,2);
 //			enemy[eNum].setCondition(3,2);
 		
-		int floor=1;		
-		int eNum=11;
-
-
-		while (true) {//스테이지 진입
-
 //					new Marine(),
 //					new Frog(),
 //					new Gatekeeper(),
+//					new Onepun(),
 //					new Fighter(),
-//					new Mimic(),
 //					new GatekeeperElite(),
 //					new SnowMan(),
-//					new Onepun(),
+//					new Mimic(),
 //					new Vampire(),
 //					new SwordMan(),
 //					new Bear(),
 //					new Witch(),
-//					new VampireElite()
-//			};
+//					new VampireElite()		
+
+		while (true) {//스테이지 진입
+
+			int enemyTurntimes[][] = new int[enemy[eNum].getInventory().length][2];
+			for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
+				enemyTurntimes[i][0]=enemy[eNum].getInventory(i).getTimes();
+				enemy[eNum].getInventory(i).setCount(enemy[eNum].getInventory(i).getCount());
+			}
+			
+			int playerTurntimes[][] = new int[player.getInventory().length][2];
+			for (int i = 0; i < player.getInventory().length; i++) {
+				playerTurntimes[i][0]=player.getInventory(i).getTimes();
+				player.getInventory(i).setCount(player.getInventory(i).getCount());
+			}
 			
 			script.startBattle();			
 			while (true) {//전투시작
-
+							
 				MyTurn myturn = new MyTurn(player);//주사위 초기화
 				EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
+
 				
+				for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
+					enemy[eNum].getInventory(i).setTimes(enemyTurntimes[i][0]);//횟수 동기화
+					enemyTurn.setTurnCount(i,enemyTurn.getItem(i).getCount());//카운트 동기화
+				}
+				
+				for (int i = 0; i < player.getInventory().length; i++) {
+					player.getInventory(i).setTimes(playerTurntimes[i][0]);//횟수 동기화
+					myturn.setTurnCount(i,myturn.getItem(i).getCount());//카운트 동기화
+				}
+
 				myturn.doMyTurnLoop(player, enemy[eNum], enemyTurn);
 				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
 				
 				//*****************
 				// 전투 탈출
 				//*****************
-				System.out.println();
-				System.out.println("---------------------------------");
-				System.out.println("종료 = 1");
-				if (scanner.nextLine().equals("1")) break;
-				
+//				System.out.println();
+//				System.out.println("---------------------------------");
+//				System.out.println("종료 = 1");
+//				if (scanner.nextLine().equals("1")) break;
+
 				System.out.println();
 				enemyTurn.doEnemyTurnLoop(player, enemy[eNum], myturn);
 				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
-				
+
 				script.startMyTurn();
 
 			}//end of while Battle
@@ -106,12 +128,16 @@ public class Main extends Script {
 				System.out.println(B_CYAN+enemy[eNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
 				eNum++;
 				player.levelUp();
+				if (eNum>12) {
+					script.ending();
+					System.exit(1);
+				}
 			}//이겼을 때
 
 			player.resetPlayer();//플레이어 정보 초기화
 
 			while (true) {//필드진입
-				
+
 				script.chooseInField(floor);
 				int chooseInField=Input.checkInput(scanner.nextLine());
 				if (chooseInField == 1) {//1.전투
@@ -130,7 +156,6 @@ public class Main extends Script {
 					else {
 						script.changeAlready();
 					}
-
 				}
 				else if (chooseInField == 3) {//3.회복샘
 					if (field.getHealCount()>0) {
@@ -141,10 +166,10 @@ public class Main extends Script {
 					}
 				}
 				else if (chooseInField == 4) {//4.다음층
-					if (eNum>=8&&eNum<=11) eNum=12;
-					if (eNum>=5&&eNum<=7) eNum=8;
-					if (eNum>=2&&eNum<=4) eNum=5;
-					if (eNum>=0&&eNum<=1) eNum=2;
+					if (eNum>=9&&eNum<=12) eNum=12;
+					if (eNum>=6&&eNum<=8) eNum=8;
+					if (eNum>=3&&eNum<=5) eNum=5;
+					if (eNum>=0&&eNum<=2) eNum=2;
 					floor++;
 					field = new Field();
 					script.downFloor();
@@ -156,6 +181,13 @@ public class Main extends Script {
 					continue;
 				}
 			}//end of while Field
+			if (eNum==12) {
+				System.out.println(" 최후의 상점에 들어갑니다.");
+				System.out.println(" 나가면 바로 전투가 시작됩니다");
+				field=new Field();
+				field.inStore(player);				
+			}
+			
 		}//end of while stage
 		scanner.close();
 	}//end of main

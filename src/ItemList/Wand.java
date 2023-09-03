@@ -12,7 +12,7 @@ public class Wand extends Item{
 	public Wand()	{
 		name = "완드";
 		count=8;
-		description="[6] 의 화염 피해를 줍니다 (카운트 8)";
+		description="[6] 의 화염 피해를 줍니다";
 		times=1;
 	}	
 	
@@ -24,7 +24,7 @@ public class Wand extends Item{
 		}
 		else {
 			enemy.subtractHp(6);		
-			printTakeFire(6);
+			printDamageFire(6);
 			enemy.setCondition(0,enemy.getCondition(0)+1);
 			my.setTurnTimes(idx, 0);
 			my.setTurnCount(idx, 8);

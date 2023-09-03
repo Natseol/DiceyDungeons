@@ -11,7 +11,7 @@ public class SnowMan extends Enemy{
 		name = "눈사람";
 		description = "눈.사.람";
 		grade = "일반";
-		maxHp = 30;	
+		maxHp = 36;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new IceShards(), new IceShards(), new IceShards()};		

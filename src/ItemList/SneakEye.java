@@ -7,14 +7,12 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Aiming extends Item{
-
-	int otherDice = 0;
+public class SneakEye extends Item{
 	
-	public Aiming()	{
-		name = "조준";
-		count=10;
-		description = "6 주사위를 2개 얻습니다 (카운트 10)";
+	public SneakEye()	{
+		name = "뱀의눈";
+		count=5;
+		description = "1 주사위를 2개 얻습니다";
 		times=1;		
 	}	
 
@@ -25,11 +23,10 @@ public class Aiming extends Item{
 		}
 		else {
 			my.setOther(1);
-			changeDice=6;
-			my.setOther(0,6);
+			changeDice=1;
+			my.setOther(0,1);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 10);
+			my.setTurnCount(idx, 5);
 		}
 	}
 }
-//부적 : 6주사위 2개를 얻는다(카운트 10)

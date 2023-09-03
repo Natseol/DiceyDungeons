@@ -22,13 +22,6 @@ public class Player extends Job {
 		default : break;
 		}		
 	}
-	
-//	public Player (int hp, int maxHp, int diceQuantity) {
-//		super(hp,maxHp,diceQuantity);
-//		this.hp = hp;
-//		this.maxHp=maxHp;
-//		this.diceQuantity = diceQuantity;
-//	}
 
 	public int getExp() {
 		return exp;
@@ -71,22 +64,14 @@ public class Player extends Job {
 			condition[i]=0;
 		}
 		def = 0;	
-//		if (job=="전사") {//주사위 초기화
-			switch (level) {
-			case 1 : diceQuantity = 2; break;
-			case 2 : diceQuantity = 3; break;
-			case 3 : diceQuantity = 3; break;
-			case 4 : diceQuantity = 4; break;
-			case 5 : diceQuantity = 5; break;
-			}
-//		}
-//		else if (job=="도적") {
-//			switch (level) {
-//			case 1 : diceQuantity = 3; break;
-//			case 2 : diceQuantity = 4; break;
-//			case 3 : diceQuantity = 4; break;
-//			case 4 : diceQuantity = 5; break;
-//			}
-//		}		
+
+		switch (level) {
+		case 1 : diceQuantity = 2; break;
+		case 2 : diceQuantity = 3; break;
+		case 3 : diceQuantity = 3; break;
+		case 4 : diceQuantity = 4; break;
+		case 5 : diceQuantity = 5; break;
+		}
+
 	}
 }

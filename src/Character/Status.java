@@ -13,7 +13,6 @@ public class Status {
 	protected Item[] inventory;
 	protected int condition[]=new int[4];
 	protected boolean isEffect;
-//	protected int countCondi;
 	protected int sp;
 		
 	public Status() {}	
@@ -102,7 +101,6 @@ public class Status {
 	public void setSp(int sp) {
 		this.sp = sp;
 	}
-		
 	
 //	상태이상
 //	0. 발화 : 주사위를 사용하려면 체력 2 소모
@@ -118,19 +116,6 @@ public class Status {
 	public void setCondition(int idx,int changeNum) {
 		condition[idx]=changeNum;		
 	}
-	
-//	public int getCountCondi() {
-//		return countCondi;
-//	}
-//	public int countCondition() {
-//		int countCondi=0;
-//		for (int i=0;i<condition.length;i++) {
-//			if (condition[i]>0) {
-//				countCondi++;
-//			}
-//		}
-//		return countCondi;
-//	}
 
 	public void damagedFire() {
 		if (Math.random()<(0.25*getCondition(0))) {
@@ -139,7 +124,6 @@ public class Status {
 		System.out.println(Color.RED+" * 주사위를 건들다 [2]의 피해를 입습니다 * "+Color.RESET);		
 		}
 	}
-	
 	
 	public void damagedIce(TurnInfo turninfo) {
 		setCondition(1,getCondition(1)-1);
@@ -158,7 +142,7 @@ public class Status {
 		if (Math.random()<0.15*turninfo.getDice(idxDice-1)) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice-1, 0);
-		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
+		System.out.println(Color.BYELLOW+" * 충격을 받았습니다. 주사위를 놓칩니다 * \n"+Color.RESET);
 		setIsEffect(true);
 		return true;
 		}
@@ -169,18 +153,17 @@ public class Status {
 		if (Math.random()>0.5) {
 		setCondition(2,getCondition(2)-1);
 		turninfo.setDice(idxDice, 0);
-		System.out.println(Color.BPURPLE+" * 몸이 굳습니다. 주사위를 놓칩니다 * "+Color.RESET);
+		System.out.println(Color.BYELLOW+" * 충격을 받았습니다. 주사위를 놓칩니다 * "+Color.RESET);
 		setIsEffect(true);
 		return true;
 		}
 		return false;
 	}
-
 	
 	public void damagedPoison() {
 		subtractHp(getCondition(3));
 		System.out.println();
-		System.out.println(Color.BCYAN+" * 중독됐습니다. ["+getCondition(3)+"]의 피해를 입습니다 * "+Color.RESET);
+		System.out.println(Color.BPURPLE+" * 중독됐습니다. ["+getCondition(3)+"]의 피해를 입습니다 * "+Color.RESET);
 		System.out.println();
 		setCondition(3,getCondition(3)-1);
 	}

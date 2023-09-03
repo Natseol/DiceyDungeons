@@ -8,9 +8,8 @@ public class PoisonKnife extends Item{
 
 	public PoisonKnife()	{
 		name = "독칼";
-		description = "[1] 의 피해를 주고 +2 독을 겁니다 (1만 가능, 2개)";
+		description = "[1] 의 독 피해를 줍니다 (1눈 주사위 2개 필요)";
 		times=1;
-		count=2;
 	}	
 	
 	@Override
@@ -19,16 +18,22 @@ public class PoisonKnife extends Item{
 			printIncorrectDice();
 			return;
 		}
-		if (my.getTurnCount(idx)-dice>0) {
-			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-			my.setTurnTimes(idx, 1);
+
+		if (my.getNeedDIce(idx)>0) {
+			enemy.subtractHp(1);			
+			printDamagePoison(1);
+			enemy.setCondition(3,enemy.getCondition(3)+1);
+			printPoisoned(1);
+			accDamage=0;
+			my.setTurnTimes(idx, 0);
+			my.setNeedDIce(idx, 0);
 		}
 		else {
-			enemy.subtractHp(1);
-			printDamage(1);
-			my.setTurnCount(idx, 2);
-			my.setTurnTimes(idx, 0);
-		}
+			accDamage += dice;
+			my.setNeedDIce(idx, 1);
+			my.setTurnTimes(idx, 1);
+		}	
+		
 	}
 	
 	@Override

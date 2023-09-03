@@ -11,7 +11,7 @@ public class Cannon extends Item{
 	public Cannon()	{
 		name = "캐논";
 		count=15;
-		description="[10] 의 피해를 줍니다 (카운트 15)";
+		description="[10] 의 피해를 줍니다";
 		times=1;		
 	}	
 	

@@ -27,13 +27,5 @@ public class Rising extends Item{
 		my.setTurnTimes(idx, 0);
 		}
 	}
-	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice>5) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
 //상승 : 주사위 눈금을 1올린다(최대5의 눈금)

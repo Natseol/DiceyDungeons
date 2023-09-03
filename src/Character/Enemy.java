@@ -17,11 +17,11 @@ public class Enemy extends Status{
 		case 0 : return new Marine();			
 		case 1 : return new Frog();
 		case 2 : return new Gatekeeper();   
-		case 3 : return new Fighter();     
-		case 4 : return new Mimic();          
+		case 3 : return new Onepun();         
+		case 4 : return new SnowMan();
 		case 5 : return new GatekeeperElite();
-		case 6 : return new SnowMan();
-		case 7 : return new Onepun();         
+		case 6 : return new Fighter();     
+		case 7 : return new Mimic();          
 		case 8 : return new Vampire();        
 		case 9 : return new SwordMan();       
 		case 10 : return new Bear();           

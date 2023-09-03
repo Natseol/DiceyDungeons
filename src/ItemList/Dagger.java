@@ -1,9 +1,6 @@
 package ItemList;
 
-import Battle.MyTurn;
 import Battle.TurnInfo;
-import Character.Enemy;
-import Character.Player;
 import Character.Status;
 import Item.Item;
 
@@ -11,7 +8,7 @@ public class Dagger extends Item{
 
 	public Dagger()	{
 		name = "단검";
-		description = "ㅁ 의 피해를 줍니다 (최대 3 이하) (재사용 가능)";
+		description = "ㅁ 의 피해를 줍니다 (최대 3) (재사용 가능)";
 		times=-1;
 	}
 	

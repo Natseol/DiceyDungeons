@@ -11,7 +11,7 @@ public class Glove extends Item{
 
 	public Glove()	{
 		name = "글러브";
-		description="ㅁ 의 마비 피해를 줍니다 (2~4 만 가능)";
+		description="ㅁ 의 전기 피해를 줍니다 (2~4 만 가능)";
 		times=1;
 	}	
 	@Override
@@ -21,7 +21,7 @@ public class Glove extends Item{
 			return;
 		}
 		enemy.subtractHp(dice);
-		printTakeParalysis(dice);
+		printDamageShock(dice);
 		my.setTurnTimes(idx, 0);
 		enemy.setCondition(2,enemy.getCondition(2)+1);
 	}

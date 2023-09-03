@@ -8,8 +8,8 @@ public class PoisonGas extends Item{
 
 	public PoisonGas()	{
 		name = "맹독";
-		description = "[3]의 피해를 줍니다. 독+3 (카운트 14)";
-		count=14;
+		description = "[3]의 독 피해를 줍니다. 독+3";
+		count=9;
 		times=1;
 	}	
 	
@@ -22,10 +22,10 @@ public class PoisonGas extends Item{
 		else {
 			enemy.subtractHp(3);
 			printDamage(3);			
-			enemy.setCondition(3,enemy.getCondition(0)+3);
-			printTakePoison(3);
+			enemy.setCondition(3,enemy.getCondition(3)+3);
+			printPoisoned(3);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 14);
+			my.setTurnCount(idx, 9);
 		}
 	}
 }

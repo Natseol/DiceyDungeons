@@ -12,6 +12,7 @@ public class Item extends ItemScript{
 	protected int times;
 	protected int count;
 	protected int changeDice;
+	protected int accDamage;
 	protected boolean check;
 	
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {}
@@ -83,5 +84,12 @@ public class Item extends ItemScript{
 	
 	public void setChangeDice(int dice) {
 		changeDice = dice;
+	}	
+	
+	public int getAccDamage() {
+		return accDamage;
+	}
+	public void setAccDamage(int num) {
+		accDamage=num;
 	}
 }

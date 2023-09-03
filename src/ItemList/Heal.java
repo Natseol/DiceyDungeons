@@ -11,7 +11,7 @@ public class Heal extends Item{
 
 	public Heal()	{
 		name = "치유";
-		description="ㅁ 의 체력을 회복합니다 (최대 3 이하)";
+		description="ㅁ 의 체력을 회복합니다 (최대 3)";
 		times=1;
 	}	
 	

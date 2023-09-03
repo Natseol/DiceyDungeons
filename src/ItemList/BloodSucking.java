@@ -8,7 +8,7 @@ public class BloodSucking extends Item{
 
 	public BloodSucking()	{
 		name = "흡혈";
-		description = "1-2: [1] , 3-4: [2] , 5-6: [3] 의 피를 흡수합니다.";
+		description = "눈금의 반만큼 피를 흡수합니다.";
 		times=1;
 	}	
 	

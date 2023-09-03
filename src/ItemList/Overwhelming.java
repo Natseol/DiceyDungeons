@@ -10,8 +10,8 @@ public class Overwhelming extends Item{
 
 	public Overwhelming()	{
 		name = "제압";
-		description = "[1~2]+(누적)"+accDamage+" 의 피해를 줍니다. 사용할 때 마다 누적됩니다.";
-		times=1;
+		description = "[1~2]+("+accDamage+") 의 누적되는 피해를 줍니다.(턴당 2번)";
+		times=2;
 	}	
 	
 	@Override
@@ -20,17 +20,7 @@ public class Overwhelming extends Item{
 		accDamage+=damage;
 		enemy.subtractHp(accDamage);
 		printDamage(accDamage);
-		description = "[1~2]+(누적)"+accDamage+" 의 피해를 줍니다. 사용할 때 마다 누적됩니다."; 
-		my.setTurnTimes(idx, 0);
+		description = "[1~2]+("+accDamage+") 의 누적되는 피해를 줍니다.(턴당 2번)";
+		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);	
 	}
-
-//	@Override
-//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-//		int damage=(int)(Math.random()*2)+1;
-//		accDamage+=damage;
-//		player.subtractHp(accDamage);
-//		printTakeDamage(accDamage);
-//		description = "[1~2] 의 피해를 줍니다. 사용할 때 마다 누적됩니다. 누적:"+accDamage;
-//		times=0;
-//	}
 }

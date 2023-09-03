@@ -11,7 +11,7 @@ public class Guard extends Item{
 
 	public Guard()	{
 		name = "막기";
-		description = "[3] 의 방어력을 얻습니다 (홀수만 가능)";
+		description = "[3] 의 방어력을 얻습니다 (홀수)";
 		times=1;
 	}	
 	

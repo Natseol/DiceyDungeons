@@ -10,10 +10,10 @@ public class Mimic extends Enemy{
 	public Mimic() {
 		name = "미믹";
 		description = "알 수 없음";
-		grade = "일반";
-		maxHp = 28;	
+		grade = "어려움";
+		maxHp = 38;	
 		hp = maxHp;
-		diceQuantity = 2;
-		inventory = new Item[] {new Unknown(), new Unknown()};		
+		diceQuantity = 3;
+		inventory = new Item[] {new Unknown(), new Box(), new Unknown()};		
 	}
 }

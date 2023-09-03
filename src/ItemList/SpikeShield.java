@@ -29,21 +29,6 @@ public class SpikeShield extends Item{
 			my.setTurnTimes(idx, 0);
 		}
 	}
-	
-//	@Override
-//	public void action(Enemy enemy, Player player, int dice, EnemyTurn enemyTurn) {
-//		if (dice%2!=0) {
-//			player.subtractHp(dice);
-//			printDamage(dice);
-//			times=0;
-//		}
-//		else {
-//			enemy.setDef(enemy.getDef()+dice);
-//			printGainDefence(dice);
-//			times=0;
-//		}
-//	}
-	
 	@Override
 	public boolean checkDice(int dice) {
 		if (dice>5) {

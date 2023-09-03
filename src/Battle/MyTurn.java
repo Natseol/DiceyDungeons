@@ -16,15 +16,12 @@ public class MyTurn extends TurnInfo{
 	
  	public MyTurn(Player player) {
  		super(player);		
-		diceQ = player.getDiceQuantity();
 		turnItem= player.getInventory().clone();		
-		dice=new int[diceQ];		
-		for (int i = 0; i < dice.length; i++) {
-			dice[i]=Roll.roll6();
-		}
+		resetDice(player);
 		isUseSkill=false;
 		resetTimes(turnItem);
 		resetCount(player);
+		resetNeedDice(player);
 	}
  	
  	public boolean getIsUseSkill() {

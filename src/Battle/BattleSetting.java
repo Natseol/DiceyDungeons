@@ -5,7 +5,7 @@ import Item.*;
 
 public class BattleSetting {
 	
-	int[][] itemState=new int[6][3];//0:times 1:count 2:대검
+	int[][] itemState=new int[6][3];//0:times 1:count 2:2개이상필요
 	int addDice;
 	
 	public int getTurnTimes(int idx) {
@@ -20,6 +20,13 @@ public class BattleSetting {
 	}
 	public void setTurnCount(int idx, int num) {
 		itemState[idx][1]=num;
+	}
+	
+	public int getNeedDIce(int idx) {
+		return itemState[idx][2];
+	}
+	public void setNeedDIce(int idx, int num) {
+		itemState[idx][2]=num;
 	}
 	
 	public int getAddDice() {
@@ -38,6 +45,12 @@ public class BattleSetting {
 	public void resetCount(Status status) {
 		for (int i=0;i<status.getInventory().length;i++) {
 			this.itemState[i][1]=status.getInventory(i).getCount();
+		}
+	}
+	
+	public void resetNeedDice(Status status) {
+		for (int i=0;i<status.getInventory().length;i++) {
+			this.itemState[i][2]=0;
 		}
 	}
 }

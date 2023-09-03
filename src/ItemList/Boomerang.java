@@ -9,7 +9,7 @@ public class Boomerang extends Item{
 
 	public Boomerang()	{
 		name = "부메랑";
-		description = "ㅁx2 의 피해를 주고 ㅁ 의 피해를 받습니다";
+		description = "ㅁx2 의 피해를 주고 ㅁ 의 피해(최대4)를 받습니다";
 		times=1;
 	}	
 	
@@ -18,8 +18,14 @@ public class Boomerang extends Item{
 		enemy.subtractHp(2*dice);
 		printDamage2(dice);
 		System.out.println();
-		player.subtractHp(dice);		
-		printTakedDamage(dice);
+		if (dice>4) {
+			player.subtractHp(4);		
+			printTakedDamage(4);	
+		}
+		else {
+			player.subtractHp(dice);		
+			printTakedDamage(dice);
+		}
 		my.setTurnTimes(idx, 0);
 	}	
 }
