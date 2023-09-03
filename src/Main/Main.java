@@ -54,17 +54,17 @@ public class Main extends Script {
 //			enemy[eNum].setCondition(3,2);
 
 		while (true) {//스테이지 진입
-
-			int enemyTurntimes[][] = new int[enemy[eNum].getInventory().length][2];
+			
+			int enemyTurnNum[][] = new int[enemy[eNum].getInventory().length][2];
 			for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-				enemyTurntimes[i][0]=enemy[eNum].getInventory(i).getTimes();
-				enemy[eNum].getInventory(i).setCount(enemy[eNum].getInventory(i).getCount());
+				enemyTurnNum[i][0]=enemy[eNum].getInventory(i).getTimes();
+				enemyTurnNum[i][1]=enemy[eNum].getInventory(i).getCount();
 			}
 			
-			int playerTurntimes[][] = new int[player.getInventory().length][2];
+			int playerTurnNum[][] = new int[player.getInventory().length][2];
 			for (int i = 0; i < player.getInventory().length; i++) {
-				playerTurntimes[i][0]=player.getInventory(i).getTimes();
-				player.getInventory(i).setCount(player.getInventory(i).getCount());
+				playerTurnNum[i][0]=player.getInventory(i).getTimes();
+				playerTurnNum[i][1]=player.getInventory(i).getCount();
 			}
 			
 			script.startBattle();			
@@ -75,12 +75,12 @@ public class Main extends Script {
 
 				
 				for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-					enemy[eNum].getInventory(i).setTimes(enemyTurntimes[i][0]);//횟수 동기화
+					enemy[eNum].getInventory(i).setTimes(enemyTurnNum[i][0]);//횟수 동기화
 					enemyTurn.setTurnCount(i,enemyTurn.getItem(i).getCount());//카운트 동기화
 				}
 				
 				for (int i = 0; i < player.getInventory().length; i++) {
-					player.getInventory(i).setTimes(playerTurntimes[i][0]);//횟수 동기화
+					player.getInventory(i).setTimes(playerTurnNum[i][0]);//횟수 동기화
 					myturn.setTurnCount(i,myturn.getItem(i).getCount());//카운트 동기화
 				}
 
@@ -121,7 +121,11 @@ public class Main extends Script {
 			}//이겼을 때
 
 			player.resetPlayer();//플레이어 정보 초기화
-
+			for (int i = 0; i < player.getInventory().length; i++) {
+				player.getInventory(i).setTimes(playerTurnNum[i][0]);
+				player.getInventory(i).setCount(playerTurnNum[i][1]);
+			}
+			
 			while (true) {//필드진입
 
 				script.chooseInField(floor);
@@ -152,10 +156,11 @@ public class Main extends Script {
 					}
 				}
 				else if (chooseInField == 4) {//4.다음층
-					if (eNum>=9&&eNum<=12) eNum=12;
-					if (eNum>=6&&eNum<=8) eNum=8;
-					if (eNum>=3&&eNum<=5) eNum=5;
-					if (eNum>=0&&eNum<=2) eNum=2;
+					if (eNum>=14&&eNum<=18) eNum=18;
+					if (eNum>=11&&eNum<=14) eNum=14;
+					if (eNum>=7&&eNum<=10) eNum=10;
+					if (eNum>=4&&eNum<=6) eNum=6;
+					if (eNum>=0&&eNum<=3) eNum=3;
 					floor++;
 					field = new Field();
 					script.downFloor();
