@@ -22,7 +22,7 @@ public class MagicMissile extends Item{
 			return;
 		}
 		enemy.subtractHp(5);
-		printDamageIce(5);
+		printDamage(5);
 		my.setTurnTimes(idx, 0);
 	}
 	

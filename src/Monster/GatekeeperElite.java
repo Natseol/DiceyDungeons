@@ -13,7 +13,7 @@ public class GatekeeperElite extends Enemy {
 		grade = "어려움";
 		maxHp = 40;	
 		hp = maxHp;
-		diceQuantity = 3;
+		diceQuantity = 4;
 		inventory = new Item[] {new SpikeShield(), new Bash(), new Charge()};		
 	}
 }

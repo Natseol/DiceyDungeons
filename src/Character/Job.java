@@ -11,30 +11,30 @@ public class Job extends Status {
 	}
 	
 	public void setJobWarrior() {
-		maxHp=26;
+		maxHp=50;
 		hp=maxHp;
 		job = "전사";
 		diceQuantity = 2;
 	}	
 
 	public void setJobThief() {
-		maxHp=22;
+		maxHp=23;
 		hp=maxHp;
 		job = "도적";
-		diceQuantity = 2;
+		diceQuantity = 3;
 	}
 
 	public void setJobArcher() {
-		maxHp=24;
+		maxHp=25;
 		hp=maxHp;
 		job = "궁수";
-		diceQuantity = 2;
+		diceQuantity = 3;
 	}	
 	public void setJobMagician() {
 		maxHp=22;
 		hp=maxHp;
 		job = "마법사";
-		diceQuantity = 2;
+		diceQuantity = 3;
 	}
 	
 	public void setJobKnight() {
@@ -66,7 +66,7 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new PoisonGas();  
 				inventory[1]= new Dagger();     
-				inventory[2]= new Fist(); 
+				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing();
 				inventory[4]= new LockPick(); 
 			}

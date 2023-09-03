@@ -12,7 +12,7 @@ public class Death extends Item{
 	public Death()	{
 		name = "종말";
 		description = "끝이 오고 있습니다";
-		count=10;
+		count=15;
 		times=1;
 	}	
 	
@@ -21,18 +21,20 @@ public class Death extends Item{
 		if (my.getTurnCount(idx)>0) {
 			my.setTurnCount(idx, my.getTurnCount(idx)-1);
 			System.out.println(Color.BBLACK+"더욱 더 어두워집니다"+Color.RESET);
-			my.setTurnTimes(idx, 0);
-		}
-		else {
-			printDamage(99);
-			enemy.subtractHp(99);
 			my.setTurnTimes(idx, 1);
 		}
-		if (phase==0&&player.getHp()<20) {
+		else {
+			printDamage(237);
+			enemy.subtractHp(237);
+			my.setTurnTimes(idx, 0);
+		}
+		if (phase==0&&player.getHp()<24) {
 			phase++;
-			player.addHp(14);
-			System.out.println("\n\n   몸을 웅크립니다");
+			player.addHp(18);
+			player.setDiceQuantity(5);
+			System.out.println("\n\n   어둠이 짙어집니다");
 			System.out.println(" "+Color.B_BGREEN+" 18 "+Color.RESET+" 의 체력을 회복했습니다");
+			System.out.println(" 추가 주사위를 획득했습니다");
 		}
 	}
 }

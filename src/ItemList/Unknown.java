@@ -19,20 +19,20 @@ public class Unknown extends Item{
 		my.setTurnTimes(idx, 0);
 		switch (effect) {
 		case 0:
-			printFire(1);
-			enemy.setCondition(0,enemy.getCondition(0)+1);
+			printFire(2);
+			enemy.setCondition(0,enemy.getCondition(0)+2);
 			break;
 		case 1:
-			printIced(1);
-			enemy.setCondition(1,enemy.getCondition(1)+1);
+			printIced(2);
+			enemy.setCondition(1,enemy.getCondition(1)+2);
 			break;
 		case 2:
-			printShock(1);
-			enemy.setCondition(2,enemy.getCondition(2)+1);
+			printShock(2);
+			enemy.setCondition(2,enemy.getCondition(2)+2);
 			break;
 		case 3:
-			printPoisoned(1);
-			enemy.setCondition(3,enemy.getCondition(3)+1);
+			printPoisoned(2);
+			enemy.setCondition(3,enemy.getCondition(3)+2);
 			break;
 		}
 	}

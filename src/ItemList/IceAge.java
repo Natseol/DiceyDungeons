@@ -7,7 +7,7 @@ import Item.Item;
 public class IceAge extends Item{
 
 	public IceAge()	{
-		name = "빙하시대";
+		name = "빙하기";
 		description = "[15] 의 냉기피해를 줍니다 빙결+3";
 		count=18;
 		times=1;

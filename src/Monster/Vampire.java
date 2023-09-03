@@ -13,7 +13,7 @@ public class Vampire extends Enemy {
 		grade = "어려움";
 		maxHp = 42;	
 		hp = maxHp;
-		diceQuantity = 3;
-		inventory = new Item[] {new Scythe(), new BloodSucking(), new ShortSword()};		
+		diceQuantity = 4;
+		inventory = new Item[] {new Scythe(), new EnhancedBlood(), new ShortSword()};		
 	}
 }
