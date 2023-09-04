@@ -15,10 +15,12 @@ public class Shovel extends Item{
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		enemy.subtractHp(dice);
-		printDamage(dice);
 		if (dice>5) {
 			enemy.setCondition(2,enemy.getCondition(2)+1);
 			printDamageShock(dice);
+		}
+		else {
+			printDamage(dice);
 		}
 		my.setTurnTimes(idx, 0);
 	}
