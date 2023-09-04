@@ -75,7 +75,7 @@ public class Job extends Status {
 				inventory[1]= new PoisonKnife();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
-				inventory[4]= new Drop();
+				inventory[4]= new Blender();
 			}
 			break;
 		case "궁수" :
@@ -84,7 +84,7 @@ public class Job extends Status {
 				inventory[1]= new Crossbow();
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
-				inventory[4]= new Precisoin();
+				inventory[4]= new Precision();
 			}
 			if (num == 2) {
 				inventory[0]= new Bow();

@@ -30,7 +30,7 @@ public class Script implements Color {
 		case "도적" :
 			System.out.println("\t\t 기본 장비 : 맹독");
 			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 단검, 락픽\t2. 독칼, 하락");
+			System.out.println("\t1. 단검, 락픽\t2. 독칼, 자르기");
 			break;
 		case "궁수" :
 			System.out.println("\t\t 기본 장비 : 활");

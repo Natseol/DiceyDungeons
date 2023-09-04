@@ -11,7 +11,7 @@ public class Marine extends Enemy{
 		name = "우주 해병";
 		description = "Go! Go! Go!";
 		grade = "일반";
-		maxHp = 22;	
+		maxHp = 24;	
 		hp = maxHp;
 		diceQuantity = 2;
 		inventory = new Item[] {new Cannon()};		

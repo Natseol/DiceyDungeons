@@ -1,5 +1,6 @@
 package ItemList;
 
+import Battle.EnemyTurn;
 import Battle.MyTurn;
 import Battle.TurnInfo;
 import Character.Enemy;
@@ -7,29 +8,30 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Shield extends Item{
+public class Katana extends Item{
 
-	public Shield()	{
-		name = "방패";
-		description = "ㅁ 의 방어력을 얻습니다 (최대 2) (재사용 가능)";
-		times=-1;
+	public Katana()	{
+		name = "카타나";
+		description = "ㅁ 의 피해를 줍니다 (최대 4) (턴당 2번)";
+		times=2;
 	}	
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (dice>2) {
+		if (dice>4) {
 			printIncorrectDice();
 			return;
 		}
-		player.setDef(player.getDef()+dice);
-		printGainDefence(dice);
+		enemy.subtractHp(dice);
+		printDamage(dice);
+		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
 	}
 	
 	@Override
 	public boolean checkDice(int dice) {
-		if (dice>2) {
+		if (dice>4) {
 			check=true;
 		}
 		return check;
-	}	
+	}
 }

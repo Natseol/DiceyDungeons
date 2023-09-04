@@ -7,11 +7,11 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Drop extends Item{
+public class Blender extends Item{
 
-	public Drop()	{
-		name = "하락";
-		description = "주사위 눈금을 1 내립니다 (최소 2)";
+	public Blender()	{
+		name = "자르기";
+		description = "1 눈금을 분리합니다 (최소 2)";
 		times=1;
 	}	
 	

@@ -114,6 +114,10 @@ public class Main extends Script {
 				System.out.println(B_CYAN+enemy[eNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
 				eNum++;
 				player.levelUp();
+				if (eNum==13||eNum==17) {
+					System.out.println("\n  새로운 상점이 열렸습니다\n");
+					field = new Field();
+				}
 				if (eNum>18) {
 					script.ending();
 					System.exit(1);
@@ -156,7 +160,7 @@ public class Main extends Script {
 					}
 				}
 				else if (chooseInField == 4) {//4.다음층
-					if (eNum>=14&&eNum<=18) eNum=18;
+					if (eNum>=15&&eNum<=18) eNum=18;
 					if (eNum>=11&&eNum<=14) eNum=14;
 					if (eNum>=7&&eNum<=10) eNum=10;
 					if (eNum>=4&&eNum<=6) eNum=6;

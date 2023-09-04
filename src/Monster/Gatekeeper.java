@@ -11,9 +11,9 @@ public class Gatekeeper extends Enemy {
 		name = "문지기";
 		description = "공방일체";
 		grade = "일반";
-		maxHp = 34;	
+		maxHp = 38;	
 		hp = maxHp;
 		diceQuantity = 3;
-		inventory = new Item[] {new Buckler(), new Charge(), new SpikeShield()};		
+		inventory = new Item[] {new Guard(), new Charge(), new Shield()};		
 	}
 }

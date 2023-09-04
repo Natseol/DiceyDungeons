@@ -7,11 +7,11 @@ import Character.Player;
 import Character.Status;
 import Item.Item;
 
-public class Precisoin extends Item{
+public class Precision extends Item{
 
 	int otherDice = 0;
 	
-	public Precisoin()	{
+	public Precision()	{
 		name = "정밀";
 		count=10;
 		description = "6 주사위를 2개 얻습니다";

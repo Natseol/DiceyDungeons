@@ -27,7 +27,7 @@ public class Store{
 	public static final Item[] ITEMLIST = {
 			new Nothing(),
 			new UsedGreat(),
-			//F:6, I:5, E:6, P:5, D:4+2, H:4+1
+			//F:6, I:5, E:6, P:5, D:7+2, H:4+1
 			new Sword(),
 			new Dagger(),
 			new Axe(),
@@ -70,23 +70,30 @@ public class Store{
 			new Burn(),//F
 			new FireBall(),//F
 			new LightingRod(),//E
+			new Kunai(),
+			new Katana(),
 
 			new MedicKit(),//H                  
 			new Bandage(),//H                   
 			new Heal(),//H                      
 			new Shield(),//D
 			new Buckler(),//D
+			new KiteShield(),//D
+			new ForceField(),//D
+			new FrontLine(),//D
 			
 			new Saw(),             
 			new Sacrifice(),
 			new Talisman(),
 			new SneakEye(),
+			new Spatula(),
+			new DupDice(),
 
 			new Reroll(),                   
 			new Rising(),               
 			new LockPick(),            
-			new Drop(), 
-			new Precisoin(),          
+			new Blender(), 
+			new Precision(),          
 			new Clone(),
 			new Mirror(),          
 			new Spare(),          

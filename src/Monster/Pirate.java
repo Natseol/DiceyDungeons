@@ -10,7 +10,7 @@ public class Pirate extends Enemy{
 		name = "해적";
 		description = "약탈한 무기를 들고 있습니다";
 		grade = "보통";
-		maxHp = 28;	
+		maxHp = 34;	
 		hp = maxHp;
 		diceQuantity = 2;
 		inventory = new Item[] {new Staff(), new Fist()};		

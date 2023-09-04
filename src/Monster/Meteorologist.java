@@ -11,7 +11,7 @@ public class Meteorologist extends Enemy{
 		name = "기상학자";
 		description = "날씨를 변화시킵니다";
 		grade = "보통";
-		maxHp = 44;	
+		maxHp = 46;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new LightingRod(), new LightingRod(), new Storm()};		

@@ -11,7 +11,7 @@ public class Caster extends Enemy{
 		name = "마술사";
 		description = "견습생";
 		grade = "일반";
-		maxHp = 18;	
+		maxHp = 26;	
 		hp = maxHp;
 		diceQuantity = 1;
 		inventory = new Item[] {new MagicMissile(), new Shield()};		

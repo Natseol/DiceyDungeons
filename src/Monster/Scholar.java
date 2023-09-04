@@ -11,7 +11,7 @@ public class Scholar extends Enemy{
 		name = "학자";
 		description = "불을 다룹니다";
 		grade = "일반";
-		maxHp = 24;	
+		maxHp = 28;	
 		hp = maxHp;
 		diceQuantity = 2;
 		inventory = new Item[] {new Burn(), new Wand()};		

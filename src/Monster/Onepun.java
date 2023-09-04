@@ -11,7 +11,7 @@ public class Onepun extends Enemy{
 		name = "죽창맨";
 		description = "매일 팔굽혀펴기, 윗몸 일으키기, 스쿼트를 101번씩 함";
 		grade = "일반";
-		maxHp = 32;	
+		maxHp = 36;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new Spear(), new Spear(), new Spear()};		

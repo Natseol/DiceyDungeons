@@ -11,7 +11,7 @@ public class Field {
 	
 	Store store = new Store();
 	int storeCount = 1;
-	int healCount = 2;
+	int healCount = 1;
 	
 	public void inStore(Player player) {
 		Scanner scanner = new Scanner(System.in);
