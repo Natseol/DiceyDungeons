@@ -8,7 +8,7 @@ public class EnhancedScythe extends Item{
 
 	public EnhancedScythe()	{
 		name = "낫(강화)";
-		description = "ㅁ+1 의 피해를 줍니다. 5 이상일 경우 [2] 만큼 회복합니다";
+		description = "ㅁ+1 의 피해를 줍니다. 5 이상일 경우 [3] 만큼 회복합니다";
 		times=1;
 	}	
 	
@@ -17,8 +17,8 @@ public class EnhancedScythe extends Item{
 		enemy.subtractHp(dice+1);
 		printDamage(dice+1);
 		if (dice>=5) {
-			player.addHp(2);
-			printRecovery(2);
+			player.addHp(3);
+			printRecovery(3);
 		}
 		my.setTurnTimes(idx, 0);
 	}

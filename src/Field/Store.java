@@ -86,11 +86,11 @@ public class Store{
 			new Sacrifice(),
 			new Talisman(),
 			new SneakEye(),
-			new Spatula(),
 			new DupDice(),
+			new Rising(),               
 
 			new Reroll(),                   
-			new Rising(),               
+			new Spatula(),
 			new LockPick(),            
 			new Blender(), 
 			new Precision(),          

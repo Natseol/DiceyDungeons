@@ -5,7 +5,7 @@ import Item.*;
 
 public class BattleSetting {
 	
-	int[][] itemState=new int[6][3];//0:times 1:count 2:2개이상필요
+	int[][] itemState=new int[6][3];//0:times 1:count 2:2개이상의 주사위
 	int addDice;
 	
 	public int getTurnTimes(int idx) {

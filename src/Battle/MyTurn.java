@@ -55,7 +55,7 @@ public class MyTurn extends TurnInfo{
 
 			script.selectDice(this);
 			int idxDice=30;
-			while ((idxDice>getDice().length||idxDice<0)&&idxDice!=99&&idxDice!=77) {
+			while ((idxDice>getDice().length||idxDice<0)&&idxDice!=99&&idxDice!=77&&idxDice!=88) {
 				idxDice=Input.checkInput(scanner.nextLine());
 			}
 			
@@ -65,6 +65,11 @@ public class MyTurn extends TurnInfo{
 			}
 			else if (idxDice==99) {
 				script.printEnemyInfo(enemyTurn, enemy);
+				scanner.nextLine();
+				continue;
+			}
+			else if (idxDice==88) {
+				script.explain();
 				scanner.nextLine();
 				continue;
 			}

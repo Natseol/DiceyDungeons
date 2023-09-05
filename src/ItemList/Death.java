@@ -12,7 +12,7 @@ public class Death extends Item{
 	public Death()	{
 		name = "종말";
 		description = "끝이 오고 있습니다";
-		count=15;
+		count=10;
 		times=1;
 	}	
 	
@@ -20,7 +20,7 @@ public class Death extends Item{
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (my.getTurnCount(idx)>0) {
 			my.setTurnCount(idx, my.getTurnCount(idx)-1);
-			System.out.println(Color.BBLACK+"더욱 더 어두워집니다"+Color.RESET);
+			System.out.println(Color.BBLACK+"점점 어두워집니다"+Color.RESET);
 			my.setTurnTimes(idx, 1);
 		}
 		else {
@@ -28,13 +28,24 @@ public class Death extends Item{
 			enemy.subtractHp(237);
 			my.setTurnTimes(idx, 0);
 		}
-		if (phase==0&&player.getHp()<24) {
+		if (phase==0&&player.getHp()<28) {
 			phase++;
-			player.addHp(18);
+			player.addHp(24);
 			player.setDiceQuantity(5);
-			System.out.println("\n\n   어둠이 짙어집니다");
-			System.out.println(" "+Color.B_BGREEN+" 18 "+Color.RESET+" 의 체력을 회복했습니다");
-			System.out.println(" 추가 주사위를 획득했습니다");
+			player.setInventory(0, new EnhancedScythe());
+			player.setInventory(1, new EnhancedBlood());
+			player.setInventory(2, new UnholySword());
+//			player.setInventory(0, new EnhancedScythe());
+			System.out.println(Color.BCYAN+"\n\n  ** 어둠이 짙어집니다 **"+Color.RESET);
+			System.out.println(" "+Color.B_BGREEN+" 24 "+Color.RESET+" 의 체력을 회복했습니다");
+			System.out.println("  강화된 장비를 사용합니다");
+			System.out.println("  추가 주사위를 획득합니다");
+			System.out.println();
+			System.out.println("------------------------------------------------");
+			System.out.println("------------------- Phase 2 --------------------");
+			System.out.println("------------------------------------------------");
+
+
 		}
 	}
 }

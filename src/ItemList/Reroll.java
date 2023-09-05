@@ -12,8 +12,8 @@ public class Reroll extends Item{
 
 	public Reroll()	{
 		name = "변경";
-		times=3;
-		description = "주사위를 다시 굴립니다 (턴당 3번)";		
+		times=2;
+		description = "주사위를 다시 굴립니다 (턴당 2번)";		
 	}	
 	
 	@Override

@@ -59,7 +59,7 @@ public class Job extends Status {
 				inventory[1]= new Boomerang();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
-				inventory[4]= new Rising();
+				inventory[4]= new Spatula();
 			}
 			break;
 		case "도적" :
