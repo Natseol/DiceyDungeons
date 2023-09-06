@@ -15,7 +15,7 @@ public class Skill {
 			switch (player.getJob()) {
 			case "전사":
 				System.out.println(Color.CYAN+" [분노] 스킬을 사용합니다");
-				System.out.print("  다음 장비를 반복해서 사용합니다");
+				System.out.print("  다음 장비 사용을 한번 더 반복합니다");
 				if (player.getLevel()>2) {
 					System.out.print(" (무작위 상태이상 해제)\n");
 					skillWar(player,player.getLevel()-2);

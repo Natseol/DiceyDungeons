@@ -10,7 +10,7 @@ public class Wolf extends Enemy{
 		name = "늑대";
 		description = "발톱을 숨기고 있습니다";
 		grade = "보통";
-		maxHp = 46;	
+		maxHp = 51;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new Claw(), new Claw(), new Infection()};		

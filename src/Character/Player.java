@@ -47,10 +47,10 @@ public class Player extends Job {
 			level++;
 			exp=0;
 			if (job.equals("전사")||job.equals("기사")) {
-				maxHp+=5;
+				maxHp+=6;
 			}
 			else {
-				maxHp+=4;
+				maxHp+=5;
 			}				
 			hp = maxHp;
 			diceQuantity=(int)(2+level*0.5);

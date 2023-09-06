@@ -11,7 +11,7 @@ public class SwordMan extends Enemy{
 		name = "검의 달인";
 		description = "전사가 아닙니다";
 		grade = "어려움";
-		maxHp = 44;	
+		maxHp = 56;	
 		hp = maxHp;
 		diceQuantity = 2;
 		inventory = new Item[] {new FireSword(), new BroadSword()};		

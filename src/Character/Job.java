@@ -11,21 +11,21 @@ public class Job extends Status {
 	}
 	
 	public void setJobWarrior() {
-		maxHp=26;
+		maxHp=28;
 		hp=maxHp;
 		job = "전사";
 		diceQuantity = 2;
 	}	
 
 	public void setJobThief() {
-		maxHp=23;
+		maxHp=25;
 		hp=maxHp;
 		job = "도적";
 		diceQuantity = 3;
 	}
 
 	public void setJobArcher() {
-		maxHp=25;
+		maxHp=23;
 		hp=maxHp;
 		job = "궁수";
 		diceQuantity = 3;
@@ -38,7 +38,7 @@ public class Job extends Status {
 	}
 	
 	public void setJobKnight() {
-		maxHp=28;
+		maxHp=30;
 		hp=maxHp;
 		job = "기사";
 		diceQuantity = 2;

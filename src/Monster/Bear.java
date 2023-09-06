@@ -11,7 +11,7 @@ public class Bear extends Enemy{
 		name = "곰";
 		description = "야생 그 자체";
 		grade = "어려움";
-		maxHp = 52;	
+		maxHp = 56;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new Bash(), new Overwhelming()};		

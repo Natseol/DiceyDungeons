@@ -35,7 +35,7 @@ public class Main extends Script {
 			enemy[i]=Enemy.setEnemy(i);
 		}
 		int floor=1;		
-		int eNum=18;
+		int eNum=0;
 		Field field = new Field();
 
 //		player.setCondition(0,3);

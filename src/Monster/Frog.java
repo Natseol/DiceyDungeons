@@ -11,7 +11,7 @@ public class Frog extends Enemy{
 		name = "개구리";
 		description = "개구리";
 		grade = "일반";
-		maxHp = 24;	
+		maxHp = 26;	
 		hp = maxHp;
 		diceQuantity = 2;
 		inventory = new Item[] {new Sword(), new MedicKit()};		

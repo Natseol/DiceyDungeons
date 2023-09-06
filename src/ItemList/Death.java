@@ -28,7 +28,7 @@ public class Death extends Item{
 			enemy.subtractHp(237);
 			my.setTurnTimes(idx, 0);
 		}
-		if (phase==0&&player.getHp()<28) {
+		if (phase==0&&player.getHp()<40) {
 			phase++;
 			player.addHp(24);
 			player.setDiceQuantity(5);
