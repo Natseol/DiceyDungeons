@@ -14,6 +14,6 @@ public class Gatekeeper extends Enemy {
 		maxHp = 48;	
 		hp = maxHp;
 		diceQuantity = 3;
-		inventory = new Item[] {new Guard(), new Charge(), new Shield()};		
+		inventory = new Item[] {new Shield(), new Charge(), new KiteShield()};		
 	}
 }

@@ -1,5 +1,7 @@
 package Main;
 
+import Dice.Roll;
+
 public interface Color {
 	public static final String RESET = "\u001B[0m";
 	public static final String BOLD = "\u001B[1m";
@@ -41,22 +43,27 @@ public interface Color {
 	public static final String B_BWHITE = "\u001B[47m";
 	
 	public static void main(String[] args) {
-		System.out.println(BLACK+"BLACK");//장비없음
-		System.out.println(BBLACK+"BBLACK");
-		System.out.println(RED+"RED");//화염
-		System.out.println(BRED+"BRED");
-		System.out.println(GREEN+"GREEN");
-		System.out.println(BGREEN+"BGREEN"); //회복
-		System.out.println(YELLOW+"YELLOW");//선택지 
-		System.out.println(BYELLOW+"BYELLOW");//방어력 > 마비(전기)
-		System.out.println(BLUE+"BLUE");
-		System.out.println(BBLUE+"BBLUE");//냉기
-		System.out.println(PURPLE+"PURPLE");
-		System.out.println(BPURPLE+"BPURPLE");//마비 > 독
-		System.out.println(CYAN+"CYAN");//스킬
-		System.out.println(BCYAN+"BCYAN");//중독 > 방어력
-		System.out.println(WHITE+"WHITE");
-		System.out.println(BWHITE+"BWHITE");//기본
-		System.out.println(RESET+"RESET");//기본
+//		System.out.println(BLACK+"BLACK");//장비없음
+//		System.out.println(BBLACK+"BBLACK");
+//		System.out.println(RED+"RED");//화염
+//		System.out.println(BRED+"BRED");
+//		System.out.println(GREEN+"GREEN");
+//		System.out.println(BGREEN+"BGREEN"); //회복
+//		System.out.println(YELLOW+"YELLOW");//선택지 
+//		System.out.println(BYELLOW+"BYELLOW");//방어력 > 마비(전기)
+//		System.out.println(BLUE+"BLUE");
+//		System.out.println(BBLUE+"BBLUE");//냉기
+//		System.out.println(PURPLE+"PURPLE");
+//		System.out.println(BPURPLE+"BPURPLE");//마비 > 독
+//		System.out.println(CYAN+"CYAN");//스킬
+//		System.out.println(BCYAN+"BCYAN");//중독 > 방어력
+//		System.out.println(WHITE+"WHITE");
+//		System.out.println(BWHITE+"BWHITE");//기본
+//		System.out.println(RESET+"RESET");//기본
+//		
+		int[] sh = Roll.shuffle(0, 6);
+		for (int i : sh) {
+			System.out.println(i);
+		}
 	}
 }

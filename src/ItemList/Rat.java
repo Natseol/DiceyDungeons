@@ -2,14 +2,15 @@ package ItemList;
 
 import Battle.*;
 import Character.*;
+import Dice.Roll;
 import Item.Item;
 
-public class Trap extends Item{
+public class Rat extends Item{
 
-	public Trap()	{
-		name = "함정";
-		description = "[1] 의 전기 피해를 줍니다 독+2";
-		count=6;
+	public Rat()	{
+		name = "쥐";
+		description = "독+1, 새 주사위를 가집니다";
+		count=5;
 		times=1;
 	}	
 	
@@ -20,13 +21,11 @@ public class Trap extends Item{
 			my.setTurnTimes(idx, 1);
 		}
 		else {
-			enemy.subtractHp(1);
-			printDamageShock(1);
-			printPoisoned(2);
-			enemy.setCondition(2,enemy.getCondition(2)+1);
-			enemy.setCondition(3,enemy.getCondition(3)+2);
+			enemy.setCondition(0,enemy.getCondition(0)+1);
+			printPoisoned(1);
+			changeDice=Roll.roll6();
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 6);
+			my.setTurnCount(idx, 5);
 		}
 	}
 }

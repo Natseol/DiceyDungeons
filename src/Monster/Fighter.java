@@ -10,8 +10,8 @@ public class Fighter extends Enemy{
 	public Fighter() {
 		name = "투사";
 		description = "전사가 아닙니다";
-		grade = "보통";
-		maxHp = 44;	
+		grade = "일반";
+		maxHp = 40;	
 		hp = maxHp;
 		diceQuantity = 3;
 		inventory = new Item[] {new Glove(), new Glove(), new Glove()};		

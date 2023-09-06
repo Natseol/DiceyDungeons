@@ -10,8 +10,8 @@ public class Witch extends Enemy {
 	public Witch() {
 		name = "마녀";
 		description = " ";
-		grade = "어려움";
-		maxHp = 54;	
+		grade = "매우 어려움";
+		maxHp = 56;	
 		hp = maxHp;
 		diceQuantity = 4;
 		inventory = new Item[] {new SpareWitch(), new Wand(), new Meteor()};		

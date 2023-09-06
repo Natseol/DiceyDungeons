@@ -9,7 +9,7 @@ public class Wolf extends Enemy{
 	public Wolf() {
 		name = "늑대";
 		description = "발톱을 숨기고 있습니다";
-		grade = "보통";
+		grade = "어려움";
 		maxHp = 51;	
 		hp = maxHp;
 		diceQuantity = 3;

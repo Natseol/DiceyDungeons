@@ -4,12 +4,12 @@ import Battle.TurnInfo;
 import Character.Status;
 import Item.Item;
 
-public class Burn extends Item{
+public class PoisonCloud extends Item{
 
-	public Burn()	{
-		name = "태우기";		
-		description="적을 불태웁니다. 발화+2 (짝수) (재사용가능)";
-		times=-1;
+	public PoisonCloud()	{
+		name = "독구름";		
+		description="독을 겁니다 독+2 (짝수)";
+		times=1;
 	}	
 	
 	@Override
@@ -18,8 +18,8 @@ public class Burn extends Item{
 			printIncorrectDice();
 			return;
 		}
-		printFire(2);
-		enemy.setCondition(0,enemy.getCondition(0)+2);
+		printPoisoned(2);
+		enemy.setCondition(3,enemy.getCondition(3)+2);
 	}
 	
 	@Override

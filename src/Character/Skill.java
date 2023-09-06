@@ -11,7 +11,7 @@ public class Skill {
 
 	public static void useSkill(Player player,Enemy enemy, MyTurn myturn) {
 		Scanner scanner = new Scanner(System.in);
-		if (player.getSp()>11) {
+		if (player.getSp()>10+player.getLevel()) {
 			switch (player.getJob()) {
 			case "전사":
 				System.out.println(Color.CYAN+" [분노] 스킬을 사용합니다");

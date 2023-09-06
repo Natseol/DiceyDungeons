@@ -1,5 +1,7 @@
 package Dice;
 
+import java.util.Random;
+
 public class Roll {
 	public static int roll6() {
 		return (int)(Math.random()*6)+1;
@@ -9,16 +11,18 @@ public class Roll {
 		return (int)(Math.random()*num)+1;
 	}
 	
-	public static int[] shuffle(int num) {
-		int[] arr = new int[num];
+	public static int[] shuffle(int startNum, int endNum) {
+		Random random = new Random();
+		int[] arr = new int[endNum-startNum+1];
+		int Num=startNum;
 		for (int i = 0; i < arr.length; i++) {
-			arr[i] = i;
+			arr[i] = Num++;
 		}
 		for (int i = 0; i < arr.length; i++) {
-			int random = random(num-1);
+			int randomNum = random.nextInt(endNum-startNum);
 			int temp = arr[i];
-			arr[i] = arr[random];
-			arr[random] = temp;			
+			arr[i] = arr[randomNum];
+			arr[randomNum] = temp;			
 		}		
 		return arr;
 	}

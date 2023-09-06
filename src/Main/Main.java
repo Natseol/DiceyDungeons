@@ -30,10 +30,8 @@ public class Main extends Script {
 		}
 		player.setJobItem(player.getJob(), inputNum);
 
-		Enemy[] enemy = new Enemy[19];
-		for (int i=0;i<enemy.length;i++) {
-			enemy[i]=Enemy.setEnemy(i);
-		}
+		Enemy[] enemy = Enemy.enemyList();
+		
 		int floor=1;		
 		int eNum=0;
 		Field field = new Field();
@@ -115,7 +113,7 @@ public class Main extends Script {
 				eNum++;
 				player.levelUp();
 				if (eNum==13||eNum==17) {
-					System.out.println("\n  새로운 상점이 열렸습니다\n");
+					System.out.println("\n  새로운 상점이 열렸습니다. 추가 회복을 할 수 있습니다\n");
 					field = new Field();
 				}
 				if (eNum>18) {

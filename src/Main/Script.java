@@ -108,7 +108,7 @@ public class Script implements Color {
 		}
 		
 		else {
-			System.out.print("  [SP : "+Math.round(player.getSp()*100/12)+"]\t\t");
+			System.out.print("  [SP : "+Math.round(player.getSp()*100/(10+player.getSp()))+"]\t\t");
 		}
 		System.out.print(enemy.getHp());
 		if (enemy.getDef()>0) {

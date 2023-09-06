@@ -20,14 +20,20 @@ public class Store{
 			
 	public void showList() {
 		for (int i =0; i<storeList.length;i++) {			
-			System.out.println((i+1)+") "+storeList[i].getName()+" : "+storeList[i].getDescription());
+			System.out.print((i+1)+") "
+					+storeList[i].getName()
+					+" : "+storeList[i].getDescription());
+			if(storeList[i].getCount()>0) {
+				System.out.print(" (카운트:"+storeList[i].getCount()+")");
+			};
+			System.out.println();
 		}
 	}
 	
 	public static final Item[] ITEMLIST = {
 			new Nothing(),
 			new UsedGreat(),
-			//F:6, I:5, E:6, P:5, D:7+2, H:4+1
+			//F:7, I:8, E:7, P:7, D:7+2, H:5+1
 			new Sword(),
 			new Dagger(),
 			new Axe(),
@@ -64,7 +70,7 @@ public class Store{
 			new TwoHandedSword(),
 			new Infection(),//P
 			new Meteor(),//F
-			new IceAge(),//I
+			new AbsoluteZero(),//I
 			new Storm(),//E
 			new IcePillar(),//I
 			new Burn(),//F
@@ -72,6 +78,12 @@ public class Store{
 			new LightingRod(),//E
 			new Kunai(),
 			new Katana(),
+			new Rat(),//P
+			new RayGun(),
+			new PoisonCloud(),//P
+			new SnowStorm(),//I
+			new Freeze(),//I
+			new Hex(),//F,I,E
 
 			new MedicKit(),//H                  
 			new Bandage(),//H                   
@@ -81,6 +93,7 @@ public class Store{
 			new KiteShield(),//D
 			new ForceField(),//D
 			new FrontLine(),//D
+			new Crystal(),//H
 			
 			new Saw(),             
 			new Sacrifice(),

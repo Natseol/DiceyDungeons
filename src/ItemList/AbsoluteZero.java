@@ -4,12 +4,12 @@ import Battle.*;
 import Character.*;
 import Item.Item;
 
-public class Trap extends Item{
+public class AbsoluteZero extends Item{
 
-	public Trap()	{
-		name = "함정";
-		description = "[1] 의 전기 피해를 줍니다 독+2";
-		count=6;
+	public AbsoluteZero()	{
+		name = "절대영점";
+		description = "[25] 의 냉기피해를 줍니다 빙결+3";
+		count=24;
 		times=1;
 	}	
 	
@@ -20,13 +20,11 @@ public class Trap extends Item{
 			my.setTurnTimes(idx, 1);
 		}
 		else {
-			enemy.subtractHp(1);
-			printDamageShock(1);
-			printPoisoned(2);
-			enemy.setCondition(2,enemy.getCondition(2)+1);
-			enemy.setCondition(3,enemy.getCondition(3)+2);
+			printDamageIce(25);
+			enemy.subtractHp(25);
+			enemy.setCondition(1,enemy.getCondition(1)+3);
 			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 6);
+			my.setTurnCount(idx, 24);
 		}
 	}
 }
