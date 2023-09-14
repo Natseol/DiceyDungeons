@@ -9,7 +9,7 @@ public class ForceField extends Item{
 	int accDef;
 
 	public ForceField()	{
-		name = "제압";
+		name = "역장";
 		description = "[1]+("+accDef+") 의 누적되는 방어력을 얻습니다.";
 		times=1;
 	}	

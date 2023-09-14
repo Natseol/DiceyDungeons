@@ -65,6 +65,14 @@ public class Player extends Job {
 				setInventory(i, new GreatSword());
 			}
 		}
+		
+		for (int i =0;i<inventory.length;i++) {//역장방어력 초기화
+			if (inventory[i].getDescription()==new ForceField().getDescription()) {
+				setInventory(i, new ForceField());
+			}
+		}
+		
+		
 		for (int i=0;i<condition.length;i++) {
 			condition[i]=0;
 		}

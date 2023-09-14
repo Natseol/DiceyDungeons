@@ -21,8 +21,8 @@ public class Enemy extends Status{
 		switch (num) {		
 		case 0 : return new Pirate();
 		case 1 : return new Gatekeeper();//3층   
-		case 2 : return new GatekeeperElite();//5층
-		case 3 : return new Vampire();//4층        
+		case 2 : return new Vampire();//4층        
+		case 3 : return new GatekeeperElite();//5층
 		case 4 : return new VampireElite();//6층
 		
 		case 5 : return new Marine();//1층			
@@ -66,7 +66,7 @@ public class Enemy extends Status{
 	}
 	
 	public static Enemy[] enemyList() {
-		Enemy[] enemy = new Enemy[19];
+		Enemy[] enemy = new Enemy[18];
 		
 		List<Enemy> enemyAll = new ArrayList<>();
 		List<Enemy> enemy1floor = randomEnemy(5,10);

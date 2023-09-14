@@ -19,7 +19,7 @@ public class FireBall extends Item{
 			return;
 		}
 		enemy.subtractHp(dice);
-		printDamageIce(dice);
+		printDamageFire(dice);
 		my.setTurnTimes(idx, 0);
 		enemy.setCondition(0,enemy.getCondition(0)+1);
 	}

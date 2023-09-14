@@ -158,9 +158,9 @@ public class Main extends Script {
 					}
 				}
 				else if (chooseInField == 4) {//4.다음층
-					if (eNum>=15&&eNum<=18) eNum=18;
-					if (eNum>=11&&eNum<=14) eNum=14;
-					if (eNum>=7&&eNum<=10) eNum=10;
+					if (eNum>=14&&eNum<=17) eNum=17;
+					if (eNum>=10&&eNum<=13) eNum=13;
+					if (eNum>=7&&eNum<=9) eNum=9;
 					if (eNum>=4&&eNum<=6) eNum=6;
 					if (eNum>=0&&eNum<=3) eNum=3;
 					floor++;
