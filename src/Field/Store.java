@@ -10,7 +10,7 @@ public class Store{
 	
 	public Store() {//랜덤 아이템3개 생성
 		for (int i = 0; i < storeList.length; i++) {
-			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-8))+2];
+			storeList[i]=ITEMLIST[(int)(Math.random()*(ITEMLIST.length-9))+2];
 		}
 	}
 	
@@ -112,10 +112,12 @@ public class Store{
 			new Spare(),          
 			new Guard(),//D
 			new MagicShield(),//D,H
-			new Scythe(),
+			
+			new Unknown(),
 			new SpareWitch(),
-			new EnhancedScythe(),
+			new Scythe(),
 			new BloodSucking(),
+			new EnhancedScythe(),
 			new EnhancedBlood(),
 			new Death()
 	};

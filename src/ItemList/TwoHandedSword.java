@@ -19,8 +19,8 @@ public class TwoHandedSword extends Item{
 			enemy.subtractHp(dice+accDamage);			
 			printDamage(dice+accDamage);
 			accDamage=0;
-			my.setTurnTimes(idx, 0);
 			my.setNeedDIce(idx, 0);
+			my.setTurnTimes(idx, 0);
 		}
 		else {
 			accDamage += dice;
