@@ -12,9 +12,9 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	protected String description;
 	
 	protected int attack;	
+	protected int addAttack;
 	protected int count;
 	protected String limit="";
-//	protected boolean check; // 확인필요
 	protected int times=1;
 	
 	protected String activeLimit="";
@@ -36,6 +36,11 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	public void setAttack(int attack) {this.attack=attack;}	
 	@Override
 	public int getAttack() {return attack;}
+	
+	@Override
+	public void setAddAttack(int addAttack) {this.addAttack=addAttack;}	
+	@Override
+	public int getAddAttack() {return addAttack;}
 	
 	@Override
 	public void setCount(int count) {this.count=count;}	
@@ -107,16 +112,12 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	@Override
 	public String getDescription() {return description;}
 	
-	public boolean checkDice(int dice) {
-		return !actionLimit(dice);
-	}
-	
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		if (getCount()!=0) {
 			if (actionCount(dice, my, idx)) return;
 		}
 		if (getNeedDice()!=0) {
-			if (actionNeedDice(my, idx)) return;
+			if (actionNeedDice(my, idx, dice)) return;
 		}
 		if (getAttack()!=0) {actionAttack(player, enemy, dice);}
 		if (getTimes()!=0) {actionTimes(my, idx);}
@@ -132,56 +133,7 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 			if (getNewDice()!="") {actionNewDice(my, dice);}
 		}
 	}
-	
-	
-//	
-//	
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {}
-//	
-//	public boolean checkDice(int dice) {
-//		return check=false;
-//	}
-//	
-//	public String getName() {
-//		return name;
-//	}
-//	
-//	public String getDescription() {
-//		return description;
-//	}
-//	
-//	public void setTimes(int num) {
-//		times = num;
-//	}
-//	
-//	public void setCount(int num) {
-//		count = num;
-//	}
-//	
-//	public int getTimes() {
-//		return times;
-//	}
-//	
-//	public int getCount() {
-//		return count;
-//	}
-//	
-//	public boolean getCheck() {
-//		return check;
-//	}
-//	
-//	public void setCheck(boolean b) {
-//		check = b;
-//	}
-//	
-//	public int getChangeDice() {
-//		return changeDice;
-//	}
-//	
-//	public void setChangeDice(int dice) {
-//		changeDice = dice;
-//	}	
-//	
+
 	public int getAccumulmation() {
 		return accmulation;
 	}

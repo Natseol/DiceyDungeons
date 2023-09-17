@@ -21,10 +21,10 @@ public class BattleSetting extends TurnDice {
 		itemState[idx][1]=num;
 	}
 	
-	public int getNeedDIce(int idx) {
+	public int getNeedDice(int idx) {
 		return itemState[idx][2];
 	}
-	public void setNeedDIce(int idx, int num) {
+	public void setNeedDice(int idx, int num) {
 		itemState[idx][2]=num;
 	}
 	

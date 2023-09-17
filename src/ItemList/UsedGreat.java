@@ -14,13 +14,4 @@ public class UsedGreat extends Item{
 		description = "사용한 대검";
 		limit=" ";
 	}
-	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		return true;
-//	}
-//	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//	}
 }
