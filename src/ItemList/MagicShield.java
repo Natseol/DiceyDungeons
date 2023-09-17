@@ -13,20 +13,4 @@ public class MagicShield extends Item{
 		defence=4;
 		count=9;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (my.getTurnCount(idx)-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-//			my.setTurnTimes(idx, 1);
-//		}
-//		else {
-//			player.setDef(player.getDef()+4);
-//			printGainDefence(4);
-//			player.addHp(2);
-//			printRecovery(2);
-//			my.setTurnCount(idx, 9);
-//			my.setTurnTimes(idx, 0);
-//		}
-//	}
 }

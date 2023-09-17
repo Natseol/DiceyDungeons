@@ -1,6 +1,7 @@
 package Battle;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 import Character.*;
@@ -10,18 +11,12 @@ import ItemList.*;
 import Main.Script;
 
 public class EnemyTurn extends TurnInfo{
-	
-//	public EnemyTurn(Status enemy) {
-//		super(enemy);
-//		turnItem= enemy.getInventory().clone();	
-//		resetDice(enemy);
-//	}
-	
+		
  	public EnemyTurn(Status enemy) {
  		super(enemy);		
 		turnItem= enemy.getInventory().clone();		
 		itemState=new int[enemy.getInventory().length][3];
-		resetDice(enemy);
+		resetDiceList(enemy);
 		resetTimes(turnItem);
 		resetCount(enemy);
 		resetNeedDice(enemy);
@@ -29,7 +24,7 @@ public class EnemyTurn extends TurnInfo{
  	
  	public void startTurn(Status enemy) {
 		turnItem= enemy.getInventory().clone();		
- 		resetDice(enemy);
+ 		resetDiceList(enemy);
  		resetTimes(turnItem);
  		resetNeedDice(enemy);
  	}
@@ -59,27 +54,12 @@ public class EnemyTurn extends TurnInfo{
 			int enemyItemNum=0;
 			scanner.nextLine();
 			
-//				rebuildDice();
-				int maxMin = getDice(0);
-				int indexDice = 0;				 
-		        for (int i = 0; i < getDice().length; i++) {
-		            if (getDice(i) > maxMin) {
-		                maxMin = getDice(i);
-		                indexDice = i;
-		            }
-		        }
-		        if (enemy.getName().equals("마녀")
-		        		||enemy.getName().equals("문지기")
-		        		||enemy.getName().equals("학자")
-		        		||enemy.getName().equals("늑대")) {
-					maxMin = getDice(0);
-					indexDice = 0;	
-		        	for (int i = 0; i < getDice().length; i++) {
-			            if (getDice(i) < maxMin) {
-			                maxMin = getDice(i);
-			                indexDice = i;
-			            }
-			        }	
+				int maxMin = Collections.max(getDiceList());
+				int indexDice = getDiceList().indexOf(maxMin);				 
+		        
+		        if (enemy.getDiceMin()) {
+					maxMin = Collections.min(getDiceList());
+					indexDice = getDiceList().indexOf(maxMin);
 		        }
 				
 				if (enemy.getCondition(0)>0) {
@@ -88,10 +68,9 @@ public class EnemyTurn extends TurnInfo{
 				if (player.getHp()<1||enemy.getHp()<1) break;
 				//죽었는지 확인
 
-				script.printSelectedDice(getDice(indexDice));
+				script.printSelectedDice(getDiceList(indexDice));
 				if (enemy.getCondition(2)>0) {
-					if (enemy.damagedParalysis(this, 0)) {
-						rebuildDice();
+					if (enemy.damagedParalysisList(this, indexDice)) {
 						continue;
 					}
 				}//상태이상 마비
@@ -103,14 +82,12 @@ public class EnemyTurn extends TurnInfo{
 				//죽었는지 확인
 				
 				for(int j=0; j<getItem().length;j++) {
-//					getItem(enemyItemNum).setCheck(false);
 					if (getItem(enemyItemNum).getName().equals(new Nothing().getName())
-							||getItem(enemyItemNum).checkDice(getDice(indexDice))) {
+							||!getItem(enemyItemNum).actionLimit(getDiceList(indexDice))) {
 						enemyItemNum++;
 						if (enemyItemNum==getItem().length) {
-							setDice(indexDice, 0);
-							System.out.println("사용할 수 없는 주사위는 버립니다");
-							rebuildDice();
+							getDiceList().remove(indexDice);
+							System.out.println("주사위를 고르는 중입니다");
 							break;
 						}
 						continue;
@@ -118,24 +95,19 @@ public class EnemyTurn extends TurnInfo{
 										
 					script.printSelectedDiceUse(enemyItemNum, enemy);
 					getItem(j).action
-					(enemy, player, getDice(indexDice), this, enemyItemNum);
-
-					getItem(enemyItemNum).setCount(getTurnCount(enemyItemNum));
-					//카운트 동기화			
+					(enemy, player, maxMin, this, enemyItemNum);
+					getDiceList().remove(indexDice);
 					
-//					setDice(indexDice, getItem(enemyItemNum).getChangeDice());
-					//사용한 주사위 눈금 변경
-					if (getItem(enemyItemNum).getTimes()==0) {
+					if (getTurnTimes(enemyItemNum)==0) {
 						setItem(enemyItemNum, new Nothing());
 					}//횟수0 아이템은 빈슬롯으로 변경
-					rebuildDice();
 					break;
 				}
 			System.out.println();
 			script.printBattleInfo(player,enemy);
 			script.printItem(this);
 			if (player.getHp()<1||enemy.getHp()<1) break;
-			script.selectDice(this);
+			script.selectDiceList(this);
 			
 			int count = 0;
 			for (int i = 0 ; i < getItem().length; i++) {

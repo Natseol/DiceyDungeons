@@ -15,11 +15,4 @@ public class ShortSword extends Item{
 		attack=2;
 		times=3;
 	}	
-//	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		enemy.subtractHp(2);
-//		printDamage(2);
-//		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
-//	}
 }

@@ -17,11 +17,4 @@ public class Spatula extends Item{
 	public void actionNewDice(TurnInfo my, int dice) {
 		my.getDiceList().add(7-dice);
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		my.setTurnTimes(idx, 0);		
-//	}
 }
-
-//예비 : 눈금4 주사위를 획득한다

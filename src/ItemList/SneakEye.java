@@ -15,17 +15,4 @@ public class SneakEye extends Item{
 		newDice="1 1";
 		count=5;
 	}	
-
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (my.getTurnCount(idx)-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);					
-//		}
-//		else {
-//			my.setOther(1);
-//			my.setOther(0,1);
-//			my.setTurnTimes(idx, 0);
-//			my.setTurnCount(idx, 5);
-//		}
-//	}
 }

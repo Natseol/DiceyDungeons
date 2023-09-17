@@ -13,6 +13,7 @@ public class Wolf extends Enemy{
 		maxHp = 51;	
 		hp = maxHp;
 		diceQuantity = 3;
+		diceMin=true;
 		inventory = new Item[] {new Claw(), new Claw(), new Infection()};		
 	}
 }

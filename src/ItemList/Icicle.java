@@ -13,11 +13,4 @@ public class Icicle extends Item{
 		iceStack=1;
 		newDice="1";
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		printIced(1);
-//		enemy.setCondition(1,enemy.getCondition(1)+1);
-//		my.setTurnTimes(idx, 0);		
-//	}
 }

@@ -12,8 +12,8 @@ public class Death extends Item{
 	public Death()	{
 		name = "종말";
 		description = "끝이 오고 있습니다";
+		attack=237;
 		count=10;
-		times=1;
 	}	
 	
 	@Override
@@ -21,7 +21,7 @@ public class Death extends Item{
 		if (my.getTurnCount(idx)>0) {
 			my.setTurnCount(idx, my.getTurnCount(idx)-1);
 			System.out.println(Color.BBLACK+"점점 어두워집니다"+Color.RESET);
-			my.setTurnTimes(idx, 1);
+			my.setTurnTimes(idx, 0);
 		}
 		else {
 			printDamage(237);
@@ -32,10 +32,9 @@ public class Death extends Item{
 			phase++;
 			player.addHp(24);
 			player.setDiceQuantity(5);
-			player.setInventory(0, new EnhancedScythe());
-			player.setInventory(1, new EnhancedBlood());
-			player.setInventory(2, new UnholySword());
-//			player.setInventory(0, new EnhancedScythe());
+			player.setInventory(3, new EnhancedScythe());
+			player.setInventory(2, new EnhancedBlood());
+			player.setInventory(1, new UnholySword());
 			System.out.println(Color.BCYAN+"\n\n  ** 어둠이 짙어집니다 **"+Color.RESET);
 			System.out.println(" "+Color.B_BGREEN+" 24 "+Color.RESET+" 의 체력을 회복했습니다");
 			System.out.println("  강화된 장비를 사용합니다");

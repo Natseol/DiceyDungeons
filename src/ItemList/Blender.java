@@ -21,25 +21,4 @@ public class Blender extends Item{
 		my.getDiceList().add(dice-1);
 		my.getDiceList().add(1);		
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice<2) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		my.setOther(1);
-//		my.setOther(0,1);
-//		my.setTurnTimes(idx, 0);
-//		
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<2) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
-//하락 : 주사위눈금을 1하락시킨다(최소2의 눈금)

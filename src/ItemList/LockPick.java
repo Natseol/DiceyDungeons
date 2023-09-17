@@ -47,13 +47,4 @@ public class LockPick extends Item{
 			break;		
 		}
 	}
-	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<2) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
-//락픽 : 주사위를 둘로 나눈다(재사용1회 가능)

@@ -16,22 +16,4 @@ public class Shield extends Item{
 		defence=-1;
 		times=-1;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice>2) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		player.setDef(player.getDef()+dice);
-//		printGainDefence(dice);
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice>2) {
-//			check=true;
-//		}
-//		return check;
-//	}	
 }

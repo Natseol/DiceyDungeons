@@ -16,24 +16,4 @@ public class HolySword extends Item{
 		attack=-1;
 		recovery=1;
 	}	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice>4||dice<3) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		enemy.subtractHp(dice);
-//		printDamage(dice);
-//		player.addHp(1);
-//		printRecovery(1);
-//		my.setTurnTimes(idx, 0);		
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<3||dice>4) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }

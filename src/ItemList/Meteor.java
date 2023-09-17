@@ -13,19 +13,4 @@ public class Meteor extends Item{
 		fireStack=3;
 		count=20;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (count-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-//			my.setTurnTimes(idx, 1);
-//		}
-//		else {
-//			printDamageFire(20);
-//			enemy.subtractHp(20);
-//			enemy.setCondition(0,enemy.getCondition(0)+3);
-//			my.setTurnTimes(idx, 0);
-//			my.setTurnCount(idx, 20);
-//		}
-//	}
 }

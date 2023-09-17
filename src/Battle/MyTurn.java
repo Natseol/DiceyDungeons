@@ -114,14 +114,11 @@ public class MyTurn extends TurnInfo{
 			//죽었는지 확인
 
 			if (player.getCondition(2)>0) {
-				if (player.damagedParalysisList(this, idxDice)) {
-//				rebuildDice();
+				if (player.damagedParalysisList(this, idxDice-1)) {
 				continue;
 				}
 			}//상태이상 마비
 
-//			getItem(idxInven).setCheck(false);//조건 초기화
-//			getItem(idxInven).setChangeDice(0);//조건 초기화
 			if (getItem(idxInven).actionLimit(numDice)==false) {
 				script.printCheckTrue();
 				continue;
@@ -130,6 +127,7 @@ public class MyTurn extends TurnInfo{
 			getDiceList().remove(idxDice-1);
 			if (getIsUseSkill()) {
 			getItem(idxInven).action(player, enemy, numDice, this, idxInven);
+			setTurnTimes(idxInven, getTurnTimes(idxInven)+1);
 			System.out.println(Color.CYAN+" * 한번 더 발동합니다 *\n"+Color.RESET);					
 			setIsUseSkill(false);
 			}
@@ -137,12 +135,6 @@ public class MyTurn extends TurnInfo{
 			//장비 발동
 			if (player.getHp()<1||enemy.getHp()<1) break;
 			//죽었는지 확인
-			
-//			player.getInventory(idxInven).setCount(getTurnCount(idxInven));
-//			//카운트 동기화
-//			setDice(idxDice-1, getItem(idxInven).getChangeDice());
-			//사용한 주사위 눈금 변경
-			
 
 			if (getItem(idxInven).getName()==new GreatSword().getName()&&getTurnTimes(idxInven)==0) {
 				setItem(idxInven, new UsedGreat());
@@ -151,8 +143,6 @@ public class MyTurn extends TurnInfo{
 			else if (getTurnTimes(idxInven)==0) {
 				setItem(idxInven, new Nothing());
 			}//횟수0 아이템은 빈슬롯으로 변경
-			
-//			rebuildDice();//주사위 정리
 
 		}//end of while : 내 턴
  	}

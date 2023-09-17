@@ -13,36 +13,33 @@ import Main.Script;
 public class TurnInfo extends BattleSetting{
 	
 	Scanner scanner = new Scanner(System.in);
-	int diceQ;
-	int[] dice;	
+//	int diceQ;
+//	int[] dice;	
 	Item[] turnItem;
-	int[] other;
+//	int[] other;
 	Script script = new Script();
 	
 	public TurnInfo() {}
 	
- 	public TurnInfo(Status status) {
-		turnItem= status.getInventory().clone();	
-		resetDice(status);
-	}
+ 	public TurnInfo(Status status) {}
  	
- 	public void resetDice(Status status) {
- 		diceQ = status.getDiceQuantity();	
- 		dice=new int[diceQ];
-		for (int i = 0; i < dice.length; i++) {
-			dice[i]=Roll.roll6();			
-		}
- 	}
-	
-	public int[] getDice() {
-		return dice;
-	}	
-	public int getDice(int diceIdx) {
-		return dice[diceIdx];
-	}
-	public void setDice(int diceIdx,int changeNum) {
-		dice[diceIdx]=changeNum;		
-	}
+// 	public void resetDice(Status status) {
+// 		diceQ = status.getDiceQuantity();	
+// 		dice=new int[status.getDiceQuantity()];
+//		for (int i = 0; i < dice.length; i++) {
+//			dice[i]=Roll.roll6();			
+//		}
+// 	}
+//	
+//	public int[] getDice() {
+//		return dice;
+//	}	
+//	public int getDice(int diceIdx) {
+//		return dice[diceIdx];
+//	}
+//	public void setDice(int diceIdx,int changeNum) {
+//		dice[diceIdx]=changeNum;		
+//	}
 	
 //	public int getTurnTimes(int idx) {
 //		return turnItem[idx].getTimes();
@@ -51,15 +48,15 @@ public class TurnInfo extends BattleSetting{
 //		turnItem[idx].setTimes(num);
 //	}
 
-	public int[] getOther() {
-		return other;
-	}
-	public void setOther(int idx, int num) {
-		other[idx] = num;
-	}
-	public void setOther(int num) {
-		other = new int[num];
-	}
+//	public int[] getOther() {
+//		return other;
+//	}
+//	public void setOther(int idx, int num) {
+//		other[idx] = num;
+//	}
+//	public void setOther(int num) {
+//		other = new int[num];
+//	}
 	
 	public Item[] getItem() {
 		return turnItem;
@@ -85,43 +82,43 @@ public class TurnInfo extends BattleSetting{
 //			getItem(i).setCount(status.getInventory(i).getCount());			
 		}
 	}		
-	public void rebuildDice() {
-		int count=0;
-		for (int i = 0; i < dice.length; i++) {
-			if (dice[i]==0) {
-				count++;
-			}
-		}
-		
-		if (other!=null) {
-			int[] newDice = new int[dice.length+other.length-count];
-			int check=0;			
-			for (int i = dice.length-count; i < dice.length+other.length-count; i++) {
-				newDice[i]=other[check];
-				check++;
-			}
-			other=null;
-			check=0;		
-			for (int i = 0; i < dice.length; i++) {
-				if (dice[i] !=0) {
-					newDice[check]=dice[i];
-					check++;
-				}				
-			}
-			dice=newDice;
-		}
-		else {
-			int [] newDice = new int[dice.length-count];
-			int check=0;		
-			for (int i = 0; i < dice.length; i++) {
-				if (dice[i] !=0) {
-					newDice[check]=dice[i];
-					check++;
-				}				
-			}
-			dice=newDice;
-		}
-	}//end of method rebulidDice
+//	public void rebuildDice() {
+//		int count=0;
+//		for (int i = 0; i < dice.length; i++) {
+//			if (dice[i]==0) {
+//				count++;
+//			}
+//		}
+//		
+//		if (other!=null) {
+//			int[] newDice = new int[dice.length+other.length-count];
+//			int check=0;			
+//			for (int i = dice.length-count; i < dice.length+other.length-count; i++) {
+//				newDice[i]=other[check];
+//				check++;
+//			}
+//			other=null;
+//			check=0;		
+//			for (int i = 0; i < dice.length; i++) {
+//				if (dice[i] !=0) {
+//					newDice[check]=dice[i];
+//					check++;
+//				}				
+//			}
+//			dice=newDice;
+//		}
+//		else {
+//			int [] newDice = new int[dice.length-count];
+//			int check=0;		
+//			for (int i = 0; i < dice.length; i++) {
+//				if (dice[i] !=0) {
+//					newDice[check]=dice[i];
+//					check++;
+//				}				
+//			}
+//			dice=newDice;
+//		}
+//	}//end of method rebulidDice
 	
 }
 

@@ -12,4 +12,3 @@ public class Sword extends Item{
 		attack=-1;
 	}
 }
-//검 : 눈금만큼 피해를 준다

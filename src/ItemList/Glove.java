@@ -16,24 +16,4 @@ public class Glove extends Item{
 		attack=-1;
 		elecStack=1;
 	}	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice>4||dice<2) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		enemy.subtractHp(dice);
-//		printDamageShock(dice);
-//		my.setTurnTimes(idx, 0);
-//		enemy.setCondition(2,enemy.getCondition(2)+1);
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<2||dice>4) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
-//글러브:눈금만큼 피해를 주고 마비효과부여(2~5의눈금)

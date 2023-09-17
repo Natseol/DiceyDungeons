@@ -14,6 +14,7 @@ public class Enemy extends Status{
 	protected String name;
 	protected String description;
 	protected String grade;
+	protected boolean diceMin=false;
 	
 	public Enemy() {}
 	
@@ -123,5 +124,9 @@ public class Enemy extends Status{
 	}
 	
 	public void action(EnemyTurn EnemyTurn) {}
+	
+	public boolean getDiceMin() {
+		return diceMin;
+	}
 	
 }

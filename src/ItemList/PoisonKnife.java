@@ -14,36 +14,4 @@ public class PoisonKnife extends Item{
 		poisonStack=1;
 		needDice=1;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice>1) {
-//			printIncorrectDice();
-//			return;
-//		}
-//
-//		if (my.getNeedDIce(idx)>0) {
-//			enemy.subtractHp(1);			
-//			printDamagePoison(1);
-//			enemy.setCondition(3,enemy.getCondition(3)+1);
-//			printPoisoned(1);
-//			accDamage=0;
-//			my.setTurnTimes(idx, 0);
-//			my.setNeedDIce(idx, 0);
-//		}
-//		else {
-//			accDamage += dice;
-//			my.setNeedDIce(idx, 1);
-//			my.setTurnTimes(idx, 1);
-//		}	
-//		
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice>1) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }

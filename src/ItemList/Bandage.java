@@ -13,11 +13,4 @@ public class Bandage extends Item {
 		recovery=2;
 		times=-1;		
 	}	
-
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		player.addHp(2);
-//		printRecovery(2);
-//	}
 }
-//붕대 : 2만큼 체력을 회복한다 (재사용가능)

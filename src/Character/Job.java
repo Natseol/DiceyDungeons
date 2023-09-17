@@ -50,7 +50,7 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new Sword();
 				inventory[1]= new Axe();
-				inventory[2]= new Bandage();
+				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
 				inventory[4]= new Reroll();
 			}
@@ -82,8 +82,8 @@ public class Job extends Status {
 			if (num == 1) {
 				inventory[0]= new Bow();  
 				inventory[1]= new Crossbow();
-				inventory[2]= new SneakEye(); 
-				inventory[3]= new Talisman(); 
+				inventory[2]= new Nothing(); 
+				inventory[3]= new Nothing(); 
 				inventory[4]= new Precision();
 			}
 			if (num == 2) {

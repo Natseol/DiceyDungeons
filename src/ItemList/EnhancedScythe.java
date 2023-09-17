@@ -3,23 +3,15 @@ package ItemList;
 import Battle.*;
 import Character.*;
 import Item.Item;
+import Item.ItemScript;
 
 public class EnhancedScythe extends Item{
 
 	public EnhancedScythe()	{
 		name = "낫(강화)";
-		description = "ㅁ+1 의 피해를 줍니다. 5 이상일 경우 [3] 만큼 회복합니다";
-		times=1;
-	}
-		
-	@Override
-	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		enemy.subtractHp(dice+1);
-		printDamage(dice+1);
-		if (dice>=5) {
-			player.addHp(3);
-			printRecovery(3);
-		}
-		my.setTurnTimes(idx, 0);
+		description = "ㅁ 의 피해를 줍니다. 4 이상일 경우 [3] 만큼 회복합니다";
+		attack=-1;
+		activeLimit="4 5 6 7 8 9 10 11";
+		recovery=3;
 	}
 }

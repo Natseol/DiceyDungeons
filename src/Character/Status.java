@@ -127,59 +127,23 @@ public class Status {
 		}
 	}
 	
-	public void damagedIce(TurnInfo turninfo) {
-		setCondition(1,getCondition(1)-1);
-		int max = turninfo.getDice(0);
-        int maxIndex = 0;				 
-        for (int i = 0; i < turninfo.getDice().length; i++) {
-            if (turninfo.getDice(i) > max) {
-                max = turninfo.getDice(i);
-                maxIndex = i;
-            }
-        }						
-        turninfo.setDice(maxIndex,1);		
-	}
-	
 	public void damagedIceList(TurnInfo turninfo) {
 		setCondition(1,getCondition(1)-1);
 		int max = Collections.max(turninfo.getDiceList());
 		int maxIndex = turninfo.getDiceList().indexOf(max);
 		turninfo.getDiceList().set(maxIndex, 1);		
 	}
-
-	public boolean damagedParalysis(TurnInfo turninfo, int idxDice) {
-		if (Math.random()<0.15*turninfo.getDice(idxDice-1)) {
-		setCondition(2,getCondition(2)-1);
-		turninfo.setDice(idxDice-1, 0);
-		System.out.println(Color.BYELLOW+" * 충격을 받았습니다. 주사위를 놓칩니다 * \n"+Color.RESET);
-		setIsEffect(true);
-		return true;
-		}
-		return false;
-	}
-	
-	public boolean damagedParalysis(EnemyTurn turninfo, int idxDice) {
-		if (Math.random()>0.5) {
-		setCondition(2,getCondition(2)-1);
-		turninfo.setDice(idxDice, 0);
-		System.out.println(Color.BYELLOW+" * 충격을 받았습니다. 주사위를 놓칩니다 * "+Color.RESET);
-		setIsEffect(true);
-		return true;
-		}
-		return false;
-	}
 	
 	public boolean damagedParalysisList(TurnInfo turninfo, int idxDice) {
-		int index = idxDice - 1; 
-		if (Math.random()<0.15*turninfo.getDiceList().get(index)) {
+//		int index = idxDice - 1; 
+		if (Math.random()<0.15*turninfo.getDiceList().get(idxDice)) {
 		setCondition(2,getCondition(2)-1);
-		turninfo.getDiceList().remove(index);
+		turninfo.getDiceList().remove(idxDice);
 		System.out.println(Color.BYELLOW+" * 충격을 받았습니다. 주사위를 놓칩니다 * \n"+Color.RESET);
 		return true;
 		}
 		return false;
 	}
-	
 	
 	public void damagedPoison() {
 		subtractHp(getCondition(3));

@@ -43,7 +43,7 @@ public class Main extends Script {
 
 //		player.setLevel(5);
 //		player.setSp(12);
-		player.setHp(12);
+//		player.setHp(62);
 //		enemy[eNum].setHp(2);
 
 //			enemy[eNum].setCondition(0,3);
@@ -53,18 +53,6 @@ public class Main extends Script {
 
 		while (true) {//스테이지 진입
 			
-//			int enemyTurnNum[][] = new int[enemy[eNum].getInventory().length][2];
-//			for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-//				enemyTurnNum[i][0]=enemy[eNum].getInventory(i).getTimes();
-//				enemyTurnNum[i][1]=enemy[eNum].getInventory(i).getCount();
-//			}
-//			
-//			int playerTurnNum[][] = new int[player.getInventory().length][2];
-//			for (int i = 0; i < player.getInventory().length; i++) {
-//				playerTurnNum[i][0]=player.getInventory(i).getTimes();
-//				playerTurnNum[i][1]=player.getInventory(i).getCount();
-//			}
-			
 			script.startBattle();			
 			MyTurn myturn = new MyTurn(player);//주사위 초기화
 			EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
@@ -72,16 +60,6 @@ public class Main extends Script {
 				
 				myturn.startTurn(player);
 				enemyTurn.startTurn(enemy[eNum]);
-				
-//				for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-//					enemy[eNum].getInventory(i).setTimes(enemyTurnNum[i][0]);//횟수 동기화
-//					enemyTurn.setTurnCount(i,enemyTurn.getItem(i).getCount());//카운트 동기화
-//				}
-//				
-//				for (int i = 0; i < player.getInventory().length; i++) {
-//					player.getInventory(i).setTimes(playerTurnNum[i][0]);//횟수 동기화
-//					myturn.setTurnCount(i,myturn.getItem(i).getCount());//카운트 동기화
-//				}
 
 				myturn.doMyTurnLoop(player, enemy[eNum], enemyTurn);
 				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
@@ -113,28 +91,24 @@ public class Main extends Script {
 				System.out.println(B_CYAN+enemy[eNum].getName()+"을(를) 물리쳤습니다!!"+RESET);
 				eNum++;
 				player.levelUp();
-				if (eNum==13||eNum==17) {
-					System.out.println("\n  새로운 상점이 열렸습니다. 추가 회복을 할 수 있습니다\n");
+				if (eNum==12||eNum==16) {
+					System.out.println("\n  새로운 상점 이용과 추가 회복을 할 수 있습니다\n");
 					field = new Field();
 				}
-				if (eNum>18) {
+				if (eNum>17) {
 					script.ending();
 					System.exit(1);
 				}
 			}//이겼을 때
 
 			player.resetPlayer();//플레이어 정보 초기화
-//			for (int i = 0; i < player.getInventory().length; i++) {
-//				player.getInventory(i).setTimes(playerTurnNum[i][0]);
-//				player.getInventory(i).setCount(playerTurnNum[i][1]);
-//			}
 			
 			while (true) {//필드진입
 
 				script.chooseInField(floor);
 				int chooseInField=Input.checkInput(scanner.nextLine());
 				if (chooseInField == 1) {//1.전투
-					if(eNum == 3||eNum == 6||eNum == 10||eNum == 14||eNum == 18 ) {
+					if(eNum == 3||eNum == 6||eNum == 9||eNum == 13||eNum == 17 ) {
 						System.out.println();
 						System.out.println("이 층에는 더이상 적이 없습니다");
 						continue;
@@ -175,7 +149,7 @@ public class Main extends Script {
 					continue;
 				}
 			}//end of while Field
-			if (eNum==18) {
+			if (eNum==17) {
 				System.out.println(" 최후의 상점에 들어갑니다.");
 				System.out.println(" 나가면 바로 전투가 시작됩니다");
 				field=new Field();

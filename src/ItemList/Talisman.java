@@ -15,16 +15,4 @@ public class Talisman extends Item{
 		newDice="3 3";
 		count=7;
 	}	
-
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (my.getTurnCount(idx)-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);					
-//		}
-//		else {
-//
-//			my.setTurnTimes(idx, 0);
-//			my.setTurnCount(idx, 7);
-//		}
-//	}
 }

@@ -6,7 +6,7 @@ import Main.Color;
 
 public class Player extends Job {
 	protected int exp;
-	protected int[] expTable= {6,6,8,8,8,10};
+	protected int[] expTable= {6,6,6,8,8,10};
 	protected int level;
 	
     public Player() {}
@@ -66,17 +66,16 @@ public class Player extends Job {
 			}
 		}
 		
-		for (int i =0;i<inventory.length;i++) {//역장방어력 초기화
-			if (inventory[i].getDescription()==new ForceField().getDescription()) {
-				setInventory(i, new ForceField());
-			}
+		for (int i =0;i<inventory.length;i++) {//누적 초기화
+			inventory[i].setAccumulation(0);
 		}
-		
-		
+				
 		for (int i=0;i<condition.length;i++) {
 			condition[i]=0;
 		}
-		def = 0;	
+		
+		def = 0;
+		
 		if (job.equals("전사")||job.equals("기사"))
 			switch (level) {
 			case 1 : diceQuantity = 2; break;

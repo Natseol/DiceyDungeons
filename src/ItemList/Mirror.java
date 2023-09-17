@@ -20,13 +20,4 @@ public class Mirror extends Item{
 		my.setAddDice(my.getAddDice()+1);
 		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);
 	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice!=6) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
-//거울 : 이 전투에서 주사위 갯수 +1 (눈금6만 가능)

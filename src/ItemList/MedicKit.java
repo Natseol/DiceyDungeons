@@ -15,19 +15,4 @@ public class MedicKit extends Item{
 		recovery=8;
 		count=16;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (count-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-//			my.setTurnTimes(idx, 1);
-//		}
-//		else {
-//			player.addHp(8);
-//			printRecovery(8);
-//			my.setTurnCount(idx, 16);
-//			my.setTurnTimes(idx, 0);
-//		}
-//	}
 }
-//구급상자 : 8만큼 체력을 회복한다 (카운트16)

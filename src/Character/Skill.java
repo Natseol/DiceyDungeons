@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Battle.MyTurn;
 import Dice.Roll;
+import Item.ItemScript;
 import Main.Color;
 import Main.Input;
 
@@ -26,11 +27,9 @@ public class Skill {
 			case "도적":
 				System.out.println(Color.CYAN+" [속임수] 스킬을 사용합니다");
 				System.out.println("  추가 주사위를 생성합니다\n"+Color.RESET);
-				myturn.setOther(2+player.getLevel());
 				for (int i = 0; i<2+player.getLevel();i++) {
-				myturn.setOther(i,1);
+					myturn.getDiceList().add(1);
 				}
-				myturn.rebuildDice();
 				break;			
 			case "궁수":
 				System.out.println(Color.CYAN+" [빠른 손놀림] 스킬을 사용합니다");
@@ -42,20 +41,18 @@ public class Skill {
 				}
 				break;				
 			case "마법사":
-				myturn.setOther(1);
 				System.out.println(Color.CYAN+" [창조] 스킬을 사용합니다"+Color.RESET);
 				System.out.println(Color.YELLOW+"  생성하고 싶은 주사위의 눈금을 적으세요"+Color.RESET);
 				int dice = Input.checkInput(scanner.nextLine());
 				if (dice < 5+player.getLevel()&&0<dice) {
-					myturn.setOther(0,dice);
+					myturn.getDiceList().add(dice);
 					System.out.println(Color.CYAN+" 눈금 ["+dice+"] 주사위를 생성합니다"+Color.RESET);
 					System.out.println();
 				}
 				else {
 					System.out.println(" 원하는 눈금 창조에 실패했습니다\n");
-					myturn.setOther(0,Roll.roll6());
+					myturn.getDiceList().add(Roll.roll6());
 				}
-				myturn.rebuildDice();
 				break;
 			case "기사":
 				System.out.println(Color.CYAN+" [신의은총] 스킬을 사용합니다");
@@ -65,12 +62,12 @@ public class Skill {
 				}
 				if (player.getLevel()>3) {
 					player.setDef(player.getDef()+6);
-					player.getInventory(0).printGainDefence(6);
+					ItemScript.printGainDefence(6);
 					player.addHp(player.getLevel()-3);
-					player.getInventory(0).printRecovery(player.getLevel()-3);
+					ItemScript.printRecovery(player.getLevel()-3);
 				}
 				else {
-					player.getInventory(0).printGainDefence(player.getDef()+3+player.getLevel());
+					ItemScript.printGainDefence(player.getDef()+3+player.getLevel());
 					player.setDef(player.getDef()+3+player.getLevel());				
 				}
 				break;

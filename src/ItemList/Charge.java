@@ -18,22 +18,4 @@ public class Charge extends Item{
 		enemy.subtractHp(1+player.getDef());
 		printDamage(1+player.getDef());
 	}
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice<3) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		enemy.subtractHp(1+player.getDef());
-//		printDamage(1+player.getDef());
-//		my.setTurnTimes(idx, 0);
-//	}
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<3) {
-//			check=true;
-//		}
-//		return check;
-//	}	
 }

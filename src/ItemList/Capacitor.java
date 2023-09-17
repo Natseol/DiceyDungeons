@@ -14,17 +14,4 @@ public class Capacitor extends Item{
 		elecStack=1;
 		times=-1;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (count-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-//		}
-//		else {
-//			enemy.subtractHp(2);		
-//			printDamageShock(2);
-//			enemy.setCondition(2,enemy.getCondition(2)+1);
-//			my.setTurnCount(idx, 5);
-//		}
-//	}
 }

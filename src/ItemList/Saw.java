@@ -44,13 +44,4 @@ public class Saw extends Item{
 			break;	
 		}
 	}
-	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice<3) {
-//			check=true;
-//		}
-//		return check;
-//	}
 }
-//쇠톱 : 주사위를 셋으로 나눈다

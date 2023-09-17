@@ -19,18 +19,4 @@ public class Infection extends Item{
 		enemy.setCondition(3,enemy.getCondition(3)*2);
 		ItemScript.printIced(enemy.getCondition(3));
 	};
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (count-dice>0) {
-//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-//			my.setTurnTimes(idx, 1);
-//		}
-//		else {
-//			printPoisoned(enemy.getCondition(3));
-//			enemy.setCondition(3,enemy.getCondition(3)*2);
-//			my.setTurnTimes(idx, 0);
-//			my.setTurnCount(idx, 24);
-//		}
-//	}
 }

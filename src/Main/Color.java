@@ -42,7 +42,7 @@ public interface Color {
 	public static final String B_BCYAN = "\u001B[46m";     
 	public static final String B_BWHITE = "\u001B[47m";
 	
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 //		System.out.println(BLACK+"BLACK");//장비없음
 //		System.out.println(BBLACK+"BBLACK");
 //		System.out.println(RED+"RED");//화염
@@ -60,10 +60,5 @@ public interface Color {
 //		System.out.println(WHITE+"WHITE");
 //		System.out.println(BWHITE+"BWHITE");//기본
 //		System.out.println(RESET+"RESET");//기본
-//		
-		int[] sh = Roll.shuffle(0, 6);
-		for (int i : sh) {
-			System.out.println(i);
-		}
-	}
+//	}
 }

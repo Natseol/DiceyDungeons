@@ -13,24 +13,4 @@ public class LightingRod extends Item{
 		attack=-1;
 		elecStack=1;
 	}
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		if (dice>4) {
-//			printIncorrectDice();
-//			return;
-//		}
-//		enemy.subtractHp(dice);
-//		printDamageShock(dice);
-//		enemy.setCondition(2,enemy.getCondition(2)+1);
-//		my.setTurnTimes(idx, 0);
-//	}
-//	
-//	@Override
-//	public boolean checkDice(int dice) {
-//		if (dice>4) {
-//			check=true;
-//		}
-//		return check;
-//	}	
 }

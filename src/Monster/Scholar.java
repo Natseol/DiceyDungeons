@@ -14,6 +14,7 @@ public class Scholar extends Enemy{
 		maxHp = 35;	
 		hp = maxHp;
 		diceQuantity = 2;
+		diceMin=true;
 		inventory = new Item[] {new Burn(), new Wand()};		
 	}
 }

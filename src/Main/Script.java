@@ -32,7 +32,7 @@ public class Script implements Color {
 		System.out.println("  ex) 4눈금의 주사위로 '검:ㅁ 의 피해를 줍니다'를 사용할경우, 4의 피해를 줍니다");
 		System.out.println(" 2) 카운트:주사위의 눈금만큼 카운트를 낮춥니다. 카운트가 0이 되면 발동합니다");
 		System.out.println(" 3) 주사위 눈금이 맘에 들지 않으면 주사위 눈금과 관련된 장비를 사용하세요");
-		System.out.println("  ex) 변경, 상승과 같이 주사위 선택에 도움이 되는 장비들이 있습니다");
+		System.out.println("  ex) 변경, 상승과 같이 주사위 변경에 도움이 되는 장비들이 있습니다");
 		System.out.println(" 4) 상태이상을 주는 장비도 있습니다. 적절한 상태이상으로 전투를 유리하게 진행하세요");
 		System.out.println();
 		System.out.println(CYAN+BOLD+"3. SP가 가득차면 스킬을 사용할 수 있습니다. 주사위 선택에서 77을 눌러 스킬을 사용해보세요"+RESET);
@@ -103,7 +103,7 @@ public class Script implements Color {
 			System.out.print(BCYAN+"("+player.getDef()+")"+RESET);
 		}
 		System.out.print(" / "+player.getMaxHp());
-		if (player.getSp()>11) {
+		if (player.getSp()>10+player.getLevel()) {
 			System.out.print(BOLD+"  [ 사용가능 ]\t\t"+RESET);
 		}
 		
@@ -253,8 +253,8 @@ public class Script implements Color {
 			if(turnInfo.getTurnCount(i)>0) {
 				System.out.print(" (카운트:"+turnInfo.getTurnCount(i)+")");
 			}
-			if(turnInfo.getItem(i).getAccDamage()>0) {
-				System.out.print(" 누적:"+turnInfo.getItem(i).getAccDamage());
+			if(turnInfo.getItem(i).getAccumulmation()>0) {
+				System.out.print(" 누적:"+turnInfo.getItem(i).getAccumulmation());
 			}
 			System.out.println(RESET);
 		}

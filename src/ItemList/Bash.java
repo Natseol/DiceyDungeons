@@ -12,13 +12,4 @@ public class Bash extends Item{
 		attack = -1;
 		defence = 1;
 	}	
-	
-//	@Override
-//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-//		enemy.subtractHp(dice);
-//		printDamage(dice);
-//		player.setDef(player.getDef()+1);
-//		printGainDefence(1);
-//		my.setTurnTimes(idx, 0);
-//	}
 }
