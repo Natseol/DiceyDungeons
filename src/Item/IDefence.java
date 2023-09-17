@@ -8,10 +8,12 @@ public interface IDefence {
 	
 	default void actionDefence(Status player, int dice) {//음수면 dice값으로 계산
 		if (getDefence() < 0) {
-			player.setDef(dice*getDefence()*-1);
+			player.setDef(player.getDef()+(dice*getDefence()*-1));
+			ItemScript.printGainDefence(dice*getDefence()*-1);
 		}
 		else if (getDefence() > 0) {
-			player.setDef(getDefence());
+			player.setDef(player.getDef()+getDefence());
+			ItemScript.printGainDefence(getDefence());
 		}	
 	}	
 }

@@ -9,22 +9,23 @@ public class AbsoluteZero extends Item{
 	public AbsoluteZero()	{
 		name = "절대영점";
 		description = "[25] 의 냉기피해를 줍니다 빙결+3";
+		attack=25;
 		count=24;
-		times=1;
+		iceStack=3;
 	}	
 	
-	@Override
-	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (count-dice>0) {
-			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
-			my.setTurnTimes(idx, 1);
-		}
-		else {
-			printDamageIce(25);
-			enemy.subtractHp(25);
-			enemy.setCondition(1,enemy.getCondition(1)+3);
-			my.setTurnTimes(idx, 0);
-			my.setTurnCount(idx, 24);
-		}
-	}
+//	@Override
+//	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
+//		if (count-dice>0) {
+//			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
+//			my.setTurnTimes(idx, 1);
+//		}
+//		else {
+//			printDamageIce(25);
+//			enemy.subtractHp(25);
+//			enemy.setCondition(1,enemy.getCondition(1)+3);
+//			my.setTurnTimes(idx, 0);
+//			my.setTurnCount(idx, 24);
+//		}
+//	}
 }

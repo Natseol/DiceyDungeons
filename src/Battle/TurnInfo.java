@@ -1,5 +1,7 @@
 package Battle;
 
+import java.util.Scanner;
+
 import Character.*;
 import Dice.Roll;
 import Field.*;
@@ -10,6 +12,7 @@ import Main.Script;
 
 public class TurnInfo extends BattleSetting{
 	
+	Scanner scanner = new Scanner(System.in);
 	int diceQ;
 	int[] dice;	
 	Item[] turnItem;

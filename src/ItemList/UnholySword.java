@@ -10,7 +10,8 @@ public class UnholySword extends Item{
 	public UnholySword()	{
 		name = "타락한검";
 		description = "ㅁ의 피해를 주고 무작위 상태이상을 겁니다. 1의 피해를 입습니다";
-		times=1;
+		attack=-1;
+		damage=1;
 	}	
 	
 	@Override

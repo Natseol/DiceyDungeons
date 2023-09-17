@@ -8,10 +8,12 @@ public interface IDamage {
 	
 	default void actionDamage(Status player, int dice) {//음수면 dice값으로 계산
 		if (getDamage() < 0) {
-			player.subtractHp(dice*getDamage()*-1);			
+			player.subtractHp(dice*getDamage()*-1);
+			ItemScript.printTakedDamage(dice*getDamage()*-1);
 		}
 		else if (getDamage() > 0) {
 			player.subtractHp(getDamage());
+			ItemScript.printTakedDamage(getDamage());
 		}	
 	}	
 }

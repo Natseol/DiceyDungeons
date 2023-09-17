@@ -6,7 +6,6 @@ import Item.*;
 public class BattleSetting extends TurnDice {
 	
 	int[][] itemState=new int[6][3];//0:times 1:count 2:2개이상의 주사위
-	int addDice;
 	
 	public int getTurnTimes(int idx) {
 		return itemState[idx][0];
@@ -27,13 +26,6 @@ public class BattleSetting extends TurnDice {
 	}
 	public void setNeedDIce(int idx, int num) {
 		itemState[idx][2]=num;
-	}
-	
-	public int getAddDice() {
-		return addDice;
-	}
-	public void setAddDice(int num) {
-		addDice=num;
 	}
 	
 	public void resetTimes(Item[] item) {

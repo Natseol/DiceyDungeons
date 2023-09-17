@@ -43,7 +43,7 @@ public class Main extends Script {
 
 //		player.setLevel(5);
 //		player.setSp(12);
-//		player.setHp(52);
+		player.setHp(12);
 //		enemy[eNum].setHp(2);
 
 //			enemy[eNum].setCondition(0,3);

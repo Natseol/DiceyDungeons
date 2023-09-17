@@ -10,7 +10,6 @@ public class Unknown extends Item{
 	public Unknown()	{
 		name = "알수없음";
 		description = "(알 수 없음)";
-		times=1;
 	}	
 	
 	@Override

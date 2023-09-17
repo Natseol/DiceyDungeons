@@ -9,7 +9,9 @@ public class FireBall extends Item{
 	public FireBall()	{
 		name = "화염구";		
 		description="ㅁ 의 화염 피해를 줍니다 (짝수)";
-		times=1;
+		limit="2 4 6";
+		attack=-1;
+		fireStack=1;
 	}	
 	
 	@Override

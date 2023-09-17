@@ -12,7 +12,7 @@ public class UsedGreat extends Item{
 	public UsedGreat()	{
 		name = "빈슬롯";
 		description = "사용한 대검";
-		times=0;
+		limit=" ";
 	}
 	
 	@Override
@@ -22,6 +22,5 @@ public class UsedGreat extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		changeDice = dice;
 	}
 }

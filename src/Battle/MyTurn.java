@@ -40,7 +40,6 @@ public class MyTurn extends TurnInfo{
  	}
  	
  	public void doMyTurnLoop(Player player, Enemy enemy, EnemyTurn enemyTurn) {
- 		Scanner scanner = new Scanner(System.in);
  		setBattle(player);
 		if (player.getCondition(3)>0) {
 			player.damagedPoison();	
@@ -121,9 +120,9 @@ public class MyTurn extends TurnInfo{
 				}
 			}//상태이상 마비
 
-			getItem(idxInven).setCheck(false);//조건 초기화
-			getItem(idxInven).setChangeDice(0);//조건 초기화
-			if (getItem(idxInven).checkDice(numDice)==true) {
+//			getItem(idxInven).setCheck(false);//조건 초기화
+//			getItem(idxInven).setChangeDice(0);//조건 초기화
+			if (getItem(idxInven).actionLimit(numDice)==false) {
 				script.printCheckTrue();
 				continue;
 			}//장비 조건 확인

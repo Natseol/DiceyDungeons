@@ -168,14 +168,14 @@ public class Script implements Color {
 		System.out.println();
 	}
 	
-	public void selectDice(MyTurn turnInfo) {
-		System.out.println(" - 당신의 주사위 - ");
-		for (int i = 0; i < turnInfo.getDice().length; i++) {
-			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
-		}
-		System.out.println();
-		System.out.println(YELLOW+"주사위를 선택하세요 (0:턴 종료, 77:스킬발동, 88:설명보기, 99:적 정보 보기)"+RESET);
-	}
+//	public void selectDice(MyTurn turnInfo) {
+//		System.out.println(" - 당신의 주사위 - ");
+//		for (int i = 0; i < turnInfo.getDice().length; i++) {
+//			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
+//		}
+//		System.out.println();
+//		System.out.println(YELLOW+"주사위를 선택하세요 (0:턴 종료, 77:스킬발동, 88:설명보기, 99:적 정보 보기)"+RESET);
+//	}
 	
 	public void selectDiceList(MyTurn turnInfo) {
 		System.out.println(" - 당신의 주사위 - ");
@@ -186,13 +186,13 @@ public class Script implements Color {
 		System.out.println(YELLOW+"주사위를 선택하세요 (0:턴 종료, 77:스킬발동, 88:설명보기, 99:적 정보 보기)"+RESET);
 	}
 	
-	public void selectDice(TurnInfo turnInfo) {
-		System.out.println();
-		for (int i = 0; i < turnInfo.getDice().length; i++) {
-			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
-		}
-		System.out.println();
-	}
+//	public void selectDice(TurnInfo turnInfo) {
+//		System.out.println();
+//		for (int i = 0; i < turnInfo.getDice().length; i++) {
+//			System.out.print("("+(i+1)+")"+turnInfo.getDice(i)+"  ");
+//		}
+//		System.out.println();
+//	}
 	public void selectDiceList(TurnInfo turnInfo) {
 		System.out.println();
 		for (int i = 0; i < turnInfo.getDiceList().size(); i++) {

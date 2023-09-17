@@ -13,9 +13,9 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	
 	protected int attack;	
 	protected int count;
-	protected String limit;
+	protected String limit="";
 	protected boolean check; // 확인필요
-	protected int times;
+	protected int times=1;
 	
 	protected int fireStack;
 	protected int iceStack;
@@ -25,7 +25,7 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	protected int recovery;
 	protected int defence;
 	protected int damage;
-	protected String newDice;
+	protected String newDice="";
 	protected int needDice;
 	
 	protected int accDamage;//누적으로 변경해야함
@@ -48,7 +48,7 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	@Override
 	public void setLimit(String limit) {this.limit=limit;}
 	@Override
-	public String getLmit() {return limit;}
+	public String getLimit() {return limit;}
 	
 	@Override
 	public void setTimes(int times) {this.times=times;}
@@ -105,14 +105,18 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 	}
 	
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (getCount()!=0) {actionCount(dice, my, idx);}
-		if (getAttack()!=0) {actionAttack(enemy, dice);}
+		if (getCount()!=0) {
+			if (actionCount(dice, my, idx)) return;
+		}
+		if (getNeedDice()!=0) {
+			if (actionNeedDice(my, idx)) return;
+		}
+		if (getAttack()!=0) {actionAttack(player, enemy, dice);}
 		if (getTimes()!=0) {actionTimes(my, idx);}
-		if (getFireStack()!=0) {actionFireStack(enemy);}
-		if (getIceStack()!=0) {actionIceStack(enemy);}
-		if (getElecStack()!=0) {actionElecStack(enemy);}
-		if (getPoisonStack()!=0) {actionPoisonStack(enemy);}
-		if (getNeedDice()!=0) {actionNeedDice(my, idx);}
+		if (getFireStack()!=0) {actionFireStack(enemy, dice);}
+		if (getIceStack()!=0) {actionIceStack(enemy, dice);}
+		if (getElecStack()!=0) {actionElecStack(enemy, dice);}
+		if (getPoisonStack()!=0) {actionPoisonStack(enemy, dice);}
 		if (getNewDice()!="") {actionNewDice(my, dice);}
 		if (getRecovery()!=0) {actionRecovery(player, dice);}
 		if (getDefence()!=0) {actionDefence(player, dice);}
@@ -156,9 +160,9 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 //		return check;
 //	}
 //	
-//	public void setCheck(boolean b) {
-//		check = b;
-//	}
+	public void setCheck(boolean b) {
+		check = b;
+	}
 //	
 //	public int getChangeDice() {
 //		return changeDice;
@@ -168,11 +172,11 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 //		changeDice = dice;
 //	}	
 //	
-//	public int getAccDamage() {
-//		return accDamage;
-//	}
-//	public void setAccDamage(int num) {
-//		accDamage=num;
-//	}
+	public int getAccDamage() {
+		return accDamage;
+	}
+	public void setAccDamage(int num) {
+		accDamage=num;
+	}
 	
 }

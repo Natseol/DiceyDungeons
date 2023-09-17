@@ -35,7 +35,6 @@ public class EnemyTurn extends TurnInfo{
  	}
 	
 	public void doEnemyTurnLoop(Player player, Enemy enemy, MyTurn myturn) {
-		Scanner scanner = new Scanner(System.in);
 		
 		if (enemy.getCondition(3)>0) {
 			enemy.damagedPoison();	
@@ -43,23 +42,24 @@ public class EnemyTurn extends TurnInfo{
 		if (player.getHp()<1||enemy.getHp()<1) return;
 		//죽었는지 확인
 		
+		resetTimes(enemy.getInventory());		
 		script.printBattleInfo(player, enemy);
 		script.printItem(this);
-		script.selectDice(this);
+		script.selectDiceList(this);
 		
 		while (enemy.getCondition(1)>0) {
 			if (enemy.getCondition(1)>0) {
-				enemy.damagedIce(this);
-				script.selectDice(this);	
+				enemy.damagedIceList(this);
+				script.selectDiceList(this);	
 				script.printDamagedIce();
 			}//상태이상 빙결
 		}
 
-		while (getDice().length>0) {
+		while (getDiceList().size()>0) {
 			int enemyItemNum=0;
 			scanner.nextLine();
 			
-				rebuildDice();
+//				rebuildDice();
 				int maxMin = getDice(0);
 				int indexDice = 0;				 
 		        for (int i = 0; i < getDice().length; i++) {
@@ -103,7 +103,7 @@ public class EnemyTurn extends TurnInfo{
 				//죽었는지 확인
 				
 				for(int j=0; j<getItem().length;j++) {
-					getItem(enemyItemNum).setCheck(false);
+//					getItem(enemyItemNum).setCheck(false);
 					if (getItem(enemyItemNum).getName().equals(new Nothing().getName())
 							||getItem(enemyItemNum).checkDice(getDice(indexDice))) {
 						enemyItemNum++;
@@ -123,7 +123,7 @@ public class EnemyTurn extends TurnInfo{
 					getItem(enemyItemNum).setCount(getTurnCount(enemyItemNum));
 					//카운트 동기화			
 					
-					setDice(indexDice, getItem(enemyItemNum).getChangeDice());
+//					setDice(indexDice, getItem(enemyItemNum).getChangeDice());
 					//사용한 주사위 눈금 변경
 					if (getItem(enemyItemNum).getTimes()==0) {
 						setItem(enemyItemNum, new Nothing());
