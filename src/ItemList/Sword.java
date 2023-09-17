@@ -10,7 +10,9 @@ public class Sword extends Item{
 		name = "검";
 		description = "ㅁ 의 피해를 줍니다";
 		times=1;
-	}	
+	}
+	
+	
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
