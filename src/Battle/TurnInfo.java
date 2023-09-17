@@ -19,10 +19,7 @@ public class TurnInfo extends BattleSetting{
 	public TurnInfo() {}
 	
  	public TurnInfo(Status status) {
-		turnItem=new Item[6];
-		for (int i = 0 ; i<status.getInventory().length;i++) {
-			setItem(0, status.getInventory(i));
-		}
+		turnItem= status.getInventory().clone();	
 		resetDice(status);
 	}
  	
@@ -44,12 +41,12 @@ public class TurnInfo extends BattleSetting{
 		dice[diceIdx]=changeNum;		
 	}
 	
-	public int getTurnTimes(int idx) {
-		return turnItem[idx].getTimes();
-	}
-	public void setTurnTimes(int idx, int num) {
-		turnItem[idx].setTimes(num);
-	}
+//	public int getTurnTimes(int idx) {
+//		return turnItem[idx].getTimes();
+//	}
+//	public void setTurnTimes(int idx, int num) {
+//		turnItem[idx].setTimes(num);
+//	}
 
 	public int[] getOther() {
 		return other;
@@ -76,13 +73,13 @@ public class TurnInfo extends BattleSetting{
 			if (status.getInventory(i).getDescription()==new UsedGreat().getDescription()) {
 				setItem(i, new UsedGreat());
 			}
-			if (status.getInventory(i).getDescription()==new Reroll().getDescription()) {
-				setItem(i, new Reroll());
-			}
-			if (status.getInventory(i).getDescription()==new LockPick().getDescription()) {
-				setItem(i, new LockPick());
-			}
-			getItem(i).setCount(status.getInventory(i).getCount());			
+//			if (status.getInventory(i).getDescription()==new Reroll().getDescription()) {
+//				setItem(i, new Reroll());
+//			}
+//			if (status.getInventory(i).getDescription()==new LockPick().getDescription()) {
+//				setItem(i, new LockPick());
+//			}
+//			getItem(i).setCount(status.getInventory(i).getCount());			
 		}
 	}		
 	public void rebuildDice() {

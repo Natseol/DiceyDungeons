@@ -16,6 +16,11 @@ public class UsedGreat extends Item{
 	}
 	
 	@Override
+	public boolean checkDice(int dice) {
+		return true;
+	}
+	
+	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
 		changeDice = dice;
 	}

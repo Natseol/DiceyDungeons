@@ -11,12 +11,28 @@ import Main.Script;
 
 public class EnemyTurn extends TurnInfo{
 	
-	public EnemyTurn(Status enemy) {
-		super(enemy);
-		turnItem= enemy.getInventory().clone();	
-		resetDice(enemy);
+//	public EnemyTurn(Status enemy) {
+//		super(enemy);
+//		turnItem= enemy.getInventory().clone();	
+//		resetDice(enemy);
+//	}
+	
+ 	public EnemyTurn(Status enemy) {
+ 		super(enemy);		
+		turnItem= enemy.getInventory().clone();		
 		itemState=new int[enemy.getInventory().length][3];
+		resetDice(enemy);
+		resetTimes(turnItem);
+		resetCount(enemy);
+		resetNeedDice(enemy);
 	}
+ 	
+ 	public void startTurn(Status enemy) {
+		turnItem= enemy.getInventory().clone();		
+ 		resetDice(enemy);
+ 		resetTimes(turnItem);
+ 		resetNeedDice(enemy);
+ 	}
 	
 	public void doEnemyTurnLoop(Player player, Enemy enemy, MyTurn myturn) {
 		Scanner scanner = new Scanner(System.in);

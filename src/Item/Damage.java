@@ -1,6 +1,8 @@
 package Item;
 
-public class Damage {
+import Character.Status;
+
+public class Damage {	
 	protected int damage;
 	
 	public void setDamage(int damage) {
@@ -9,5 +11,12 @@ public class Damage {
 	
 	public int getDamage() {return damage;}
 	
-	void actionDamage() {};
+	void actionDamage(Status enemy, int dice) {//음수면 dice값으로 계산
+		if (damage < 0) {
+			enemy.subtractHp(dice*damage*-1);			
+		}
+		else if (damage > 0) {
+			enemy.subtractHp(damage);
+		}	
+	}	
 }

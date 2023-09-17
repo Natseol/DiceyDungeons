@@ -3,13 +3,13 @@ package Battle;
 import Character.*;
 import Item.*;
 
-public class BattleSetting {
+public class BattleSetting extends TurnDice {
 	
 	int[][] itemState=new int[6][3];//0:times 1:count 2:2개이상의 주사위
 	int addDice;
 	
 	public int getTurnTimes(int idx) {
-		return itemState[0][idx];
+		return itemState[idx][0];
 	}
 	public void setTurnTimes(int idx, int num) {
 		itemState[idx][0]=num;

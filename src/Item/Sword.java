@@ -1,6 +1,6 @@
 package Item;
 
-public class Sword implements IItem, IDamage {
+public class Sword implements IItem, IAttack {
 	private int damage;
 
 	public String getName() {return "";}
@@ -13,12 +13,12 @@ public class Sword implements IItem, IDamage {
 	}
 	
 	@Override
-	public int getDamage() {return damage;}
+	public int getAttack() {return damage;}
 
-	@Override
-	public void actionDamage() {
-		damage=damage-2;
-	};
+//	@Override
+//	public void actionDamage() {
+//		damage=damage-2;
+//	};
 	
 	
 }

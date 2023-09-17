@@ -5,6 +5,7 @@ import Battle.TurnInfo;
 import Character.Enemy;
 import Character.Player;
 import Character.Status;
+import Dice.Roll;
 import Item.Item;
 
 public class Precision extends Item{
@@ -20,13 +21,16 @@ public class Precision extends Item{
 
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		if (count-dice>0) {
-			my.setTurnCount(idx, my.getTurnCount(idx)-dice);					
+		if (my.getTurnCount(idx)-dice>0) {
+			my.setTurnCount(idx, my.getTurnCount(idx)-dice);
+//			my.setTurnTimes(idx, 1);
 		}
 		else {
-			my.setOther(1);
-			changeDice=6;
-			my.setOther(0,6);
+			my.getDiceList().add(6);
+			my.getDiceList().add(6);
+//			my.setOther(1);
+//			changeDice=6;
+//			my.setOther(0,6);
 			my.setTurnTimes(idx, 0);
 			my.setTurnCount(idx, 10);
 		}

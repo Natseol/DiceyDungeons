@@ -18,7 +18,8 @@ public class Reroll extends Item{
 	
 	@Override
 	public void action(Status player, Status enemy, int dice, TurnInfo my, int idx) {
-		changeDice=Roll.roll6();
+		my.getDiceList().add(Roll.roll6());
+//		changeDice=Roll.roll6();
 		my.setTurnTimes(idx, my.getTurnTimes(idx)-1);		
 	}
 }

@@ -17,6 +17,8 @@ public class Sword extends Item{
 		enemy.subtractHp(dice);
 		printDamage(dice);
 		my.setTurnTimes(idx, 0);
+//		my.getDiceList().remove(idx);
+		
 	}
 }
 //검 : 눈금만큼 피해를 준다

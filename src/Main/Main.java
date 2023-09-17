@@ -53,34 +53,35 @@ public class Main extends Script {
 
 		while (true) {//스테이지 진입
 			
-			int enemyTurnNum[][] = new int[enemy[eNum].getInventory().length][2];
-			for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-				enemyTurnNum[i][0]=enemy[eNum].getInventory(i).getTimes();
-				enemyTurnNum[i][1]=enemy[eNum].getInventory(i).getCount();
-			}
-			
-			int playerTurnNum[][] = new int[player.getInventory().length][2];
-			for (int i = 0; i < player.getInventory().length; i++) {
-				playerTurnNum[i][0]=player.getInventory(i).getTimes();
-				playerTurnNum[i][1]=player.getInventory(i).getCount();
-			}
+//			int enemyTurnNum[][] = new int[enemy[eNum].getInventory().length][2];
+//			for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
+//				enemyTurnNum[i][0]=enemy[eNum].getInventory(i).getTimes();
+//				enemyTurnNum[i][1]=enemy[eNum].getInventory(i).getCount();
+//			}
+//			
+//			int playerTurnNum[][] = new int[player.getInventory().length][2];
+//			for (int i = 0; i < player.getInventory().length; i++) {
+//				playerTurnNum[i][0]=player.getInventory(i).getTimes();
+//				playerTurnNum[i][1]=player.getInventory(i).getCount();
+//			}
 			
 			script.startBattle();			
+			MyTurn myturn = new MyTurn(player);//주사위 초기화
+			EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
 			while (true) {//전투시작
-							
-				MyTurn myturn = new MyTurn(player);//주사위 초기화
-				EnemyTurn enemyTurn = new EnemyTurn(enemy[eNum]);
-
 				
-				for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
-					enemy[eNum].getInventory(i).setTimes(enemyTurnNum[i][0]);//횟수 동기화
-					enemyTurn.setTurnCount(i,enemyTurn.getItem(i).getCount());//카운트 동기화
-				}
+				myturn.startTurn(player);
+				enemyTurn.startTurn(enemy[eNum]);
 				
-				for (int i = 0; i < player.getInventory().length; i++) {
-					player.getInventory(i).setTimes(playerTurnNum[i][0]);//횟수 동기화
-					myturn.setTurnCount(i,myturn.getItem(i).getCount());//카운트 동기화
-				}
+//				for (int i = 0; i < enemy[eNum].getInventory().length; i++) {
+//					enemy[eNum].getInventory(i).setTimes(enemyTurnNum[i][0]);//횟수 동기화
+//					enemyTurn.setTurnCount(i,enemyTurn.getItem(i).getCount());//카운트 동기화
+//				}
+//				
+//				for (int i = 0; i < player.getInventory().length; i++) {
+//					player.getInventory(i).setTimes(playerTurnNum[i][0]);//횟수 동기화
+//					myturn.setTurnCount(i,myturn.getItem(i).getCount());//카운트 동기화
+//				}
 
 				myturn.doMyTurnLoop(player, enemy[eNum], enemyTurn);
 				if (player.getHp()<1||enemy[eNum].getHp()<1) break;
@@ -123,10 +124,10 @@ public class Main extends Script {
 			}//이겼을 때
 
 			player.resetPlayer();//플레이어 정보 초기화
-			for (int i = 0; i < player.getInventory().length; i++) {
-				player.getInventory(i).setTimes(playerTurnNum[i][0]);
-				player.getInventory(i).setCount(playerTurnNum[i][1]);
-			}
+//			for (int i = 0; i < player.getInventory().length; i++) {
+//				player.getInventory(i).setTimes(playerTurnNum[i][0]);
+//				player.getInventory(i).setCount(playerTurnNum[i][1]);
+//			}
 			
 			while (true) {//필드진입
 
