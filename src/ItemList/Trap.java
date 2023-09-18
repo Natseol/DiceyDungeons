@@ -12,6 +12,6 @@ public class Trap extends Item{
 		attack=1;
 		elecStack=1;
 		poisonStack=2;
-		count=6;
+		count=7;
 	}	
 }

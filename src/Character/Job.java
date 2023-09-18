@@ -55,23 +55,23 @@ public class Job extends Status {
 				inventory[4]= new Reroll();
 			}
 			if (num == 2) {
-				inventory[0]= new Sword();
+				inventory[0]= new Katana();
 				inventory[1]= new Boomerang();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
-				inventory[4]= new Spatula();
+				inventory[4]= new Sacrifice();
 			}
 			break;
 		case "도적" :
 			if (num == 1) {
-				inventory[0]= new PoisonGas();  
-				inventory[1]= new Dagger();     
+				inventory[0]= new Dagger();  
+				inventory[1]= new ShortBow();     
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing();
 				inventory[4]= new LockPick(); 
 			}
 			if (num == 2) {
-				inventory[0]= new PoisonGas();
+				inventory[0]= new DeadlyPoison();
 				inventory[1]= new PoisonKnife();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
@@ -80,14 +80,14 @@ public class Job extends Status {
 			break;
 		case "궁수" :
 			if (num == 1) {
-				inventory[0]= new Bow();  
-				inventory[1]= new Crossbow();
+				inventory[0]= new LongBow();  
+				inventory[1]= new ShortSword();
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
 				inventory[4]= new Precision();
 			}
 			if (num == 2) {
-				inventory[0]= new Bow();
+				inventory[0]= new Crossbow();
 				inventory[1]= new Trap();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
@@ -103,11 +103,11 @@ public class Job extends Status {
 				inventory[4]= new Mirror();
 			}
 			if (num == 2) {
-				inventory[0]= new Wand();
-				inventory[1]= new Staff();
+				inventory[0]= new Staff();
+				inventory[1]= new SnowStorm();
 				inventory[2]= new Nothing();
 				inventory[3]= new Nothing();
-				inventory[4]= new Spare();
+				inventory[4]= new DupDice();
 			}
 			break;
 		case "기사" :
@@ -119,8 +119,8 @@ public class Job extends Status {
 				inventory[4]= new Guard();
 			}
 			if (num == 2) {
-				inventory[0]= new Charge();  
-				inventory[1]= new HolySword();     
+				inventory[0]= new HolySword();  
+				inventory[1]= new Parrying();     
 				inventory[2]= new Nothing(); 
 				inventory[3]= new Nothing(); 
 				inventory[4]= new MagicShield();

@@ -7,6 +7,7 @@ import java.util.Scanner;
 import Character.*;
 import Dice.Roll;
 import Item.Item;
+import Item.ItemScript;
 import ItemList.*;
 import Main.Script;
 
@@ -87,7 +88,7 @@ public class EnemyTurn extends TurnInfo{
 						enemyItemNum++;
 						if (enemyItemNum==getItem().length) {
 							getDiceList().remove(indexDice);
-							System.out.println("주사위를 고르는 중입니다");
+							ItemScript.printIncorrectDice();
 							break;
 						}
 						continue;

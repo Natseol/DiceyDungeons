@@ -48,7 +48,7 @@ public class Store{
 			new Wand(),//F                      
 			new IceShards(),//I                 
 			new Glove(),//E                     
-			new Bow(),
+			new ShortBow(),
 			new BroadSword(),
 			new Charge(),
 			new Crossbow(),//F
@@ -56,7 +56,7 @@ public class Store{
 			new IceSword(),//I
 			new HolySword(),//H
 			new Overwhelming(),
-			new PoisonGas(),//P
+			new DeadlyPoison(),//P
 			new PoisonKnife(),//P
 			new Revolver(),
 			new Trap(),//E, P
@@ -84,6 +84,8 @@ public class Store{
 			new SnowStorm(),//I
 			new Freeze(),//I
 			new Hex(),//F,I,E
+			new Parrying(),
+			new LongBow(),
 
 			new MedicKit(),//H                  
 			new Bandage(),//H                   

@@ -123,7 +123,7 @@ public class Enemy extends Status{
 		return grade;
 	}
 	
-	public void action(EnemyTurn EnemyTurn) {}
+//	public void action(EnemyTurn EnemyTurn) {}
 	
 	public boolean getDiceMin() {
 		return diceMin;

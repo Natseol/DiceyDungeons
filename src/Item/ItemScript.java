@@ -76,7 +76,7 @@ public class ItemScript {
 	}
 	
 	public static void printIncorrectDice() {
-		System.out.println(" * 눈금이 맞지않아 발동되지 않았습니다 *");
+		System.out.println(" * 눈금이 맞지않아 발동되지 않습니다 *");
 		System.out.println();
 	}	
 	

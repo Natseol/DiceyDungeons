@@ -47,29 +47,29 @@ public class Script implements Color {
 		System.out.println();
 		switch (job) {
 		case "전사" :
-			System.out.println("\t\t 기본 장비 : 검");
-			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 도끼, 변경\t2. 부메랑, 상승");
+			System.out.println(YELLOW+"\t\t\t장비를 선택하세요"+RESET);
+			System.out.println("\t    1.[검, 도끼, 변경]");
+			System.out.println("\t    2.[카타나, 부메랑, 희생]");
 			break;
 		case "도적" :
-			System.out.println("\t\t 기본 장비 : 맹독");
-			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 단검, 락픽\t2. 독칼, 자르기");
+			System.out.println(YELLOW+"\t\t\t장비를 선택하세요"+RESET);
+			System.out.println("\t    1.[단검, 짧은활, 락픽]");
+			System.out.println("\t    2.[맹독, 독칼, 자르기]");
 			break;
 		case "궁수" :
-			System.out.println("\t\t 기본 장비 : 활");
-			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 석궁, 정밀\t2. 덫, 위조");
+			System.out.println(YELLOW+"\t\t\t장비를 선택하세요"+RESET);
+			System.out.println("\t    1.[장궁, 짧은검, 정밀]");
+			System.out.println("\t    2.[석궁, 함정, 위조]");
 			break;
 		case "마법사" :
-			System.out.println("\t\t 기본 장비 : 완드");
-			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 얼음파편, 거울\t2. 스태프, 예비4");
+			System.out.println(YELLOW+"\t\t\t장비를 선택하세요"+RESET);
+			System.out.println("\t    1.[완드, 얼음파편, 거울]");
+			System.out.println("\t    2.[스태프, 눈폭풍, 두사위]");
 			break;
 		case "기사" :
-			System.out.println("\t\t 기본 장비 : 격돌");
-			System.out.println(YELLOW+"\t\t\t추가 장비를 선택하세요"+RESET);
-			System.out.println("\t1. 가시방패, 막기\t2. 성검, 매직쉴드");
+			System.out.println(YELLOW+"\t\t\t장비를 선택하세요"+RESET);
+			System.out.println("\t    1.[격돌, 가시방패, 막기]");
+			System.out.println("\t    2.[성검, 패링, 매직쉴드]");
 			break;
 		}		
 		System.out.println("------------------------------------------------");
