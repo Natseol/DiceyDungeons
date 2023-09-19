@@ -9,8 +9,8 @@ public class Boomerang extends Item{
 
 	public Boomerang()	{
 		name = "부메랑";
-		description = "ㅁx2 의 피해를 주고 3 의 피해를 받습니다";
+		description = "ㅁx2 의 피해를 주고 4 의 피해를 받습니다";
 		attack = -2;
-		damage = 3;
+		damage = 4;
 	}	
 }

@@ -8,8 +8,8 @@ public class BroadSword extends Item{
 
 	public BroadSword()	{
 		name = "브로드 소드";
-		description = "ㅁ+2 의 피해를 줍니다";
+		description = "ㅁ+1 의 피해를 줍니다";
 		attack=-1;
-		addAttack=2;
+		addAttack=1;
 	}	
 }

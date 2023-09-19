@@ -15,7 +15,7 @@ public class Charge extends Item{
 
 	@Override
 	public void actionAttack(Status player, Status enemy, int dice) {
-		enemy.subtractHp(1+player.getDef());
-		printDamage(1+player.getDef());
+		enemy.subtractHp(attack+player.getDef());
+		printDamage(attack+player.getDef());
 	}
 }
