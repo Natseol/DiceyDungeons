@@ -9,7 +9,8 @@ public class Crystal extends Item {
 
 	public Crystal()	{
 		name = "크리스탈";
-		description="[1] 의 체력을 회복하고 새 주사위를 얻습니다";
+		description="[1] 의 체력을 회복하고 새 주사위를 얻습니다 (최대 3)";
+		limit="1 2 3";
 		recovery = 1;
 		newDice="7";
 	}

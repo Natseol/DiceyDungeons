@@ -5,7 +5,7 @@ import Character.*;
 import ItemList.*;
 import Main.Color;
 
-public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence, ILimit, ITimes,
+public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefence, ILimit, ITimes,
 	IElecStack, IFireStack, IIceStack, IPoisonStack, INeedDice, INewDice, IRecovery, IDamage, IActiveLimit{
 	
 	protected String name;
@@ -132,6 +132,27 @@ public class Item extends ItemScript implements IItem, IAttack, ICount, IDefence
 			if (getDefence()!=0) {actionDefence(player, dice);}
 			if (getNewDice()!="") {actionNewDice(my, dice);}
 		}
+	}
+	
+	@Override
+	public void enhance() {
+		name=enhName;
+		description=enhDescription;
+		if (enhAttack!=0) {attack=enhAttack;}
+		if (enhAddAttack!=0) {addAttack=enhAddAttack;}
+		if (enhCount!=0) {count=enhCount;}
+		if (!enhLimit.equals("")) {limit=enhLimit;}
+		if (enhTimes!=0) {times=enhTimes;}
+		if (!enhActiveLimit.equals("")) {activeLimit=enhActiveLimit;}
+		if (enhFireStack!=0) {fireStack=enhFireStack;}
+		if (enhIceStack!=0) {iceStack=enhIceStack;}
+		if (enhElecStack!=0) {elecStack=enhElecStack;}
+		if (enhPoisonStack!=0) {poisonStack=enhPoisonStack;}
+		if (enhRecovery!=0) {recovery=enhRecovery;}
+		if (enhDefence!=0) {defence=enhDefence;}
+		if (enhDamage!=0) {damage=enhDamage;}
+		if (!enhNewDice.equals("")) {newDice=enhNewDice;}
+		if (enhNeedDice!=0) {needDice=enhNeedDice;}		
 	}
 
 	public int getAccumulmation() {

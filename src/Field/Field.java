@@ -16,6 +16,35 @@ public class Field {
 	public void inStore(Player player) {
 		Scanner scanner = new Scanner(System.in);
 		Script script = new Script();
+		
+		//아이템 강화 : 확인할것
+		System.out.println("상점 : 1, 아이템 강화: 2");
+		int select=30;
+		while (select>2||select<0) {
+			select=Input.checkInput(scanner.nextLine())-1;
+		}
+		System.out.println(select);
+		if (select==1) {
+			System.out.println(" == 아이템을 강화합니다 == ");
+			System.out.println();
+			script.printInventoryAll(player);
+			System.out.println(Color.YELLOW+"당신의 장비를 선택하세요 (다시선택 : 0)"+Color.RESET);
+			int invenIdx=30;
+			while (invenIdx>player.getInventory().length-1||invenIdx<-1) {
+				invenIdx=Input.checkInput(scanner.nextLine())-1;
+			}
+			System.out.println(player.getInventory(invenIdx).getEnhName());
+			System.out.println(player.getInventory(invenIdx).getEnhDescription());
+			
+			scanner.nextLine();
+			
+			player.getInventory(invenIdx).enhance();
+			script.printInventoryAll(player);
+			setStoreCount(0);
+			return;
+		}
+		//아이템 강화 : 확인할 것
+		
 		while (true) {
 			System.out.println();
 			script.printStore();

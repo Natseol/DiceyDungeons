@@ -67,10 +67,10 @@ public class Main extends Script {
 				//*****************
 				// 전투 탈출
 				//*****************
-//				System.out.println();
-//				System.out.println("---------------------------------");
-//				System.out.println("종료 = 1");
-//				if (scanner.nextLine().equals("1")) break;
+				System.out.println();
+				System.out.println("---------------------------------");
+				System.out.println("종료 = 1");
+				if (scanner.nextLine().equals("1")) break;
 
 				System.out.println();
 				enemyTurn.doEnemyTurnLoop(player, enemy[eNum], myturn);
@@ -143,6 +143,10 @@ public class Main extends Script {
 					script.downFloor();
 					break;
 				}
+//				else if (chooseInField == 5) {
+//					player.getInventory(0).enhance();
+//				}
+					
 				else {//아무키. 정보					
 					script.printPlayerInfo(player);
 					script.printInventoryAll(player);
