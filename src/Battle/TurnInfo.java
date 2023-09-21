@@ -28,14 +28,6 @@ public class TurnInfo extends BattleSetting{
 	}
 	public void setItem(int idx, Item item) {
 		turnItem[idx] = item;
-	}
-	
-	public void setBattle(Status status) { 
-		for (int i=0;i<status.getInventory().length;i++) {
-			if (status.getInventory(i).getDescription()==new UsedGreat().getDescription()) {
-				setItem(i, new UsedGreat());
-			}
-		}
-	}		
+	}	
 }
 

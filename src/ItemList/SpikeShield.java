@@ -16,6 +16,7 @@ public class SpikeShield extends Item{
 		description = "피해를 줍니다 (홀수)  방어력을 얻습니다 (짝수) (최대 5)";
 		limit="1 2 3 4 5";
 		attack=1;
+		activeLimit="-2";
 		defence=1;
 	}
 	
@@ -26,13 +27,5 @@ public class SpikeShield extends Item{
 			printDamage(dice);
 		}
 	}
-	
-	@Override
-	public void actionDefence(Status player, int dice) {
-		if (dice%2==0) {
-			player.setDef(player.getDef()+dice);
-			ItemScript.printGainDefence(dice);
-		}	
-	}	
 }
 

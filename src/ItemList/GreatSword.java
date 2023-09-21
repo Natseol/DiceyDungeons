@@ -11,6 +11,7 @@ public class GreatSword extends Item{
 		description = "ㅁx3 만큼 피해를 줍니다 (최대 5) (전투당 1번)";
 		limit="1 2 3 4 5";
 		attack=-3;
+		use=true;
 	}	
 }
 

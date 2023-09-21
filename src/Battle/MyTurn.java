@@ -22,6 +22,7 @@ public class MyTurn extends TurnInfo{
 		resetTimes(turnItem);
 		resetCount(player);
 		resetNeedDice(player);
+		resetUse(player);
 	}
  	
  	public void startTurn(Player player) {
@@ -40,7 +41,6 @@ public class MyTurn extends TurnInfo{
  	}
  	
  	public void doMyTurnLoop(Player player, Enemy enemy, EnemyTurn enemyTurn) {
- 		setBattle(player);
 		if (player.getCondition(3)>0) {
 			player.damagedPoison();	
 		}//상태이상	중독
@@ -124,6 +124,11 @@ public class MyTurn extends TurnInfo{
 				continue;
 			}//장비 조건 확인
 			
+			if (getTurnUse(idxInven)==1) {
+				script.printCheckTrue();
+				continue;
+			}
+			
 			getDiceList().remove(idxDice-1);
 			if (getIsUseSkill()) {
 			getItem(idxInven).action(player, enemy, numDice, this, idxInven);
@@ -136,11 +141,7 @@ public class MyTurn extends TurnInfo{
 			if (player.getHp()<1||enemy.getHp()<1) break;
 			//죽었는지 확인
 
-			if (getItem(idxInven).getName()==new GreatSword().getName()&&getTurnTimes(idxInven)==0) {
-				setItem(idxInven, new UsedGreat());
-				player.setInventory(idxInven, new UsedGreat());						
-			}
-			else if (getTurnTimes(idxInven)==0) {
+			if (getTurnTimes(idxInven)==0) {
 				setItem(idxInven, new Nothing());
 			}//횟수0 아이템은 빈슬롯으로 변경
 

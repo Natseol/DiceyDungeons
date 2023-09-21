@@ -60,12 +60,6 @@ public class Player extends Job {
 	}
 	
 	public void resetPlayer() {
-		for (int i =0;i<inventory.length;i++) {//대검 돌려주기
-			if (inventory[i].getDescription()==new UsedGreat().getDescription()) {
-				setInventory(i, new GreatSword());
-			}
-		}
-		
 		for (int i =0;i<inventory.length;i++) {//누적 초기화
 			inventory[i].setAccumulation(0);
 		}

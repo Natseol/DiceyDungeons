@@ -227,7 +227,7 @@ public class Script implements Color {
 	public void printItem(TurnInfo turnInfo) {
 		System.out.println("------------------------------------------------");
 		for (int i = 0; i < turnInfo.getItem().length; i++) {
-			if (turnInfo.getItem(i).getName().equals(new Nothing().getName())) {
+			if (turnInfo.getItem(i).getName().equals(new Nothing().getName())||turnInfo.getTurnUse(i)==1) {
 				System.out.print(BLACK);
 			}
 			System.out.print(i+1+") "+turnInfo.getItem(i).getName()+" : "+turnInfo.getItem(i).getDescription());

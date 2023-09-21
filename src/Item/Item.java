@@ -5,8 +5,11 @@ import Character.*;
 import ItemList.*;
 import Main.Color;
 
-public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefence, ILimit, ITimes,
+public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefence, ILimit, ITimes, IUse,
 	IElecStack, IFireStack, IIceStack, IPoisonStack, INeedDice, INewDice, IRecovery, IDamage, IActiveLimit{
+	
+	//흡혈, 상자, 석궁, 격돌, 패링, 역장, 제압, 가시방패, 양손검
+	//전염, 락픽, 쇠톱, 거울, 상승, 주걱, 타락한검, 알수없음, 종말
 	
 	protected String name;
 	protected String description;
@@ -16,19 +19,18 @@ public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefenc
 	protected int count;
 	protected String limit="";
 	protected int times=1;
+	protected boolean use;
+	protected int needDice;
 	
-	protected String activeLimit="";
-	
+	protected String activeLimit="";	
 	protected int fireStack;
 	protected int iceStack;
 	protected int elecStack;
-	protected int poisonStack;
-	
+	protected int poisonStack;	
 	protected int recovery;
 	protected int defence;
 	protected int damage;
 	protected String newDice="";
-	protected int needDice;
 		
 	protected int accmulation;
 	
@@ -62,6 +64,11 @@ public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefenc
 	@Override
 	public int getTimes() {return times;}
 	
+	@Override
+	public void setUse(boolean use) {this.use=use;}
+	@Override
+	public boolean getUse() {return use;}
+		
 	@Override
 	public void setActiveLimit(String limit) {this.activeLimit=limit;}
 	@Override
@@ -116,11 +123,14 @@ public class Item extends ItemUpgrade implements IItem, IAttack, ICount, IDefenc
 		if (getCount()!=0) {
 			if (actionCount(dice, my, idx)) return;
 		}
+				
 		if (getNeedDice()!=0) {
 			if (actionNeedDice(my, idx, dice)) return;
 		}
+		
 		if (getAttack()!=0) {actionAttack(player, enemy, dice);}
 		if (getTimes()!=0) {actionTimes(my, idx);}
+		if (getUse()) {	actionUse(my, idx);	}
 		
 		if (actionActiveLimit(dice)) {			
 			if (getFireStack()!=0) {actionFireStack(enemy, dice);}

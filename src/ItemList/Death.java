@@ -35,6 +35,9 @@ public class Death extends Item{
 			player.setInventory(3, new EnhancedScythe());
 			player.setInventory(2, new EnhancedBlood());
 			player.setInventory(1, new UnholySword());
+			my.setItem(3, new EnhancedScythe());
+			my.setItem(2, new EnhancedBlood());
+			my.setItem(1, new UnholySword());			
 			System.out.println(Color.BCYAN+"\n\n  ** 어둠이 짙어집니다 **"+Color.RESET);
 			System.out.println(" "+Color.B_BGREEN+" 24 "+Color.RESET+" 의 체력을 회복했습니다");
 			System.out.println("  강화된 장비를 사용합니다");

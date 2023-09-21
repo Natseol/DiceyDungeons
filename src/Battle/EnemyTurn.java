@@ -16,7 +16,7 @@ public class EnemyTurn extends TurnInfo{
  	public EnemyTurn(Status enemy) {
  		super(enemy);		
 		turnItem= enemy.getInventory().clone();		
-		itemState=new int[enemy.getInventory().length][3];
+		itemState=new int[enemy.getInventory().length][4];
 		resetDiceList(enemy);
 		resetTimes(turnItem);
 		resetCount(enemy);

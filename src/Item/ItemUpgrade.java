@@ -1,6 +1,6 @@
 package Item;
 
-public class ItemUpgrade extends ItemScript{
+public abstract class ItemUpgrade extends ItemScript{
 
 	protected String enhName;
 	protected String enhDescription;
@@ -24,7 +24,7 @@ public class ItemUpgrade extends ItemScript{
 	protected String enhNewDice="";
 	protected int enhNeedDice;
 	
-	public void enhance() {};
+	public abstract void enhance() ;
 	
 	public String getEnhName() {
 		return enhName;
