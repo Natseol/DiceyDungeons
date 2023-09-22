@@ -12,6 +12,10 @@ public class Infection extends Item{
 		description = "독을 2배로 늘립니다";
 		poisonStack=1;
 		count=24;
+		
+		enhName = name+"(강화)";
+		enhDescription = "독을 2배로 늘립니다";		
+		enhCount=18;
 	}
 	
 	@Override

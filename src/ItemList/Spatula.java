@@ -11,6 +11,10 @@ public class Spatula extends Item{
 		name = "주걱";
 		description = "눈금을 뒤집습니다";
 		newDice=" ";
+		
+		enhName = name+"(강화)";
+		enhDescription = "눈금을 뒤집습니다 (턴당 2번)";		
+		enhTimes=2;
 	}	
 	
 	@Override

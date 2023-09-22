@@ -12,5 +12,9 @@ public class Burn extends Item{
 		limit="-2";
 		times=-1;
 		fireStack=2;
+		
+		enhName = name+"(강화)";
+		enhDescription = "적을 불태웁니다. 발화+2 (재사용가능)";
+		enhLimit="";
 	}	
 }

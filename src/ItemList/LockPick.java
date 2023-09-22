@@ -15,6 +15,10 @@ public class LockPick extends Item{
 		limit="2 3 4 5 6";
 		newDice="1";
 		times=2;
+		
+		enhName = name+"(강화)";
+		enhDescription = "주사위를 둘로 나눕니다 (최소 2) (턴당 3번)";		
+		enhTimes=3;
 	}
 	
 	@Override

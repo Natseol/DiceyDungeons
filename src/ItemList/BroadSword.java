@@ -11,5 +11,9 @@ public class BroadSword extends Item{
 		description = "ㅁ+1 의 피해를 줍니다";
 		attack=-1;
 		addAttack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ+2 의 피해를 줍니다";		
+		enhAddAttack=2;
 	}	
 }

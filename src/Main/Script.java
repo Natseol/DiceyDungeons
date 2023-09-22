@@ -224,6 +224,21 @@ public class Script implements Color {
 		System.out.println("------------------------------------------------");
 	}
 	
+	public void printEnhacedInventoryAll(Player player) {
+		System.out.println("--------------------- 강화 ----------------------");
+		for (int i=0;i<player.getInventory().length;i++) {
+			System.out.print((i+1)+") "+player.getInventory(i).getEnhName()+" : "+player.getInventory(i).getEnhDescription());
+			if(player.getInventory(i).getCount()>0) {
+				System.out.print(" (카운트:");
+				if (player.getInventory(i).getEnhCount()!=0) System.out.print(player.getInventory(i).getEnhCount());
+				else System.out.print(player.getInventory(i).getCount());
+				System.out.print(")");
+			}
+			System.out.println();
+		}
+		System.out.println("------------------------------------------------");
+	}
+	
 	public void printItem(TurnInfo turnInfo) {
 		System.out.println("------------------------------------------------");
 		for (int i = 0; i < turnInfo.getItem().length; i++) {
@@ -281,8 +296,9 @@ public class Script implements Color {
 		System.out.println("-------------------- 지하 "+floor+"층 --------------------");
 		System.out.println("1. 다음 전투로");
 		System.out.println("2. 상점 방문하기");
-		System.out.println("3. 회복의 샘으로 가기");
-		System.out.println("4. 다음 층으로 내려가기");
+		System.out.println("3. 대장간 방문하기");
+		System.out.println("4. 회복의 샘으로 가기");
+		System.out.println("5. 다음 층으로 내려가기");
 		System.out.println("아무키 내 정보 확인하기");
 		System.out.println(Color.YELLOW+"어디로 이동하시겠습니까?"+Color.RESET);
 	}	
@@ -296,6 +312,14 @@ public class Script implements Color {
 		System.out.println();
 	}
 	
+	public void printForge() {
+		System.out.println("------------------------------------------------");
+		System.out.println("대장간에 방문했습니다");
+		System.out.println("(한층마다 한번만 교환가능합니다)");
+		System.out.println("------------------------------------------------");
+		System.out.println();
+	}
+	
 	public void changeAlready() {
 		System.out.println();
 		System.out.println("이미 교환완료 했습니다");
@@ -304,7 +328,7 @@ public class Script implements Color {
 	}
 	public void useAlready() {
 	System.out.println();
-	System.out.println("모든 횟수를 소진했습니다");
+	System.out.println("지금은 이용할 수 없습니다");
 	System.out.println("------------------------------------------------");
 	}
 	

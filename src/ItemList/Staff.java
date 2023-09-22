@@ -17,5 +17,9 @@ public class Staff extends Item{
 		attack=-1;
 		activeLimit="4";
 		newDice="4";
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ 만큼 피해를 줍니다 (4:주사위를 돌려받습니다)";
+		enhLimit="";
 	}
 }

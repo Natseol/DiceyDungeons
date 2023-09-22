@@ -12,5 +12,9 @@ public class SnowStorm extends Item{
 		attack=6;
 		iceStack=1;
 		count=8;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[8] 의 냉기피해를 줍니다";		
+		enhAddAttack=2;
 	}	
 }

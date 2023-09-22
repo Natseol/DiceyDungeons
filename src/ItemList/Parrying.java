@@ -12,6 +12,10 @@ public class Parrying extends Item{
 		limit="1 2 3";
 		attack=-1;
 		addAttack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ 의 피해를 줍니다. 방어력이 있으면 +3 의 피해 (최대 3)";		
+		enhAddAttack=3;
 	}
 
 	@Override

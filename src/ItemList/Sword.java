@@ -11,7 +11,7 @@ public class Sword extends Item{
 		description = "ㅁ 의 피해를 줍니다";
 		attack=-1;
 		
-		enhName = "검(강화)";
+		enhName = name+"(강화)";
 		enhDescription = "ㅁ+1 의 피해를 줍니다";		
 		enhAddAttack=1;
 	}

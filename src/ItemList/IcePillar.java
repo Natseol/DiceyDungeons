@@ -14,5 +14,9 @@ public class IcePillar extends Item{
 		addAttack=3;
 		iceStack=1;
 		needDice=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[두번째 눈금+5] 의 얼음 피해를 줍니다 (홀수 주사위 2개 필요)";		
+		enhAddAttack=5;
 	}
 }

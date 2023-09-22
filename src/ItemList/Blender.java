@@ -14,6 +14,10 @@ public class Blender extends Item{
 		description = "1 눈금을 분리합니다 (최소 2)";
 		limit="2 3 4 5 6";
 		newDice=" ";
+		
+		enhName = name+"(강화)";
+		enhDescription = "1 눈금을 분리합니다 (최소 2) (턴당 2번)";		
+		enhTimes=2;
 	}
 	
 	@Override

@@ -14,6 +14,10 @@ public class Box extends Item{
 		name = "상자";
 		description = "[?] 피해를 줍니다";
 		attack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[?] 피해를 줍니다";		
+		enhAddAttack=1;
 	}	
 	
 	@Override

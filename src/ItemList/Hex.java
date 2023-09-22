@@ -13,5 +13,11 @@ public class Hex extends Item{
 		iceStack=1;
 		elecStack=1;
 		count=7;
+		
+		enhName = name+"(강화)";
+		enhDescription = "발화+2 빙결+2 마비+2";
+		enhFireStack=2;
+		enhIceStack=2;
+		enhElecStack=2;
 	}	
 }

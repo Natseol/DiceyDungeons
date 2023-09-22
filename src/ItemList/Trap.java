@@ -13,5 +13,9 @@ public class Trap extends Item{
 		elecStack=1;
 		poisonStack=2;
 		count=7;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[1] 의 전기 피해를 줍니다 발화+1 독+2";		
+		enhFireStack=1;
 	}	
 }

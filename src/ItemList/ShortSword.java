@@ -14,5 +14,9 @@ public class ShortSword extends Item{
 		description = "[2] 의 피해를 줍니다 (턴당 3번)";
 		attack=2;
 		times=3;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[3] 의 피해를 줍니다 (턴당 3번)";		
+		enhAddAttack=1;
 	}	
 }

@@ -15,5 +15,9 @@ public class IceShards extends Item{
 		limit="-1";
 		attack=-1;
 		iceStack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ 의 얼음 피해를 줍니다";
+		enhLimit="";
 	}	
 }

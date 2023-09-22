@@ -13,5 +13,9 @@ public class Capacitor extends Item{
 		count=5;
 		elecStack=1;
 		times=-1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[3] 의 전기 피해를 줍니다 (재사용 가능)";		
+		enhAddAttack=1;
 	}	
 }

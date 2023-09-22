@@ -12,6 +12,10 @@ public class ForceField extends Item{
 		description = "[1]+("+accmulation+") 의 누적되는 방어력을 얻습니다. (홀수)";
 		limit="-1";
 		defence=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[1]+("+accmulation+") 의 누적되는 방어력을 얻습니다.";
+		enhLimit="";
 	}	
 	
 	@Override

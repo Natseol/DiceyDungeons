@@ -12,6 +12,10 @@ public class DupDice extends Item{
 		description = "눈금을 2배로 만듭니다 (최대 3)";
 		limit="1 2 3";
 		newDice=" ";
+		
+		enhName = name+"(강화)";
+		enhDescription = "눈금을 2배로 만듭니다 (최대 3) (턴당 2번)";		
+		enhTimes=2;
 	}
 	
 	@Override

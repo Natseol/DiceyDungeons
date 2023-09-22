@@ -15,5 +15,9 @@ public class Wand extends Item{
 		attack=6;
 		fireStack=1;
 		count=8;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[6] 의 화염+2 피해를 줍니다";		
+		enhFireStack=2;
 	}	
 }

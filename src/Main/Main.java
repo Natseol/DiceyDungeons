@@ -67,10 +67,10 @@ public class Main extends Script {
 				//*****************
 				// 전투 탈출
 				//*****************
-				System.out.println();
-				System.out.println("---------------------------------");
-				System.out.println("종료 = 1");
-				if (scanner.nextLine().equals("1")) break;
+//				System.out.println();
+//				System.out.println("---------------------------------");
+//				System.out.println("종료 = 1");
+//				if (scanner.nextLine().equals("1")) break;
 
 				System.out.println();
 				enemyTurn.doEnemyTurnLoop(player, enemy[eNum], myturn);
@@ -124,7 +124,15 @@ public class Main extends Script {
 						script.changeAlready();
 					} 
 				}
-				else if (chooseInField == 3) {//3.회복샘
+				else if (chooseInField == 3) {//3.대장간
+					if (field.getForgeCount()>0) {
+						field.inForge(player);
+					}
+					else {
+						script.useAlready();
+					}
+				}
+				else if (chooseInField == 4) {//4.회복샘
 					if (field.getHealCount()>0) {
 						field.visitWell(player);
 					}
@@ -132,7 +140,7 @@ public class Main extends Script {
 						script.useAlready();
 					}
 				}
-				else if (chooseInField == 4) {//4.다음층
+				else if (chooseInField == 5) {//5.다음층
 					if (eNum>=14&&eNum<=17) eNum=17;
 					if (eNum>=10&&eNum<=13) eNum=13;
 					if (eNum>=7&&eNum<=9) eNum=9;
@@ -140,13 +148,10 @@ public class Main extends Script {
 					if (eNum>=0&&eNum<=3) eNum=3;
 					floor++;
 					field = new Field();
+					field.setForgeCount(1);
 					script.downFloor();
 					break;
 				}
-//				else if (chooseInField == 5) {
-//					player.getInventory(0).enhance();
-//				}
-					
 				else {//아무키. 정보					
 					script.printPlayerInfo(player);
 					script.printInventoryAll(player);
@@ -159,7 +164,6 @@ public class Main extends Script {
 				field=new Field();
 				field.inStore(player);				
 			}
-			
 		}//end of while stage
 		scanner.close();
 	}//end of main

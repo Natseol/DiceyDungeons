@@ -13,5 +13,9 @@ public class Cannon extends Item{
 		description="[10] 의 피해를 줍니다";
 		attack=10;
 		count=15;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[16] 의 피해를 줍니다";		
+		enhAddAttack=6;
 	}	
 }

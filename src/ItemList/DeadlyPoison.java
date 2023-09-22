@@ -12,5 +12,9 @@ public class DeadlyPoison extends Item{
 		attack=3;
 		poisonStack=3;
 		count=9;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[3]의 독 피해를 줍니다. 독+4";		
+		enhPoisonStack=4;
 	}	
 }

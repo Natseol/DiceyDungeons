@@ -12,6 +12,11 @@ public class TwoHandedSword extends Item{
 		attack=1;
 		accmulation=0;
 		needDice=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "눈금의 합만큼 피해를 줍니다 12일때 전기피해 (주사위 2개 필요)";		
+		enhActiveLimit="6";
+		enhElecStack=1;
 	}		
 	
 	@Override

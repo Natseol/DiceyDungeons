@@ -146,6 +146,7 @@ public class MyTurn extends TurnInfo{
 			}//횟수0 아이템은 빈슬롯으로 변경
 
 		}//end of while : 내 턴
+		
  	}
  	
 }

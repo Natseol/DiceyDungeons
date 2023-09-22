@@ -13,6 +13,10 @@ public class Saw extends Item{
 		description = "주사위를 셋으로 나눕니다 (최소 3)";
 		limit="3 4 5 6";
 		newDice=" ";
+		
+		enhName = name+"(강화)";
+		enhDescription = "주사위를 셋으로 나눕니다 (최소 3) (턴당 2번)";		
+		enhTimes=2;
 	}
 	
 	@Override

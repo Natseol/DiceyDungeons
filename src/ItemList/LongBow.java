@@ -10,5 +10,9 @@ public class LongBow extends Item{
 		attack=12;
 		elecStack=1;
 		count=15;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[14] 의 전기 피해를 줍니다";		
+		enhAddAttack=2;
 	}	
 }

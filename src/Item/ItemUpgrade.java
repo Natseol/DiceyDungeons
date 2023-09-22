@@ -33,4 +33,8 @@ public abstract class ItemUpgrade extends ItemScript{
 	public String getEnhDescription() {
 		return enhDescription;
 	}
+	
+	public int getEnhCount() {
+		return enhCount;
+	}
 }

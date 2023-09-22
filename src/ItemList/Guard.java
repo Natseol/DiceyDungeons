@@ -14,5 +14,9 @@ public class Guard extends Item{
 		description = "[3] 의 방어력을 얻습니다 (홀수)";
 		limit="-1";
 		defence=3;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[4] 의 방어력을 얻습니다 (홀수)";
+		enhDefence=4;
 	}	
 }

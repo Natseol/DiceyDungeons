@@ -14,5 +14,9 @@ public class MedicKit extends Item{
 		description="8 의 체력을 회복합니다";
 		recovery=8;
 		count=16;
+		
+		enhName = name+"(강화)";
+		enhDescription = "8 의 체력을 회복합니다";
+		enhCount=12;
 	}	
 }

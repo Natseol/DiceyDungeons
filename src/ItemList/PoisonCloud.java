@@ -11,5 +11,9 @@ public class PoisonCloud extends Item{
 		description="독을 겁니다 독+2 (짝수)";
 		limit="-2";
 		poisonStack=2;
+		
+		enhName = name+"(강화)";
+		enhDescription = "독을 겁니다 독+3 (짝수)";		
+		enhPoisonStack=3;
 	}	
 }

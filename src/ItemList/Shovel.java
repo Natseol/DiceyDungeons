@@ -13,5 +13,9 @@ public class Shovel extends Item{
 		attack=-1;
 		activeLimit="6";
 		elecStack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ 의 피해를 줍니다. (짝수: 전기피해를 줍니다)";		
+		enhActiveLimit="2 4 6";
 	}
 }

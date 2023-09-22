@@ -12,6 +12,10 @@ public class Overwhelming extends Item{
 		description = "[1~2]+("+accmulation+") 의 누적되는 피해를 줍니다.(턴당 2번)";
 		attack=1;
 		times=2;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[1~2]+("+accmulation+") 의 누적되는 피해를 줍니다.(턴당 3번)";		
+		enhTimes=3;
 	}
 	
 	@Override

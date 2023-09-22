@@ -18,6 +18,10 @@ public class SpikeShield extends Item{
 		attack=1;
 		activeLimit="-2";
 		defence=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "피해를 줍니다 (홀수)  방어력을 얻습니다 (짝수) (최대 5) (턴당 2번)";		
+		enhTimes=2;
 	}
 	
 	@Override

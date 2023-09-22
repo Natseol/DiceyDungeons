@@ -12,5 +12,9 @@ public class MagicShield extends Item{
 		recovery=2;
 		defence=4;
 		count=9;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[4] 의 방어력을 얻고, [3] 의 체력을 회복합니다";
+		enhRecovery=3;
 	}	
 }

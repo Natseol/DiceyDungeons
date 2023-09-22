@@ -8,7 +8,7 @@ public class BloodSucking extends Item{
 
 	public BloodSucking()	{
 		name = "흡혈";
-		description = "1의 피해를 주고 눈금의 반만큼 체력을 흡수합니다.";
+		description = "[1] 의 피해를 주고 눈금의 반만큼 체력을 흡수합니다.";
 		attack=1;
 		recovery=-1;
 	}

@@ -12,5 +12,9 @@ public class Storm extends Item{
 		attack=20;
 		elecStack=3;
 		count=22;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[25] 의 전기피해를 줍니다 충격+3";		
+		enhAddAttack=5;
 	}	
 }

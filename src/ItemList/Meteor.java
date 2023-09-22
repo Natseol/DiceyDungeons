@@ -12,5 +12,9 @@ public class Meteor extends Item{
 		attack=20;
 		fireStack=3;
 		count=20;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[25] 의 화염피해를 줍니다 발화+3";		
+		enhAddAttack=5;
 	}	
 }

@@ -12,5 +12,9 @@ public class Kunai extends Item{
 		limit="1";
 		attack=-2;
 		times=-1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁx2 의 피해를 줍니다 (1~2만 가능) (재사용 가능)";
+		enhLimit="1 2";
 	}
 }

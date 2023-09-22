@@ -11,6 +11,10 @@ public class Charge extends Item{
 		description = "[1+방어력] 의 피해를 줍니다 (최소 3)";
 		limit="3 4 5 6";
 		attack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[2+방어력] 의 피해를 줍니다 (최소 3)";		
+		enhAddAttack=1;
 	}
 
 	@Override

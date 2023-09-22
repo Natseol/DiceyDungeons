@@ -15,6 +15,10 @@ public class Crossbow extends Item{
 		activeLimit="1 2";
 		fireStack=1;
 		count=13;
+		
+		enhName = name+"(강화)";
+		enhDescription = "[13-마지막 눈금] 의 피해를 줍니다 (발화+1)";		
+		enhActiveLimit="";
 	}
 	
 	@Override

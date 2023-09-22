@@ -15,5 +15,9 @@ public class Glove extends Item{
 		limit="2 3 4";
 		attack=-1;
 		elecStack=1;
+		
+		enhName = name+"(강화)";
+		enhDescription = "ㅁ 의 전기 피해를 줍니다 (최소 2)";
+		enhLimit="2 3 4 5 6";
 	}	
 }

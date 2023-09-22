@@ -12,5 +12,9 @@ public class Icicle extends Item{
 		attack=1;
 		iceStack=1;
 		newDice="1";
+		
+		enhName = name+"(강화)";
+		enhDescription = "냉기 +1 을 주고 눈금 1 주사위를 얻는다 (턴당 2번)";		
+		enhTimes=2;
 	}	
 }

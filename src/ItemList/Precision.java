@@ -17,5 +17,9 @@ public class Precision extends Item{
 		description = "6 주사위를 2개 얻습니다";
 		newDice="6 6";			
 		count=11;
+		
+		enhName = name+"(강화)";
+		enhDescription = "6 주사위를 2개 얻습니다";
+		enhCount=9;
 	}	
 }
